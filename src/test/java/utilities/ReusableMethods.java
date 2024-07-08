@@ -1,6 +1,7 @@
 package utilities;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
@@ -8,10 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Function;
 
 public class ReusableMethods {
@@ -36,7 +34,7 @@ public class ReusableMethods {
 
 
     //========Switching Window=====//
-    public static void switchToWindow(String targetTitle) {
+    public static void switchToWindowWithTitle(String targetTitle) {
         String origin = Driver.getDriver().getWindowHandle();
         for (String handle : Driver.getDriver().getWindowHandles()) {
             Driver.getDriver().switchTo().window(handle);
@@ -45,6 +43,19 @@ public class ReusableMethods {
             }
         }
         Driver.getDriver().switchTo().window(origin);
+    }
+
+    public static void switchToWindowsWithUrl(String hedefUrl, WebDriver driver){
+        Set<String> tumWindowlarWHDleriSeti = driver.getWindowHandles();
+
+        for (String eachWhd : tumWindowlarWHDleriSeti
+        ) {
+            driver.switchTo().window(eachWhd);
+
+            if (driver.getCurrentUrl().equals(hedefUrl)){
+                break;
+            }
+        }
     }
 
 
