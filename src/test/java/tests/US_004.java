@@ -6,7 +6,7 @@ import org.testng.asserts.SoftAssert;
 import pages.CustomerPage;
 import utilities.*;
 
-public class US_004  {
+public class US_004 {
     CustomerPage customerPage = new CustomerPage();
     SoftAssert softAssert = new SoftAssert();
 
