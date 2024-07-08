@@ -79,4 +79,22 @@ public class CustomerPage {
 
     @FindBy(xpath = "//*[@class='alert alert-danger']")
     public WebElement invalidEmailText; // customer contact page
+
+    @FindBy(xpath = "//*[@class='footer-logo']")
+    public WebElement footerLogo; // customer page footer logo
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-facebook']")
+    public WebElement footerFacebookLogo;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-instagram']")
+    public WebElement footerInstagramLogo;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-linkedin']")
+    public WebElement footerLinkedInLogo;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-twitter']")
+    public WebElement footerXLogo;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
+    public WebElement footerYoutubeLogo;
 }
