@@ -2,14 +2,11 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import pages.CustomerPage;
 import utilities.*;
 
 public class US_004 {
     CustomerPage customerPage = new CustomerPage();
-    SoftAssert softAssert = new SoftAssert();
-
 
     @Test
     public void TC_0401(){
