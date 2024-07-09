@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class CustomerPage {
 
     public CustomerPage(){
@@ -139,6 +141,17 @@ public class CustomerPage {
 
     @FindBy(xpath = "(//*[@class='position-relative '])[8]")
     public WebElement fourthBlogLink; // // customer page footer 4.blog link
+
+    @FindBy(xpath = "//*[text()='Sandwiches and Wraps']")
+    public WebElement sandwichAndWraps; // customer page sandwich and wraps
+
+    @FindBy(xpath = "(//*[@class='col-lg-3 mb-3 col-md-6 list-items'])")
+    public WebElement team2Restaurant; // customer page team2 restaurant page
+
+    @FindBy(xpath = "(//*[@class='el-image__inner'])")
+    public List<WebElement> restaurantAllPhoto; // customer page restaurant page all photo
+
+
 
 
 
