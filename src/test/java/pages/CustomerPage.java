@@ -84,17 +84,64 @@ public class CustomerPage {
     public WebElement footerLogo; // customer page footer logo
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-facebook']")
-    public WebElement footerFacebookLogo;
+    public WebElement footerFacebookLogo; // customer page footer facebook logo
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-instagram']")
-    public WebElement footerInstagramLogo;
+    public WebElement footerInstagramLogo; // // customer page footer Instagram logo
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-linkedin']")
-    public WebElement footerLinkedInLogo;
+    public WebElement footerLinkedInLogo; // // customer page footer Linkedin logo
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-twitter']")
-    public WebElement footerXLogo;
+    public WebElement footerXLogo; // // customer page footer X logo
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
-    public WebElement footerYoutubeLogo;
+    public WebElement footerYoutubeLogo; // customer page footer youtube logo
+
+    @FindBy(xpath = "(//*[@class='p-2'])[1]")
+    public WebElement appStoreLogo; // customer page footer AppStore logo
+
+    @FindBy(xpath = "(//*[@class='p-2'])[2]")
+    public WebElement googlePlayLogo; // customer page footer Google Play logo
+
+    @FindBy(xpath = "//*[text()='Flavor Fetch Corp.']")
+    public WebElement flavorFetchCorpBasligi; // customer page footer Flavor Fetch Corp. basligi
+
+    @FindBy(xpath = "//*[text()='Privacy policy']")
+    public WebElement privacypolicyLink; // customer page footer Privacy policy link
+
+    @FindBy(xpath = "//*[text()='Terms and conditions']")
+    public WebElement termsandconditionsLink; // customer page footer Termsandconditions link
+
+    @FindBy(xpath = "//*[text()='Business']")
+    public WebElement businessTitle; // customer page footer Business title
+
+    @FindBy(xpath = "//*[text()='Become a Partner']")
+    public WebElement becomeaPartnerLink; // customer page footer Become a Partner link
+
+    @FindBy(xpath = "//*[text()='  © Flavor Fetch Corp. 2023']")
+    public WebElement flavorFetchCorp2023Text; // customer page footer Flavor Fetch Corp. Text
+
+    @FindBy(xpath = "//*[text()='flavorfetch.com']")
+    public WebElement flavorFatchLink; // customer page footer flavorfetch.com link
+
+    @FindBy(xpath = "//*[text()='Blog']")
+    public WebElement blogTitleText; // customer page footer Blog Title text
+
+    @FindBy(xpath = "(//*[@class='position-relative '])[5]")
+    public WebElement firstBlogLink; // customer page footer 1.blog link
+
+    @FindBy(xpath = "(//*[@class='position-relative '])[6]")
+    public WebElement secondBlogLink;  // customer page footer 2.blog link
+
+    @FindBy(xpath = "(//*[@class='position-relative '])[7]")
+    public WebElement thirdBlogLink; // customer page footer 4.blog link
+
+    @FindBy(xpath = "(//*[@class='position-relative '])[8]")
+    public WebElement fourthBlogLink; // // customer page footer 4.blog link
+
+
+
+
+
 }
