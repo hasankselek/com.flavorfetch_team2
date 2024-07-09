@@ -1,6 +1,7 @@
 package utilities;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
@@ -8,10 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Function;
 
 public class ReusableMethods {
@@ -47,6 +45,30 @@ public class ReusableMethods {
         Driver.getDriver().switchTo().window(origin);
     }
 
+    public static List<String> stringListesineDonustur(List<WebElement> webelementListesi) {// bir web elemnt geliyor
+
+        List<String> istenenStringList = new ArrayList<>();//bos bir string  listesi olusturdum
+
+        for (WebElement eachElement : webelementListesi
+        ) {
+            istenenStringList.add(eachElement.getText());//her bir web wlwmnti alip ustundeki yaziyi string listesine ekledik
+        }
+
+        return istenenStringList;
+    }
+
+    public static void windowaGec(String hedefUrl, WebDriver driver) {
+        Set<String> tumWindowlarWHDleriSeti = driver.getWindowHandles();
+
+        for (String eachWhd : tumWindowlarWHDleriSeti
+        ) {
+            driver.switchTo().window(eachWhd);
+
+            if (driver.getCurrentUrl().equals(hedefUrl)) {
+                break;
+            }
+        }
+    }
 
     //========Hover Over=====//
     public static void hover(WebElement element) {
