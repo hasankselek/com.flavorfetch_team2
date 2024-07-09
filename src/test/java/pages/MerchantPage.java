@@ -62,4 +62,5 @@ public class MerchantPage {
 
     @FindBy(xpath = "//*[@class='btn btn-green btn-full mt-3']")
     public WebElement settingSaveButton; // delivery setting page
+  
 }
