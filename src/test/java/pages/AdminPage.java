@@ -12,16 +12,24 @@ public class AdminPage {
     public AdminPage(){
 
         PageFactory.initElements(Driver.getDriver(),this);
+
+
     }
 
-    @FindBy(id = "LoginForm_username")
-    public WebElement usernametextbox; // admin login page username text box
+    @FindBy (xpath = "//*[@id='LoginForm_username']")
+    public WebElement userNameButton;
 
-    @FindBy(id = "LoginForm_password")
-    public WebElement passwordtextbox; // admin login page password text box
+    @FindBy (xpath = "//*[@for='LoginForm_password']")
+    public WebElement passwordButton;
 
-    @FindBy(xpath ="//*[@class='btn btn-green btn-full']")
-    public WebElement singinButton; // admin login page signin buton
+    @FindBy (xpath= "//*[text()='Remember me']")
+    public WebElement remembermeBox;
+  
+    @FindBy( xpath = "//*[@class=\"btn btn-green btn-full\"]")
+    public WebElement signInButton;
+
+    @FindBy(xpath = "//*[@class='dim underline']")
+    public WebElement forgotPassword;
 
     @FindBy(xpath = "//*[@title='Preview store']")
     public WebElement previewStoreButton; // admin dashboard computer icon
@@ -61,10 +69,6 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[@class='col p-0 col-lg-3 col-md-3 col-sm-6 col-6 mb-3 mb-xl-0']")
     public List<WebElement> dashboardTotalHeadings; // admin dashboard total headings
-
-
-
-
 
 
 }

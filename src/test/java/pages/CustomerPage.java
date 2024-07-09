@@ -98,6 +98,12 @@ public class CustomerPage {
     public WebElement footerXLogo; // // customer page footer X logo
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
+    public WebElement footerYoutubeLogo;
+  
+    @FindBy(xpath = "//*[@class=\"row no-gutters list-inline\"]")
+    public WebElement localCuisine;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
     public WebElement footerYoutubeLogo; // customer page footer youtube logo
 
     @FindBy(xpath = "(//*[@class='p-2'])[1]")
@@ -150,11 +156,5 @@ public class CustomerPage {
 
     @FindBy(xpath = "(//*[@class='el-image__inner'])")
     public List<WebElement> restaurantAllPhoto; // customer page restaurant page all photo
-
-
-
-
-
-
 
 }
