@@ -97,4 +97,7 @@ public class CustomerPage {
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
     public WebElement footerYoutubeLogo;
+
+    @FindBy(xpath = "//*[@class=\"row no-gutters list-inline\"]")
+    public WebElement localCuisine;
 }
