@@ -180,4 +180,73 @@ public class CustomerPage {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @FindBy(xpath = "//*[text()=' Manage my account ']")
+    public WebElement ManagemyAccount;  // customer  manage my account
+
+    @FindBy(xpath = "//*[@id='first_name']")
+    public WebElement FirstName;  // customer manage account
+
+    @FindBy(xpath = "//*[@class='mt-3 btn btn-green w-100']")
+    public WebElement SubmitButton;  // customer manage account submit
+
+    @FindBy(xpath = "//*[@id='last_name']")
+    public WebElement LastName;   // customer manage account
+
+    @FindBy(xpath = "//*[@id='email_address']")
+    public WebElement emailAddress;   // customer manage account
+
+    @FindBy(xpath = "//*[@class='inputs-with-dropdown d-flex align-items-center mb-3']")
+    public WebElement phone;       // customer manage account
+
+    @FindBy(xpath = "//*[@class='alert alert-success']")
+    public WebElement alertProfile;   // customer manage account
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-cloud-upload']")   // //*[@class='zmdi zmdi-cloud-upload']   "//*[text()=' Update ']"
+    public WebElement updateProfile;  // customer manage account
+
+    @FindBy(xpath = "//*[text()='Drop files here to upload']")
+    public WebElement updateClick;    // customer manage account
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-lock-outline']")
+    public WebElement changePassword;  //   customer manage account
+
+
+    @FindBy(xpath = "//*[@id='old_password']")
+    public WebElement oldPassword;  //customer manage account
+
+    @FindBy(xpath = "//*[@id='new_password']")
+    public WebElement newPassword;  // customer manage account
+
+    @FindBy(xpath = "//*[@id='confirm_password']")
+    public WebElement confirmPassword;  // customer manage account
+
+    @FindBy(xpath = "//*[text()='Password change']")
+    public WebElement passwordChangeText;  // customer manage account
+
+    @FindBy(xpath = "//*[@class='alert alert-warning mb-2']")
+    public WebElement passwordDifferentError;   // customer manage account
+
+    @FindBy(xpath = "//*[text()='Code']")
+    public WebElement codeView;  // customer manage account
+
+    @FindBy(xpath = "//*[text()='Save Photo']")
+    public WebElement savePhoto;
+
+
+
+
 }
