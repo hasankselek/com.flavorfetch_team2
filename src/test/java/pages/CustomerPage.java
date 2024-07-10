@@ -157,4 +157,27 @@ public class CustomerPage {
     @FindBy(xpath = "(//*[@class='el-image__inner'])")
     public List<WebElement> restaurantAllPhoto; // customer page restaurant page all photo
 
+    @FindBy(xpath = "//a[text()=' Saved Stores ']")
+    public WebElement savedStoreIcon;//customer page
+
+    @FindBy(xpath = "//h5[@class='m-0 text-truncate']")
+    public List<WebElement> savedStoreRestaurants;//Saved Store Page
+
+    @FindBy(xpath = "(//a[@class='btn btn-green'])[1]")
+    public WebElement orderNowButton;//Saved Store Page
+
+    @FindBy(xpath = "//div[@class='d-none d-lg-block']")
+    public  WebElement heartIcon; //Saved Store Page
+
+    @FindBy(xpath = "(//*[text()='Privacy policy'])[1]"  )
+    public WebElement PrivacyPolicySayfabaslik; // privacy policy text title
+
+    @FindBy(xpath = "(//*[@class='text-left'])[2]"  )
+    public WebElement PrivacyPolicySayfametni; // privacy policy text
+
+    @FindBy(xpath = "//*[text()='info@flavorfetch.com']"  )
+    public WebElement PrivacyPolicyIletisimAdresi; // privacy policy contact us
+
+
+
 }
