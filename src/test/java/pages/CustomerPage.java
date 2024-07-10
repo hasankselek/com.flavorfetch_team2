@@ -166,4 +166,9 @@ public class CustomerPage {
     @FindBy(xpath = "//*[@class='header_icon _icons favourite d-flex align-items-center justify-content-center']")
     public WebElement heartIcon;
 
+
+    @FindBy(xpath = "(//*[text()='Italian'])[1]")
+    public WebElement italianRestaurants; // customer page italian Restaurants Page
+
+
 }
