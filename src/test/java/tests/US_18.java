@@ -63,15 +63,14 @@ public class US_18 {
         String expectedRestaurantsName=savedStoreRestaurants.get(0).getText();
         System.out.println(expectedRestaurantsName);
         customerPage.heartIcon.click();
-       Driver.getDriver().navigate().refresh();
+        Driver.getDriver().navigate().refresh();
         String actualRestaurantsName=savedStoreRestaurants.get(0).getText();
         System.out.println(actualRestaurantsName);
 
         Assert.assertNotEquals(actualRestaurantsName,expectedRestaurantsName);
         Driver.quitDriver();
-
-
     }
+  
     @Test
     public  void  TC_1804(){
 

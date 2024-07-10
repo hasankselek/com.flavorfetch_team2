@@ -103,6 +103,9 @@ public class CustomerPage {
     @FindBy(xpath = "//*[@class=\"row no-gutters list-inline\"]")
     public WebElement localCuisine;
 
+ //   @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
+  //  public WebElement footerYoutubeLogo; // customer page footer youtube logo
+
     @FindBy(xpath = "(//*[@class='p-2'])[1]")
     public WebElement appStoreLogo; // customer page footer AppStore logo
 
@@ -160,13 +163,11 @@ public class CustomerPage {
     @FindBy(xpath = "//h5[@class='m-0 text-truncate']")
     public List<WebElement> savedStoreRestaurants;//Saved Store Page
 
-
     @FindBy(xpath = "(//a[@class='btn btn-green'])[1]")
     public WebElement orderNowButton;//Saved Store Page
 
     @FindBy(xpath = "//div[@class='d-none d-lg-block']")
     public  WebElement heartIcon; //Saved Store Page
-
 
     @FindBy(xpath = "(//*[text()='Privacy policy'])[1]"  )
     public WebElement PrivacyPolicySayfabaslik; // privacy policy text title
@@ -176,6 +177,7 @@ public class CustomerPage {
 
     @FindBy(xpath = "//*[text()='info@flavorfetch.com']"  )
     public WebElement PrivacyPolicyIletisimAdresi; // privacy policy contact us
+
 
 
 }
