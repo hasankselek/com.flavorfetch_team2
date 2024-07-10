@@ -6,7 +6,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 
 
-public class US_001{
+public class  US_001{
 
     @Test
     public void TC_0101() {

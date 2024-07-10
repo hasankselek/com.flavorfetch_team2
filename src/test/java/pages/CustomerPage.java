@@ -103,6 +103,9 @@ public class CustomerPage {
     @FindBy(xpath = "//*[@class=\"row no-gutters list-inline\"]")
     public WebElement localCuisine;
 
+ //   @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
+  //  public WebElement footerYoutubeLogo; // customer page footer youtube logo
+
     @FindBy(xpath = "(//*[@class='p-2'])[1]")
     public WebElement appStoreLogo; // customer page footer AppStore logo
 
@@ -154,17 +157,28 @@ public class CustomerPage {
     @FindBy(xpath = "(//*[@class='el-image__inner'])")
     public List<WebElement> restaurantAllPhoto; // customer page restaurant page all photo
 
-    @FindBy(xpath = "//*[text()=' Saved Stores ']")
-    public WebElement savedStoreIcon;
-
-    @FindBy(xpath = "//*[@class='btn btn-green']")
-    public WebElement orderNowButton;
+    @FindBy(xpath = "//a[text()=' Saved Stores ']")
+    public WebElement savedStoreIcon;//customer page
 
     @FindBy(xpath = "//h5[@class='m-0 text-truncate']")
-    public List<WebElement> savedStoreRestaurants;
+    public List<WebElement> savedStoreRestaurants;//Saved Store Page
 
-    @FindBy(xpath = "//*[@class='header_icon _icons favourite d-flex align-items-center justify-content-center']")
-    public WebElement heartIcon;
+    @FindBy(xpath = "(//a[@class='btn btn-green'])[1]")
+    public WebElement orderNowButton;//Saved Store Page
+
+    @FindBy(xpath = "//div[@class='d-none d-lg-block']")
+    public  WebElement heartIcon; //Saved Store Page
+
+    @FindBy(xpath = "(//*[text()='Privacy policy'])[1]"  )
+    public WebElement PrivacyPolicySayfabaslik; // privacy policy text title
+
+    @FindBy(xpath = "(//*[@class='text-left'])[2]"  )
+    public WebElement PrivacyPolicySayfametni; // privacy policy text
+
+    @FindBy(xpath = "//*[text()='info@flavorfetch.com']"  )
+    public WebElement PrivacyPolicyIletisimAdresi; // privacy policy contact us
+
+
 
 
     @FindBy(xpath = "(//*[text()='Italian'])[1]")

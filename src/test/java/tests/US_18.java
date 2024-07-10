@@ -1,5 +1,6 @@
 package tests;
 
+import com.sun.jna.StringArray;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -13,117 +14,75 @@ import utilities.ReusableMethods;
 
 import java.util.List;
 
-
 public class US_18 {
 
-   Actions actions =new Actions(Driver.getDriver());
+    CustomerPage customerPage=new CustomerPage();
+    Actions actions=new Actions(Driver.getDriver());
     @Test
-    public  void  TC1801(){
 
+    public  void TC_1801(){
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
-
-        CustomerPage customerPage=new CustomerPage();
-
         customerPage.signInButton.click();
-
-        actions.click(customerPage.emailBox).
-                sendKeys(ConfigReader.getProperty("customeruser_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
-
-
+        actions.click(customerPage.emailBox)
+                .sendKeys(ConfigReader.getProperty("customer_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
         customerPage.loginSigninButton.click();
-
         customerPage.cookieAccept.click();
-
+        ReusableMethods.wait(3);
         customerPage.profileDropdownMenu.click();
-
         Assert.assertTrue(customerPage.savedStoreIcon.isDisplayed());
-
         Driver.quitDriver();
 
-
-
+    }
+    @Test
+    public  void  TC_1802(){
+        Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+        customerPage.signInButton.click();
+        actions.click(customerPage.emailBox)
+                .sendKeys(ConfigReader.getProperty("customer_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
+        customerPage.loginSigninButton.click();
+        customerPage.cookieAccept.click();
+        ReusableMethods.wait(3);
+        customerPage.profileDropdownMenu.click();
+        customerPage.savedStoreIcon.click();
+        Assert.assertTrue(customerPage.savedStoreRestaurants.size()>0);
 
     }
-
     @Test
-    public  void  TC1802(){
+    public  void  TC_1803(){
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
-
-        CustomerPage customerPage=new CustomerPage();
-
         customerPage.signInButton.click();
-
-        actions.click(customerPage.emailBox).
-                sendKeys(ConfigReader.getProperty("customeruser_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
-
-
+        actions.click(customerPage.emailBox)
+                .sendKeys(ConfigReader.getProperty("customer_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
         customerPage.loginSigninButton.click();
-
-        ReusableMethods.wait(3);
         customerPage.cookieAccept.click();
         ReusableMethods.wait(3);
         customerPage.profileDropdownMenu.click();
         customerPage.savedStoreIcon.click();
 
-       Assert.assertTrue(customerPage.savedStoreRestaurants.size()>0);
-       Driver.quitDriver();
-
-
-
-    }
-
-    @Test
-    public  void  TC1803(){
-        Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
-
-        CustomerPage customerPage=new CustomerPage();
-
-        customerPage.signInButton.click();
-
-        actions.click(customerPage.emailBox).
-                sendKeys(ConfigReader.getProperty("customeruser_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
-
-
-        customerPage.loginSigninButton.click();
-
-        ReusableMethods.wait(3);
-        customerPage.cookieAccept.click();
-        ReusableMethods.wait(3);
-        customerPage.profileDropdownMenu.click();
-        customerPage.savedStoreIcon.click();
-
-        System.out.println(customerPage.savedStoreRestaurants.size());
+        List<WebElement> savedStoreRestaurants=customerPage.savedStoreRestaurants;
+        String expectedRestaurantsName=savedStoreRestaurants.get(0).getText();
+        System.out.println(expectedRestaurantsName);
         customerPage.heartIcon.click();
-        Driver.driver.navigate().refresh();
-        List<WebElement> bulunanSonucElementleriList=Driver.getDriver().findElements(By.xpath("//h5[@class='m-0 text-truncate']"));
+        Driver.getDriver().navigate().refresh();
+        String actualRestaurantsName=savedStoreRestaurants.get(0).getText();
+        System.out.println(actualRestaurantsName);
 
-        System.out.println(bulunanSonucElementleriList.size());
-     Assert.assertTrue(customerPage.savedStoreRestaurants.size()>bulunanSonucElementleriList.size());
-
-
-     Driver.quitDriver();
+        Assert.assertNotEquals(actualRestaurantsName,expectedRestaurantsName);
+        Driver.quitDriver();
     }
-
+  
     @Test
-    public  void  TC1804(){
+    public  void  TC_1804(){
+
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
-
-        CustomerPage customerPage=new CustomerPage();
-
         customerPage.signInButton.click();
-
-        actions.click(customerPage.emailBox).
-                sendKeys(ConfigReader.getProperty("customeruser_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
-
-
+        actions.click(customerPage.emailBox)
+                .sendKeys(ConfigReader.getProperty("customer_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
         customerPage.loginSigninButton.click();
-
-        ReusableMethods.wait(3);
         customerPage.cookieAccept.click();
         ReusableMethods.wait(3);
         customerPage.profileDropdownMenu.click();
         customerPage.savedStoreIcon.click();
-
         customerPage.orderNowButton.click();
         ReusableMethods.windowaGec("https://qa.flavorfetch.com/restaurants",Driver.getDriver());
         String expectedUrlIcerik="restaurants";
@@ -133,4 +92,6 @@ public class US_18 {
 
 
     }
+
+
 }
