@@ -34,7 +34,7 @@ public class ReusableMethods {
 
 
     //========Switching Window=====//
-    public static void switchToWindow(String targetTitle) {
+    public static void switchToWindowWithTitle(String targetTitle) {
         String origin = Driver.getDriver().getWindowHandle();
         for (String handle : Driver.getDriver().getWindowHandles()) {
             Driver.getDriver().switchTo().window(handle);
@@ -57,19 +57,20 @@ public class ReusableMethods {
         return istenenStringList;
     }
 
-    public static void windowaGec(String hedefUrl, WebDriver driver) {
+
+   public static void windowaGec(String hedefUrl, WebDriver driver){
         Set<String> tumWindowlarWHDleriSeti = driver.getWindowHandles();
 
         for (String eachWhd : tumWindowlarWHDleriSeti
         ) {
             driver.switchTo().window(eachWhd);
 
-            if (driver.getCurrentUrl().equals(hedefUrl)) {
+            if (driver.getCurrentUrl().equals(hedefUrl)){
                 break;
             }
         }
     }
-
+  
     //========Hover Over=====//
     public static void hover(WebElement element) {
         Actions actions = new Actions(Driver.getDriver());
