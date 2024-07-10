@@ -167,4 +167,15 @@ public class CustomerPage {
     @FindBy(xpath = "//div[@class='d-none d-lg-block']")
     public  WebElement heartIcon; //Saved Store Page
 
+
+    @FindBy(xpath = "(//*[text()='Privacy policy'])[1]"  )
+    public WebElement PrivacyPolicySayfabaslik; // privacy policy text title
+
+    @FindBy(xpath = "(//*[@class='text-left'])[2]"  )
+    public WebElement PrivacyPolicySayfametni; // privacy policy text
+
+    @FindBy(xpath = "//*[text()='info@flavorfetch.com']"  )
+    public WebElement PrivacyPolicyIletisimAdresi; // privacy policy contact us
+
+
 }
