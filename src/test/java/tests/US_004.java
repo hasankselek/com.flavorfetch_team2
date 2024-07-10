@@ -1,6 +1,5 @@
 package tests;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CustomerPage;
@@ -228,6 +227,8 @@ public class US_004 {
         Driver.getDriver().navigate().back();
 
         Driver.quitDriver();
+
     }
+
 
 }
