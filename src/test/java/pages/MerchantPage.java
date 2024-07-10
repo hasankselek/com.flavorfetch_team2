@@ -77,5 +77,9 @@ public class MerchantPage {
 
     @FindBy(xpath = "//*[@type='password']")
     public WebElement passwordEnteredPassBox;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-eye']")
+    public WebElement eyeAsignInPasswordBox;
+
   
 }

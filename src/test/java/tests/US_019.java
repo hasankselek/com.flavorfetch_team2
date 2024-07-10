@@ -1,7 +1,6 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import com.google.common.base.Verify;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -40,7 +39,7 @@ public void test_1902(){
         Enters the URL.
         Verify the presence of the username box.
         Verify the presence of the password box.
-        Verify the presence of the sign in button.
+        Verify the presence of the signin button.
         The user closes the page.
 
  */
@@ -87,6 +86,27 @@ The user closes the page.*/
     String expectedPassBoxInvolve="";
     String actualPassBoxInvolve= merchantPage.passwordtextbox.getText();
     Assert.assertEquals(actualPassBoxInvolve,expectedPassBoxInvolve);
+
+}
+@Test
+    public void test_1904(){
+            /*
+    The user opens the browser.
+    enters the Url.
+    Verify the presence of the  "eye sign" in the password box.
+    Enter a word inside the password box.
+    Verify the presence of the  "eye sign" in the password box.
+    Verify the letters are shown by dotes.
+    Click on the "eye sign".
+    Verify the presence of the "Eye Sign With a Line On It" in the password box.
+    Verify visibility of the written letters .
+    The user closes the page.
+             */
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
+merchantPage.textEnteredUserBox.sendKeys(fakerPassword);
+Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
 
 }
 }
