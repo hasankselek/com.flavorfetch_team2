@@ -1,7 +1,6 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
