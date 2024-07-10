@@ -151,19 +151,5 @@ public class CustomerPage {
     @FindBy(xpath = "(//*[@class='col-lg-3 mb-3 col-md-6 list-items'])")
     public WebElement team2Restaurant; // customer page team2 restaurant page
 
-    @FindBy(xpath = "(//*[@class='el-image__inner'])")
-    public List<WebElement> restaurantAllPhoto; // customer page restaurant page all photo
-
-    @FindBy(xpath = "//*[text()=' Saved Stores ']")
-    public WebElement savedStoreIcon;
-
-    @FindBy(xpath = "//*[@class='btn btn-green']")
-    public WebElement orderNowButton;
-
-    @FindBy(xpath = "//h5[@class='m-0 text-truncate']")
-    public List<WebElement> savedStoreRestaurants;
-
-    @FindBy(xpath = "//*[@class='header_icon _icons favourite d-flex align-items-center justify-content-center']")
-    public WebElement heartIcon;
 
 }

@@ -1,6 +1,6 @@
 package tests;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,8 +19,7 @@ public class US_036 {
 
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
 
-        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+ Keys.TAB);
-        adminPage.passwordButton.sendKeys(ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
 
         Assert.assertTrue(adminPage.previewStoreButton.isDisplayed());
@@ -52,8 +51,7 @@ public class US_036 {
 
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
 
-        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+ Keys.TAB);
-        adminPage.passwordButton.sendKeys(ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
 
         Assert.assertTrue(adminPage.notificationsIcon.isDisplayed());
@@ -83,20 +81,13 @@ public class US_036 {
 
         Driver.quitDriver();
 
-
-
-
-
-
-
     }
 
     @Test
     public void TC_3603(){
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
 
-        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+ Keys.TAB);
-        adminPage.passwordButton.sendKeys(ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
 
         for (int i = 0; i < adminPage.dashboardTotalHeadings.size(); i++) {

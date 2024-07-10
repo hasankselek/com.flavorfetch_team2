@@ -1,7 +1,6 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import com.google.common.base.Verify;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
