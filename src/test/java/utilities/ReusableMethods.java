@@ -45,7 +45,20 @@ public class ReusableMethods {
         Driver.getDriver().switchTo().window(origin);
     }
 
-    public static void switchToWindowsWithUrl(String hedefUrl, WebDriver driver){
+    public static List<String> stringListesineDonustur(List<WebElement> webelementListesi) {// bir web elemnt geliyor
+
+        List<String> istenenStringList = new ArrayList<>();//bos bir string  listesi olusturdum
+
+        for (WebElement eachElement : webelementListesi
+        ) {
+            istenenStringList.add(eachElement.getText());//her bir web wlwmnti alip ustundeki yaziyi string listesine ekledik
+        }
+
+        return istenenStringList;
+    }
+
+
+   public static void windowaGec(String hedefUrl, WebDriver driver){
         Set<String> tumWindowlarWHDleriSeti = driver.getWindowHandles();
 
         for (String eachWhd : tumWindowlarWHDleriSeti
@@ -57,8 +70,7 @@ public class ReusableMethods {
             }
         }
     }
-
-
+  
     //========Hover Over=====//
     public static void hover(WebElement element) {
         Actions actions = new Actions(Driver.getDriver());
