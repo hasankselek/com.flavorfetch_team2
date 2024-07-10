@@ -19,9 +19,9 @@ public class US_036 {
 
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
 
-        adminPage.usernametextbox.sendKeys(ConfigReader.getProperty("adminuser_hasan")+ Keys.TAB);
-        adminPage.passwordtextbox.sendKeys(ConfigReader.getProperty("adminpassword_hasan"));
-        adminPage.singinButton.click();
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+ Keys.TAB);
+        adminPage.passwordButton.sendKeys(ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.signInButton.click();
 
         Assert.assertTrue(adminPage.previewStoreButton.isDisplayed());
         Assert.assertTrue(adminPage.previewStoreButton.isEnabled());
@@ -52,9 +52,9 @@ public class US_036 {
 
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
 
-        adminPage.usernametextbox.sendKeys(ConfigReader.getProperty("adminuser_hasan")+ Keys.TAB);
-        adminPage.passwordtextbox.sendKeys(ConfigReader.getProperty("adminpassword_hasan"));
-        adminPage.singinButton.click();
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+ Keys.TAB);
+        adminPage.passwordButton.sendKeys(ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.signInButton.click();
 
         Assert.assertTrue(adminPage.notificationsIcon.isDisplayed());
         adminPage.notificationsIcon.click();
@@ -95,9 +95,9 @@ public class US_036 {
     public void TC_3603(){
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
 
-        adminPage.usernametextbox.sendKeys(ConfigReader.getProperty("adminuser_hasan")+ Keys.TAB);
-        adminPage.passwordtextbox.sendKeys(ConfigReader.getProperty("adminpassword_hasan"));
-        adminPage.singinButton.click();
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+ Keys.TAB);
+        adminPage.passwordButton.sendKeys(ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.signInButton.click();
 
         for (int i = 0; i < adminPage.dashboardTotalHeadings.size(); i++) {
             Assert.assertTrue(adminPage.dashboardTotalHeadings.get(i).isDisplayed());
@@ -106,4 +106,5 @@ public class US_036 {
 
 
     }
+
 }

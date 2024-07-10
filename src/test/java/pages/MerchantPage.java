@@ -63,6 +63,7 @@ public class MerchantPage {
     @FindBy(xpath = "//*[@class='btn btn-green btn-full mt-3']")
     public WebElement settingSaveButton; // delivery setting page
 
+
     @FindBy( xpath = "(//a[@id='dropdownMenuLink'])[1]")
     public WebElement merchantNamebutton;
 
@@ -70,6 +71,22 @@ public class MerchantPage {
     public WebElement profileSection;  // merchant profili
 
 
+
+
+    @FindBy(xpath = "//*[@class='mb-4']")
+    public WebElement titleOfLoginPage;
+
+    @FindBy(xpath = "(//*[@class='required'])[1]")
+    public WebElement backgroundUserBox;
+
+    @FindBy(xpath = "(//*[@class='required'])[3]")
+    public WebElement backgroundPassBox;
+
+    @FindBy(xpath = "//*[@type='text']")
+    public WebElement textEnteredUserBox;
+
+    @FindBy(xpath = "//*[@type='password']")
+    public WebElement passwordEnteredPassBox;
 
   
 }

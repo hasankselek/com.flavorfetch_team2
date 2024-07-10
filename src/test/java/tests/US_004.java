@@ -31,7 +31,7 @@ public class US_004 {
 
         //Facebook icon
         customerPage.footerFacebookLogo.click();
-        ReusableMethods.switchToWindowsWithUrl("https://www.facebook.com/",Driver.getDriver());
+        ReusableMethods.windowaGec("https://www.facebook.com/",Driver.getDriver());
         String expectedFacebookIconUrl = "https://www.facebook.com/";
         String actualFacebookIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualFacebookIconUrl,expectedFacebookIconUrl,"Facebook url'si eslesmiyor");
@@ -39,7 +39,7 @@ public class US_004 {
 
         //Instagram icon
         customerPage.footerInstagramLogo.click();
-        ReusableMethods.switchToWindowsWithUrl("https://qa.flavorfetch.com/www.instagram.com",Driver.getDriver());
+        ReusableMethods.windowaGec("https://qa.flavorfetch.com/www.instagram.com",Driver.getDriver());
         String expectedInstagramIconUrl = "https://www.instagram.com/";
         String actualInstagramIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualInstagramIconUrl,expectedInstagramIconUrl,"Instagram url'si eslesmiyor");
@@ -47,7 +47,7 @@ public class US_004 {
 
         //LınkedIn icon
         customerPage.footerLinkedInLogo.click();
-        ReusableMethods.switchToWindowsWithUrl("https://qa.flavorfetch.com/www.linkedin.com",Driver.getDriver());
+        ReusableMethods.windowaGec("https://qa.flavorfetch.com/www.linkedin.com",Driver.getDriver());
         String expectedLinkedInIconUrl = "https://www.linkedin.com/";
         String actualLinkedInIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualLinkedInIconUrl, expectedLinkedInIconUrl,"LinkedIn url'si eslesmiyor");
@@ -55,7 +55,7 @@ public class US_004 {
 
         //X icon
         customerPage.footerXLogo.click();
-        ReusableMethods.switchToWindowsWithUrl("https://x.com/",Driver.getDriver());
+        ReusableMethods.windowaGec("https://x.com/",Driver.getDriver());
         String expectedXIconUrl = "https://x.com/";
         String actualXIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualXIconUrl, expectedXIconUrl,"X url'si eslesmiyor");
@@ -63,7 +63,7 @@ public class US_004 {
 
         //Youtube icon
         customerPage.footerYoutubeLogo.click();
-        ReusableMethods.switchToWindowsWithUrl("https://www.facebook.com/",Driver.getDriver());
+        ReusableMethods.windowaGec("https://www.facebook.com/",Driver.getDriver());
         String expectedYoutubeIconUrl = "https://www.youtube.com/";
         String actualYoutubeIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualYoutubeIconUrl, expectedYoutubeIconUrl,"Youtube url'si eslesmiyor");
