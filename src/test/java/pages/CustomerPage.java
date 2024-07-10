@@ -154,16 +154,17 @@ public class CustomerPage {
     @FindBy(xpath = "(//*[@class='el-image__inner'])")
     public List<WebElement> restaurantAllPhoto; // customer page restaurant page all photo
 
-    @FindBy(xpath = "//*[text()=' Saved Stores ']")
-    public WebElement savedStoreIcon;
-
-    @FindBy(xpath = "//*[@class='btn btn-green']")
-    public WebElement orderNowButton;
+    @FindBy(xpath = "//a[text()=' Saved Stores ']")
+    public WebElement savedStoreIcon;//customer page
 
     @FindBy(xpath = "//h5[@class='m-0 text-truncate']")
-    public List<WebElement> savedStoreRestaurants;
+    public List<WebElement> savedStoreRestaurants;//Saved Store Page
 
-    @FindBy(xpath = "//*[@class='header_icon _icons favourite d-flex align-items-center justify-content-center']")
-    public WebElement heartIcon;
+
+    @FindBy(xpath = "(//a[@class='btn btn-green'])[1]")
+    public WebElement orderNowButton;//Saved Store Page
+
+    @FindBy(xpath = "//div[@class='d-none d-lg-block']")
+    public  WebElement heartIcon; //Saved Store Page
 
 }
