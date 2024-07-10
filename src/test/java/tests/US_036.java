@@ -101,6 +101,7 @@ public class US_036 {
 
         for (int i = 0; i < adminPage.dashboardTotalHeadings.size(); i++) {
             Assert.assertTrue(adminPage.dashboardTotalHeadings.get(i).isDisplayed());
+
         }
 
 
