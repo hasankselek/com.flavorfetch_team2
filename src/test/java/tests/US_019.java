@@ -1,7 +1,6 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,11 +9,12 @@ import org.testng.annotations.Test;
 import pages.MerchantPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class US_019 {
 
         MerchantPage merchantPage=new MerchantPage();
-        WebDriverWait wait= (WebDriverWait) Driver.getDriver();
+      //  WebDriverWait wait= (WebDriverWait) Driver.getDriver();
         Faker faker=new Faker();
         String fakerName=faker.name().fullName();
         String fakerPassword=faker.internet().password();
@@ -108,9 +108,10 @@ The user closes the page.*/
              */
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-    wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("merchant_Url")));
+    ReusableMethods.wait(5);
+   // wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("merchant_Url")));
     Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
-    wait.until(ExpectedConditions.visibilityOf(merchantPage.passwordFieldPassBox));
+  //  wait.until(ExpectedConditions.visibilityOf(merchantPage.passwordFieldPassBox));
 merchantPage.textEnteredUserBox.sendKeys(fakerPassword);
 
 Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
