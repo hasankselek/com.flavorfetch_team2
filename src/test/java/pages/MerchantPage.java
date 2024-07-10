@@ -75,11 +75,33 @@ public class MerchantPage {
     @FindBy(xpath = "//*[@type='text']")
     public WebElement textEnteredUserBox;
 
-    @FindBy(xpath = "//*[@type='password']")
-    public WebElement passwordEnteredPassBox;
-
     @FindBy(xpath = "//*[@class='zmdi zmdi-eye']")
     public WebElement eyeAsignInPasswordBox;
 
-  
+    @FindBy(xpath = "//*[@class='zmdi zmdi-eye-off']")
+    public  WebElement eyeAsignWithALine;
+
+    @FindBy(xpath = "//*[@type='text']")
+    public WebElement passwordReveal;
+
+    @FindBy(xpath = "//*[@type='password']")
+    public WebElement passwordHidden;
+
+    @FindBy(xpath = "(//span[@class='required'])[2]")
+    public  WebElement passwordFieldPassBox;
+
+@FindBy(xpath = "//*[@src='/backoffice/themes/classic/assets/images/app-store@2x.png']")
+    public WebElement appStoreIcon;
+
+@FindBy(xpath = "//*[@src='/backoffice/themes/classic/assets/images/google-play@2x.png']")
+    public WebElement googlePlayIcon;
+
+@FindBy(xpath = "//*[@class='dim custom-control-label']")
+    public WebElement rememberMeLable;
+
+@FindBy(xpath = "(//*[@id='dropdownMenuLink'])[1]")
+    public WebElement merchantNameDropdown;
+
+@FindBy(xpath = "(//*[@class='dropdown-item'])[3]")
+    public WebElement logoutMerchantDashboard;
 }

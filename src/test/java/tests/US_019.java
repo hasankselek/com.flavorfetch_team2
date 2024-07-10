@@ -1,7 +1,10 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MerchantPage;
@@ -11,6 +14,7 @@ import utilities.Driver;
 public class US_019 {
 
         MerchantPage merchantPage=new MerchantPage();
+        WebDriverWait wait= (WebDriverWait) Driver.getDriver();
         Faker faker=new Faker();
         String fakerName=faker.name().fullName();
         String fakerPassword=faker.internet().password();
@@ -104,9 +108,68 @@ The user closes the page.*/
              */
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
+    wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("merchant_Url")));
+    Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
+    wait.until(ExpectedConditions.visibilityOf(merchantPage.passwordFieldPassBox));
 merchantPage.textEnteredUserBox.sendKeys(fakerPassword);
+
 Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
+Assert.assertTrue(merchantPage.passwordReveal.isDisplayed());
+Driver.quitDriver();
+}
+@Test
+    public void test_1905(){
+            /*
+    The user opens the browser.
+            Enters the URL.
+    Verify the presence of the "App Store" icon.
+            Click on the "App Store" icon.
+            Verify the Url address contains "App Store" .
+            The user closes the page.
+             */
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    Assert.assertTrue(merchantPage.appStoreIcon.isDisplayed());
+    merchantPage.appStoreIcon.click();
+    Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(ConfigReader.getProperty("urlContent1")));
+    Driver.quitDriver();
+}
+@Test
+    public void test_1906(){
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    Assert.assertTrue(merchantPage.googlePlayIcon.isDisplayed());
+    merchantPage.googlePlayIcon.click();
+    Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(ConfigReader.getProperty("urlContent2")));
+    Driver.quitDriver();
+}
+@Test
+    public void test_1907(){/*
+    The user opens the browser.
+            Enters the Url.
+    Verify the presence of the "Remember me" text .
+            enter the correct username in usename box
+    enter the correct pssword in password box
+    click the radio box of "Remember me".
+            click the "sign in" button.
+            Verify the url of entrance page contains "merchant/dashboard".
+            Click merchant name dropdown .
+            Click the "log out" item the secound index from this dropdown.
+            Verify the url is equal to first url.
+            Verify the presence of the "Merchant Login" text.
+            enter the correct username in usename box
+    Verify the presence of the  correct password in the box.
+    The user closes the page.*/
+        Driver.getDriver().get("about:blank");
+        Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+        Assert.assertTrue(merchantPage.rememberMeLable.isDisplayed());
+        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
+        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
+        merchantPage.rememberMeLable.click();
+        merchantPage.singinButton.click();
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(ConfigReader.getProperty("urlContent3")));
+        merchantPage.merchantNameDropdown.click();
+        merchantPage.logoutMerchantDashboard.click();
 
 }
 }
