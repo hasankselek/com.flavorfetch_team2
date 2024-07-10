@@ -173,4 +173,8 @@ public class CustomerPage {
     @FindBy(xpath = "(//*[@class='text-left'])[2]"  )
     public WebElement PrivacyPolicySayfametni; // privacy policy text
 
+    @FindBy(xpath = "//*[text()='info@flavorfetch.com']"  )
+    public WebElement PrivacyPolicyIletisimAdresi; // privacy policy contact us
+
+
 }
