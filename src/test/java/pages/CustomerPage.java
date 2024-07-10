@@ -103,9 +103,6 @@ public class CustomerPage {
     @FindBy(xpath = "//*[@class=\"row no-gutters list-inline\"]")
     public WebElement localCuisine;
 
- //   @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
-  //  public WebElement footerYoutubeLogo; // customer page footer youtube logo
-
     @FindBy(xpath = "(//*[@class='p-2'])[1]")
     public WebElement appStoreLogo; // customer page footer AppStore logo
 
@@ -178,11 +175,9 @@ public class CustomerPage {
     @FindBy(xpath = "//*[text()='info@flavorfetch.com']"  )
     public WebElement PrivacyPolicyIletisimAdresi; // privacy policy contact us
 
-
-
-
     @FindBy(xpath = "(//*[text()='Italian'])[1]")
     public WebElement italianRestaurants; // customer page italian Restaurants Page
+
 
 
 }
