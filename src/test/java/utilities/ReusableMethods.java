@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import pages.MerchantPage;
 
 import java.io.File;
 import java.io.IOException;
@@ -408,5 +409,13 @@ public class ReusableMethods {
 
     public static void waitAndClickLocationText(WebElement element, String value) {
         Driver.getDriver().findElement(By.xpath("//*[text()='" + value + "']")).click();
+    }
+
+    public static void accessToMerchant(){
+        MerchantPage merchantPage = new MerchantPage();
+        Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
+        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
+        merchantPage.singinButton.click();
     }
 }
