@@ -103,9 +103,6 @@ public class CustomerPage {
     @FindBy(xpath = "//*[@class=\"row no-gutters list-inline\"]")
     public WebElement localCuisine;
 
-    @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
-    public WebElement footerYoutubeLogo; // customer page footer youtube logo
-
     @FindBy(xpath = "(//*[@class='p-2'])[1]")
     public WebElement appStoreLogo; // customer page footer AppStore logo
 
@@ -156,5 +153,17 @@ public class CustomerPage {
 
     @FindBy(xpath = "(//*[@class='el-image__inner'])")
     public List<WebElement> restaurantAllPhoto; // customer page restaurant page all photo
+
+    @FindBy(xpath = "//*[text()=' Saved Stores ']")
+    public WebElement savedStoreIcon;
+
+    @FindBy(xpath = "//*[@class='btn btn-green']")
+    public WebElement orderNowButton;
+
+    @FindBy(xpath = "//h5[@class='m-0 text-truncate']")
+    public List<WebElement> savedStoreRestaurants;
+
+    @FindBy(xpath = "//*[@class='header_icon _icons favourite d-flex align-items-center justify-content-center']")
+    public WebElement heartIcon;
 
 }

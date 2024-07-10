@@ -92,15 +92,13 @@ public class US_18 {
         customerPage.profileDropdownMenu.click();
         customerPage.savedStoreIcon.click();
 
-        List<WebElement> savedStoreRestaurants=Driver.getDriver().findElements(By.xpath("//h5[@class='m-0 text-truncate']"));
-
         System.out.println(customerPage.savedStoreRestaurants.size());
         customerPage.heartIcon.click();
         Driver.driver.navigate().refresh();
         List<WebElement> bulunanSonucElementleriList=Driver.getDriver().findElements(By.xpath("//h5[@class='m-0 text-truncate']"));
 
         System.out.println(bulunanSonucElementleriList.size());
-     Assert.assertTrue(savedStoreRestaurants.size()>bulunanSonucElementleriList.size());
+     Assert.assertTrue(customerPage.savedStoreRestaurants.size()>bulunanSonucElementleriList.size());
 
 
      Driver.quitDriver();
