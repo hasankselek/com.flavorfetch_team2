@@ -180,4 +180,9 @@ public class CustomerPage {
 
 
 
+
+    @FindBy(xpath = "(//*[text()='Italian'])[1]")
+    public WebElement italianRestaurants; // customer page italian Restaurants Page
+
+
 }
