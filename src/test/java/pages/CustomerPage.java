@@ -166,4 +166,11 @@ public class CustomerPage {
     @FindBy(xpath = "//*[@class='header_icon _icons favourite d-flex align-items-center justify-content-center']")
     public WebElement heartIcon;
 
+
+    @FindBy(xpath = "(//*[text()='Privacy policy'])[1]"  )
+    public WebElement PrivacyPolicySayfabaslik; // privacy policy text title
+
+    @FindBy(xpath = "(//*[@class='text-left'])[2]"  )
+    public WebElement PrivacyPolicySayfametni; // privacy policy text
+
 }
