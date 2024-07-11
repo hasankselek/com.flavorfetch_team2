@@ -70,5 +70,8 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='col p-0 col-lg-3 col-md-3 col-sm-6 col-6 mb-3 mb-xl-0']")
     public List<WebElement> dashboardTotalHeadings; // admin dashboard total headings
 
+    @FindBy(xpath = "//*[@class='promo']")
+    public  WebElement adminPromo;
+
 
 }
