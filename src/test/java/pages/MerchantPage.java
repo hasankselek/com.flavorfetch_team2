@@ -167,6 +167,9 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Coupon']")
     public WebElement couponLink;
 
+    @FindBy(xpath = "//a[@type='button']")
+    public WebElement couponAddLink;
+
     @FindBy(xpath = "//tbody/tr/td[2]/h6")
     public List<WebElement> couponNameList;
 
@@ -185,8 +188,20 @@ public class MerchantPage {
     @FindBy(xpath = "//*[@id='AR_voucher_min_order']")
     public WebElement updateMinOrder;
 
-    @FindBy(xpath = "//span[@aria-expanded='true']")
+    @FindBy(xpath = "(//*[@class='select2-selection select2-selection--multiple'])[1]")
     public WebElement updateDaysAvailable;
+
+    @FindBy(xpath = "//*[@name='AR_voucher[expiration]']")
+    public WebElement updateExpiration;
+
+    @FindBy(xpath = "//*[@name='AR_voucher[used_once]']")
+    public WebElement updateCouponOptions;
+
+    @FindBy(xpath = "//*[@name='AR_voucher[status]']")
+    public WebElement updateStatus;
+
+    @FindBy(xpath = "//input[@type='submit']")
+    public WebElement updateSaveButton;
 
     @FindBy(xpath = "(//*[@role='group']//a)[2]")
     public WebElement deleteCuponButton;
