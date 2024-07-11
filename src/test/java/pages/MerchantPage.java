@@ -324,13 +324,16 @@ public class MerchantPage {
     public  WebElement acceptingOrderButton;//merchant_New order page
 
     @FindBy(xpath = "(//button[text()='5 min(s)'])[2]")
-    public  WebElement pauseMinuteOption;//merchant_New order page
+    public WebElement pauseNewOrdersMinutes;
   
     @FindBy(xpath = "//span[text()='Next']")
     public  WebElement nextButton;//merchant_New order page
   
     @FindBy(xpath = "//a[text()='Store is too busy']")
     public  WebElement reasonForPausing;//merchant_New order page
+
+    @FindBy(xpath = "(//span[text()='Confirm'])[2]")
+    public  WebElement pausingConfirmButton;
 
     @FindBy(xpath = "//a[@class='btn btn-green small']")
     public  WebElement addButton;
@@ -342,25 +345,58 @@ public class MerchantPage {
     public  WebElement addToOrderButton;
   
     @FindBy(xpath = "//div[text()='Item added to order']")
-    public List<WebElement> itemAddedToOrderMessage;
+    public WebElement itemAddedToOrderMessage;
 
     @FindBy(xpath = "(//a[@id='dropdownMenuLink'])[1]")
     public  WebElement ellipsisIcon;
   
     @FindBy(xpath = "//a[text()='Contact customer']")
-    public  WebElement contactCustomer;
+    public  WebElement contactCustomer;//merchant_New order page
 
     @FindBy(xpath = "//div[@class='bootbox-body']")
-    public  WebElement customerNumber;
+    public  WebElement customerNumber;//merchant_New order page
   
-    @FindBy(xpath = "//button[text()='Okay']")
+    @FindBy(xpath = "//button[text()='Oka//merchant_New order pagey']")
     public  WebElement okeyButton;
 
     @FindBy(xpath = "//a[text()='Delay Order']")
-    public  WebElement delayOrder;
+    public  WebElement delayOrder;//merchant_New order page
+  
+    @FindBy(xpath = "(//button[@class='btn btn-light delay-btn'])[1]")
+    public  WebElement pauseMinuteOptionDelay;//merchant_New order page
 
-    @FindBy(xpath = "(//span[text()='Confirm'])[2]")
-    public  WebElement confirmButton;//merchant_New order page
+    @FindBy(xpath = "(//span[text()='Confirm'])[1]")
+    public  WebElement confirmButtonDelay;//merchant_New order page
+  
+    @FindBy(xpath = "(//span[text()='new'])[1]")
+    public  WebElement newIcon;//merchant_New order page
+
+    @FindBy(xpath = "//div[@aria-live='polite']")
+    public  WebElement delayOrderMesssage;;//merchant_New order page
+
+    @FindBy(xpath = "//div[@class='ronded-green']")
+    public  WebElement ordersQuantitty;;//merchant_New order page
+
+    @FindBy(xpath = "//p[text()='No results']")
+    public  WebElement noNewOrders;;//merchant_New order page
+
+    @FindBy(xpath = "//a[text()='Cancel order']")
+    public  WebElement cancelOrder;;//merchant_New order page
+
+    @FindBy(xpath ="//a[text()='No ingredient.']")
+    public WebElement reasonCancel;;//merchant_New order page
+
+    @FindBy(xpath = "//span[text()='Reject order']")
+    public  WebElement cancelRejectOrderButton;;//merchant_New order page
+
+    @FindBy(xpath = "//div[@class='notyf-announcer']")
+    public  WebElement cancelOrderMessage;;//merchant_New order page
+
+    @FindBy(xpath = "//a[text()='Download PDF (A4)']")
+    public  WebElement downloadPdf;;//merchant_New order page
+
+    @FindBy(xpath = "//input[@type='search']")
+    public  WebElement filterBox;;//merchant_New order page
 
     @FindBy(xpath= "//*[@class='btn btn-black btn-circle']")
     public  WebElement itemsPageAddnewButton;
@@ -398,9 +434,8 @@ public class MerchantPage {
     @FindBy(xpath= "(//*[@class='form-control form-control-text'])[1]")
     public  WebElement saveUptadeItem ; // Uptade item page
 
-
-
-//*[@class='btn btn-green btn-full mt-3']
-
-
+    @FindBy(xpath = "(//div[@class='row align-items-start'])[1]")
+    public  List<WebElement> filterResultElementleri;
+    @FindBy(xpath = "//a[text()='Clear']")
+    public  WebElement clearIcon;
 }
