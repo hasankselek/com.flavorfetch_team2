@@ -36,6 +36,7 @@ public class ReusableMethods {
     public static void switchToWindowWithTitle(String targetTitle) {
         String origin = Driver.getDriver().getWindowHandle();
         for (String handle : Driver.getDriver().getWindowHandles()) {
+
             Driver.getDriver().switchTo().window(handle);
             if (Driver.getDriver().getTitle().equals(targetTitle)) {
                 return;

@@ -150,19 +150,9 @@ public class AdminPage {
 
     @FindBy(xpath = "(//*[@class='col-2 pr-1'])")
     public List<WebElement> customerPageAltBasliklar;
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    @FindBy(xpath = "//*[@class='promo']")
+    public  WebElement adminPromo;
 
 
 }
