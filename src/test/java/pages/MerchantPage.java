@@ -335,6 +335,38 @@ public class MerchantPage {
     @FindBy(xpath = "(//span[text()='Confirm'])[2]")
     public  WebElement confirmButton;//merchant_New order page
 
+    @FindBy(xpath = "//*[@class='row align-items-start']")
+    public List<WebElement> scheduledOrdersList; // scheduled order page
+
+    @FindBy(xpath = "(//p[@class='m-0'])[5]")
+    public WebElement customerNameInOrderDetails; // scheduled order page
+
+    @FindBy(xpath = "(//p[@class='m-0'])[6]")
+    public WebElement itemQuantitiyInOrderDetails; // scheduled order page
+
+    @FindBy(xpath = "(//p[@class='m-0'])[7]")
+    public WebElement orderNumberInOrderDetails; // scheduled order page
+
+    @FindBy(xpath = "(//p[@class='m-0'])[8]")
+    public WebElement orderDatenTimeInOrderDetails; // scheduled order page
+
+    @FindBy(xpath = "//*[@class='form-control py-2 border-right-0 border']")
+    public WebElement filterBox; // scheduled order page
+
+    @FindBy(xpath = "(//*[@class='filter-option-inner'])[1]")
+    public WebElement orderTypeDropdownMenu; // scheduled order page
+
+    @FindBy(xpath = "(//*[@class='filter-option-inner'])[2]")
+    public WebElement paymentStatusDropdownMenu; // scheduled order page
+
+    @FindBy(xpath = "(//*[@class='filter-option-inner'])[3]")
+    public WebElement sortDropdownMenu; // scheduled order page
+
+
+
+
+
+
   
 
 }
