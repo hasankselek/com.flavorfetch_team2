@@ -249,4 +249,44 @@ public class CustomerPage {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @FindBy(xpath = "//*[text()=' Addresses ']")
+    public WebElement addressInfo;  // customer  manage my account
+
+    @FindBy(xpath = "//*[@class='col-md-3']")
+    public WebElement CountAddress;
+
+    @FindBy(xpath = "//*[@class='module truncate-overflow']")
+    public WebElement countryView;
+
+    @FindBy(xpath = "//h5[text()='Home']")
+    public WebElement addressType;
+
+    @FindBy(className = "card p-3 fixed-height address-slot")
+    public List<WebElement> addressCount;
+
+    @FindBy(xpath = "//*[@class='col-md-3']")
+    public WebElement addressCountHead;
+
+
+
+
+
 }
