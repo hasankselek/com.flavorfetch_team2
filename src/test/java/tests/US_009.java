@@ -3,15 +3,18 @@ package tests;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
 import pages.CustomerPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
+
+import java.util.Set;
 
 import static utilities.Driver.driver;
 
@@ -93,49 +96,60 @@ public class US_009 {
    }
 
    @Test
-   public void TC_0903(){
+   public void TC_0903() {
 
 
-      Driver.getDriver ().get ( ConfigReader.getProperty ( "customer_Url" ) );
+      Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
 
-      customerPage.cookieAccept.click ();
+      customerPage.cookieAccept.click();
 
-      Actions action = new Actions ( Driver.getDriver () );
+      Actions action = new Actions(Driver.getDriver());
+      action.sendKeys(Keys.END).perform();
 
-      action.sendKeys (Keys.END ).perform ();
+      Assert.assertTrue(customerPage.privacypolicyLink.isDisplayed());
+      Assert.assertTrue(customerPage.privacypolicyLink.isEnabled());
 
-      Assert.assertTrue ( customerPage.privacypolicyLink.isDisplayed () );
+      ReusableMethods.wait(2);
 
-      Assert.assertTrue ( customerPage.privacypolicyLink.isEnabled () );
-
-      ReusableMethods.wait ( 2 );
-
-      customerPage.privacypolicyLink.click ();
+      customerPage.privacypolicyLink.click();
 
       String expectedUrl = "https://qa.flavorfetch.com/privacy-policy";
+      String actualUrl = Driver.getDriver().getCurrentUrl();
+      Assert.assertEquals(actualUrl, expectedUrl);
 
-      String actualUrl = Driver.getDriver ().getCurrentUrl ();
+      Actions actions = new Actions(Driver.getDriver());
+      actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-      Assert.assertEquals ( actualUrl, expectedUrl );
+      WebElement contactLink = Driver.getDriver().findElement(By.xpath("//*[text()='info@flavorfetch.com']"));
 
-      Actions actions = new Actions ( Driver.getDriver () );
+      actions.moveToElement(contactLink).click().perform();
 
-      action.sendKeys ( Keys.PAGE_DOWN).perform ();
+      // Eposta contact linkinin sayfayi eposta istemcisine yonledirdigini  dogrulayin
+
+      String actualUrlPrivacy = driver.getCurrentUrl ();
+      String expectedUrlPrivacy = "https://qa.flavorfetch.com/privacy-policy";
+
+      Assert.assertNotEquals ( actualUrlPrivacy, expectedUrlPrivacy, "URL beklenen değere eşit olmamali");
 
 
+      // E-posta linkinin tıklanabilir olduğunu doğrulayın
+
+      Assert.assertTrue ( "E-posta linki görüntülenmiyor.", contactLink.isDisplayed() );
+      Assert.assertTrue ( "E-posta linki etkin değil.", contactLink.isEnabled() );
 
 
-
-
-
-
-      Driver.quitDriver ();
-
+      Driver.quitDriver();
 
    }
 
+}
 
-   }
+
+
+
+
+
+
 
 
 

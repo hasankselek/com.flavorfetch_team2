@@ -186,28 +186,9 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[@class='form-control form-control-sm']")
     public WebElement searchBox;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    @FindBy(xpath = "//*[@class='promo']")
+    public  WebElement adminPromo;
 
 
 }

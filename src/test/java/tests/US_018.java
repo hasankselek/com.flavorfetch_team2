@@ -1,7 +1,5 @@
 package tests;
 
-import com.sun.jna.StringArray;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -12,9 +10,10 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class US_18 {
+public class US_018 {
 
     CustomerPage customerPage=new CustomerPage();
     Actions actions=new Actions(Driver.getDriver());
@@ -92,6 +91,7 @@ public class US_18 {
 
 
     }
+
 
 
 }
