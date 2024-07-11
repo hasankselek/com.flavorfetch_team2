@@ -1,6 +1,7 @@
 package tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -78,6 +79,34 @@ public class US_033 {
         ReusableMethods.wait(1);
 
 
+        fillTheCouponInformations();
+
+
+        Driver.quitDriver();
+
+
+    }
+
+    @Test
+    public void TC_3303() {
+        ReusableMethods.accessToMerchant();
+        Assert.assertTrue(merchantPage.promoLink.isDisplayed());
+        merchantPage.promoLink.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(merchantPage.couponLink.isDisplayed());
+        merchantPage.couponLink.click();
+        ReusableMethods.wait(1);
+        String expectedTitle = "Coupon list";
+        String actualTitle = Driver.getDriver().getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle);
+
+        merchantPage.couponAddLink.click();
+        fillTheCouponInformations();
+
+
+    }
+
+    public void fillTheCouponInformations() {
         //Coupon Name Test
         Assert.assertTrue(merchantPage.updateCouponName.isEnabled());
         merchantPage.updateCouponName.clear();
@@ -85,22 +114,49 @@ public class US_033 {
 
         //Coupon Type Test
         WebElement couponTypeDropdownElement = merchantPage.updateCouponTypeDropdown;
+        Assert.assertTrue(couponTypeDropdownElement.isEnabled());
         Select couponType = new Select(couponTypeDropdownElement);
         couponType.selectByIndex(0);
-        Assert.assertTrue(couponTypeDropdownElement.isEnabled());
+
 
         //Amount Test
         Assert.assertTrue(merchantPage.updateCouponAmount.isDisplayed());
         Assert.assertTrue(merchantPage.updateCouponAmount.isEnabled());
         merchantPage.updateCouponAmount.clear();
-        String  discountAmount = "10";
+        String discountAmount = "10";
         merchantPage.updateCouponAmount.sendKeys(discountAmount);
 
+        //Min Order
+        Assert.assertTrue(merchantPage.updateMinOrder.isEnabled());
+        Assert.assertTrue(merchantPage.updateMinOrder.isDisplayed());
+        merchantPage.updateMinOrder.clear();
+        String minOrder = "120";
+        merchantPage.updateMinOrder.sendKeys(minOrder);
+        ReusableMethods.wait(1);
+
+        //Days Available
+
+        merchantPage.updateDaysAvailable.sendKeys("Monday", Keys.ENTER);
 
 
+        //Expiration
 
-        Driver.quitDriver();
+
+        //Coupon Options
+        WebElement couponOptionsElement = merchantPage.updateCouponOptions;
+        Assert.assertTrue(couponOptionsElement.isEnabled());
+        Select couponOptions = new Select(couponOptionsElement);
+        couponOptions.selectByIndex(3);
 
 
+        //Coupon Options
+        WebElement statusElement = merchantPage.updateStatus;
+        Assert.assertTrue(statusElement.isEnabled());
+        Select status = new Select(statusElement);
+        status.selectByVisibleText("Draft");
+
+        Assert.assertTrue(merchantPage.updateSaveButton.isDisplayed());
+        Assert.assertTrue(merchantPage.updateSaveButton.isEnabled());
+        merchantPage.updateSaveButton.click();
     }
 }
