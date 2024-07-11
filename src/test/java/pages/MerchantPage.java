@@ -182,6 +182,12 @@ public class MerchantPage {
     @FindBy(xpath = "//*[@id='AR_voucher_amount']")
     public WebElement updateCouponAmount;
 
+    @FindBy(xpath = "//*[@id='AR_voucher_min_order']")
+    public WebElement updateMinOrder;
+
+    @FindBy(xpath = "//span[@aria-expanded='true']")
+    public WebElement updateDaysAvailable;
+
     @FindBy(xpath = "(//*[@role='group']//a)[2]")
     public WebElement deleteCuponButton;
 

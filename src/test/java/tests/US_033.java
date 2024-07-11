@@ -96,6 +96,20 @@ public class US_033 {
         String  discountAmount = "10";
         merchantPage.updateCouponAmount.sendKeys(discountAmount);
 
+        //Min Order
+        Assert.assertTrue(merchantPage.updateMinOrder.isEnabled());
+        Assert.assertTrue(merchantPage.updateMinOrder.isDisplayed());
+        merchantPage.updateMinOrder.clear();
+        String minOrder ="120";
+        merchantPage.updateMinOrder.sendKeys(minOrder);
+
+        //Days Available
+       // WebElement daysAvailableDropdownElement =merchantPage.updateDaysAvailable;
+       // Select daysAvailable = new Select(daysAvailableDropdownElement);
+       // daysAvailable.selectByVisibleText("Monday");
+
+
+
 
 
 
