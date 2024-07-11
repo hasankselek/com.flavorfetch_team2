@@ -71,7 +71,8 @@ public class AdminPage {
     public List<WebElement> dashboardTotalHeadings; // admin dashboard total headings
 
     @FindBy(xpath = "//*[@class='promo']")
-    public  WebElement adminPromo;
+    public  WebElement promoadmin; // admin dashboard promo
 
-
+    @FindBy(xpath = "//*[text()='Coupon']")
+    public WebElement couponadmin; // admin dashboard  coupon
 }

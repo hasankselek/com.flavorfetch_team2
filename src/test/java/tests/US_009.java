@@ -126,10 +126,10 @@ public class US_009 {
 
       // Eposta contact linkinin sayfayi eposta istemcisine yonledirdigini  dogrulayin
 
-      String actualUrlPrivacy = driver.getCurrentUrl ();
       String expectedUrlPrivacy = "https://qa.flavorfetch.com/privacy-policy";
+      String actualUrlPrivacy = driver.getCurrentUrl ();
 
-      Assert.assertNotEquals ( actualUrlPrivacy, expectedUrlPrivacy, "URL beklenen değere eşit olmamali");
+      Assert.assertEquals ( actualUrlPrivacy, expectedUrlPrivacy, "URL beklenen değere eşit olmamali");
 
 
       // E-posta linkinin tıklanabilir olduğunu doğrulayın

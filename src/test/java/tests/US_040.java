@@ -23,11 +23,15 @@ public class US_040 {
                 ConfigReader.getProperty("adminpassword_serhat"));
         adminPage.signInButton.click();
 
+        adminPage.promoadmin.click ();
 
+        adminPage.couponadmin.click ();
 
+        String expectedUrl = "https://qa.flavorfetch.com/backoffice/promo/coupon" ;
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(actualUrl,expectedUrl);
 
-
-       // Driver.quitDriver();
+        Driver.quitDriver();
 
 
         }
