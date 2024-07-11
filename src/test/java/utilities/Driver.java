@@ -50,7 +50,8 @@ public class Driver {
 
 
     public static void quitDriver(){
-        driver.quit();
-        driver =null;
+            driver.quit();
+            driver = null;
+
     }
 }
