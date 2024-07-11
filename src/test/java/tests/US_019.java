@@ -1,7 +1,9 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import org.bouncycastle.crypto.digests.Kangaroo;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -35,6 +37,7 @@ Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
     String actualUrl=Driver.getDriver().getCurrentUrl();
 Assert.assertEquals(actualUrl,exeptedUrl);
 Assert.assertTrue(merchantPage.titleOfLoginPage.isDisplayed());
+Driver.quitDriver();
 }
 @Test
 public void test_1902(){
@@ -53,6 +56,7 @@ public void test_1902(){
     Assert.assertTrue(merchantPage.usernametextbox.isDisplayed());
     Assert.assertTrue(merchantPage.passwordtextbox.isDisplayed());
     Assert.assertTrue(merchantPage.singinButton.isDisplayed());
+    Driver.quitDriver();
 }
 @Test
     public void test_1903() {
@@ -90,7 +94,7 @@ The user closes the page.*/
     String expectedPassBoxInvolve="";
     String actualPassBoxInvolve= merchantPage.passwordtextbox.getText();
     Assert.assertEquals(actualPassBoxInvolve,expectedPassBoxInvolve);
-
+    Driver.quitDriver();
 }
 @Test
     public void test_1904(){
@@ -99,7 +103,8 @@ The user closes the page.*/
     enters the Url.
     Verify the presence of the  "eye sign" in the password box.
     Enter a word inside the password box.
-    Verify the presence of the  "eye sign" in the password box.
+
+   Verify the presence of the  "eye sign" in the password box.
     Verify the letters are shown by dotes.
     Click on the "eye sign".
     Verify the presence of the "Eye Sign With a Line On It" in the password box.
@@ -108,14 +113,21 @@ The user closes the page.*/
              */
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-    ReusableMethods.wait(5);
-   // wait.until(ExpectedConditions.urlToBe(ConfigReader.getProperty("merchant_Url")));
     Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
-  //  wait.until(ExpectedConditions.visibilityOf(merchantPage.passwordFieldPassBox));
-merchantPage.textEnteredUserBox.sendKeys(fakerPassword);
-
+merchantPage.passwordtextbox.sendKeys(fakerPassword);
 Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
+Assert.assertTrue(merchantPage.passwordHidden.isDisplayed());
+merchantPage.eyeAsignInPasswordBox.click();
+Assert.assertTrue(merchantPage.eyeAsignWithALine.isDisplayed());
 Assert.assertTrue(merchantPage.passwordReveal.isDisplayed());
+
+    String expectedPass=fakerPassword;
+    String actualPass=merchantPage.passwordtextbox.getText();
+
+    System.out.println("facker pass: "+expectedPass);
+    System.out.println("The pass box content is :"+actualPass);
+
+    Assert.assertEquals(actualPass,expectedPass);
 Driver.quitDriver();
 }
 @Test
@@ -171,6 +183,55 @@ Driver.quitDriver();
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(ConfigReader.getProperty("urlContent3")));
         merchantPage.merchantNameDropdown.click();
         merchantPage.logoutMerchantDashboard.click();
+        String exeptenceUrl=ConfigReader.getProperty("merchant_Url");
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(actualUrl,exeptenceUrl);
+        Assert.assertTrue(merchantPage.titleOfLoginPage.isDisplayed());
+        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
+        merchantPage.passwordtextbox.sendKeys(Keys.ENTER);
+        String expectedRememberPass=ConfigReader.getProperty("merchant_password");
+        String actualRememberPass=merchantPage.passwordtextbox.getText();
+        Assert.assertEquals(actualRememberPass,expectedRememberPass);
+Driver.quitDriver();
+}
+@Test
+    public void test_1908(){
+/*The user opens the browser.
+enters the Url.
+Verify the presence of the "forget password?" text .
+click the link of 'forget password?".
+Verify the presence of the  "Request E-mail"button.
+The user closes the page.*/
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    Assert.assertTrue(merchantPage.forgetMiLink.isDisplayed());
+    merchantPage.forgetMiLink.click();
+    Assert.assertTrue(merchantPage.RequestEmail.isDisplayed());
+    Driver.quitDriver();
+}
+@Test
+    public void test_1909(){
+/*The user opens the browser.
+enters the Url.
+click the signin button.
+Verify the presence of the"This field is required" text under username box.
 
+Verify the presence of the "This field is required" text under password box.
+
+Verify position stability of the eye sign .
+The user closes the page.*/
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
+    ReusableMethods.wait(2);
+    merchantPage.singinButton.click();
+    Assert.assertTrue(merchantPage.user_ThisFieldIsRequired.isDisplayed());
+    Assert.assertTrue(merchantPage.pass_ThisFieldIsRequired.isDisplayed());
+    ReusableMethods.wait(2);
+    WebElement expectedEyePosition= merchantPage.eyeAsignInPasswordBox;
+    WebElement actualEyePosition= merchantPage.eyeAsignFallDownPosition;
+    ReusableMethods.wait(2);
+    Assert.assertNotEquals(actualEyePosition,expectedEyePosition);
+    Driver.quitDriver();
 }
 }

@@ -272,25 +272,16 @@ public class MerchantPage {
     @FindBy(xpath = "(//*[@class='required'])[3]")
     public WebElement backgroundPassBox;
 
-    @FindBy(xpath = "//*[@type='text']")
+    @FindBy(xpath = ".//input[starts-with(@class,'form-label-group')]")
     public WebElement textEnteredUserBox;
-
-    @FindBy(xpath = "//*[@class='zmdi zmdi-eye']")
-    public WebElement eyeAsignInPasswordBox;
-
-    @FindBy(xpath = "//*[@class='zmdi zmdi-eye-off']")
-    public  WebElement eyeAsignWithALine;
 
     @FindBy(xpath = "//*[@type='text']")
     public WebElement passwordReveal;
 
     @FindBy(xpath = "//*[@type='password']")
-    public WebElement passwordEnteredPassBox;
-
-    @FindBy(xpath = "//*[@type='password']")
     public WebElement passwordHidden;
 
-    @FindBy(xpath = "(//span[@class='required'])[2]")
+    @FindBy(xpath = ".//input[starts-with(@class,'form-label-group change_field_password')]")
     public  WebElement passwordFieldPassBox;
 
     @FindBy(xpath = "//*[@src='/backoffice/themes/classic/assets/images/app-store@2x.png']")
@@ -454,9 +445,36 @@ public class MerchantPage {
 
     @FindBy(xpath= "(//*[@class='form-control form-control-text'])[1]")
     public  WebElement saveUptadeItem ; // Uptade item page
-
+  
     @FindBy(xpath = "(//div[@class='row align-items-start'])[1]")
     public  List<WebElement> filterResultElementleri;
+  
     @FindBy(xpath = "//a[text()='Clear']")
     public  WebElement clearIcon;
+  
+    @FindBy(xpath = "//*[@class='dim underline']")
+    public WebElement forgetMiLink;
+
+    @FindBy(xpath = "//*[@value='Request E-mail']")
+    public WebElement RequestEmail;
+
+    @FindBy(xpath = "(//*[@class='errorMessage'])[1]")
+    public WebElement user_ThisFieldIsRequired;
+
+    @FindBy(xpath = "(//*[@class='errorMessage'])[1]")
+    public WebElement pass_ThisFieldIsRequired;
+
+    @FindBy(xpath = "//*[@class='zmdi-eye zmdi']")
+    public WebElement eyeAsignFallDownPosition;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-eye']")
+    public WebElement eyeAsignInPasswordBox;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-eye-off']")
+    public  WebElement eyeAsignWithALine;
+  
+  
+  
+  
+  
 }
