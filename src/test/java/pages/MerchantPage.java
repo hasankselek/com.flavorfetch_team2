@@ -335,6 +335,45 @@ public class MerchantPage {
     @FindBy(xpath = "(//span[text()='Confirm'])[2]")
     public  WebElement confirmButton;//merchant_New order page
 
-  
+    @FindBy(xpath= "//*[@class='btn btn-black btn-circle']")
+    public  WebElement itemsPageAddnewButton;
+
+    @FindBy(id= "AR_item_item_name")
+    public  WebElement itemNameTextBox; // Add item page
+
+    @FindBy(id= "AR_item_category_selected")
+    public  WebElement categoryDropdown; //Add item page
+
+    @FindBy(xpath= "(//*[@type='submit'])[3]")
+    public  WebElement saveButtonAddItem; //Add item page
+
+    @FindBy(xpath= "(//*[@class='zmdi zmdi-delete'])[1]")
+    public  WebElement deleteButtonAddItem; // item page
+
+    @FindBy(xpath= "(//*[@class='zmdi zmdi-border-color'])[1]")
+    public  WebElement uptadeButtonAddItem; // item page
+
+    @FindBy(xpath= "(//*[text()='Update Item'])[2]")
+    public  WebElement uptadeItemTextBox; // Uptade item page
+
+    @FindBy(xpath= "(//*[@class='item-menu'])[1]")
+    public  WebElement uptadeItemMenu ; // Uptade item page
+
+    @FindBy(xpath= "//*[@class='zmdi zmdi-money-box']")
+    public  WebElement itemPrice ; // Uptade item page
+
+    @FindBy(xpath= "//*[@class='btn btn-light tool_tips']")
+    public  WebElement uptadeItemPrice ; // Uptade item page
+
+    @FindBy(xpath= "(//*[@class='form-control form-control-text'])[1]")
+    public  WebElement uptadeItemPriceTextBox ; // Uptade item page
+
+    @FindBy(xpath= "(//*[@class='form-control form-control-text'])[1]")
+    public  WebElement saveUptadeItem ; // Uptade item page
+
+
+
+//*[@class='btn btn-green btn-full mt-3']
+
 
 }
