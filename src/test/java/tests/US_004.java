@@ -1,6 +1,5 @@
 package tests;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CustomerPage;
@@ -18,10 +17,11 @@ public class US_004 {
         String actualUrl = Driver.getDriver().getCurrentUrl();
         String expectedUrl = "https://qa.flavorfetch.com/";
         Assert.assertEquals(actualUrl,expectedUrl);
+        Driver.quitDriver();
     }
 
     @Test
-    public void TC0402(){
+    public void TC_0402(){
 
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
@@ -72,7 +72,7 @@ public class US_004 {
     }
 
     @Test
-    public void TC0403(){
+    public void TC_0403(){
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
 
@@ -97,7 +97,7 @@ public class US_004 {
     }
 
     @Test
-    public void TC0404(){
+    public void TC_0404(){
 
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
@@ -137,7 +137,7 @@ public class US_004 {
     }
 
     @Test
-    public void TC0405(){
+    public void TC_0405(){
 
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
@@ -159,7 +159,7 @@ public class US_004 {
     }
 
     @Test
-    public void TC0406(){
+    public void TC_0406(){
 
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
@@ -181,7 +181,7 @@ public class US_004 {
     }
 
     @Test
-    public void TC0407(){
+    public void TC_0407(){
 
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
