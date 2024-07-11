@@ -53,6 +53,15 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Orders Processing']")
     public WebElement ordersProcessingLink;
 
+    @FindBy(xpath = "//*[@class='list-unstyled m-0 grey-list-chevron']//li")
+    public List<WebElement> orderProcessingList;
+
+    @FindBy(xpath = "//button[text()='Print']")
+    public WebElement printButton;
+
+    @FindBy(xpath = "//span[text()='Ready for pickup']")
+    public WebElement readyForPickupButton;
+
     @FindBy(xpath = "//a[text()='Orders Ready']")
     public WebElement ordersReadyLink;// merchant sidebar page
 
@@ -157,6 +166,24 @@ public class MerchantPage {
 
     @FindBy(xpath = "//a[text()='Coupon']")
     public WebElement couponLink;
+
+    @FindBy(xpath = "//tbody/tr/td[2]/h6")
+    public List<WebElement> couponNameList;
+
+    @FindBy(xpath = "(//*[@role='group']//a)[1]")
+    public WebElement updateCouponButton;
+
+    @FindBy(xpath = "//input[@id='AR_voucher_voucher_name']")
+    public WebElement updateCouponName;
+
+    @FindBy(xpath = "//select[@id='AR_voucher_voucher_type']")
+    public WebElement updateCouponTypeDropdown;
+
+    @FindBy(xpath = "//*[@id='AR_voucher_amount']")
+    public WebElement updateCouponAmount;
+
+    @FindBy(xpath = "(//*[@role='group']//a)[2]")
+    public WebElement deleteCuponButton;
 
     @FindBy(xpath = "//a[text()='Images']")
     public WebElement imagesLink;// merchant sidebar page

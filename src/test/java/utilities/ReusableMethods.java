@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import org.testng.annotations.BeforeTest;
 import pages.MerchantPage;
 
 import java.io.File;
@@ -407,6 +408,7 @@ public class ReusableMethods {
     public static void waitAndClickLocationText(WebElement element, String value) {
         Driver.getDriver().findElement(By.xpath("//*[text()='" + value + "']")).click();
     }
+
 
     public static void accessToMerchant(){
         MerchantPage merchantPage = new MerchantPage();
