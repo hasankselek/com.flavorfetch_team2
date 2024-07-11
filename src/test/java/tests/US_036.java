@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v85.audits.model.MixedContentResourceType;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AdminPage;
@@ -13,8 +13,6 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
-
-import java.util.List;
 
 public class US_036 {
 
@@ -331,14 +329,117 @@ public class US_036 {
 
         for (int i = 0; i < 4; i++) {
             Assert.assertTrue(adminPage.customerPageAltBasliklar.get(i).isDisplayed());
+        }
 
+        Assert.assertTrue(adminPage.adminCustomerInfo.isDisplayed());
+        Assert.assertTrue(adminPage.AddresesText.isDisplayed());
+        Assert.assertTrue(adminPage.addressesBox.isDisplayed());
+
+        for (int i = 0; i < adminPage.sortingTitles.size(); i++) {
+            adminPage.sortingTitles.get(i).isDisplayed();
+        }
+
+        Assert.assertEquals(adminPage.sortingTitles.get(0).getText(),"Order ID");
+        Assert.assertEquals(adminPage.sortingTitles.get(1).getText(),"Merchant");
+        Assert.assertEquals(adminPage.sortingTitles.get(2).getText(),"Total");
+        Assert.assertEquals(adminPage.sortingTitles.get(3).getText(),"Status");
+        Assert.assertEquals(adminPage.sortingTitles.get(4).getText(),"Action");
+
+        Assert.assertTrue(adminPage.eyeSignAdmin.isDisplayed());
+        Assert.assertTrue(adminPage.eyeSignAdmin.isEnabled());
+
+        Assert.assertTrue(adminPage.downloadButtonAdmin.isDisplayed());
+        Assert.assertTrue(adminPage.downloadButtonAdmin.isEnabled());
+
+
+        if(adminPage.firstPageOrderQuantity.size()>1){
+            int firstOrderID = Integer.parseInt(adminPage.orderFirstID.getText());
+            adminPage.sortingTitles.get(0).click();
+            ReusableMethods.wait(2);
+            int afterSortingFirstOrderID = Integer.parseInt(adminPage.orderFirstID.getText());
+            Assert.assertNotEquals(firstOrderID,afterSortingFirstOrderID);
+        }
+        else{
+            int firstOrderID = Integer.parseInt(adminPage.orderFirstID.getText());
+            adminPage.sortingTitles.get(0).click();
+            int afterSortingFirstOrderID = Integer.parseInt(adminPage.orderFirstID.getText());
+            Assert.assertEquals(firstOrderID,afterSortingFirstOrderID);
+        }
+
+        Assert.assertTrue(adminPage.sortingTitles.get(1).isEnabled());
+        Assert.assertTrue(adminPage.sortingTitles.get(2).isEnabled());
+        Assert.assertTrue(adminPage.sortingTitles.get(3).isEnabled());
+        Assert.assertTrue(adminPage.sortingTitles.get(4).isEnabled());
+
+        Driver.quitDriver();
+
+    }
+
+    @Test
+    public void TC_3612(){
+        Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.signInButton.click();
+
+        JSUtilities.scrollToElement(Driver.getDriver(),adminPage.topCustomersText);
+
+        adminPage.firstCustomerButton.click();
+
+        Assert.assertTrue(adminPage.entriesInformation.isDisplayed());
+
+
+        if (adminPage.pageNumbers.size()>3){
+            String firstPageFirstOrderID = adminPage.firstPageOrderQuantity.get(0).getText();
+            adminPage.pageNumbers.get(2).click();
+            ReusableMethods.wait(1);
+            String secondPageFirstOrderID =adminPage.firstPageOrderQuantity.get(0).getText();
+            Assert.assertNotEquals(firstPageFirstOrderID,secondPageFirstOrderID);
+        }
+        else if (adminPage.pageNumbers.size()==3) {
+            String firstPageFirstOrderID = adminPage.firstPageOrderQuantity.get(0).getText();
+            adminPage.pageNumbers.get(2).click();
+            ReusableMethods.wait(1);
+            String secondPageFirstOrderID =adminPage.firstPageOrderQuantity.get(0).getText();
+            Assert.assertEquals(firstPageFirstOrderID,secondPageFirstOrderID);
         }
 
 
 
 
+    }
+
+    @Test
+    public void TC_3613(){
+        Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.signInButton.click();
+
+        JSUtilities.scrollToElement(Driver.getDriver(),adminPage.topCustomersText);
+
+        adminPage.firstCustomerButton.click();
+
+        Assert.assertTrue(adminPage.searchText.isDisplayed());
+        Assert.assertTrue(adminPage.searchBox.isDisplayed());
+
+        ReusableMethods.wait(1);
 
 
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(adminPage.searchBox).click().perform();
+        ReusableMethods.wait(5);
+        adminPage.searchBox.isEnabled();
+        adminPage.searchBox.sendKeys("11990"+Keys.ENTER);
+
+        ReusableMethods.wait(3);
+
+        String expectedResult = "11990";
+        String actualResult = adminPage.firstPageOrderQuantity.get(0).getText();
+
+        Assert.assertEquals(actualResult,expectedResult);
+
+        ReusableMethods.wait(5);
+
+        Driver.quitDriver();
 
 
 

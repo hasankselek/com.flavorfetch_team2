@@ -151,6 +151,51 @@ public class AdminPage {
     @FindBy(xpath = "(//*[@class='col-2 pr-1'])")
     public List<WebElement> customerPageAltBasliklar;
 
+    @FindBy(xpath = "//*[@class='card rounded p-2 mb-3']")
+    public WebElement adminCustomerInfo; // admin dashboard customer info
+
+    @FindBy(xpath = "//h6[text()='Addresses']")
+    public WebElement AddresesText; // admin dashboard customer adresses text
+
+    @FindBy(xpath = "//*[@class='card rounded p-2 fixed-height40 scrollable']")
+    public WebElement addressesBox; // admin dashboard customer adresses
+
+    @FindBy(xpath = "//thead//tr//td")
+    public List<WebElement> sortingTitles; // admin dashboard sorting titles
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-eye'])[6]")
+    public WebElement eyeSignAdmin; // admin dashboard eye sign
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-download'])[6]")
+    public WebElement downloadButtonAdmin; // admin dashboard download button
+
+    @FindBy(xpath = "(//tbody)[2]//tr[1]//td[1]")
+    public WebElement orderFirstID; // admin dashboard orderFirstID
+
+    @FindBy(xpath = "//*[@class='sorting_1']")
+    public List<WebElement> firstPageOrderQuantity; // admin dashboard customer page first page order quantity
+
+    @FindBy(xpath = "//*[@class='dataTables_info']")
+    public WebElement entriesInformation; // admin dashboard customer page entries information number
+
+    @FindBy(xpath = "//*[@class='page-link']")
+    public List<WebElement> pageNumbers;
+
+    @FindBy(xpath = "//*[text()='Search:']")
+    public WebElement searchText;
+
+    @FindBy(xpath = "//*[@class='form-control form-control-sm']")
+    public WebElement searchBox;
+
+
+
+
+
+
+
+
+
+
 
 
 
