@@ -53,6 +53,15 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Orders Processing']")
     public WebElement ordersProcessingLink;
 
+    @FindBy(xpath = "//*[@class='list-unstyled m-0 grey-list-chevron']//li")
+    public List<WebElement> orderProcessingList;
+
+    @FindBy(xpath = "//button[text()='Print']")
+    public WebElement printButton;
+
+    @FindBy(xpath = "//span[text()='Ready for pickup']")
+    public WebElement readyForPickupButton;
+
     @FindBy(xpath = "//a[text()='Orders Ready']")
     public WebElement ordersReadyLink;// merchant sidebar page
 
@@ -157,6 +166,24 @@ public class MerchantPage {
 
     @FindBy(xpath = "//a[text()='Coupon']")
     public WebElement couponLink;
+
+    @FindBy(xpath = "//tbody/tr/td[2]/h6")
+    public List<WebElement> couponNameList;
+
+    @FindBy(xpath = "(//*[@role='group']//a)[1]")
+    public WebElement updateCouponButton;
+
+    @FindBy(xpath = "//input[@id='AR_voucher_voucher_name']")
+    public WebElement updateCouponName;
+
+    @FindBy(xpath = "//select[@id='AR_voucher_voucher_type']")
+    public WebElement updateCouponTypeDropdown;
+
+    @FindBy(xpath = "//*[@id='AR_voucher_amount']")
+    public WebElement updateCouponAmount;
+
+    @FindBy(xpath = "(//*[@role='group']//a)[2]")
+    public WebElement deleteCuponButton;
 
     @FindBy(xpath = "//a[text()='Images']")
     public WebElement imagesLink;// merchant sidebar page
@@ -296,8 +323,8 @@ public class MerchantPage {
     @FindBy(xpath = "//div[text()='Accepting Orders']")
     public  WebElement acceptingOrderButton;//merchant_New order page
 
-   @FindBy(xpath = "(//button[text()='5 min(s)'])[2]")
-   public WebElement pauseNewOrdersMinutes;
+    @FindBy(xpath = "(//button[text()='5 min(s)'])[2]")
+    public WebElement pauseNewOrdersMinutes;
   
     @FindBy(xpath = "//span[text()='Next']")
     public  WebElement nextButton;//merchant_New order page
@@ -334,47 +361,78 @@ public class MerchantPage {
 
     @FindBy(xpath = "//a[text()='Delay Order']")
     public  WebElement delayOrder;//merchant_New order page
+  
     @FindBy(xpath = "(//button[@class='btn btn-light delay-btn'])[1]")
     public  WebElement pauseMinuteOptionDelay;//merchant_New order page
 
     @FindBy(xpath = "(//span[text()='Confirm'])[1]")
     public  WebElement confirmButtonDelay;//merchant_New order page
+  
     @FindBy(xpath = "(//span[text()='new'])[1]")
     public  WebElement newIcon;//merchant_New order page
 
-  @FindBy(xpath = "//div[@aria-live='polite']")
+    @FindBy(xpath = "//div[@aria-live='polite']")
     public  WebElement delayOrderMesssage;;//merchant_New order page
 
-
-
     @FindBy(xpath = "//div[@class='ronded-green']")
-  public  WebElement ordersQuantitty;;//merchant_New order page
+    public  WebElement ordersQuantitty;;//merchant_New order page
 
     @FindBy(xpath = "//p[text()='No results']")
     public  WebElement noNewOrders;;//merchant_New order page
 
-
     @FindBy(xpath = "//a[text()='Cancel order']")
     public  WebElement cancelOrder;;//merchant_New order page
 
-
     @FindBy(xpath ="//a[text()='No ingredient.']")
-   public WebElement reasonCancel;;//merchant_New order page
-
+    public WebElement reasonCancel;;//merchant_New order page
 
     @FindBy(xpath = "//span[text()='Reject order']")
     public  WebElement cancelRejectOrderButton;;//merchant_New order page
 
-
     @FindBy(xpath = "//div[@class='notyf-announcer']")
     public  WebElement cancelOrderMessage;;//merchant_New order page
-
 
     @FindBy(xpath = "//a[text()='Download PDF (A4)']")
     public  WebElement downloadPdf;;//merchant_New order page
 
     @FindBy(xpath = "//input[@type='search']")
     public  WebElement filterBox;;//merchant_New order page
+
+    @FindBy(xpath= "//*[@class='btn btn-black btn-circle']")
+    public  WebElement itemsPageAddnewButton;
+
+    @FindBy(id= "AR_item_item_name")
+    public  WebElement itemNameTextBox; // Add item page
+
+    @FindBy(id= "AR_item_category_selected")
+    public  WebElement categoryDropdown; //Add item page
+
+    @FindBy(xpath= "(//*[@type='submit'])[3]")
+    public  WebElement saveButtonAddItem; //Add item page
+
+    @FindBy(xpath= "(//*[@class='zmdi zmdi-delete'])[1]")
+    public  WebElement deleteButtonAddItem; // item page
+
+    @FindBy(xpath= "(//*[@class='zmdi zmdi-border-color'])[1]")
+    public  WebElement uptadeButtonAddItem; // item page
+
+    @FindBy(xpath= "(//*[text()='Update Item'])[2]")
+    public  WebElement uptadeItemTextBox; // Uptade item page
+
+    @FindBy(xpath= "(//*[@class='item-menu'])[1]")
+    public  WebElement uptadeItemMenu ; // Uptade item page
+
+    @FindBy(xpath= "//*[@class='zmdi zmdi-money-box']")
+    public  WebElement itemPrice ; // Uptade item page
+
+    @FindBy(xpath= "//*[@class='btn btn-light tool_tips']")
+    public  WebElement uptadeItemPrice ; // Uptade item page
+
+    @FindBy(xpath= "(//*[@class='form-control form-control-text'])[1]")
+    public  WebElement uptadeItemPriceTextBox ; // Uptade item page
+
+    @FindBy(xpath= "(//*[@class='form-control form-control-text'])[1]")
+    public  WebElement saveUptadeItem ; // Uptade item page
 
     @FindBy(xpath = "(//div[@class='row align-items-start'])[1]")
     public  List<WebElement> filterResultElementleri;

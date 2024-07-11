@@ -3,6 +3,9 @@ package tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.MerchantPage;
 import utilities.ConfigReader;
@@ -14,9 +17,12 @@ import java.util.List;
 
 public class US_021 { //Merchant Page Dashboard Access
     MerchantPage merchantPage = new MerchantPage();
+
+
+
+
     @Test
     public void TC_2101 (){
-        ReusableMethods.accessToMerchant();
         String expectedUrl = "https://qa.flavorfetch.com/backoffice/merchant/dashboard";
         String actualUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualUrl,expectedUrl);
@@ -28,6 +34,7 @@ public class US_021 { //Merchant Page Dashboard Access
     }
     @Test
     public void TC_2102 (){ //Merchant Page Dashboard Access and Clickable
+        merchantPage = new MerchantPage();
         ReusableMethods.accessToMerchant();
         JSUtilities.scrollToBottom(Driver.getDriver());
 
@@ -47,6 +54,7 @@ public class US_021 { //Merchant Page Dashboard Access
 
     @Test
     public void TC_2103(){ // Merchant Page sidebar All Menus Access
+        merchantPage = new MerchantPage();
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.merchantLink.isDisplayed());
         merchantPage.merchantLink.click();
@@ -105,10 +113,15 @@ public class US_021 { //Merchant Page Dashboard Access
 
     @Test
     public void TC_2104(){
+        merchantPage = new MerchantPage();
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.merchantLink.isDisplayed());
         merchantPage.merchantLink.click();
         ReusableMethods.wait(1);
+        merchantPage.informationLink.click();
+        String expectedTitle = "Information";
+        String actualTitle = Driver.getDriver().getTitle();
+        //Assert.assertTrue(actualTitle.contains(expectedTitle));
     }
 
 
