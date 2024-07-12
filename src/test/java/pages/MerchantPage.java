@@ -408,7 +408,7 @@ public class MerchantPage {
     public WebElement orderDatenTimeInOrderDetails; // scheduled order page
 
     @FindBy(xpath = "//*[@class='form-control py-2 border-right-0 border']")
-    public WebElement filterBox; // scheduled order page
+    public WebElement orderPagefilterBox; // scheduled order page
 
     @FindBy(xpath = "(//*[@class='filter-option-inner'])[1]")
     public WebElement orderTypeDropdownMenu; // scheduled order page
