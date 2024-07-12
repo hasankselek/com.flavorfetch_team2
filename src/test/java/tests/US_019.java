@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.MerchantLoginPage;
 import pages.MerchantPage;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -15,7 +16,7 @@ import utilities.ReusableMethods;
 
 public class US_019 {
 
-        MerchantPage merchantPage=new MerchantPage();
+        MerchantLoginPage merchantLoginPage=new MerchantLoginPage();
       //  WebDriverWait wait= (WebDriverWait) Driver.getDriver();
         Faker faker=new Faker();
         String fakerName=faker.name().fullName();
@@ -36,7 +37,7 @@ Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
     String exeptedUrl=ConfigReader.getProperty("merchant_Url");
     String actualUrl=Driver.getDriver().getCurrentUrl();
 Assert.assertEquals(actualUrl,exeptedUrl);
-Assert.assertTrue(merchantPage.titleOfLoginPage.isDisplayed());
+Assert.assertTrue(merchantLoginPage.titleOfLoginPage.isDisplayed());
 Driver.quitDriver();
 }
 @Test
@@ -53,9 +54,9 @@ public void test_1902(){
 
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-    Assert.assertTrue(merchantPage.usernametextbox.isDisplayed());
-    Assert.assertTrue(merchantPage.passwordtextbox.isDisplayed());
-    Assert.assertTrue(merchantPage.singinButton.isDisplayed());
+    Assert.assertTrue(merchantLoginPage.userBoxMerchantLogin.isDisplayed());
+    Assert.assertTrue(merchantLoginPage.passwordBoxMerchantLogin.isDisplayed());
+    Assert.assertTrue(merchantLoginPage.signInButtonMerchantLogin.isDisplayed());
     Driver.quitDriver();
 }
 @Test
@@ -79,20 +80,20 @@ Verify absence the written lettrs from the password box.
 The user closes the page.*/
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-    Assert.assertTrue(merchantPage.backgroundUserBox.isDisplayed());
-    merchantPage.usernametextbox.sendKeys(fakerName);
-    Assert.assertTrue(merchantPage.backgroundUserBox.isDisplayed());
-    merchantPage.usernametextbox.sendKeys(fakerName+Keys.CLEAR);
-    String expectedUserBoxInvolve="";
-    String actualUserBoxInvolve= merchantPage.usernametextbox.getText();
-    Assert.assertEquals(actualUserBoxInvolve,expectedUserBoxInvolve);
+    Assert.assertTrue(merchantLoginPage.backgroundUserBox.isDisplayed());
+    merchantLoginPage.userBoxMerchantLogin.sendKeys(fakerName);
+    Assert.assertTrue(merchantLoginPage.backgroundUserBox.isDisplayed());
+    merchantLoginPage.userBoxMerchantLogin.sendKeys(Keys.CLEAR);
 
-    Assert.assertTrue(merchantPage.backgroundPassBox.isDisplayed());
-    merchantPage.passwordtextbox.sendKeys(fakerPassword);
-    Assert.assertTrue(merchantPage.backgroundPassBox.isDisplayed());
-    merchantPage.passwordtextbox.sendKeys(fakerPassword+Keys.CLEAR);
+    String actualUserBoxInvolve= merchantLoginPage.userBoxMerchantLogin.getText();
+    Assert.assertTrue(actualUserBoxInvolve.isEmpty());
+
+    Assert.assertTrue(merchantLoginPage.backgroundPassBox.isDisplayed());
+    merchantLoginPage.passwordBoxMerchantLogin.sendKeys(fakerPassword);
+    Assert.assertTrue(merchantLoginPage.backgroundPassBox.isDisplayed());
+    merchantLoginPage.passwordBoxMerchantLogin.sendKeys(fakerPassword+Keys.CLEAR);
     String expectedPassBoxInvolve="";
-    String actualPassBoxInvolve= merchantPage.passwordtextbox.getText();
+    String actualPassBoxInvolve= merchantLoginPage.passwordBoxMerchantLogin.getText();
     Assert.assertEquals(actualPassBoxInvolve,expectedPassBoxInvolve);
     Driver.quitDriver();
 }
@@ -113,16 +114,16 @@ The user closes the page.*/
              */
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-    Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
-merchantPage.passwordtextbox.sendKeys(fakerPassword);
-Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
-Assert.assertTrue(merchantPage.passwordHidden.isDisplayed());
-merchantPage.eyeAsignInPasswordBox.click();
-Assert.assertTrue(merchantPage.eyeAsignWithALine.isDisplayed());
-Assert.assertTrue(merchantPage.passwordReveal.isDisplayed());
+    Assert.assertTrue(merchantLoginPage.eyeAsignInPasswordBox.isDisplayed());
+merchantLoginPage.passwordBoxMerchantLogin.sendKeys(fakerPassword);
+Assert.assertTrue(merchantLoginPage.eyeAsignInPasswordBox.isDisplayed());
+Assert.assertTrue(merchantLoginPage.passwordHidden.isDisplayed());
+merchantLoginPage.eyeAsignInPasswordBox.click();
+Assert.assertTrue(merchantLoginPage.eyeAsignWithALine.isDisplayed());
+Assert.assertTrue(merchantLoginPage.passwordReveal.isDisplayed());
 
     String expectedPass=fakerPassword;
-    String actualPass=merchantPage.passwordtextbox.getText();
+    String actualPass=merchantLoginPage.passwordBoxMerchantLogin.getText();
 
     System.out.println("facker pass: "+expectedPass);
     System.out.println("The pass box content is :"+actualPass);
@@ -142,8 +143,8 @@ Driver.quitDriver();
              */
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-    Assert.assertTrue(merchantPage.appStoreIcon.isDisplayed());
-    merchantPage.appStoreIcon.click();
+    Assert.assertTrue(merchantLoginPage.appStoreIcon.isDisplayed());
+    merchantLoginPage.appStoreIcon.click();
     Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(ConfigReader.getProperty("urlContent1")));
     Driver.quitDriver();
 }
@@ -151,8 +152,8 @@ Driver.quitDriver();
     public void test_1906(){
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-    Assert.assertTrue(merchantPage.googlePlayIcon.isDisplayed());
-    merchantPage.googlePlayIcon.click();
+    Assert.assertTrue(merchantLoginPage.googlePlayIcon.isDisplayed());
+    merchantLoginPage.googlePlayIcon.click();
     Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(ConfigReader.getProperty("urlContent2")));
     Driver.quitDriver();
 }
@@ -175,22 +176,22 @@ Driver.quitDriver();
     The user closes the page.*/
         Driver.getDriver().get("about:blank");
         Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-        Assert.assertTrue(merchantPage.rememberMeLable.isDisplayed());
-        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
-        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
-        merchantPage.rememberMeLable.click();
-        merchantPage.singinButton.click();
+        Assert.assertTrue(merchantLoginPage.rememberMeLable.isDisplayed());
+        merchantLoginPage.userBoxMerchantLogin.sendKeys(ConfigReader.getProperty("merchant_username"));
+        merchantLoginPage.passwordBoxMerchantLogin.sendKeys(ConfigReader.getProperty("merchant_password"));
+        merchantLoginPage.rememberMeLable.click();
+        merchantLoginPage.signInButtonMerchantLogin.click();
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(ConfigReader.getProperty("urlContent3")));
-        merchantPage.merchantNameDropdown.click();
-        merchantPage.logoutMerchantDashboard.click();
+        merchantLoginPage.merchantNameDropdown.click();
+        merchantLoginPage.logoutMerchantDashboard.click();
         String exeptenceUrl=ConfigReader.getProperty("merchant_Url");
         String actualUrl=Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualUrl,exeptenceUrl);
-        Assert.assertTrue(merchantPage.titleOfLoginPage.isDisplayed());
-        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
-        merchantPage.passwordtextbox.sendKeys(Keys.ENTER);
+        Assert.assertTrue(merchantLoginPage.titleOfLoginPage.isDisplayed());
+        merchantLoginPage.userBoxMerchantLogin.sendKeys(ConfigReader.getProperty("merchant_username"));
+        merchantLoginPage.passwordBoxMerchantLogin.sendKeys(Keys.ENTER);
         String expectedRememberPass=ConfigReader.getProperty("merchant_password");
-        String actualRememberPass=merchantPage.passwordtextbox.getText();
+        String actualRememberPass=merchantLoginPage.passwordBoxMerchantLogin.getText();
         Assert.assertEquals(actualRememberPass,expectedRememberPass);
 Driver.quitDriver();
 }
@@ -204,9 +205,9 @@ Verify the presence of the  "Request E-mail"button.
 The user closes the page.*/
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-    Assert.assertTrue(merchantPage.forgetMiLink.isDisplayed());
-    merchantPage.forgetMiLink.click();
-    Assert.assertTrue(merchantPage.RequestEmail.isDisplayed());
+    Assert.assertTrue(merchantLoginPage.forgetMiLink.isDisplayed());
+    merchantLoginPage.forgetMiLink.click();
+    Assert.assertTrue(merchantLoginPage.RequestEmail.isDisplayed());
     Driver.quitDriver();
 }
 @Test
@@ -222,14 +223,14 @@ Verify position stability of the eye sign .
 The user closes the page.*/
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-    Assert.assertTrue(merchantPage.eyeAsignInPasswordBox.isDisplayed());
+    Assert.assertTrue(merchantLoginPage.eyeAsignInPasswordBox.isDisplayed());
     ReusableMethods.wait(2);
-    merchantPage.singinButton.click();
-    Assert.assertTrue(merchantPage.user_ThisFieldIsRequired.isDisplayed());
-    Assert.assertTrue(merchantPage.pass_ThisFieldIsRequired.isDisplayed());
+    merchantLoginPage.signInButtonMerchantLogin.click();
+    Assert.assertTrue(merchantLoginPage.user_ThisFieldIsRequired.isDisplayed());
+    Assert.assertTrue(merchantLoginPage.pass_ThisFieldIsRequired.isDisplayed());
     ReusableMethods.wait(2);
-    WebElement expectedEyePosition= merchantPage.eyeAsignInPasswordBox;
-    WebElement actualEyePosition= merchantPage.eyeAsignFallDownPosition;
+    WebElement expectedEyePosition= merchantLoginPage.eyeAsignInPasswordBox;
+    WebElement actualEyePosition= merchantLoginPage.eyeAsignFallDownPosition;
     ReusableMethods.wait(2);
     Assert.assertNotEquals(actualEyePosition,expectedEyePosition);
     Driver.quitDriver();
