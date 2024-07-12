@@ -164,13 +164,13 @@ public class AdminPage {
     public WebElement entriesInformation; // admin dashboard customer page entries information number
 
     @FindBy(xpath = "//*[@class='page-link']")
-    public List<WebElement> pageNumbers;
+    public List<WebElement> customerPagePageNumbers;
 
     @FindBy(xpath = "//*[text()='Search:']")
-    public WebElement searchText;
+    public WebElement customerPageSearchText;
 
     @FindBy(xpath = "//*[@class='form-control form-control-sm']")
-    public WebElement searchBox;
+    public WebElement customerPageSearchBox;
   
     @FindBy(xpath = "//*[@class='promo']")
     public  WebElement promoAdmin; // admin dashboard promo
@@ -309,6 +309,178 @@ public class AdminPage {
   
     @FindBy(xpath = "//tbody/tr/td[3]")
     public List<WebElement> orderIdColumn;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @FindBy(xpath = "(//*[text()='Block Customer'])")
+    public WebElement blockCustomerButton; // admin dashboard customer special page block customer button
+
+    @FindBy(xpath = "//a[contains(@class,'w-100 btn')]")
+    public WebElement checkoutAllReviewsButton; // admin dashboard Checout All Reviews button
+
+    @FindBy(xpath = "(//*[text()='Confirm'])")
+    public WebElement alertConfirmButton; // admin dashboard customer special page block customer confirm button
+
+    @FindBy(xpath = "//div[text()='Unblock Customer']")
+    public WebElement unBlockCustomerButton; // admin dashboard customer special page unblock customer button
+
+    @FindBy(xpath = "(//div[@class='card-body'])[13]")
+    public WebElement overviewOfReviewTable; // admin dashboard overview of review table
+
+    @FindBy(xpath = "(//div[@class='card-body'])[14]")
+    public WebElement recentPayoutTable; // admin dashboard recent payout table
+
+
+
 
 
 

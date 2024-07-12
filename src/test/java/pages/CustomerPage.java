@@ -148,7 +148,7 @@ public class CustomerPage {
     @FindBy(xpath = "//*[text()='Sandwiches and Wraps']")
     public WebElement sandwichAndWraps; // customer page sandwich and wraps
 
-    @FindBy(xpath = "(//*[@class='col-lg-3 mb-3 col-md-6 list-items'])")
+    @FindBy(xpath = "(//h5[@class='m-0 text-truncate'])[3]")
     public WebElement team2Restaurant; // customer page team2 restaurant page
 
     @FindBy(xpath = "(//*[@class='el-image__inner'])")
