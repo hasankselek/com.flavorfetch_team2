@@ -404,8 +404,8 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Download PDF (A4)']")
     public  WebElement downloadPdf;;//merchant_New order page
 
-    @FindBy(xpath = "//input[@type='search']")
-    public  WebElement filterBox;;//merchant_New order page
+    //@FindBy(xpath = "//input[@type='search']")
+    //public  WebElement filterBox; //merchant_New order page
 
     @FindBy(xpath= "//*[@class='btn btn-black btn-circle']")
     public  WebElement itemsPageAddnewButton;
