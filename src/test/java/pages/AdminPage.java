@@ -173,14 +173,53 @@ public class AdminPage {
     public WebElement searchBox;
   
     @FindBy(xpath = "//*[@class='promo']")
+    public  WebElement promoAdmin; // admin dashboard promo
+
+    @FindBy(xpath = "//*[text()='Coupon']")
+    public WebElement couponAdmin; // admin dashboard  coupon
+
+    @FindBy(xpath = "//*[@class=\"btn btn-black btn-circle\"]")
+    public WebElement newCouponButton;
+
+    @FindBy (xpath = "//*[@id=\"AR_voucher_voucher_name\"]")
+    public WebElement couponName;  // coupon name
+
+    @FindBy(xpath = "(//select[@class=\"form-control custom-select form-control-select\"])[1]")
+    public WebElement couponType; // coupon type
+
+    @FindBy (xpath = "//*[@id=\"AR_voucher_amount\"]")
+    public WebElement couponAmount;  // admin coupon discount amount
+
+    @FindBy(xpath = "//*[@id=\"AR_voucher_min_order\"]")
+    public WebElement couponMinOrder;  // Minimum Order
+
+    @FindBy(xpath = "//select[@name=\"AR_voucher[days_available][]\"]")
+    public WebElement couponDay; // Coupon Days
+
+    @FindBy (xpath = "(//*[@class='selection'])[2]")
+    public WebElement couponMerchant;    // merchant where the coupon applies
+
+    @FindBy(xpath = "//*[@id='AR_voucher_used_once']")
+    public WebElement couponOptions;   // coupon options
+
+    @FindBy(xpath = "//*[@id='AR_voucher_status']")
+    public WebElement copuponStatus;    // coupon status
+
+    @FindBy(xpath = "//*[@class='btn btn-green btn-full mt-3']")
+    public WebElement couponSaved;      // coupon saved
+
+    @FindBy(xpath = "//*[@class='promo']")
     public  WebElement adminPromo;
+  
     @FindBy(xpath = "//a[text()='Orders']")
     public  WebElement dasboardOrders;
+  
     @FindBy(xpath = "//a[text()='All order']")
     public  WebElement dashboardAllOrders;
 
     @FindBy(xpath = "//i[@class='zmdi zmdi-desktop-mac']")
     public WebElement desktopImages;//admin_allOrders
+  
     @FindBy(xpath = "//button[@class='ml-2 btn btn-yellow normal']")
     public  WebElement filterButton;//admin_allOrders
 
@@ -189,63 +228,88 @@ public class AdminPage {
 
     @FindBy(xpath = "(//li[@role='option'])[2]")
     public WebElement customerNameOption;
+  
     @FindBy(xpath = "//button[text()='Apply Filters']")
     public WebElement applyFiltersButton;
+  
     @FindBy(xpath = "//tbody/tr/td[5]")
     public List<WebElement> elementsOfTheThirdColumn;
+  
     @FindBy(xpath = "(//span[@role='combobox'])[3]")
     public WebElement filtersByStatusBox;
+  
     @FindBy(xpath = "//li[text()='complete']")
     public WebElement byStatusOption;
+  
     @FindBy(xpath = "//tbody/tr/td[2]/span[text()='complete']")
     public List<WebElement> elementsOfTheSecondColumnByStatus;//By status
+  
     @FindBy(xpath = "(//span[@role='combobox'])[4]")
     public  WebElement filtersByOrderTypeBox;
+  
     @FindBy(xpath = "//li[text()='Delivery']")
     public WebElement byOrderTypeOption;
+  
     @FindBy(xpath = "//tbody/tr/td[2]//span[@class='ml-2 services badge delivery']")
     public List<WebElement> elementsOfTheSecondColumnByOrderType;
 
     @FindBy(xpath = "(//span[@role='combobox'])[1]")
     public  WebElement filtersByMerchantBox;
+  
     @FindBy(xpath = "//input[@role='searchbox']")
     public WebElement nameBoxBelowByMerchant;
+  
     @FindBy(xpath = "//li[text()='Dolan Uyghur Restaurant']")
     public  WebElement byMerchantOption;
+  
     @FindBy(xpath = "//tbody/tr/td[4]")
     public List<WebElement>elementsOfTheFourthColumnByMerchant;
+  
     @FindBy(xpath = "//p[text()='Orders']")
     public WebElement ordersIcon;
+  
     @FindBy(xpath = "//h5[text()='496']")
     public  WebElement ordersNumber;
+  
     @FindBy(xpath = "//p[text()='Cancel']")
     public WebElement cancelIcon;
 
     @FindBy(xpath = "//h5[text()='43']")
     public  WebElement cancelNumber;
+  
     @FindBy(xpath = "//p[text()='Total refund']")
     public WebElement totalRefundIcon;
+  
     @FindBy(xpath = "//h5[text()='$2340.75']")
     public WebElement totalRefunQuantity;
+  
     @FindBy(xpath = "//p[text()='Total Orders']")
     public  WebElement totalOrdersIcon;
+  
     @FindBy(xpath = "//h5[text()='$12619.34']")
     public  WebElement totalOrdersQuantity;
+  
     @FindBy(xpath = "//input[@placeholder='Start date -- End date']")
     public WebElement dateRangeBox;
+  
     @FindBy(xpath = "(//thead)[2]/tr/th[2]")
     public WebElement dateRangeBoxBackIcon;
+  
     @FindBy(xpath = "(//tbody)[2]//tr[4]/td[5]")
     public WebElement startDateOption;
+  
     @FindBy(xpath = "(//tbody)[2]//tr[4]/td[6]")
     public  WebElement endDateOption;
 
     @FindBy(xpath = "//tbody/tr/td[2]/p[@class='dim m-0'][4]")
     public  List<WebElement> dateRangeResult;
+  
     @FindBy(xpath = "//table/thead/tr/th[3]")
     public WebElement orderIdIcon;
+  
     @FindBy(xpath = "//tbody/tr/td[3]")
     public List<WebElement> orderIdColumn;
+
 
 
 
