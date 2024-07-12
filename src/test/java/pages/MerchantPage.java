@@ -262,9 +262,6 @@ public class MerchantPage {
 
     @FindBy(xpath=" (//*[text()=' Profile '])[1]")
     public WebElement profileSection;  // merchant profili
-  
-
-
 
     @FindBy(xpath = "(//*[@id='dropdownMenuLink'])[1]")
     public WebElement merchantNameDropdown;
