@@ -38,9 +38,10 @@ public class US_005 {
         //Yeni kayitlar icin bir 'Sign Up' link baglantisi oldugunu dogrular
         Assert.assertTrue(customerPage.signUpButton.isDisplayed());
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
-    } // Test of "Email","Password","Forgot password?", "Remember me"  and "Sign Up" fields
+
+    } // Test of "Email","Password","Forgot password?", "Remember me"  and "Sign Up" fields --> PASSED
 
     @Test
     public void TC_0502 (){
@@ -60,10 +61,11 @@ public class US_005 {
         customerPage.profileDropdownMenu.click();
         customerPage.logoutButton.click();
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
 
-    } // Test of successful logging in with the correct email and correct password
+
+    } // Test of successful logging in with the correct email and correct password --> PASSED
 
     @Test
     public void TC_0503 (){
@@ -84,10 +86,10 @@ public class US_005 {
         customerPage.profileDropdownMenu.click();
         customerPage.logoutButton.click();
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
 
-    } // Test of successful logging in with the correct phone number and correct password
+    } // Test of successful logging in with the correct phone number and correct password --> PASSED
 
     @Test
     public void TC_0504 (){
@@ -105,9 +107,10 @@ public class US_005 {
         customerPage.loginSigninButton.click();
         Assert.assertTrue(customerPage.loginAlert.isDisplayed());
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
-    } // Test of unsuccessful logging in with the incorrect email and correct password
+
+    } // Test of unsuccessful logging in with the incorrect email and correct password --> PASSED
 
     @Test
     public void TC_0505 (){
@@ -125,10 +128,11 @@ public class US_005 {
         customerPage.loginSigninButton.click();
         Assert.assertTrue(customerPage.loginAlert.isDisplayed());
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
 
-    } // Test of unsuccessful logging in with the correct email and incorrect password
+
+    } // Test of unsuccessful logging in with the correct email and incorrect password --> PASSED
 
 
 

@@ -154,18 +154,17 @@ public class CustomerPage {
     @FindBy(xpath = "(//*[@class='el-image__inner'])")
     public List<WebElement> restaurantAllPhoto; // customer page restaurant page all photo
 
-    @FindBy(xpath = "//*[text()=' Saved Stores ']")
-    public WebElement savedStoreIcon;
-
-    @FindBy(xpath = "//*[@class='btn btn-green']")
-    public WebElement orderNowButton;
+    @FindBy(xpath = "//a[text()=' Saved Stores ']")
+    public WebElement savedStoreIcon;//customer page
 
     @FindBy(xpath = "//h5[@class='m-0 text-truncate']")
-    public List<WebElement> savedStoreRestaurants;
+    public List<WebElement> savedStoreRestaurants;//Saved Store Page
 
-    @FindBy(xpath = "//*[@class='header_icon _icons favourite d-flex align-items-center justify-content-center']")
-    public WebElement heartIcon;
+    @FindBy(xpath = "(//a[@class='btn btn-green'])[1]")
+    public WebElement orderNowButton;//Saved Store Page
 
+    @FindBy(xpath = "//div[@class='d-none d-lg-block']")
+    public  WebElement heartIcon; //Saved Store Page
 
     @FindBy(xpath = "(//*[text()='Privacy policy'])[1]"  )
     public WebElement PrivacyPolicySayfabaslik; // privacy policy text title
@@ -175,6 +174,119 @@ public class CustomerPage {
 
     @FindBy(xpath = "//*[text()='info@flavorfetch.com']"  )
     public WebElement PrivacyPolicyIletisimAdresi; // privacy policy contact us
+
+    @FindBy(xpath = "(//*[text()='Italian'])[1]")
+    public WebElement italianRestaurants; // customer page italian Restaurants Page
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @FindBy(xpath = "//*[text()=' Manage my account ']")
+    public WebElement ManagemyAccount;  // customer  manage my account
+
+    @FindBy(xpath = "//*[@id='first_name']")
+    public WebElement FirstName;  // customer manage account
+
+    @FindBy(xpath = "//*[@class='mt-3 btn btn-green w-100']")
+    public WebElement SubmitButton;  // customer manage account submit
+
+    @FindBy(xpath = "//*[@id='last_name']")
+    public WebElement LastName;   // customer manage account
+
+    @FindBy(xpath = "//*[@id='email_address']")
+    public WebElement emailAddress;   // customer manage account
+
+    @FindBy(xpath = "//*[@class='inputs-with-dropdown d-flex align-items-center mb-3']")
+    public WebElement phone;       // customer manage account
+
+    @FindBy(xpath = "//*[@class='alert alert-success']")
+    public WebElement alertProfile;   // customer manage account
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-cloud-upload']")   // //*[@class='zmdi zmdi-cloud-upload']   "//*[text()=' Update ']"
+    public WebElement updateProfile;  // customer manage account
+
+    @FindBy(xpath = "//*[text()='Drop files here to upload']")
+    public WebElement updateClick;    // customer manage account
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-lock-outline']")
+    public WebElement changePassword;  //   customer manage account
+
+
+    @FindBy(xpath = "//*[@id='old_password']")
+    public WebElement oldPassword;  //customer manage account
+
+    @FindBy(xpath = "//*[@id='new_password']")
+    public WebElement newPassword;  // customer manage account
+
+    @FindBy(xpath = "//*[@id='confirm_password']")
+    public WebElement confirmPassword;  // customer manage account
+
+    @FindBy(xpath = "//*[text()='Password change']")
+    public WebElement passwordChangeText;  // customer manage account
+
+    @FindBy(xpath = "//*[@class='alert alert-warning mb-2']")
+    public WebElement passwordDifferentError;   // customer manage account
+
+    @FindBy(xpath = "//*[text()='Code']")
+    public WebElement codeView;  // customer manage account
+
+    @FindBy(xpath = "//*[text()='Save Photo']")
+    public WebElement savePhoto;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @FindBy(xpath = "//*[text()=' Addresses ']")
+    public WebElement addressInfo;  // customer  manage my account
+
+    @FindBy(xpath = "//*[@class='col-md-3']")
+    public WebElement CountAddress;
+
+    @FindBy(xpath = "//*[@class='module truncate-overflow']")
+    public WebElement countryView;
+
+    @FindBy(xpath = "//h5[text()='Home']")
+    public WebElement addressType;
+
+    @FindBy(className = "card p-3 fixed-height address-slot")
+    public List<WebElement> addressCount;
+
+    @FindBy(xpath = "//*[@class='col-md-3']")
+    public WebElement addressCountHead;
+
+
+
 
 
 }
