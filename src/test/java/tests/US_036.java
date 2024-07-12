@@ -1,7 +1,5 @@
 package tests;
 
-
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -13,6 +11,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
+
 
 
 public class US_036 {
