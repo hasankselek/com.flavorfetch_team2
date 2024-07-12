@@ -33,21 +33,40 @@ public class US_016 {
 
         ReusableMethods.waitFor(3);
 
-//  String address=customerPage.addressType.getText();
-//   System.out.println(address);
 
         Assert.assertTrue(customerPage.countryView.isDisplayed());
 
 //    if (customerPage.addressType)
         Assert.assertTrue(customerPage.addressType.isDisplayed());
 
-        int addressCountNumber = customerPage.addressCount.size();
-        String adressHeadVount= customerPage.addressCountHead.getText();
-        System.out.println(adressHeadVount);
+//       // int addressCountNumber = customerPage.addressCount.size();
+//        String adressHeadVount= customerPage.addressCountHead.getText();
+//        System.out.println(adressHeadVount);
+
+
+        //How many addresses the user has added and deleted should be seen in the address section.
+        String addressCountNum=customerPage.viewAddressCount.getText();
+        addressCountNum=addressCountNum.replaceAll("\\D","");
+        int AddressNum=Integer.parseInt(addressCountNum);
+
+
+        int ViewAdressCount=customerPage.addressCount.size();
+
+
+        Assert.assertEquals(AddressNum,ViewAdressCount);
+
 
 
         Driver.quitDriver();
 
+    }
+
+    @Test
+    public void TC_1602(){
+
+
 
     }
+
+
 }
