@@ -17,6 +17,7 @@ import java.util.function.Function;
 
 public class ReusableMethods {
     private static int timeout = 5;
+    static AdminPage adminPage = new AdminPage();
 
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
@@ -418,6 +419,13 @@ public class ReusableMethods {
         merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
         merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
         merchantPage.singinButton.click();
+    }
+
+    public static void accessToAdminHasan(){
+        adminPage = new AdminPage();
+        Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.signInButton.click();
     }
 
 

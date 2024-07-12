@@ -55,7 +55,7 @@ public MerchantLoginPage(){
     @FindBy(xpath = "(//*[@class='required'])[3]")
     public WebElement backgroundPassBox;
 
-    @FindBy(xpath = ".//input[starts-with(@class,'form-label-group')]")
+    @FindBy(xpath = "//div[@class='form-label-group']")
     public WebElement textEnteredUserBox;
 
     @FindBy(xpath = "//*[@type='text']")
@@ -64,7 +64,7 @@ public MerchantLoginPage(){
     @FindBy(xpath = "//*[@type='password']")
     public WebElement passwordHidden;
 
-    @FindBy(xpath = ".//input[starts-with(@class,'form-label-group change_field_password')]")
+    @FindBy(xpath = "//*[@class='form-label-group change_field_password']")
     public  WebElement passwordFieldPassBox;
 
     @FindBy(xpath = "//*[@type='submit']")
