@@ -2,6 +2,8 @@ package tests;
 
 import com.github.javafaker.Faker;
 import org.bouncycastle.crypto.digests.Kangaroo;
+import org.checkerframework.checker.units.qual.A;
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -82,6 +84,7 @@ The user closes the page.*/
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
     Assert.assertTrue(merchantLoginPage.backgroundUserBox.isDisplayed());
     merchantLoginPage.userBoxMerchantLogin.sendKeys(fakerName);
+
     Assert.assertTrue(merchantLoginPage.backgroundUserBox.isDisplayed());
     merchantLoginPage.userBoxMerchantLogin.sendKeys(Keys.CLEAR);
 
@@ -90,36 +93,32 @@ The user closes the page.*/
 
     Assert.assertTrue(merchantLoginPage.backgroundPassBox.isDisplayed());
     merchantLoginPage.passwordBoxMerchantLogin.sendKeys(fakerPassword);
+    System.out.println(merchantLoginPage.passwordBoxMerchantLogin.getText());
     Assert.assertTrue(merchantLoginPage.backgroundPassBox.isDisplayed());
-    merchantLoginPage.passwordBoxMerchantLogin.sendKeys(fakerPassword+Keys.CLEAR);
-    String expectedPassBoxInvolve="";
+    merchantLoginPage.passwordBoxMerchantLogin.sendKeys(Keys.CLEAR);
+
     String actualPassBoxInvolve= merchantLoginPage.passwordBoxMerchantLogin.getText();
-    Assert.assertEquals(actualPassBoxInvolve,expectedPassBoxInvolve);
+    Assert.assertTrue(actualPassBoxInvolve.isEmpty());
     Driver.quitDriver();
 }
 @Test
     public void test_1904(){
-            /*
-    The user opens the browser.
-    enters the Url.
-    Verify the presence of the  "eye sign" in the password box.
-    Enter a word inside the password box.
 
-   Verify the presence of the  "eye sign" in the password box.
-    Verify the letters are shown by dotes.
-    Click on the "eye sign".
-    Verify the presence of the "Eye Sign With a Line On It" in the password box.
-    Verify visibility of the written letters .
-    The user closes the page.
-             */
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    //  Verify the presence of the  "eye sign" in the password box.
     Assert.assertTrue(merchantLoginPage.eyeAsignInPasswordBox.isDisplayed());
+   // Enter a word inside the password box.
 merchantLoginPage.passwordBoxMerchantLogin.sendKeys(fakerPassword);
+   // Verify the presence of the  "eye sign" in the password box.
 Assert.assertTrue(merchantLoginPage.eyeAsignInPasswordBox.isDisplayed());
+   // Verify the letters are shown by dotes.
 Assert.assertTrue(merchantLoginPage.passwordHidden.isDisplayed());
+  //  Click on the "eye sign".
 merchantLoginPage.eyeAsignInPasswordBox.click();
+  //  Verify the presence of the "Eye Sign With a Line On It" in the password box.
 Assert.assertTrue(merchantLoginPage.eyeAsignWithALine.isDisplayed());
+  // Verify visibility of the written letters .
 Assert.assertTrue(merchantLoginPage.passwordReveal.isDisplayed());
 
     String expectedPass=fakerPassword;
@@ -145,7 +144,9 @@ Driver.quitDriver();
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
     Assert.assertTrue(merchantLoginPage.appStoreIcon.isDisplayed());
     merchantLoginPage.appStoreIcon.click();
-    Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(ConfigReader.getProperty("urlContent1")));
+    String expectedUrlContent=ConfigReader.getProperty("urlContent1");
+    String actualUrlContent=Driver.getDriver().getCurrentUrl();
+    Assert.assertTrue(actualUrlContent.contains(expectedUrlContent));
     Driver.quitDriver();
 }
 @Test
@@ -154,7 +155,9 @@ Driver.quitDriver();
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
     Assert.assertTrue(merchantLoginPage.googlePlayIcon.isDisplayed());
     merchantLoginPage.googlePlayIcon.click();
-    Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(ConfigReader.getProperty("urlContent2")));
+    String expectedUrlContent=ConfigReader.getProperty("urlContent2");
+    String actualUrlContent=Driver.getDriver().getCurrentUrl();
+    Assert.assertTrue(actualUrlContent.contains(expectedUrlContent));
     Driver.quitDriver();
 }
 @Test
@@ -233,6 +236,112 @@ The user closes the page.*/
     WebElement actualEyePosition= merchantLoginPage.eyeAsignFallDownPosition;
     ReusableMethods.wait(2);
     Assert.assertNotEquals(actualEyePosition,expectedEyePosition);
+    Driver.quitDriver();
+}
+@Test
+    public void test_1910(){
+            /*
+    The user opens the browser.
+            enters the Url.
+    enter the incorrect username in usename box
+    enter the incorrect pssword in password box
+    click the sign in button.
+
+    Verify the presence of the"Incorrect username or password"text.
+            Verify position stability of the eye sign .
+
+             */
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    merchantLoginPage.userBoxMerchantLogin.sendKeys(fakerName);
+    merchantLoginPage.passwordBoxMerchantLogin.sendKeys(fakerPassword);
+    merchantLoginPage.signInButtonMerchantLogin.click();
+    String expectedUrl= ConfigReader.getProperty("merchant_Url");
+    String actualUrl=Driver.getDriver().getCurrentUrl();
+    //Verify the url address is not equel to url of merchant login page.
+    Assert.assertNotEquals(actualUrl,expectedUrl);
+
+
+}
+@Test
+    public void test_1911(){
+            /*The user opens the browser.
+        enters the Url.
+    enter the incorrect username in usename box
+    enter the correct pssword in password box
+    click the sign in button.
+            Verify the url of page contains "Merchant".
+            Verify the presence of the"Incorrect username or password"text.
+            Verify position stability of the eye sign .
+    The user closes the page.
+
+             */
+
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    merchantLoginPage.userBoxMerchantLogin.sendKeys(fakerName);
+    merchantLoginPage.passwordBoxMerchantLogin.sendKeys(ConfigReader.getProperty("merchant_password"));
+    merchantLoginPage.signInButtonMerchantLogin.click();
+    String expectedUrlContains=ConfigReader.getProperty("urlContent4");
+    String actualUrlContains=Driver.getDriver().getCurrentUrl();
+    Assert.assertFalse(actualUrlContains.contains(expectedUrlContains));
+    String expectedUserName=fakerName;
+    String actualUserName=merchantLoginPage.userBoxMerchantLogin.getText();
+    Assert.assertEquals(actualUserName,expectedUserName);
+    String expectedPassword=ConfigReader.getProperty("merchant_password");
+    String actualPassword=merchantLoginPage.passwordBoxMerchantLogin.getText();
+    Assert.assertEquals(actualPassword,expectedPassword);
+    Driver.quitDriver();
+
+}
+@Test
+    public void test_1912(){
+            /*
+    The user opens the browser.
+            enters the Url.
+    enter the correct username in usename box
+    enter the incorrect pssword in password box
+    click the sign in button.
+            Verify the url of page contains "Merchant".
+            Verify the presence of the"Incorrect username or password"text.
+            Verify position stability of the eye sign .
+    The user closes the page.
+             */
+
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    merchantLoginPage.userBoxMerchantLogin.sendKeys(ConfigReader.getProperty("merchant_username"));
+    merchantLoginPage.passwordBoxMerchantLogin.sendKeys(fakerPassword);
+    merchantLoginPage.signInButtonMerchantLogin.click();
+    String expectedUrlContains=ConfigReader.getProperty("urlContent4");
+    String actualUrlContains=Driver.getDriver().getCurrentUrl();
+    Assert.assertFalse(actualUrlContains.contains(expectedUrlContains));
+    String expectedUserName=ConfigReader.getProperty("merchant_username");
+    String actualUserName=merchantLoginPage.userBoxMerchantLogin.getText();
+    Assert.assertEquals(actualUserName,expectedUserName);
+    String expectedPassword=fakerPassword;
+    String actualPassword=merchantLoginPage.passwordBoxMerchantLogin.getText();
+    Assert.assertEquals(actualPassword,expectedPassword);
+    Driver.quitDriver();
+}
+@Test
+    public void test_1913(){
+            /*
+    The user opens the browser.
+            enters the Url.
+    enter the correct username in usename box
+    enter the correct pssword in password box
+    click the sign in button.
+            Verify the url of entrance page contains "merchant/dashboard".
+            The user closes the page.*/
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    merchantLoginPage.userBoxMerchantLogin.sendKeys(ConfigReader.getProperty("merchant_username"));
+    merchantLoginPage.passwordBoxMerchantLogin.sendKeys(ConfigReader.getProperty("merchant_password"));
+    merchantLoginPage.signInButtonMerchantLogin.click();
+    String expectedUrlContain=ConfigReader.getProperty("urlContent3");
+    String actualUrlContain=Driver.getDriver().getCurrentUrl();
+    Assert.assertTrue(actualUrlContain.contains(expectedUrlContain));
     Driver.quitDriver();
 }
 }
