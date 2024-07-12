@@ -6,6 +6,7 @@ import pages.CustomerPage;
 import utilities.*;
 
 public class US_004 {
+
     CustomerPage customerPage = new CustomerPage();
 
     @Test

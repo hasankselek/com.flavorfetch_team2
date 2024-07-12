@@ -279,7 +279,7 @@ public class CustomerPage {
     @FindBy(xpath = "//h5[text()='Home']")
     public WebElement addressType;
 
-    @FindBy(className = "card p-3 fixed-height address-slot")
+    @FindBy(xpath = "//*[@class='card p-3 fixed-height address-slot'")
     public List<WebElement> addressCount;
 
     @FindBy(xpath = "//*[@class='col-md-3']")
