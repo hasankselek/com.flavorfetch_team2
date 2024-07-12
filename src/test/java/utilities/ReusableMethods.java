@@ -5,6 +5,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.annotations.BeforeTest;
+import pages.AdminPage;
 import pages.MerchantPage;
 
 import java.io.File;
@@ -418,4 +419,6 @@ public class ReusableMethods {
         merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
         merchantPage.singinButton.click();
     }
+
+
 }
