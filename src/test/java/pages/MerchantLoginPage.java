@@ -69,9 +69,12 @@ public MerchantLoginPage(){
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement signInButtonMerchantLogin;
 
-    @FindBy(xpath = "//*[@for='AR_merchant_login_username']")
+    @FindBy(id = "AR_merchant_login_username")
     public WebElement userBoxMerchantLogin;
 
-    @FindBy(xpath = "//*[@for='AR_merchant_login_password']")
+    @FindBy(id = "AR_merchant_login_password")
+
     public WebElement passwordBoxMerchantLogin;
+
+
 }
