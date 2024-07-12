@@ -12,12 +12,12 @@ public class US_005 {
 
     //As a user, I want to be able to login with my email and password information that I registered on the site.
 
-    CustomerPage customerPage = new CustomerPage();
+    static CustomerPage customerPage = new CustomerPage();
 
     @Test
     public void TC_0501 (){
 
-
+        customerPage = new CustomerPage();
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -45,15 +45,16 @@ public class US_005 {
 
     @Test
     public void TC_0502 (){
+        customerPage = new CustomerPage();
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         //Anasayfa header bolumundeki 'Sign in' butonuna tiklar
         customerPage.signInButton.click();
         //Email/telefon numarasi alanina dogru emaili girer
-        customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_gülpembe"));
+        customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_gulpembe"));
         //Password alanina dogru passwordu girer
-        customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_gülpembe"));
+        customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_gulpembe"));
         //Sign in butonuna tiklar ve basarili giris yapabildigini dogrular
         customerPage.loginSigninButton.click();
         Assert.assertTrue(customerPage.notificicationsButton.isDisplayed());
@@ -69,7 +70,7 @@ public class US_005 {
 
     @Test
     public void TC_0503 (){
-
+        customerPage = new CustomerPage();
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -78,7 +79,7 @@ public class US_005 {
         //Email/telefon numarasi alanina dogru telefon numarasini girer
         customerPage.emailBox.sendKeys(ConfigReader.getProperty("phoneNumber_gulpembe"));
         //Password alanina dogru passwordu girer
-        customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_gülpembe"));
+        customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_gulpembe"));
         //Sign in butonuna tiklar ve basarili giris yapabildigini dogrular
         customerPage.loginSigninButton.click();
         Assert.assertTrue(customerPage.notificicationsButton.isDisplayed());
@@ -93,6 +94,7 @@ public class US_005 {
 
     @Test
     public void TC_0504 (){
+        customerPage = new CustomerPage();
 
         //Kullanici browseri acar
         //Url'I girer
@@ -100,9 +102,9 @@ public class US_005 {
         //Anasayfa header bolumundeki 'Sign in' butonuna tiklar
         customerPage.signInButton.click();
         //Email/telefon numarasi alanina hatali email girer
-        customerPage.emailBox.sendKeys(ConfigReader.getProperty("incorrectCustomeruser_gülpembe"));
+        customerPage.emailBox.sendKeys(ConfigReader.getProperty("incorrectCustomeruser_gulpembe"));
         //Password alanina dogru passwordu girer
-        customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_gülpembe"));
+        customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_gulpembe"));
         //Sign in butonuna tiklar ve basarili giris yapilamadigini dogrular
         customerPage.loginSigninButton.click();
         Assert.assertTrue(customerPage.loginAlert.isDisplayed());
@@ -114,16 +116,16 @@ public class US_005 {
 
     @Test
     public void TC_0505 (){
-
+        customerPage = new CustomerPage();
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         //Anasayfa header bolumundeki 'Sign in' butonuna tiklar
         customerPage.signInButton.click();
         //Email/telefon numarasi alanina dogru emaili girer
-        customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_gülpembe"));
+        customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_gulpembe"));
         //Password alanina hatali password girer
-        customerPage.passwordBox.sendKeys(ConfigReader.getProperty("incorrectCustomerpassword_gülpembe"));
+        customerPage.passwordBox.sendKeys(ConfigReader.getProperty("incorrectCustomerpassword_gulpembe"));
         //Sign in butonuna tiklar ve basarili giris yapilamadigini dogrular
         customerPage.loginSigninButton.click();
         Assert.assertTrue(customerPage.loginAlert.isDisplayed());
@@ -133,7 +135,6 @@ public class US_005 {
 
 
     } // Test of unsuccessful logging in with the correct email and incorrect password --> PASSED
-
 
 
 }

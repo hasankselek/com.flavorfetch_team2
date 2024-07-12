@@ -448,6 +448,53 @@ public class MerchantPage {
   
     @FindBy(xpath = "//a[text()='Clear']")
     public  WebElement clearIcon;
+
+    @FindBy(xpath = "//*[@class='flex-col d-none d-lg-block']")
+    public WebElement scheduledOrdersLeftHeader; // scheduled order page
+
+    @FindBy(xpath = "(//*[text()='How to manage orders'])[1]")
+    public WebElement howToManageOrdersLink;  // scheduled order page
+
+    @FindBy(xpath = "(//*[@class='btn btn-green'])[1]")
+    public WebElement acceptingOrdersButton; // scheduled order page
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-notifications-none']")
+    public WebElement notificationsButton; // scheduled order page
+
+    @FindBy(xpath = "//*[@class='font13 m-0 badge']")
+    public WebElement orderStatus; // scheduled order page
+
+    @FindBy(xpath = "//textarea[@class='form-control form-control-text']")
+    public WebElement rejectReasonTextBox; // scheduled order reject page
+
+    @FindBy(xpath = "(//*[@class='list-group list-group-flush'])[1]")
+    public WebElement rejectReasonPickArea; //  scheduled order reject page
+
+    @FindBy(xpath = "//*[text()='Out of item(s)']")
+    public WebElement rejectReason; // scheduled order reject page
+
+    @FindBy(xpath = "//*[text()='Reject order']")
+    public WebElement rejectOrderButton; //  scheduled order reject page
+
+    @FindBy(xpath = "//*[@class='mb-1']")
+    public WebElement productNameOrderSummary; //  scheduled order page
+
+    @FindBy(xpath = "//*[@class='m-0 font11']")
+    public WebElement productPriceOrderSummary; //  scheduled order page
+
+    @FindBy(xpath = "(//*[@class='col-6 d-flex justify-content-start flex-column'])[2]")
+    public WebElement subTotalQuantityOrderSummary; // scheduled order page
+
+    @FindBy(xpath = "(//*[@class='col-3 d-flex justify-content-start flex-column text-right'])[2]")
+    public WebElement subTotalPriceOrderSummary; // scheduled order page
+
+    @FindBy(xpath = "//*[@class='rounded-pill rounded-button-icon d-inline-block']")
+    public WebElement moreOptionsDropdownButton; //  scheduled order page
+
+    @FindBy(xpath = "//*[@class='dropdown-menu show']")
+    public WebElement moreOptionsDropdownMenu; //  scheduled order page
+
+
   
 
 
