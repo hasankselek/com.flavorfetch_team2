@@ -178,22 +178,6 @@ public class CustomerPage {
     @FindBy(xpath = "(//*[text()='Italian'])[1]")
     public WebElement italianRestaurants; // customer page italian Restaurants Page
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @FindBy(xpath = "//*[text()=' Manage my account ']")
     public WebElement ManagemyAccount;  // customer  manage my account
 
@@ -224,7 +208,6 @@ public class CustomerPage {
     @FindBy(xpath = "//*[@class='zmdi zmdi-lock-outline']")
     public WebElement changePassword;  //   customer manage account
 
-
     @FindBy(xpath = "//*[@id='old_password']")
     public WebElement oldPassword;  //customer manage account
 
@@ -246,30 +229,8 @@ public class CustomerPage {
     @FindBy(xpath = "//*[text()='Save Photo']")
     public WebElement savePhoto;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @FindBy(xpath = "//*[text()=' Addresses ']")
     public WebElement addressInfo;  // customer  manage my account
-
 
     @FindBy(xpath = "//*[@class='module truncate-overflow']")
     public WebElement countryView;
@@ -277,7 +238,7 @@ public class CustomerPage {
     @FindBy(xpath = "//h5[text()='Home']")
     public WebElement addressType;
 
-    @FindBy(xpath = "//*[@class='card p-3 fixed-height address-slot']")
+    @FindBy(xpath = "//*[@class='card p-3 fixed-height address-slot'")
     public List<WebElement> addressCount;
 
     @FindBy(xpath = "//*[@class='col-md-3']")

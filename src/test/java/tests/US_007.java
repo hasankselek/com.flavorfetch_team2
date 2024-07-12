@@ -15,12 +15,13 @@ public class US_007 extends TestBaseRapor {
 
     // As a visitor, I would like to have a contact page on the site so that I can communicate with the site administrators that I shop with.
 
-    CustomerPage customerPage = new CustomerPage();
+    static CustomerPage customerPage = new CustomerPage();
     Actions actions = new Actions(Driver.getDriver());
 
     @Test
     public void TC_0701 (){
 
+        customerPage = new CustomerPage();
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -45,7 +46,7 @@ public class US_007 extends TestBaseRapor {
 
     @Test
     public void TC_0702 (){
-
+        customerPage = new CustomerPage();
         extentTest=extentReports.createTest("TC_0702" , "Test of customer name, customer email, customer message fields and  image section.");
         //Kullanici browseri acar
         //Url'I girer
@@ -88,7 +89,7 @@ public class US_007 extends TestBaseRapor {
 
     @Test
     public void TC_0703 (){
-
+        customerPage = new CustomerPage();
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -101,7 +102,7 @@ public class US_007 extends TestBaseRapor {
         //Acilan sayfada isim alanini dogru ve eksiksiz bilgilerle doldurur
         customerPage.contactNameBox.sendKeys(ConfigReader.getProperty("contactName_gulpembe"));
         //Email alanini dogru ve eksiksiz bilgilerle doldurur
-        customerPage.contactMailBox.sendKeys(ConfigReader.getProperty("customeruser_gülpembe"));
+        customerPage.contactMailBox.sendKeys(ConfigReader.getProperty("customeruser_gulpembe"));
         //Mesaj alanini doldurur
         customerPage.contactMessageBox.sendKeys(ConfigReader.getProperty("contactMessage"));
         //Formu submit eder
@@ -115,7 +116,7 @@ public class US_007 extends TestBaseRapor {
 
     @Test
     public void TC_0704 (){
-
+        customerPage = new CustomerPage();
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -128,7 +129,7 @@ public class US_007 extends TestBaseRapor {
         //Acilan sayfada isim alanini dogru ve eksiksiz bilgilerle doldurur
         customerPage.contactNameBox.sendKeys(ConfigReader.getProperty("contactName_gulpembe"));
         //Email alanini hatali bilgilerle doldurur
-        customerPage.contactMailBox.sendKeys(ConfigReader.getProperty("incorrectCustomeruser_gülpembe"));
+        customerPage.contactMailBox.sendKeys(ConfigReader.getProperty("incorrectCustomeruser_gulpembe"));
         //Mesaj alanini doldurur
         customerPage.contactMessageBox.sendKeys(ConfigReader.getProperty("contactMessage"));
         //Formu submit eder
@@ -142,6 +143,7 @@ public class US_007 extends TestBaseRapor {
 
     @Test
     public void TC_0705 (){
+        customerPage = new CustomerPage();
         extentTest=extentReports.createTest("TC_0705","Test of unsuccessful submit with empty message");
         //Kullanici browseri acar
         //Url'I girer
@@ -158,7 +160,7 @@ public class US_007 extends TestBaseRapor {
         customerPage.contactNameBox.sendKeys(ConfigReader.getProperty("contactName_gulpembe"));
         extentTest.info("Acilan sayfada isim alanini dogru ve eksiksiz bilgilerle doldurur");
         //Email alanini dogru ve eksiksiz bilgilerle doldurur
-        customerPage.contactMailBox.sendKeys(ConfigReader.getProperty("customeruser_gülpembe"));
+        customerPage.contactMailBox.sendKeys(ConfigReader.getProperty("customeruser_gulpembe"));
         extentTest.info("Email alanini dogru ve eksiksiz bilgilerle doldurur");
         //Formu submit eder
         customerPage.submitFormButton.click();
