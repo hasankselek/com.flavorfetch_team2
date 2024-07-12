@@ -188,8 +188,55 @@ public class AdminPage {
     public WebElement searchBox;
   
     @FindBy(xpath = "//*[@class='promo']")
-    public  WebElement promoadmin; // admin dashboard promo
+    public  WebElement promoAdmin; // admin dashboard promo
 
     @FindBy(xpath = "//*[text()='Coupon']")
-    public WebElement couponadmin; // admin dashboard  coupon
+    public WebElement couponAdmin; // admin dashboard  coupon
+
+
+    @FindBy(xpath = "//*[@class=\"btn btn-black btn-circle\"]")
+    public WebElement newCouponButton;
+
+    @FindBy (xpath = "//*[@id=\"AR_voucher_voucher_name\"]")
+    public WebElement couponName;  // coupon name
+
+    @FindBy(xpath = "(//select[@class=\"form-control custom-select form-control-select\"])[1]")
+    public WebElement couponType; // coupon type
+
+    @FindBy (xpath = "//*[@id=\"AR_voucher_amount\"]")
+    public WebElement couponAmount;  // admin coupon discount amount
+
+
+    @FindBy(xpath = "//*[@id=\"AR_voucher_min_order\"]")
+    public WebElement couponMinOrder;  // Minimum Order
+
+    @FindBy(xpath = "//select[@name=\"AR_voucher[days_available][]\"]")
+    public WebElement couponDay; // Coupon Days
+
+    @FindBy (xpath = "(//*[@class='selection'])[2]")
+    public WebElement couponMerchant;    // merchant where the coupon applies
+
+    @FindBy(xpath = "//*[@id='AR_voucher_used_once']")
+    public WebElement couponOptions;   // coupon options
+
+    @FindBy(xpath = "//*[@id='AR_voucher_status']")
+    public WebElement copuponStatus;    // coupon status
+
+    @FindBy(xpath = "//*[@class='btn btn-green btn-full mt-3']")
+    public WebElement couponSaved;      // coupon saved
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
