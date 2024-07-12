@@ -13,14 +13,14 @@ import java.io.FileNotFoundException;
 
 public class US_014 {
 
-    CustomerPage customerPage = new CustomerPage();
 
     @Test
     public void TC_1401()  {
 
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+        CustomerPage customerPage=new CustomerPage();
 
-        CustomerPage customerPage =new CustomerPage();
+
 
         customerPage.signInButton.click();
 

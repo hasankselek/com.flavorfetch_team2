@@ -1,7 +1,5 @@
 package tests;
 
-
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -307,14 +305,9 @@ public class US_036 {
             Assert.assertTrue(istenenDataElementi.isDisplayed());
         }
 
-
-
-
-
-
-
     }
 
+  
     @Test
     public void TC_3611(){
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
@@ -331,6 +324,7 @@ public class US_036 {
 
         for (int i = 0; i < 4; i++) {
             Assert.assertTrue(adminPage.customerPageAltBasliklar.get(i).isDisplayed());
+
         }
 
         Assert.assertTrue(adminPage.adminCustomerInfo.isDisplayed());
@@ -443,8 +437,8 @@ public class US_036 {
 
         Driver.quitDriver();
 
-
+        }
 
     }
 
-}
+
