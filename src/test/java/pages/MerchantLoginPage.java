@@ -45,6 +45,7 @@ public MerchantLoginPage(){
 
     @FindBy(xpath = "(//*[@class='errorMessage'])[1]")
     public WebElement pass_ThisFieldIsRequired;
+
     @FindBy(xpath = "//*[@class='mb-4']")
     public WebElement titleOfLoginPage;
 

@@ -3,13 +3,19 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CustomerPage;
-import utilities.*;
+import utilities.ConfigReader;
+import utilities.Driver;
+import utilities.JSUtilities;
+import utilities.ReusableMethods;
 
 public class US_004 {
+
     CustomerPage customerPage = new CustomerPage();
 
     @Test
     public void TC_0401(){
+
+        customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
         Assert.assertTrue(customerPage.footerLogo.isDisplayed());
@@ -22,7 +28,7 @@ public class US_004 {
 
     @Test
     public void TC_0402(){
-
+        customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
 
@@ -73,6 +79,7 @@ public class US_004 {
 
     @Test
     public void TC_0403(){
+        customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
 
@@ -98,7 +105,7 @@ public class US_004 {
 
     @Test
     public void TC_0404(){
-
+        customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
 
@@ -138,7 +145,7 @@ public class US_004 {
 
     @Test
     public void TC_0405(){
-
+        customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
 
@@ -160,7 +167,7 @@ public class US_004 {
 
     @Test
     public void TC_0406(){
-
+        customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
 
@@ -183,6 +190,7 @@ public class US_004 {
     @Test
     public void TC_0407(){
 
+        customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
 

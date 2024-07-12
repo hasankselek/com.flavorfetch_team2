@@ -61,7 +61,7 @@ public class AdminPage {
     @FindBy(xpath = "//*[text()='Clear all']")
     public WebElement clearAllButton; // admin dashboard notifications clear all button
 
-    @FindBy(xpath = "//*[text()='View All']")
+    @FindBy(xpath = "//*[@class='text-primary']")
     public WebElement viewAllButton; // admin dashboard view all button
 
     @FindBy(xpath = "//*[@class='none-notification text-center']")
@@ -91,23 +91,14 @@ public class AdminPage {
     @FindBy(xpath = "//*[text()='Popular items']")
     public WebElement popularItemsButton;
 
-    @FindBy(xpath = "//*[text()='Last 30 days sales']")
+    @FindBy(xpath = "(//li[@class='nav-item'])[6]")
     public WebElement Last30daysSalesButton;
 
-    @FindBy(xpath = "//*[@class='flex-col']")
+    @FindBy(xpath = "(//tbody)[3]//tr")
     public List<WebElement> popularItemsInformation;
 
-    @FindBy(xpath = "//*[@class='text-right align-middle']")
-    public List<WebElement> popularItemsQuantity;
-
-    @FindBy(xpath = "//*[@class='img-60 rounded-circle']")
-    public List<WebElement> popularItemsPictures;
-
-    @FindBy(xpath ="//*[@class='highcharts-plot-border']")
-    public WebElement last30DaysSalesChart;
-
-    @FindBy(xpath = "//*[@class='row ml-2 mt-4']")
-    public List<WebElement> last30DaysProducts;
+    @FindBy(xpath ="(//*[@class='card-body'])[9]")
+    public WebElement last30DaysSalesChartandProducts;
 
     @FindBy(xpath = "//*[@class='highcharts-background']")
     public WebElement salesOverviewGraph;
@@ -127,22 +118,16 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='text-right align-middle']")
     public List<WebElement> popularMerchantsQuantity;
 
-    @FindBy(xpath = "//*[@class='img-60 rounded']")
-    public List<WebElement> popularMerchantsPictures;
-
-    @FindBy(xpath = "//*[@class='font-weight-bold hover-text-primary mb-1 text-green']")
+    @FindBy(xpath = "(//tbody)[4]//tr")
     public List<WebElement> merchantName;
 
     @FindBy(xpath = "(//tbody)[4]")
     public WebElement popularByReviewTable;
 
-    @FindBy(xpath = "//*[@class='font-weight-bold hover-text-primary mb-1 text-green']")
-    public List<WebElement> merchantReviewPage;
-
     @FindBy(xpath = "//*[text()='Top Customers']")
     public WebElement topCustomersText;
 
-    @FindBy(xpath = "(//a[@class='font-weight-bold hover-text-primary mb-1'])[6]")
+    @FindBy(xpath = "(//a[@href='javascript:;'])[13]")
     public WebElement firstCustomerButton;
 
     @FindBy(xpath = "(//*[@class='modal-header'])[1]")
