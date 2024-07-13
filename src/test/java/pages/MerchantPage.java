@@ -500,7 +500,7 @@ public class MerchantPage {
     public WebElement totalOrderText;
 
 
-  
+
   
   
 }

@@ -244,6 +244,43 @@ public class CustomerPage {
     @FindBy(xpath = "//*[@class='col-md-3']")
     public WebElement viewAddressCount;
 
+    @FindBy (xpath= "//div[@id='vue-home-search']//input[@placeholder='Enter delivery address']")
+    public  WebElement enterDeliveryAddresstextBox ; // customerpage
+
+    @FindBy (xpath= "//h6[normalize-space()='New York']")
+    public  WebElement newYorkAddressTextBox ; // customerpage
+
+    @FindBy (xpath= "//*[text()='Show more']")
+    public  WebElement showMoreButton ; // restaurants page
+
+    @FindBy (xpath= "//*[@id='cuisine5']")
+    public  WebElement sandwichRAdioButton ; // restaurants page
+
+    @FindBy (xpath= "//h5[normalize-space()='Team2']")
+    public  WebElement team2Page ; // restaurants page
+
+    @FindBy (xpath= "(//*[text()=' Add to cart '])[1]")
+    public  WebElement iskenderButton ; // team2 page
+
+    @FindBy (xpath= "//a[@class='btn btn-green w-100 pointer d-flex justify-content-between']")
+    public  WebElement checkoutButton ; // team2 page
+
+    @FindBy (xpath= "//*[text()='Add new address']")
+    public  WebElement addNewAddressLink ; // team2 page
+
+    @FindBy (xpath= "(//*[@class='form-control form-control-text'])[4]")
+    public  WebElement addressPopupTextBox ; // team2 page
+
+    @FindBy (xpath= "(//*[text()='New York'])[3]")
+    public  WebElement newYorkChangeAddress ; // team2 page
+
+    @FindBy (xpath= "(//*[@class='btn btn-green w-100'])[8]")
+    public  WebElement saveButtonChangeAddress ; // team2 page
+
+    @FindBy (xpath= "(//*[text()='New York, NY, USA'])[2]")
+    public  WebElement chooseDeliveryText ; // team2 page
+
+
 
 
 
