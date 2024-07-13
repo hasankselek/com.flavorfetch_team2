@@ -99,7 +99,7 @@ public class CustomerPage {
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
     public WebElement footerYoutubeLogo;
-  
+
     @FindBy(xpath = "//*[@class=\"row no-gutters list-inline\"]")
     public WebElement localCuisine;
 
@@ -180,6 +180,27 @@ public class CustomerPage {
 
     @FindBy(xpath = "//*[text()=' Manage my account ']")
     public WebElement ManagemyAccount;  // customer  manage my account
+
+    @FindBy(xpath = "//*[text()=' Payments Options ']")
+    public WebElement paymentsOptions;  // customer payment page
+
+    @FindBy(xpath = "//*[text()='Add new payment']")
+    public WebElement addPayment;  // customer add payment
+
+    @FindBy(xpath = "//*[text()='Cash On delivery']")
+    public WebElement addCashOnDelivery;  // customer add cash on delivery payment
+
+    @FindBy(xpath = "//*[text()='Stripe']")
+    public WebElement stripe;  // customer add stripe payment
+
+    @FindBy(xpath = "//*[text()='Add Cash']")
+    public WebElement addCash;  // customer add cash
+
+    @FindBy(xpath = "//*[text()='Delete']")
+    public WebElement deletePayment;  // customer delete payment
+
+    @FindBy(xpath = "//*[text()='Edit']")
+    public WebElement editPayment;  // customer edit payment
 
     @FindBy(xpath = "//*[@id='first_name']")
     public WebElement FirstName;  // customer manage account
