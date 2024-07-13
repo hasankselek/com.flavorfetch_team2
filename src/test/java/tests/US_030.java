@@ -52,6 +52,7 @@ public class US_030 extends TestBaseRapor {
         Driver.getDriver().quit();
     }  // Test of display scheduled orders and order details in a list format and filter them -->PASSED
 
+
     @Test
     public void TC_3002() {
         merchantPage = new MerchantPage();
@@ -256,6 +257,7 @@ public class US_030 extends TestBaseRapor {
 
 
     } // Test of being able to print the order slip or download as a pdf format and able to contact option with customer --> PASSED
+
 }
 
 

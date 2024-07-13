@@ -496,6 +496,8 @@ public class MerchantPage {
 
 
   
+@FindBy(xpath = "//*[text()='Total Orders']")
+    public WebElement totalOrderText;
 
 
   
