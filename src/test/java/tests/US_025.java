@@ -29,7 +29,7 @@ public class US_025 {
 
         merchantPage.itemsPageAddnewButton.click();
 
-        merchantPage.itemNameTextBox.sendKeys("Tavuk Durum");
+        merchantPage.itemNameTextBox.sendKeys("Tavuk Sis");
 
 
         actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -37,7 +37,7 @@ public class US_025 {
         Select select = new Select(merchantPage.categoryDropdown);
         select.selectByValue("414");
         //actions.sendKeys(Keys.PAGE_DOWN).perform();
-        actions.click(merchantPage.saveButtonAddItem).perform();
+        merchantPage.saveButtonAddItem.submit();
 
         Driver.quitDriver();
     }
