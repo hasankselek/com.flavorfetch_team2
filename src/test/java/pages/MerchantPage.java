@@ -449,6 +449,8 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Clear']")
     public  WebElement clearIcon;
   
+@FindBy(xpath = "//*[text()='Total Orders']")
+    public WebElement totalOrderText;
 
 
   
