@@ -310,157 +310,6 @@ public class AdminPage {
     @FindBy(xpath = "//tbody/tr/td[3]")
     public List<WebElement> orderIdColumn;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @FindBy(xpath = "(//*[text()='Block Customer'])")
     public WebElement blockCustomerButton; // admin dashboard customer special page block customer button
 
@@ -478,6 +327,206 @@ public class AdminPage {
 
     @FindBy(xpath = "(//div[@class='card-body'])[14]")
     public WebElement recentPayoutTable; // admin dashboard recent payout table
+
+    @FindBy(xpath = "//a[normalize-space()='Earnings']")
+    public WebElement adminDashboardEarningsButton;
+
+    @FindBy(xpath = "//a[normalize-space()='Merchant Earnings']")
+    public WebElement adminDashboardMerchantEarningsButton;
+
+    @FindBy(xpath = "//*[text()='Search:']")
+    public WebElement merchantEarringPageSearchText;
+
+    @FindBy(xpath = "//*[@class='form-control form-control-sm']")
+    public WebElement merchantEarringPageSearchBox;
+
+    @FindBy(xpath = "//tbody//tr")
+    public List<WebElement> merchantEarringProducts;
+
+    @FindBy(xpath = "//*[@class='bg-light p-4 mb-3 rounded']")
+    public List<WebElement> merchantEarringTotalHeadings;
+
+    @FindBy(xpath = "//th[@aria-label='Merchant: activate to sort column ascending']")
+    public WebElement merchantEarringMerchantTitle;
+
+    @FindBy(xpath = "//th[@aria-label='Balance: activate to sort column ascending']")
+    public WebElement merchantEarringBalanceTitle;
+
+    @FindBy(xpath = "//th[@aria-label='Actions']")
+    public WebElement merchantEarringActionTitle;
+
+    @FindBy(xpath = "//tbody//tr//td[2]")
+    public List<WebElement> merchantEarringMerchantList;
+
+    @FindBy(xpath = "(//tr//th[2])[1]")
+    public WebElement merchantSortingButton;
+
+    @FindBy(xpath = "//*[@class='page-link']")
+    public List<WebElement> pageLinks;
+
+    @FindBy(xpath = "//tbody//tr//td[3]")
+    public List<WebElement> merchantEarringBalanceList;
+
+    @FindBy(xpath = "(//tr//th[3])[1]")
+    public WebElement balanceSortingButton;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
