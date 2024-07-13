@@ -102,6 +102,7 @@ public class US_033 {
 
         merchantPage.couponAddLink.click();
         fillTheCouponInformations();
+        Driver.quitDriver();
 
 
     }
