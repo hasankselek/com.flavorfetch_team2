@@ -105,6 +105,10 @@ public class US_033 {
 
 
     }
+    @Test
+    public void TC_3304(){
+
+    }
 
     public void fillTheCouponInformations() {
         //Coupon Name Test
