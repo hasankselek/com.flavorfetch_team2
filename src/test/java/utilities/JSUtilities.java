@@ -56,4 +56,10 @@ public class JSUtilities {
         return driver.getWindowHandles().size();
     }
 
+
+
+    public static void sayfaOlcegiDegistirme(WebDriver driver,int olcekMiktari) {
+        ((JavascriptExecutor) driver).executeScript("document.body.style.zoom='"+olcekMiktari+"%'");
+    }
+
 }

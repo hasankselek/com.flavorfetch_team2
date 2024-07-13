@@ -421,10 +421,10 @@ public class ReusableMethods {
         merchantPage.singinButton.click();
     }
 
-    public static void accessToAdminHasan(){
-        adminPage = new AdminPage();
+    public static void accessToAdmin(String adminUsername , String adminPassword){
+        AdminPage adminPage = new AdminPage();
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
-        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty(adminUsername)+Keys.TAB+ConfigReader.getProperty(adminPassword));
         adminPage.signInButton.click();
     }
 
