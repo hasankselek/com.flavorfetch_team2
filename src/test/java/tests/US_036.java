@@ -20,7 +20,7 @@ public class US_036 {
     @Test
     public void TC_3601(){
 
-
+        adminPage = new AdminPage();
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
 
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
