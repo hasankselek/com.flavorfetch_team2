@@ -413,6 +413,39 @@ public class MerchantPage {
     @FindBy(id= "AR_item_item_name")
     public  WebElement itemNameTextBox; // Add item page
 
+    @FindBy(xpath = "//h6[@class='m-0 position-relative']")
+    public List<WebElement> weeklyIncomeIntList;
+
+    @FindBy(xpath = "//*[@class='m-0 text-muted font-weight-normal']")
+    public List<WebElement>  weeklyIncomeTextList;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-money']")
+    public WebElement weeklyIconeYourBalance;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-money-box']")
+    public List<WebElement>  weeklyIncomeIconeList;
+    @FindBy(xpath = "//*[@class='col p-0 col-lg-3 col-md-3 col-sm-6 col-6 mb-3 mb-xl-0']")
+    public List<WebElement> listOfTopPictures;
+
+    @FindBy(xpath = "//h5")
+    public List<WebElement> topPicTextList;
+
+    @FindBy(xpath = "//*[@class='text-muted']")
+    public List<WebElement> textRightColumnList;
+
+    @FindBy(xpath = "//p")
+    public List<WebElement> topPicIntList;
+
+    @FindBy(xpath = "//*[@class='m-0 text-secondary']")
+    public List<WebElement> fourHouseTextList;
+
+    @FindBy(xpath = "//h2")
+    public WebElement overViewNumber;
+
+    @FindBy(xpath = "//h3")
+    public List<WebElement> fourHouseIntList;
+    @FindBy(xpath = "//h5[@class='m-0']")
+    public List<WebElement> listOfLastOrders_PopularItems;
     @FindBy(id= "AR_item_category_selected")
     public  WebElement categoryDropdown; //Add item page
 
@@ -496,8 +529,7 @@ public class MerchantPage {
 
 
   
-@FindBy(xpath = "//*[text()='Total Orders']")
-    public WebElement totalOrderText;
+
 
 
   

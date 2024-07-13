@@ -1,79 +1,132 @@
 package tests;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MerchantPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class US_023 {
  MerchantPage merchantPage=new MerchantPage();
 @Test
 public void test_2301(){
+   // check the visibility of Total Orders text and it's amount as integer.
+  //  check the visibility of Total Orders graphic image.
     Driver.getDriver().get("about:blank");
     Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
     merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
     merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
     merchantPage.singinButton.click();
-    // check the visibility of Total Orders text and it's amount as integer.
-    Assert.assertTrue(merchantPage.totalOrderText.isDisplayed());
-    System.out.println(merchantPage.totalOrderPrice.getText());
 
-    // check the visibility of Total Orders graphic image.
-   // check the visibility of "Total Cancel" text and it's amount as integer.
-   // check the visibility of "Total Cancel"  graplic image.
-   // check the visibility of "Total Refund" text and it's amount as float.
-   // check the visibility of "Total Refund" graphic image.
-  //  check the visibility of "Total Sales"text and it's amount as float.
-  //  check the visibility of "Total Sales" graphic image.
-  //  The user closes the page.
+    ReusableMethods.wait(10);
+
+String expectedText1=merchantPage.topPicTextList.get(3).getText();     //text
+String expectedInt1=merchantPage.topPicIntList.get(3).getText();      // int
+String actualAllText1=merchantPage.listOfTopPictures.get(0).getText();// text+int
+String expectedText2=merchantPage.topPicTextList.get(4).getText();
+String expectedInt2=merchantPage.topPicIntList.get(4).getText();
+String actualAllText2=merchantPage.listOfTopPictures.get(1).getText();
+String expectedText3=merchantPage.topPicTextList.get(5).getText();
+String expectedInt3=merchantPage.topPicIntList.get(5).getText();
+String actualAllText3=merchantPage.listOfTopPictures.get(2).getText();
+String expectedText4=merchantPage.topPicTextList.get(6).getText();
+String expectedInt4=merchantPage.topPicIntList.get(6).getText();
+String actualAllText4=merchantPage.listOfTopPictures.get(3).getText();
+
+Assert.assertTrue(actualAllText1.contains(expectedText1));    // text
+Assert.assertTrue(actualAllText2.contains(expectedText2));
+Assert.assertTrue(actualAllText3.contains(expectedText3));
+Assert.assertTrue(actualAllText4.contains(expectedText4));
+
+Assert.assertTrue(actualAllText1.contains(expectedInt1));    //  int
+Assert.assertTrue(actualAllText2.contains(expectedInt2));
+Assert.assertTrue(actualAllText3.contains(expectedInt3));
+Assert.assertTrue(actualAllText4.contains(expectedInt4));
+
+Assert.assertTrue(merchantPage.listOfTopPictures.get(0).isDisplayed());   //  topPictures
+Assert.assertTrue(merchantPage.listOfTopPictures.get(1).isDisplayed());
+Assert.assertTrue(merchantPage.listOfTopPictures.get(2).isDisplayed());
+Assert.assertTrue(merchantPage.listOfTopPictures.get(3).isDisplayed());
 
 Driver.quitDriver();
 }
 @Test
     public void test_2302(){
-    //The user opens the browser.
-    Driver.getDriver().get("about:blanck");
-    //enters the Url.
-    Driver.getDriver().get(ConfigReader.getProperty("merchantDashboard_Url"));
-    //check the visibility of "Sales this week" text and it's amount as float.
-    //check the visibility of "Sales this week" graphic image.
-    //check the visibility of "Earning this week" text and it's amount as float.
-    //check the visibility of "Earning this week" graplic image.
-    //check the visibility of "Your balance" text and it's amount as float.
-    //check the visibility of  "Your balance" graphic image.
-    //The user closes the page.
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
+    merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
+    merchantPage.singinButton.click();
+    ReusableMethods.wait(5);
+
+
+    Assert.assertTrue(merchantPage.weeklyIncomeTextList.get(0).isDisplayed());
+    Assert.assertTrue(merchantPage.weeklyIncomeTextList.get(1).isDisplayed());
+    Assert.assertTrue(merchantPage.weeklyIncomeTextList.get(2).isDisplayed());
+
+    Assert.assertTrue(merchantPage.weeklyIncomeIntList.get(0).isDisplayed());
+    Assert.assertTrue(merchantPage.weeklyIncomeIntList.get(1).isDisplayed());
+    Assert.assertTrue(merchantPage.weeklyIncomeIntList.get(2).isDisplayed());
+
+    Assert.assertTrue(merchantPage.weeklyIncomeIconeList.get(0).isDisplayed());
+    Assert.assertTrue(merchantPage.weeklyIncomeIconeList.get(1).isDisplayed());
+    Assert.assertTrue(merchantPage.weeklyIconeYourBalance.isDisplayed());
+    Driver.quitDriver();
 }
 @Test
     public void test_2303(){
-    //The user opens the browser.
-    //enters the Url.
-    //check the visibility of "Orders received" text and it's amount as integer.
-    //check the visibility of Orders received graphic image.
-    //check the visibility of Totaly delivered text and it's amount as integer.
-    //check the visibility of Totaly delivered graplic image.
-    //check the visibility of Today sales text and it's amount as float.
-    //check the visibility of Today sales graplic image.
-    //check the visibility of Today refund text and it's amount as float.
-    //check the visibility of Today refund graplic image.
-    //The user closes the page.
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
+    merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
+    merchantPage.singinButton.click();
+    ReusableMethods.wait(5);
+    Assert.assertTrue(merchantPage.fourHouseTextList.get(0).isDisplayed());
+    Assert.assertTrue(merchantPage.fourHouseTextList.get(1).isDisplayed());
+    Assert.assertTrue(merchantPage.fourHouseTextList.get(2).isDisplayed());
+    Assert.assertTrue(merchantPage.fourHouseTextList.get(3).isDisplayed());
+
+    Assert.assertTrue(merchantPage.fourHouseIntList.get(0).isDisplayed());
+    Assert.assertTrue(merchantPage.fourHouseIntList.get(1).isDisplayed());
+    Assert.assertTrue(merchantPage.fourHouseIntList.get(2).isDisplayed());
+    Assert.assertTrue(merchantPage.fourHouseIntList.get(3).isDisplayed());
+
+    Driver.quitDriver();
 }
 @Test
     public void test_2304(){
-    //The user opens the browser.
-    //enters the Url.
-    //check the visibility of "Sales Overview" text.
-    //check the visibility of "Top customers" text.
-    //check the visibility of "Overview of Review" text.
-    //The user closes the page.
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
+    merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
+    merchantPage.singinButton.click();
+    ReusableMethods.wait(5);
+    Assert.assertTrue(merchantPage.topPicTextList.get(21).isDisplayed());
+    Assert.assertTrue(merchantPage.topPicTextList.get(20).isDisplayed());
+    Assert.assertTrue(merchantPage.topPicTextList.get(19).isDisplayed());
+
+    Driver.quitDriver();
 }
 @Test
     public void test_2305(){
-    //The user opens the browser.
-    //Enters the Url.
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
+    merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
+    merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
+    merchantPage.singinButton.click();
+    ReusableMethods.wait(5);
+    JavascriptExecutor  jse= (JavascriptExecutor) Driver.getDriver();
+    jse.executeScript("arguments[0].scrollIntoView(true);",merchantPage.topPicTextList.get(21));
     //Page down to access "Overview of Review" text.
+    Assert.assertTrue(merchantPage.textRightColumnList.get(5).isDisplayed());
     //Check the visibility of "This month you got 0 New Reviews" text
+    String expectedNumber=merchantPage.overViewNumber.getText();
     // and verify that the number shown in it is equal to number on upper row.
 
     //Verify that the number shown in it is equal to number on upper row is equal to sum of all stars numbers rows.
@@ -82,6 +135,7 @@ Driver.quitDriver();
     //Click on the "Checkout All Reviews".
     //Verify the presence of the  "Customer reviews" text.
     //The user closes the page.
+    Driver.quitDriver();
 }
 @Test
     public  void test_2306(){
