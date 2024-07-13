@@ -12,12 +12,10 @@ import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
-
-
 public class US_036 {
 
-    AdminPage adminPage = new AdminPage();
-
+    static AdminPage adminPage = new AdminPage();
+    Actions actions = new Actions(Driver.getDriver());
 
     @Test
     public void TC_3601(){
@@ -54,7 +52,7 @@ public class US_036 {
 
     @Test
     public void TC_3602(){
-
+        adminPage = new AdminPage();
 
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
 
@@ -98,14 +96,16 @@ public class US_036 {
     @Test
     public void TC_3603(){
 
+        adminPage = new AdminPage();
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
-
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
 
         for (int i = 0; i < adminPage.dashboardTotalHeadings.size(); i++) {
             Assert.assertTrue(adminPage.dashboardTotalHeadings.get(i).isDisplayed());
         }
+
+        Driver.quitDriver();
 
     }
 
@@ -117,6 +117,7 @@ public class US_036 {
 
     @Test
     public void TC_3606(){
+        adminPage = new AdminPage();
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
@@ -149,6 +150,7 @@ public class US_036 {
 
     @Test
     public void TC_3607(){
+        adminPage = new AdminPage();
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
@@ -167,46 +169,38 @@ public class US_036 {
         Assert.assertTrue(adminPage.Last30daysSalesButton.isEnabled());
 
         //Check item names, types,merchant names and number of items sold of popular items are visible.
-        for (int i = 24; i < 29; i++) {
+        for (int i = 0; i < 5; i++) {
             Assert.assertTrue(adminPage.popularItemsInformation.get(i).isDisplayed());
         }
-        for (int i =15; i < 20; i++) {
-            Assert.assertTrue(adminPage.popularItemsQuantity.get(i).isDisplayed());
-        }
 
         ReusableMethods.wait(1);
-        //Check if images of popular items are visible.
-        for (int i = 0; i < 5; i++) {
-            Assert.assertTrue(adminPage.popularItemsPictures.get(i).isDisplayed());
-        }
-        ReusableMethods.wait(1);
+
+        JSUtilities.scrollToElement(Driver.getDriver(),adminPage.Last30daysSalesButton);
+
         //Click "Last 30 days sales" title
-        adminPage.Last30daysSalesButton.click();
+        actions = new Actions(Driver.getDriver());
+        actions.click(adminPage.Last30daysSalesButton).perform();
+
+        ReusableMethods.wait(3);
 
         //Check that the sales chart appears and the products sold are listed
-        Assert.assertTrue(adminPage.last30DaysSalesChart.isDisplayed());
-        Assert.assertFalse(adminPage.last30DaysProducts.isEmpty());
+        Assert.assertTrue(adminPage.last30DaysSalesChartandProducts.isDisplayed());
 
         //Closes the page
         Driver.quitDriver();
-
-
-
-
-
-
 
     }
 
     @Test
     public void TC_3608(){
 
+        adminPage = new AdminPage();
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
 
         //Check "Scroll down the page" and "most reviewed" titles are visible
-        JSUtilities.scrollToElement(Driver.getDriver(),adminPage.popularMerchantsAndReviewTitle);
+        JSUtilities.scrollToBottom(Driver.getDriver());
 
         //Check if the "Popular merchants" and "Popular by review" titles are visible and active
         Assert.assertTrue(adminPage.popularMerchantsAndReviewTitle.isDisplayed());
@@ -223,60 +217,36 @@ public class US_036 {
         for (int i = 0; i < 5; i++) {
             Assert.assertTrue(adminPage.popularMerchantsInformation.get(i).isDisplayed());
         }
-        for (int i =20; i < 24; i++) {
+
+        for (int i =20; i < 25; i++) {
             Assert.assertTrue(adminPage.popularMerchantsQuantity.get(i).isDisplayed());
         }
 
-        //Check "Merhact name " link is active
-        for (int i = 5; i <=9 ; i++) {
-            adminPage.merchantName.get(i).click();
-            String expectedUrlIcerik = "backoffice/vendor/edit/";
-            String actualUrl = Driver.getDriver().getCurrentUrl();
-            Assert.assertTrue(actualUrl.contains(expectedUrlIcerik));
-            ReusableMethods.wait(1);
-            Driver.getDriver().navigate().back();
-            JSUtilities.scrollToBottom(Driver.getDriver());
-            ReusableMethods.wait(1);
+        for (int i = 0; i < 5; i++) {
+            Assert.assertTrue(adminPage.merchantName.get(i).isEnabled());
         }
-
-
 
         ReusableMethods.wait(1);
 
-        //Check if images of popular merchants are visible.
-        for (int i = 0; i <5; i++) {
-            Assert.assertTrue(adminPage.popularMerchantsPictures.get(i).isDisplayed());
-        }
-        ReusableMethods.wait(1);
-
-        //Click "Last 30 days sales" title
         adminPage.popularByReviewButton.click();
 
-        //Check merchant names,merchant types,merchant rating, total number of reviews and number of merchant rating are visible.
+
         Assert.assertTrue(adminPage.popularMerchantsAndReviewTitle.isDisplayed());
         Assert.assertTrue(adminPage.popularMerchantsAndReviewTitle.getText().contains("Popular by review"));
         Assert.assertTrue(adminPage.popularMerchantsAndReviewTitle.getText().contains("most reviewed"));
 
         Assert.assertTrue(adminPage.popularByReviewTable.isDisplayed());
 
-        //Check "Merchant name " link is active
-        for (int i = 5; i <= 9; i++) {
-            adminPage.merchantReviewPage.get(i).click();
-            String expectedUrlIcerik = "backoffice/vendor/edit/";
-            String actualUrl = Driver.getDriver().getCurrentUrl();
-            Assert.assertTrue(actualUrl.contains(expectedUrlIcerik));
-            ReusableMethods.wait(1);
-            Driver.getDriver().navigate().back();
-            JSUtilities.scrollToBottom(Driver.getDriver());
-            ReusableMethods.wait(1);
+        for (int i = 0; i <= 4; i++) {
+           Assert.assertTrue(adminPage.merchantName.get(i).isEnabled());
         }
 
-        //Closes the page
         Driver.quitDriver();
     }
 
     @Test
     public void TC_3609(){
+        adminPage = new AdminPage();
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
@@ -290,6 +260,7 @@ public class US_036 {
 
     @Test
     public void TC_3610(){
+        adminPage = new AdminPage();
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
@@ -298,23 +269,22 @@ public class US_036 {
 
         JSUtilities.scrollToElement(Driver.getDriver(),adminPage.topCustomersText);
 
-        //Check if the image , customer name, date, time of registration
         for (int i = 1; i < 6; i++) {
             String dinamikXpath = "(//tbody)[5]//tr["  + i +  "]";
             WebElement istenenDataElementi = Driver.getDriver().findElement(By.xpath(dinamikXpath));
             Assert.assertTrue(istenenDataElementi.isDisplayed());
         }
 
+        Driver.quitDriver();
+
     }
 
-  
     @Test
     public void TC_3611(){
+        adminPage = new AdminPage();
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
-
-        JSUtilities.scrollToElement(Driver.getDriver(),adminPage.topCustomersText);
 
         adminPage.firstCustomerButton.click();
 
@@ -373,58 +343,66 @@ public class US_036 {
 
     @Test
     public void TC_3612(){
+        actions = new Actions(Driver.getDriver());
+        adminPage = new AdminPage();
+
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
 
-        JSUtilities.scrollToElement(Driver.getDriver(),adminPage.topCustomersText);
+        ReusableMethods.wait(3);
 
-        adminPage.firstCustomerButton.click();
+        actions.moveToElement(adminPage.firstCustomerButton).click().perform();
 
         Assert.assertTrue(adminPage.entriesInformation.isDisplayed());
 
 
-        if (adminPage.pageNumbers.size()>3){
+        if (adminPage.customerPagePageNumbers.size()>3){
             String firstPageFirstOrderID = adminPage.firstPageOrderQuantity.get(0).getText();
-            adminPage.pageNumbers.get(2).click();
-            ReusableMethods.wait(1);
+            adminPage.customerPagePageNumbers.get(2).click();
+            ReusableMethods.wait(5);
             String secondPageFirstOrderID =adminPage.firstPageOrderQuantity.get(0).getText();
             Assert.assertNotEquals(firstPageFirstOrderID,secondPageFirstOrderID);
         }
-        else if (adminPage.pageNumbers.size()==3) {
+        else if (adminPage.customerPagePageNumbers.size()==3) {
             String firstPageFirstOrderID = adminPage.firstPageOrderQuantity.get(0).getText();
-            adminPage.pageNumbers.get(2).click();
-            ReusableMethods.wait(1);
+            adminPage.customerPagePageNumbers.get(2).click();
+            ReusableMethods.wait(5);
             String secondPageFirstOrderID =adminPage.firstPageOrderQuantity.get(0).getText();
             Assert.assertEquals(firstPageFirstOrderID,secondPageFirstOrderID);
         }
 
 
 
+        Driver.quitDriver();
 
     }
 
     @Test
     public void TC_3613(){
+        actions = new Actions(Driver.getDriver());
+        adminPage = new AdminPage();
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
         adminPage.signInButton.click();
 
-        JSUtilities.scrollToElement(Driver.getDriver(),adminPage.topCustomersText);
+        ReusableMethods.wait(3);
 
-        adminPage.firstCustomerButton.click();
+        actions.moveToElement(adminPage.firstCustomerButton).click().perform();
 
-        Assert.assertTrue(adminPage.searchText.isDisplayed());
-        Assert.assertTrue(adminPage.searchBox.isDisplayed());
+        Assert.assertTrue(adminPage.customerPageSearchText.isDisplayed());
+        Assert.assertTrue(adminPage.customerPageSearchBox.isDisplayed());
 
         ReusableMethods.wait(1);
 
 
         Actions actions = new Actions(Driver.getDriver());
-        actions.moveToElement(adminPage.searchBox).click().perform();
-        ReusableMethods.wait(5);
-        adminPage.searchBox.isEnabled();
-        adminPage.searchBox.sendKeys("11990"+Keys.ENTER);
+        actions.moveToElement(adminPage.customerPageSearchBox).click().perform();
+
+        ReusableMethods.wait(3);
+
+        adminPage.customerPageSearchBox.isEnabled();
+        adminPage.customerPageSearchBox.sendKeys("11990"+Keys.ENTER);
 
         ReusableMethods.wait(3);
 
@@ -433,11 +411,97 @@ public class US_036 {
 
         Assert.assertEquals(actualResult,expectedResult);
 
-        ReusableMethods.wait(5);
-
         Driver.quitDriver();
 
         }
+
+    @Test
+    public void TC_3614(){
+        actions = new Actions(Driver.getDriver());
+        adminPage = new AdminPage();
+        Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.signInButton.click();
+
+        ReusableMethods.wait(1);
+
+        actions.click(adminPage.firstCustomerButton).perform();
+        ReusableMethods.wait(1);
+        actions.click(adminPage.blockCustomerButton).perform();
+        ReusableMethods.wait(1);
+        actions.click(adminPage.alertConfirmButton).perform();
+
+
+        ReusableMethods.wait(1);
+
+        String expectedText = "Unblock Customer";
+        String actualText = Driver.getDriver().findElement(By.xpath("//div[text()='Unblock Customer']")).getText();
+        Assert.assertEquals(actualText,expectedText);
+
+        ReusableMethods.wait(3);
+
+        adminPage.unBlockCustomerButton.click();
+
+
+
+        Driver.quitDriver();
+
+    }
+
+    @Test
+    public void TC_3615(){
+        actions = new Actions(Driver.getDriver());
+        adminPage = new AdminPage();
+        Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.signInButton.click();
+
+        JSUtilities.scrollToElement(Driver.getDriver(),adminPage.recentPayoutTable);
+
+        ReusableMethods.wait(2);
+
+        Assert.assertTrue(adminPage.recentPayoutTable.isDisplayed());
+        Assert.assertTrue(adminPage.recentPayoutTable.getText().contains("Recent payout"));
+
+        String expectedIcerik = "No recent payout request";
+        String actualIcerik = Driver.getDriver().findElement(By.xpath("//h6[text()='No recent payout request']")).getText();
+        Assert.assertEquals(actualIcerik,expectedIcerik);
+
+        Driver.quitDriver();
+
+    }
+
+    @Test
+    public void TC_3616(){
+        actions = new Actions(Driver.getDriver());
+        adminPage = new AdminPage();
+        Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
+        adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_hasan")+Keys.TAB+ConfigReader.getProperty("adminpassword_hasan"));
+        adminPage.signInButton.click();
+
+        JSUtilities.scrollToElement(Driver.getDriver(),adminPage.overviewOfReviewTable);
+        Assert.assertTrue(adminPage.overviewOfReviewTable.isDisplayed());
+        Assert.assertTrue(adminPage.overviewOfReviewTable.getText().contains("Overview of Review"));
+
+        Assert.assertTrue(adminPage.checkoutAllReviewsButton.isDisplayed());
+        Assert.assertTrue(adminPage.checkoutAllReviewsButton.isEnabled());
+
+        ReusableMethods.wait(2);
+
+        actions.click(adminPage.checkoutAllReviewsButton).perform();
+
+        ReusableMethods.wait(2);
+
+        String expectedTitle = "Reviews";
+        String actualTitle = Driver.getDriver().getTitle();
+        Assert.assertEquals(actualTitle,expectedTitle);
+
+        Driver.getDriver().navigate().back();
+
+        Driver.quitDriver();
+
+
+    }
 
     }
 

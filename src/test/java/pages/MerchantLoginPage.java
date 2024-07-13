@@ -45,6 +45,7 @@ public MerchantLoginPage(){
 
     @FindBy(xpath = "(//*[@class='errorMessage'])[1]")
     public WebElement pass_ThisFieldIsRequired;
+
     @FindBy(xpath = "//*[@class='mb-4']")
     public WebElement titleOfLoginPage;
 
@@ -54,7 +55,7 @@ public MerchantLoginPage(){
     @FindBy(xpath = "(//*[@class='required'])[3]")
     public WebElement backgroundPassBox;
 
-    @FindBy(xpath = ".//input[starts-with(@class,'form-label-group')]")
+    @FindBy(xpath = "//div[@class='form-label-group']")
     public WebElement textEnteredUserBox;
 
     @FindBy(xpath = "//*[@type='text']")
@@ -63,15 +64,18 @@ public MerchantLoginPage(){
     @FindBy(xpath = "//*[@type='password']")
     public WebElement passwordHidden;
 
-    @FindBy(xpath = ".//input[starts-with(@class,'form-label-group change_field_password')]")
+    @FindBy(xpath = "//*[@class='form-label-group change_field_password']")
     public  WebElement passwordFieldPassBox;
 
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement signInButtonMerchantLogin;
 
-    @FindBy(xpath = "//*[@for='AR_merchant_login_username']")
+    @FindBy(id = "AR_merchant_login_username")
     public WebElement userBoxMerchantLogin;
 
-    @FindBy(xpath = "//*[@for='AR_merchant_login_password']")
+    @FindBy(id = "AR_merchant_login_password")
+
     public WebElement passwordBoxMerchantLogin;
+
+
 }

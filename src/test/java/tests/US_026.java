@@ -24,13 +24,7 @@ public class US_026 {
 
     @Test
     public  void TC_2601(){
-
-
-        Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-
-        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
-        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
-        merchantPage.singinButton.click();
+        ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();
         String siparisAdediStr=merchantPage.ordersQuantitty.getText().replaceAll("\\D","");
@@ -46,20 +40,15 @@ public class US_026 {
             Assert.assertTrue(merchantPage.orderId1.size()>0);
             Assert.assertTrue(merchantPage.customerName.isDisplayed());
             Assert.assertTrue(merchantPage.orderDateAndTime.isDisplayed());
-            Assert.assertTrue(merchantPage.totalOrderPrice.isDisplayed());}
-
-
+            Assert.assertTrue(merchantPage.totalOrderPrice.isDisplayed());
+        }
 
         Driver.quitDriver();
 
     }
     @Test
     public  void  TC_2602(){
-        Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-
-        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
-        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
-        merchantPage.singinButton.click();
+        ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();
         String siparisAdediStr=merchantPage.ordersQuantitty.getText().replaceAll("\\D","");
@@ -96,11 +85,7 @@ public class US_026 {
     }
     @Test
     public  void TC_2603(){
-        Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-
-        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
-        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
-        merchantPage.singinButton.click();
+        ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();
         String siparisAdediStr=merchantPage.ordersQuantitty.getText().replaceAll("\\D","");
@@ -128,11 +113,7 @@ public class US_026 {
 
     @Test
     public  void  TC_2604(){
-        Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-
-        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
-        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
-        merchantPage.singinButton.click();
+        ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();
 
@@ -161,11 +142,7 @@ public class US_026 {
     @Test
     public  void TC_2605(){
 
-        Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-
-        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
-        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
-        merchantPage.singinButton.click();
+        ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();
         String siparisAdediStr=merchantPage.ordersQuantitty.getText().replaceAll("\\D","");
@@ -185,10 +162,7 @@ public class US_026 {
     }
     @Test
     public  void TC_2606(){
-        Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
-        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
-        merchantPage.singinButton.click();
+        ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();
         String siparisAdediStr=merchantPage.ordersQuantitty.getText().replaceAll("\\D","");
@@ -219,10 +193,7 @@ public class US_026 {
     }
     @Test
     public  void  TC_2607(){
-        Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
-        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
-        merchantPage.singinButton.click();
+        ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();String siparisAdediStr=merchantPage.ordersQuantitty.getText().replaceAll("\\D","");
         int siparisAdedi=Integer.parseInt(siparisAdediStr);
@@ -249,10 +220,7 @@ public class US_026 {
     }
     @Test
     public  void TC_2608(){
-        Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
-        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
-        merchantPage.singinButton.click();
+        ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();String siparisAdediStr=merchantPage.ordersQuantitty.getText().replaceAll("\\D","");
         int siparisAdedi=Integer.parseInt(siparisAdediStr);
@@ -272,10 +240,7 @@ public class US_026 {
     }
     @Test
     public  void TC_2609(){
-        Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
-        merchantPage.usernametextbox.sendKeys(ConfigReader.getProperty("merchant_username"));
-        merchantPage.passwordtextbox.sendKeys(ConfigReader.getProperty("merchant_password"));
-        merchantPage.singinButton.click();
+        ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();String siparisAdediStr=merchantPage.ordersQuantitty.getText().replaceAll("\\D","");
         int siparisAdedi=Integer.parseInt(siparisAdediStr);
@@ -316,6 +281,7 @@ public class US_026 {
            String expectedOrderId=ConfigReader.getProperty("orderId");
             String actualOrderId=merchantPage.orderId1.get(0).getText().replaceAll("\\D","");
 
+            System.out.println(actualOrderId);
             Assert.assertEquals(actualOrderId,expectedOrderId);
             Assert.assertTrue(merchantPage.clearIcon.isDisplayed());
 
@@ -324,8 +290,30 @@ public class US_026 {
 
 
         }
+        @Test
+    public  void TC_2610(){
+            ReusableMethods.accessToMerchant();
+            merchantPage.dashboardOrdersIcon.click();
+            merchantPage.dasboardNewOrdersIcon.click();String siparisAdediStr=merchantPage.ordersQuantitty.getText().replaceAll("\\D","");
+            int siparisAdedi=Integer.parseInt(siparisAdediStr);
 
+            if(siparisAdedi==0){
+                Assert.assertTrue(merchantPage.noNewOrders.isDisplayed());
+            }
+            else {
+
+                Assert.assertTrue(merchantPage.filterBox.isDisplayed());
+                Assert.assertTrue(merchantPage.orderTypeDropdownMenu.isDisplayed());
+                Assert.assertTrue(merchantPage.paymentStatusDropdownMenu.isDisplayed());
+                Assert.assertTrue(merchantPage.sortDropdownMenu.isDisplayed());
+
+
+        }
+
+            Driver.quitDriver();
 
     }
+
+}
 
 
