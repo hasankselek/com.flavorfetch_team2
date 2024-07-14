@@ -442,17 +442,67 @@ public class MerchantPage {
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-money-box']")
     public List<WebElement>  weeklyIncomeIconeList;
-    @FindBy(xpath = "//*[@class='col p-0 col-lg-3 col-md-3 col-sm-6 col-6 mb-3 mb-xl-0']")
+    @FindBy(xpath = "//*[@class='col p-0 col-lg-3 col-md-3 col-sm-6 col-6 mb-3 mb-xl-0']") //index = 0-3  pictures up the merchantPage
     public List<WebElement> listOfTopPictures;
 
     @FindBy(xpath = "//h5")
     public List<WebElement> topPicTextList;
 
     @FindBy(xpath = "//*[@class='text-muted']")
-    public List<WebElement> textRightColumnList;
-
-    @FindBy(xpath = "//p")
+    public List<WebElement> sixRightColumnList;
+    @FindBy(xpath = "//*[@class='font-weight-bold hover-text-primary mb-1']")
+    public List<WebElement> orderNumberList;        //order numbers in last orders ( index = 0 - 4  )
+                                               //Top Costomers / Name of customers  (index = 10 - 14 )
+                                                  // Popular Items / name Of foods  ( index = 5 - 9 )
+    @FindBy(xpath = "//*[@class='w-100 btn btn-lg btn-info waves-effect waves-light mb-3']")
+    public List<WebElement> buttonList;
+    @FindBy(xpath = "//p")   //index = 13-17  TopCostomers/numberOfOrders
     public List<WebElement> topPicIntList;
+    @FindBy(xpath = "//*[@class='text-right align-middle']")
+    public List<WebElement> sc_Th_FrColumnForAll;
+    @FindBy(xpath = "//*[@class='flex-col']")  //index = 36-40 TopCustumers/pictures
+    public List<WebElement> descriptionOfTopCustumers;
+    @FindBy(xpath = "//*[text()='Customer list']")
+    public List<WebElement> custumerList;
+
+    @FindBy(xpath = "//*[@class='w-100 btn btn-lg btn-info waves-effect waves-light mb-3']")
+    public List<WebElement> checkout_AllCostumers;
+    @FindBy(xpath = "//*[@class='mr-3']")
+    public List<WebElement> picturesOfTopCostumers;
+    @FindBy(xpath = "//*[@class='mr-2']")
+    public List<WebElement> signalList;
+    @FindBy(xpath = "//*[@class='pl-0 align-middle']")
+    public List<WebElement> firstColumnOfAll;
+    @FindBy(xpath = "//*[@class='badge payment unpaid']")
+    public List<WebElement> secoundColumnOfProgress;
+    @FindBy(xpath = "//*[@class='text-muted font-weight-500']")
+    public List<WebElement> thirdColumnOfProgress;
+    @FindBy(xpath = "//*[@class='badge order_status accepted']")
+    public List<WebElement> forthColumnOfProgress;
+    @FindBy(xpath = "//*[@class='nav-item']")
+    public List<WebElement> topItemsList;
+    @FindBy(xpath = "//*[@class='font-weight-bold d-block']")
+    public List<WebElement> secoundIntReady;
+    @FindBy(xpath = "//*[@class='badge payment unpaid']")
+    public List<WebElement> secoundStringReady;
+    @FindBy(xpath = "//*[@class=\"active nav-link py-1 px-3']")
+    public List<WebElement> pLinks;
+    @FindBy(xpath = "//*[@class='zmdi zmdi-eye']")
+    public List<WebElement> fifthColumnOfAll;
+
+    @FindBy(xpath = "//*[@class='d-flex']") // index= 30-38
+    public List<WebElement> foodsNameOf30Days;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-download']")
+    public List<WebElement> sixthColumnOfAll;
+    @FindBy(xpath = "//*[@class='font-weight-bold hover-text-primary mb-1']")
+    public List<WebElement> ordersAndNamesList;
+
+   @FindBy(xpath = "//*[@class='mr-1 w-25']")// index = 0 - 8
+   public List<WebElement> dataOf30Days;
+
+    @FindBy(xpath = "//tbody/tr")
+    public List<WebElement> rowNumberOfTable;
 
     @FindBy(xpath = "//*[@class='m-0 text-secondary']")
     public List<WebElement> fourHouseTextList;
@@ -463,7 +513,7 @@ public class MerchantPage {
     @FindBy(xpath = "//h3")
     public List<WebElement> fourHouseIntList;
     @FindBy(xpath = "//h5[@class='m-0']")
-    public List<WebElement> listOfLastOrders_PopularItems;
+    public List<WebElement> listOfLastOrders_30Days;
     @FindBy(id= "AR_item_category_selected")
     public  WebElement categoryDropdown; //Add item page
 
