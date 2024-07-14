@@ -369,32 +369,53 @@ public class AdminPage {
 
     @FindBy(xpath = "(//tr//th[3])[1]")
     public WebElement balanceSortingButton;
+  
+    @FindBy(xpath = "//*[text()=\"Buyers\"]")
+    public WebElement buyersButton; //admin dashboard menu buyers
+ 
+    @FindBy(xpath = "//*[text()='Customers']")
+    public WebElement customersButton; // admin dashboard menu customers
 
+    @FindBy(xpath = "//*[text()='Reviews']")
+    public WebElement reviewsButton; // dashboard menu under buyers
 
+    //Custormer list page
+    @FindBy(xpath = "(//*[text()=\"Customer list\"])[1]")
+    public WebElement customerListPage;  //Custormer list page
 
+    //sorting desc customername
+    @FindBy(xpath = "//tbody//tr//td//h6")
+    public WebElement sortingCustomerName; //sorting desc customername
 
+    @FindBy(xpath = "//*[@class='zmdi zmdi-plus']")
+    public WebElement addNewCustomerButton;  // Add customer button on customer list
 
+    @FindBy(xpath = "//*[@for='AR_client_first_name']")
+    public WebElement firstNamebutton; // on add customer page
 
+    @FindBy(xpath = "//*[@for='AR_client_last_name']")
+    public WebElement lastNamebutton; // on add customer page
 
+    @FindBy(xpath = "//*[@for='AR_client_email_address']")
+    public WebElement emailNameButton; // on add customer page
 
+    @FindBy(xpath = "//*[@for='AR_client_npassword']")
+    public WebElement clientPasswordButton; // on add customer page
 
+    @FindBy(xpath = "//*[@for='AR_client_cpassword']")
+    public WebElement confirmPasswordButton; // on add customer page
 
+    @FindBy(xpath = "//*[@for='AR_client_contact_phone']")
+    public WebElement contactPhone; // on add customer page
 
+    @FindBy(xpath = "//*[@class='btn btn-info']")
+    public WebElement browseButton; // on add customer page
 
+    @FindBy(xpath = "//*[@class='nav-link']")
+    public WebElement uploadNew; // in browse button on add customer page
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//*[@class='btn btn-green fileinput-button dz-clickable']")
+    public WebElement selectFilesButton;  // in browse button on add customer page
 
 
 
