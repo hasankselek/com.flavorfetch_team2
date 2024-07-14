@@ -432,6 +432,7 @@ public class ReusableMethods {
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty(adminUsername)+Keys.TAB+ConfigReader.getProperty(adminPassword));
         adminPage.signInButton.click();
     }
+  
     public static void fillTheCouponInformations(String couponName) {
         //Coupon Name Test
         Assert.assertTrue(merchantPage.updateCouponName.isEnabled());

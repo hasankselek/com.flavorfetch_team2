@@ -468,6 +468,18 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-calendar-alt']")
     public WebElement calenderIcon;
+  
+    @FindBy(xpath = "(//*[text()='Merchant'])[1]")
+    public WebElement MerchantSide;
+
+    @FindBy(xpath = "(//*[@class='sidebar-nav-sub-menu'])[1]")
+    public WebElement ListSide;
+
+    @FindBy(xpath = "//*[@placeholder='Search']")
+    public WebElement SearchSide;
+
+    @FindBy(xpath = "(//*[@class='btn btn-light tool_tips'])[2]")
+    public WebElement AutoLoginSide;
 
 
 
