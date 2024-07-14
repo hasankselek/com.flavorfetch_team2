@@ -432,13 +432,6 @@ public class ReusableMethods {
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty(adminUsername)+Keys.TAB+ConfigReader.getProperty(adminPassword));
         adminPage.signInButton.click();
     }
-
-    public static void accessToAdmin(String adminUsername , String adminPassword){
-        adminPage = new AdminPage();
-        Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
-        adminPage.userNameButton.sendKeys(ConfigReader.getProperty(adminUsername)+Keys.TAB+ConfigReader.getProperty(adminPassword));
-        adminPage.signInButton.click();
-    }
     public static void fillTheCouponInformations(String couponName) {
         //Coupon Name Test
         Assert.assertTrue(merchantPage.updateCouponName.isEnabled());
