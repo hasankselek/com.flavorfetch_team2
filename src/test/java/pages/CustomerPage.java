@@ -99,7 +99,7 @@ public class CustomerPage {
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
     public WebElement footerYoutubeLogo;
-  
+
     @FindBy(xpath = "//*[@class=\"row no-gutters list-inline\"]")
     public WebElement localCuisine;
 
@@ -148,7 +148,7 @@ public class CustomerPage {
     @FindBy(xpath = "//*[text()='Sandwiches and Wraps']")
     public WebElement sandwichAndWraps; // customer page sandwich and wraps
 
-    @FindBy(xpath = "(//*[@class='col-lg-3 mb-3 col-md-6 list-items'])")
+    @FindBy(xpath = "(//h5[@class='m-0 text-truncate'])[3]")
     public WebElement team2Restaurant; // customer page team2 restaurant page
 
     @FindBy(xpath = "(//*[@class='el-image__inner'])")
@@ -178,24 +178,29 @@ public class CustomerPage {
     @FindBy(xpath = "(//*[text()='Italian'])[1]")
     public WebElement italianRestaurants; // customer page italian Restaurants Page
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @FindBy(xpath = "//*[text()=' Manage my account ']")
     public WebElement ManagemyAccount;  // customer  manage my account
+
+    @FindBy(xpath = "//*[text()=' Payments Options ']")
+    public WebElement paymentsOptions;  // customer payment page
+
+    @FindBy(xpath = "//*[text()='Add new payment']")
+    public WebElement addPayment;  // customer add payment
+
+    @FindBy(xpath = "//*[text()='Cash On delivery']")
+    public WebElement addCashOnDelivery;  // customer add cash on delivery payment
+
+    @FindBy(xpath = "//*[text()='Stripe']")
+    public WebElement stripe;  // customer add stripe payment
+
+    @FindBy(xpath = "//*[text()='Add Cash']")
+    public WebElement addCash;  // customer add cash
+
+    @FindBy(xpath = "//*[text()='Delete']")
+    public WebElement deletePayment;  // customer delete payment
+
+    @FindBy(xpath = "//*[text()='Edit']")
+    public WebElement editPayment;  // customer edit payment
 
     @FindBy(xpath = "//*[@id='first_name']")
     public WebElement FirstName;  // customer manage account
@@ -224,7 +229,6 @@ public class CustomerPage {
     @FindBy(xpath = "//*[@class='zmdi zmdi-lock-outline']")
     public WebElement changePassword;  //   customer manage account
 
-
     @FindBy(xpath = "//*[@id='old_password']")
     public WebElement oldPassword;  //customer manage account
 
@@ -245,6 +249,64 @@ public class CustomerPage {
 
     @FindBy(xpath = "//*[text()='Save Photo']")
     public WebElement savePhoto;
+
+    @FindBy(xpath = "//*[text()=' Addresses ']")
+    public WebElement addressInfo;  // customer  manage my account
+
+    @FindBy(xpath = "//*[@class='module truncate-overflow']")
+    public WebElement countryView;
+
+    @FindBy(xpath = "//h5[text()='Home']")
+    public WebElement addressType;
+
+    @FindBy(xpath = "//*[@class='card p-3 fixed-height address-slot'")
+    public List<WebElement> addressCount;
+
+    @FindBy(xpath = "//*[@class='col-md-3']")
+    public WebElement viewAddressCount;
+
+    @FindBy (xpath= "//div[@id='vue-home-search']//input[@placeholder='Enter delivery address']")
+    public  WebElement enterDeliveryAddresstextBox ; // customerpage
+
+    @FindBy (xpath= "//h6[normalize-space()='New York']")
+    public  WebElement newYorkAddressTextBox ; // customerpage
+
+    @FindBy (xpath= "//*[text()='Show more']")
+    public  WebElement showMoreButton ; // restaurants page
+
+    @FindBy (xpath= "//*[@id='cuisine5']")
+    public  WebElement sandwichRAdioButton ; // restaurants page
+
+    @FindBy (xpath= "//h5[normalize-space()='Team2']")
+    public  WebElement team2Page ; // restaurants page
+
+    @FindBy (xpath= "(//*[text()=' Add to cart '])[1]")
+    public  WebElement iskenderButton ; // team2 page
+
+    @FindBy (xpath= "//a[@class='btn btn-green w-100 pointer d-flex justify-content-between']")
+    public  WebElement checkoutButton ; // team2 page
+
+    @FindBy (xpath= "//*[text()='Add new address']")
+    public  WebElement addNewAddressLink ; // team2 page
+
+    @FindBy (xpath= "(//*[@class='form-control form-control-text'])[4]")
+    public  WebElement addressPopupTextBox ; // team2 page
+
+    @FindBy (xpath= "(//*[text()='New York'])[3]")
+    public  WebElement newYorkChangeAddress ; // team2 page
+
+    @FindBy (xpath= "(//*[@class='btn btn-green w-100'])[8]")
+    public  WebElement saveButtonChangeAddress ; // team2 page
+
+    @FindBy (xpath= "(//*[text()='New York, NY, USA'])[2]")
+    public  WebElement chooseDeliveryText ; // team2 page
+
+
+
+
+
+
+
 
 
 
