@@ -1,5 +1,6 @@
 package pages;
 
+import org.apache.commons.compress.archivers.zip.X000A_NTFS;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -416,6 +417,45 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[@class='btn btn-green fileinput-button dz-clickable']")
     public WebElement selectFilesButton;  // in browse button on add customer page
+
+    @FindBy(xpath = "//*[@class='table-responsive-md']")
+    public WebElement allOrdersWebTable; // orders > all orders page
+
+    @FindBy(xpath = "(//*[@class='row'])[1]")
+    public WebElement allOrdersHeaderSection; // orders > all orders page
+
+    @FindBy(xpath = "//*[@class='form-control py-2 border-right-0 border']")
+    public WebElement dateFilterBox; // orders > all orders page
+
+    @FindBy(xpath = "(//*[@class='weekend available'])[3]")
+    public WebElement sampleDateData; //  orders > all orders page
+
+    @FindBy(xpath = "(//p[@class='dim m-0'])[4]")
+    public WebElement orderDateInfo; //  orders > all orders page
+
+    @FindBy(xpath = "//*[@class='ml-2 btn btn-yellow normal']")
+    public WebElement yellowFilterButton; //  orders > all orders page
+
+    @FindBy(xpath = "//*[@class='odd']")
+    public WebElement orderInfo;  //  orders > all orders page
+
+    @FindBy(xpath = "//*[@class='sorting sorting_desc']")
+    public WebElement orderIdFilter; //   orders > all orders page
+
+    @FindBy(xpath = "//*[@class='dataTables_info']")
+    public WebElement showingEntryInfo; // orders > all orders page
+
+    @FindBy(xpath = "//*[@class='dataTables_paginate paging_simple_numbers']")
+    public WebElement paginationBox; // orders > all orders page
+
+    @FindBy(xpath = "(//*[@class='page-link'])[3]")
+    public WebElement samplePageNumber;
+
+
+
+
+
+
 
 
 
