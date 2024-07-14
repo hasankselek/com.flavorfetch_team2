@@ -173,6 +173,15 @@ public class MerchantPage {
     @FindBy(xpath = "//tbody/tr/td[2]/h6")
     public List<WebElement> couponNameList;
 
+    @FindBy(xpath = "//*[@type='search']")
+    public WebElement couponSearchBox;
+
+    @FindBy(xpath = "//tbody/tr/td[1]")
+    public List<WebElement> couponNumberList;
+
+    @FindBy(xpath = "//tbody/tr/td[3]")
+    public List<WebElement> couponUsedList;
+
     @FindBy(xpath = "(//*[@role='group']//a)[1]")
     public WebElement updateCouponButton;
 
@@ -191,7 +200,7 @@ public class MerchantPage {
     @FindBy(xpath = "(//*[@class='select2-selection select2-selection--multiple'])[1]")
     public WebElement updateDaysAvailable;
 
-    @FindBy(xpath = "//*[@name='AR_voucher[expiration]']")
+    @FindBy(xpath = "//*[@id='AR_voucher_expiration']")
     public WebElement updateExpiration;
 
     @FindBy(xpath = "//*[@name='AR_voucher[used_once]']")
@@ -204,7 +213,16 @@ public class MerchantPage {
     public WebElement updateSaveButton;
 
     @FindBy(xpath = "(//*[@role='group']//a)[2]")
-    public WebElement deleteCuponButton;
+    public WebElement deleteCouponButton;
+
+    @FindBy (xpath = "(//th[@aria-controls='DataTables_Table_0'])[1]")
+    public WebElement couponNumberSortLink;
+
+    @FindBy (xpath = "(//th[@aria-controls='DataTables_Table_0'])[2]")
+    public WebElement couponNameSortLink;
+
+    @FindBy (xpath = "(//th[@aria-controls='DataTables_Table_0'])[3]")
+    public WebElement couponUsedSortLink;
 
     @FindBy(xpath = "//a[text()='Images']")
     public WebElement imagesLink;// merchant sidebar page
