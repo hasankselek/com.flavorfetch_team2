@@ -1,24 +1,29 @@
 package tests;
 
+import com.beust.ah.A;
+import com.fasterxml.jackson.core.TreeNode;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MerchantPage;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class US_033 {
-    MerchantPage merchantPage = new MerchantPage();
 
 
+    MerchantPage merchantPage=new MerchantPage();
     @Test
     public void TC_3301() {
+        MerchantPage merchantPage = new MerchantPage();
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();
@@ -42,9 +47,9 @@ public class US_033 {
 
         String beforeDeleteCoupon = couponStringList.get(0);
 
-        Assert.assertTrue(merchantPage.deleteCuponButton.isDisplayed());
-        Assert.assertTrue(merchantPage.deleteCuponButton.isEnabled());
-        merchantPage.deleteCuponButton.click();
+        Assert.assertTrue(merchantPage.deleteCouponButton.isDisplayed());
+        Assert.assertTrue(merchantPage.deleteCouponButton.isEnabled());
+        merchantPage.deleteCouponButton.click();
         ReusableMethods.wait(1);
 
         WebElement deletePopupPageButton = Driver.getDriver().findElement(By.xpath("//a[@class='btn btn-green item_delete']"));
@@ -54,14 +59,16 @@ public class US_033 {
 
         String afterDeleteCoupon = couponStringList.get(0);
 
-        Assert.assertEquals(beforeDeleteCoupon, afterDeleteCoupon);
+        Assert.assertNotEquals(beforeDeleteCoupon, afterDeleteCoupon);
 
 
         Driver.quitDriver();
     }
 
     @Test
-    public void TC_3302() {
+    public void TC_3302() { //Update Coupon Information Test
+        MerchantPage merchantPage=new MerchantPage();
+
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();
@@ -79,7 +86,10 @@ public class US_033 {
         ReusableMethods.wait(1);
 
 
-        fillTheCouponInformations();
+        Faker faker = new Faker();
+        String couponName = faker.commerce().promotionCode();
+        ReusableMethods.fillTheCouponInformations(couponName);
+
 
 
         Driver.quitDriver();
@@ -88,7 +98,9 @@ public class US_033 {
     }
 
     @Test
-    public void TC_3303() {
+    public void TC_3303() { //Add new Coupon Test
+        MerchantPage merchantPage=new MerchantPage();
+        ReusableMethods.wait(1);
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();
@@ -101,67 +113,167 @@ public class US_033 {
         Assert.assertEquals(actualTitle, expectedTitle);
 
         merchantPage.couponAddLink.click();
-        fillTheCouponInformations();
+
+        Faker faker = new Faker();
+        String couponName = faker.commerce().promotionCode();
+        ReusableMethods.fillTheCouponInformations(couponName);
+
+
         Driver.quitDriver();
 
 
     }
+
     @Test
-    public void TC_3304(){
+    public void TC_3304() { //Check Added Coupon Test
+
+        ReusableMethods.accessToMerchant();
+        Assert.assertTrue(merchantPage.promoLink.isDisplayed());
+        merchantPage.promoLink.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(merchantPage.couponLink.isDisplayed());
+        merchantPage.couponLink.click();
+        ReusableMethods.wait(1);
+        String expectedTitle = "Coupon list";
+        String actualTitle = Driver.getDriver().getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle);
+
+        merchantPage.couponAddLink.click();
+
+        Faker faker = new Faker();
+        String couponName = faker.commerce().promotionCode();
+        ReusableMethods.fillTheCouponInformations(couponName);
+
+
+        List<String> couponStringList = ReusableMethods.stringListesineDonustur(merchantPage.couponNameList);
+        Assert.assertEquals(couponStringList.get(0).split(" ")[0].trim(), couponName);
+
+        Driver.quitDriver();
+
 
     }
 
-    public void fillTheCouponInformations() {
-        //Coupon Name Test
-        Assert.assertTrue(merchantPage.updateCouponName.isEnabled());
-        merchantPage.updateCouponName.clear();
-        merchantPage.updateCouponName.sendKeys("Discount $10");
+    @Test
+    public void TC_3305() { //Sort Test With Number,Name And Used Tags
 
-        //Coupon Type Test
-        WebElement couponTypeDropdownElement = merchantPage.updateCouponTypeDropdown;
-        Assert.assertTrue(couponTypeDropdownElement.isEnabled());
-        Select couponType = new Select(couponTypeDropdownElement);
-        couponType.selectByIndex(0);
-
-
-        //Amount Test
-        Assert.assertTrue(merchantPage.updateCouponAmount.isDisplayed());
-        Assert.assertTrue(merchantPage.updateCouponAmount.isEnabled());
-        merchantPage.updateCouponAmount.clear();
-        String discountAmount = "10";
-        merchantPage.updateCouponAmount.sendKeys(discountAmount);
-
-        //Min Order
-        Assert.assertTrue(merchantPage.updateMinOrder.isEnabled());
-        Assert.assertTrue(merchantPage.updateMinOrder.isDisplayed());
-        merchantPage.updateMinOrder.clear();
-        String minOrder = "120";
-        merchantPage.updateMinOrder.sendKeys(minOrder);
+        ReusableMethods.accessToMerchant();
+        Assert.assertTrue(merchantPage.promoLink.isDisplayed());
+        merchantPage.promoLink.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(merchantPage.couponLink.isDisplayed());
+        merchantPage.couponLink.click();
         ReusableMethods.wait(1);
 
-        //Days Available
+        //Coupon Number Sort
+        merchantPage.couponNumberSortLink.click();
+        ReusableMethods.wait(1);
+        List<String> couponNumberStringList = ReusableMethods.stringListesineDonustur(merchantPage.couponNumberList);
+        List<Integer> couponNumberIntegerList = new ArrayList<>();
 
-        merchantPage.updateDaysAvailable.sendKeys("Monday", Keys.ENTER);
+        ReusableMethods.stringListToIntegerList(couponNumberStringList, couponNumberIntegerList);
+
+        for (int i = 0; i < couponNumberIntegerList.size() - 1; i++) {
+            Assert.assertTrue(couponNumberIntegerList.get(i) < couponNumberIntegerList.get(i + 1));
+        }
+        ReusableMethods.wait(1);
+
+        //Coupon Name Sort
+        merchantPage.couponNameSortLink.click();
+        ReusableMethods.wait(1);
+        List<String> couponNameStringList = ReusableMethods.stringListesineDonustur(merchantPage.couponNameList);
+        for (int i = 0; i < couponNameStringList.size(); i++) {
+            couponNameStringList.set(i, couponNameStringList.get(i).toUpperCase());
+        }
 
 
-        //Expiration
+        List<String> sortedCouponNameList = new ArrayList<>(couponNameStringList);
+        Collections.sort(sortedCouponNameList);
+        ReusableMethods.wait(1);
+        for (int i = 0; i < sortedCouponNameList.size(); i++) {
+            sortedCouponNameList.set(i, sortedCouponNameList.get(i).toUpperCase());
+        }
 
+        Assert.assertEquals(couponNameStringList, sortedCouponNameList);
+        ReusableMethods.wait(1);
 
-        //Coupon Options
-        WebElement couponOptionsElement = merchantPage.updateCouponOptions;
-        Assert.assertTrue(couponOptionsElement.isEnabled());
-        Select couponOptions = new Select(couponOptionsElement);
-        couponOptions.selectByIndex(3);
+        //Coupon Used Sort
+        merchantPage.couponUsedSortLink.click();
+        ReusableMethods.wait(1);
+        List<String> couponUsedStringList = ReusableMethods.stringListesineDonustur(merchantPage.couponUsedList);
+        List<Integer> couponUsedIntegerList = new ArrayList<>();
 
+        ReusableMethods.stringListToIntegerList(couponUsedStringList, couponUsedIntegerList);
 
-        //Coupon Options
-        WebElement statusElement = merchantPage.updateStatus;
-        Assert.assertTrue(statusElement.isEnabled());
-        Select status = new Select(statusElement);
-        status.selectByVisibleText("Draft");
+        for (int i = 0; i < couponUsedIntegerList.size() - 1; i++) {
+            Assert.assertTrue(couponUsedIntegerList.get(i) <= couponUsedIntegerList.get(i + 1));
+        }
+        ReusableMethods.wait(1);
 
-        Assert.assertTrue(merchantPage.updateSaveButton.isDisplayed());
-        Assert.assertTrue(merchantPage.updateSaveButton.isEnabled());
-        merchantPage.updateSaveButton.click();
+        Driver.quitDriver();
     }
+
+
+    @Test
+    public void TC_3306() {
+        MerchantPage merchantPage=new MerchantPage();
+        ReusableMethods.accessToMerchant();
+        Assert.assertTrue(merchantPage.promoLink.isDisplayed());
+        merchantPage.promoLink.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(merchantPage.couponLink.isDisplayed());
+        merchantPage.couponLink.click();
+        ReusableMethods.wait(1);
+        String expectedTitle = "Coupon list";
+        String actualTitle = Driver.getDriver().getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle);
+
+        List<String> couponStringList = ReusableMethods.stringListesineDonustur(merchantPage.couponNameList);
+
+        if (couponStringList.size() >= 10) {
+            Driver.getDriver().findElement(By.xpath("(//*[text()='Next'])[2]")).click();
+            ReusableMethods.wait(1);
+            List<String> nextPagecCouponStringList = ReusableMethods.stringListesineDonustur(merchantPage.couponNameList);
+            String nextPageFirstCouponName = Driver.getDriver().findElement(By.xpath("(//tbody/tr/td[2]/h6)[1]")).getText();
+            Assert.assertEquals(nextPagecCouponStringList.get(0), nextPageFirstCouponName);
+
+
+        } else {
+            Assert.assertTrue(false);
+        }
+
+
+        Driver.quitDriver();
+    }
+
+    @Test
+    public void TC_3307() {
+        MerchantPage merchantPage=new MerchantPage();
+        ReusableMethods.accessToMerchant();
+        Assert.assertTrue(merchantPage.promoLink.isDisplayed());
+        merchantPage.promoLink.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(merchantPage.couponLink.isDisplayed());
+        merchantPage.couponLink.click();
+        ReusableMethods.wait(1);
+        String expectedTitle = "Coupon list";
+        String actualTitle = Driver.getDriver().getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle);
+
+
+        Assert.assertTrue(merchantPage.couponSearchBox.isEnabled());
+        Assert.assertTrue(merchantPage.couponSearchBox.isDisplayed());
+        merchantPage.couponSearchBox.sendKeys("Kil", Keys.ENTER);
+        ReusableMethods.wait(1);
+        List<String> couponStringList = ReusableMethods.stringListesineDonustur(merchantPage.couponNameList);
+
+
+        for (int i = 0; i < couponStringList.size(); i++) {
+            Assert.assertTrue(couponStringList.get(i).contains("Kil"));
+        }
+
+        Driver.quitDriver();
+
+
+    }
+
 }
