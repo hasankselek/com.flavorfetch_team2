@@ -39,6 +39,8 @@ public class US_044 {
     @Test
     public void TC_4402(){
 
+        adminPage=new AdminPage();
+
         Actions actions = new Actions(Driver.getDriver());
         //kullanıcı browser açar
         //url girer
@@ -75,11 +77,9 @@ public class US_044 {
         Assert.assertTrue(adminPage.paginationBox.isDisplayed());
         //sayfa sekmesinde numaralara basıldığında numaraya basılan sayfaya gittiğini görüntüler
         String actualEntryText=adminPage.showingEntryInfo.getText();
-        System.out.println(adminPage.showingEntryInfo.getText());
         adminPage.samplePageNumber.click();
         ReusableMethods.wait(3);
         String expectedEntryText=adminPage.showingEntryInfo.getText();
-        System.out.println(adminPage.showingEntryInfo.getText());
         Assert.assertNotEquals(actualEntryText,expectedEntryText);
         //sayfayı kapatır
         Driver.quitDriver();
