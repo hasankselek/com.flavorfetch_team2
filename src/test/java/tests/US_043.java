@@ -1,31 +1,56 @@
 package tests;
 
 import com.google.common.base.Verify;
+import org.checkerframework.checker.units.qual.C;
+import org.openqa.selenium.Keys;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AdminPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.JSUtilities;
+import utilities.ReusableMethods;
 
 public class US_043 {
+    AdminPage adminPage=new AdminPage();
 @Test
     public void test_4301(){
-    //The user opens the browser.
     Driver.getDriver().get("about:blank");
-    //Enters the Url of admin dashboard.
-    Driver.getDriver().get(ConfigReader.getProperty("adminDashboard_Url"));
-    //Click on "Reports" first then on "Merchant Registration".
+    Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
+    adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_iqbal"));
+    JSUtilities.clickWithJS(Driver.getDriver(),adminPage.passBox);
+    adminPage.passBox.sendKeys(ConfigReader.getProperty("adminpassword_iqbal"));
+    adminPage.signInButton.sendKeys(Keys.ENTER);
+    adminPage.itemsAndNames.get(5).sendKeys(Keys.ENTER);
+    adminPage.merchantRegestration.sendKeys(Keys.ENTER);
+    ReusableMethods.wait(3);
     //Verify that the "Merchant Regestration" item is visible.
+    Assert.assertTrue(adminPage.topDatas.get(1).isDisplayed());
     //Click on "Merchant Regestration" item.
+    adminPage.topDatas.get(1).sendKeys(Keys.ENTER);
     //Verify the Url address contains "merchant registration".
-    //The user closes the page.
+    Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(ConfigReader.getProperty("urlContent5")));
+    Driver.getDriver();
 }
 @Test
     public void test_4302(){
-    //The user opens the browser.
-    //Enters the Url of admin dashboard.
-    //Click on Reports first then on Merchant Registration.
+    Driver.getDriver().get("about:blank");
+    Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
+    adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_iqbal"));
+    JSUtilities.clickWithJS(Driver.getDriver(),adminPage.passBox);
+    adminPage.passBox.sendKeys(ConfigReader.getProperty("adminpassword_iqbal"));
+    adminPage.signInButton.sendKeys(Keys.ENTER);
+    adminPage.itemsAndNames.get(5).sendKeys(Keys.ENTER);
+    adminPage.merchantRegestration.sendKeys(Keys.ENTER);
+    ReusableMethods.wait(3);
     //Verify visibility of "Name"in the header of table.
-    //Verify visibility of "Address"in the header of table.
+    Assert.assertTrue(adminPage.tableHeadMerchantRegistration.get(1).isDisplayed());
+    //Verify visibility of "Name"in the header of table.
+    Assert.assertTrue(adminPage.tableHeadMerchantRegistration.get(2).isDisplayed());
     //Verify visibility of "Membership Program"in the header of table.
+    Assert.assertTrue(adminPage.tableHeadMerchantRegistration.get(3).isDisplayed());
+
+
     //Verify that names data sorted by alphabetic order.
     //The user opens the browser.
 }

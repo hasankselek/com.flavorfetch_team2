@@ -371,6 +371,23 @@ public class AdminPage {
     public WebElement balanceSortingButton;
 
 
+    @FindBy(xpath = "//*[@placeholder='Password']")
+    public WebElement passBox;
+    @FindBy(xpath = "//*[@href='javascript:;']")  // index ( 0 - 6) dashboard Items
+    public List<WebElement> itemsAndNames;        //  index ( 7 - 16) names in admin page
+
+    @FindBy(xpath = "//*[@href='/backoffice/reports/merchant_registration']")
+    public WebElement merchantRegestration;
+
+    @FindBy(xpath = "//h5")   //pageItem + page top data
+    public List<WebElement> topDatas;
+
+    @FindBy(xpath = "//thead/tr/th")
+    public List<WebElement> tableHeadMerchantRegistration;
+
+    @FindBy(xpath = "//tbody//td[2]")
+    public List<WebElement> column_2_OfMerchantRegestration;
+
 
 
 
