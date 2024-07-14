@@ -546,11 +546,46 @@ public class MerchantPage {
     public WebElement moreOptionsDropdownMenu; //  scheduled order page
 
 
-  
+
+    @FindBy(xpath = "//a[text()='Completed']")
+    public WebElement ordersCompletedLink;
+
+    @FindBy(xpath = "//*[@class='flex-col d-none d-lg-block']")
+    public WebElement orderHeaderText;    //   Orders completed as of today ..
+
+    @FindBy(xpath = "//*[@class='ronded-green']")
+    public WebElement orderCount;
+
+    @FindBy(xpath = "//*[@class='ml-2 badge services']")
+    public WebElement deliveryType;
+
+    @FindBy(xpath = "//*[@class='ml-2 badge']")
+    public WebElement typeCompleted;
+
+    @FindBy(xpath = " //*[@class='row align-items-start']")
+    public WebElement leftOrderTable;
+
+    @FindBy(xpath = " //*[@class='m-0 link font12']")
+    public WebElement orderClearButton;
+
+
+    @FindBy(xpath = "(//*[@class='text'])[1]")
+    public WebElement orderDeliveryTypeList;
+
+
+    @FindBy(xpath = "(//*[@class='text'])[4]")
+    public WebElement orderPaidTypeList;
+
+    @FindBy(xpath = "//*[@class='card-body']")
+    public WebElement orderSummaryBody;
+
+    @FindBy(xpath = "//*[@class='col-md-5']")
+    public WebElement orderView;
 
 
 
-  
-  
+
+
+
   
 }
