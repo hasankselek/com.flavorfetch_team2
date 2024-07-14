@@ -259,7 +259,7 @@ public class CustomerPage {
     @FindBy(xpath = "//h5[text()='Home']")
     public WebElement addressType;
 
-    @FindBy(xpath = "//*[@class='card p-3 fixed-height address-slot'")
+    @FindBy(xpath = "//*[@class='card p-3 fixed-height address-slot']")
     public List<WebElement> addressCount;
 
     @FindBy(xpath = "//*[@class='col-md-3']")
@@ -300,6 +300,99 @@ public class CustomerPage {
 
     @FindBy (xpath= "(//*[text()='New York, NY, USA'])[2]")
     public  WebElement chooseDeliveryText ; // team2 page
+
+
+
+
+
+    @FindBy(xpath ="(//*[@class='btn normal small'])[1]" )
+    public WebElement addressEdit;
+
+    @FindBy(xpath ="(//*[@class='btn normal small'])[2]" )
+    public WebElement addressDelete;
+
+    @FindBy(xpath ="//*[@id='cmaps'] " )
+    public WebElement viewGoogleMaps;
+
+
+    @FindBy(xpath =" //*[text()='Aparment, suite or floor'] " )
+    public WebElement apartmentTextView;
+
+
+    @FindBy(xpath =" //select[@class='form-control custom-select'] " )
+    public WebElement deliveryOptionsType;
+
+
+    @FindBy(xpath =" //*[text()='Add delivery instructions'] " )
+    public WebElement adddeliveryInstructions;
+
+    @FindBy(xpath ="  //*[text()='Address label']" )
+    public WebElement addressLabel;
+
+
+    @FindBy(xpath = "//*[@class='btn-group btn-group-toggle input-group-small mb-4']")
+    public WebElement addressLabelType;
+
+
+    @FindBy(xpath ="(//*[@href='javascript:;'])[8]" )
+    public WebElement addressEdit2;
+
+    @FindBy(xpath ="//*[text()='Complete Address']" )
+    public WebElement completeAddressField;
+
+    @FindBy(xpath ="(//*[@class='form-control form-control-text'])[2]" )
+    public WebElement completeAddressText;
+
+
+    @FindBy(xpath ="(//*[@class='mr-2'])[2]" )
+    public WebElement saveButtonField;  // completed address side
+
+    @FindBy(xpath ="(//*[@class='ml-1'])[2]" )
+    public WebElement cancelButtonField;  // completed address side
+
+
+    @FindBy(xpath ="(//*[@class='btn btn-black btn-circle rounded-pill'])[2]" )
+    public WebElement addressDetailsCloseButton;  // completed address side
+
+
+    @FindBy(xpath =" //*[@class='btn btn-green w-100']" )
+    public WebElement saveAddressButton;  // completed address side
+
+
+    @FindBy(xpath =" //*[@class='card p-3 fixed-height address-slot']" )
+    public WebElement addressInfoTable;  // completed address side
+
+    @FindBy(xpath =" //*[@class='btn btn-black w-100']" )
+    public WebElement cancelAdressButton;  // completed address side
+
+    @FindBy(xpath =" (//*[text()=' Add new address '])[1] " )
+    public WebElement addAddressButton;  // completed address side
+
+    @FindBy(xpath =" (//*[@class='form-control form-control-text'])[1] " )
+    public WebElement enterAddressField;  // completed address side
+
+    @FindBy(xpath =" (//h6[@class='m-0'])[1]" )
+    public WebElement chooseAddressField;  // completed address side
+
+    @FindBy(xpath =" (//*[@class='module truncate-overflow'])[1]" )
+    public WebElement addressNameNew;  // completed address side
+
+    @FindBy(xpath = "(//input[@type='radio'])[3]")
+    public WebElement addressLabelSchool;
+
+    @FindBy(xpath = "//*[@class='alert alert-warning mb-2']")
+    public WebElement addressSameAlert;
+
+    @FindBy(xpath = "(//*[@class='modal-content'])[3]")
+    public WebElement addressDeleteAlert;
+
+    @FindBy(xpath = "(//*[@class='btn btn-black small pl-4 pr-4 bootbox-cancel'])[1]")
+    public WebElement addressDeleteAlertCancel;
+
+    @FindBy(xpath = "//*[@class='btn btn-green small pl-4 pr-4 bootbox-accept']")
+    public WebElement addressDeleteAlertAccept;
+
+
 
 
 
