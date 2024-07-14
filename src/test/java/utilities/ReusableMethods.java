@@ -1,9 +1,11 @@
 package utilities;
+import com.github.javafaker.Faker;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import pages.AdminPage;
 import pages.MerchantPage;
@@ -15,9 +17,12 @@ import java.time.Duration;
 import java.util.*;
 import java.util.function.Function;
 
+
+
 public class ReusableMethods {
     private static int timeout = 5;
     static AdminPage adminPage = new AdminPage();
+    static MerchantPage merchantPage = new MerchantPage();
 
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
@@ -426,6 +431,93 @@ public class ReusableMethods {
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty(adminUsername)+Keys.TAB+ConfigReader.getProperty(adminPassword));
         adminPage.signInButton.click();
+    }
+  
+    public static void fillTheCouponInformations(String couponName) {
+        //Coupon Name Test
+        Assert.assertTrue(merchantPage.updateCouponName.isEnabled());
+        merchantPage.updateCouponName.clear();
+        ReusableMethods.wait(1);
+
+        merchantPage.updateCouponName.sendKeys(couponName);
+
+        //Coupon Type Test
+        WebElement couponTypeDropdownElement = merchantPage.updateCouponTypeDropdown;
+        Assert.assertTrue(couponTypeDropdownElement.isEnabled());
+        Select couponType = new Select(couponTypeDropdownElement);
+        couponType.selectByIndex(0);
+
+
+        //Amount Test
+        Assert.assertTrue(merchantPage.updateCouponAmount.isDisplayed());
+        Assert.assertTrue(merchantPage.updateCouponAmount.isEnabled());
+        merchantPage.updateCouponAmount.clear();
+        String discountAmount = "10";
+        merchantPage.updateCouponAmount.sendKeys(discountAmount);
+
+        //Min Order
+        Assert.assertTrue(merchantPage.updateMinOrder.isEnabled());
+        Assert.assertTrue(merchantPage.updateMinOrder.isDisplayed());
+        merchantPage.updateMinOrder.clear();
+        String minOrder = "120";
+        merchantPage.updateMinOrder.sendKeys(minOrder);
+        ReusableMethods.wait(1);
+
+        //Days Available
+
+        merchantPage.updateDaysAvailable.sendKeys("Monday", Keys.ENTER, "Sunday", Keys.ENTER);
+        ReusableMethods.wait(2);
+
+
+        //Expiration
+        Actions actions = new Actions(Driver.getDriver());
+        actions.click(merchantPage.updateExpiration).perform();
+
+        String monthYearValue = Driver.getDriver().findElement(By.xpath("(//*//th[@class='month'])[1]")).getText();
+
+        String month = monthYearValue.split(" ")[0].trim();
+        String year = monthYearValue.split(" ")[1].trim();
+
+
+
+        while (!(month.equals("Apr") && year.equals("2025"))) {
+            Driver.getDriver().findElement(By.xpath("(//tr//th[@class='next available'])[1]")).click();
+            monthYearValue = Driver.getDriver().findElement(By.xpath("(//*//th[@class='month'])[1]")).getText();
+            month = monthYearValue.split(" ")[0].trim();
+            year = monthYearValue.split(" ")[1].trim();
+
+        }
+        Driver.getDriver().findElement(By.xpath("(//tr//td[text()='27'])[1]")).click();
+
+
+        //Coupon Options
+        WebElement couponOptionsElement = merchantPage.updateCouponOptions;
+        Assert.assertTrue(couponOptionsElement.isEnabled());
+        Select couponOptions = new Select(couponOptionsElement);
+        couponOptions.selectByIndex(0);
+
+
+        //Coupon Status
+        WebElement statusElement = merchantPage.updateStatus;
+        Assert.assertTrue(statusElement.isEnabled());
+        Select status = new Select(statusElement);
+        status.selectByVisibleText("Publish");
+
+        Assert.assertTrue(merchantPage.updateSaveButton.isDisplayed());
+        Assert.assertTrue(merchantPage.updateSaveButton.isEnabled());
+        merchantPage.updateSaveButton.click();
+    }
+
+    public static void stringListToIntegerList(List<String > stringList,List<Integer> integerList){
+
+        for (String s : stringList) {
+            try {
+                integerList.add(Integer.parseInt(s));
+            } catch (NumberFormatException e) {
+                Assert.assertTrue(false);
+            }
+        }
+
     }
 
 
