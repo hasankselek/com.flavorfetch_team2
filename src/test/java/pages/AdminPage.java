@@ -379,11 +379,9 @@ public class AdminPage {
     @FindBy(xpath = "//*[text()='Reviews']")
     public WebElement reviewsButton; // dashboard menu under buyers
 
-    //Custormer list page
-    @FindBy(xpath = "(//*[text()=\"Customer list\"])[1]")
+    @FindBy(xpath = "(//*[text()='Customer list'])[1]")
     public WebElement customerListPage;  //Custormer list page
 
-    //sorting desc customername
     @FindBy(xpath = "//tbody//tr//td//h6")
     public WebElement sortingCustomerName; //sorting desc customername
 
@@ -417,6 +415,59 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='btn btn-green fileinput-button dz-clickable']")
     public WebElement selectFilesButton;  // in browse button on add customer page
 
+    @FindBy(xpath = "//button[@id='dropdownMenuButton']")
+    public WebElement createTransactionButton; // admin merchant earrings create a transaction button
+
+    @FindBy(xpath = "//a[normalize-space()='Adjustment']")
+    public WebElement adjustmentButton; // admin merchant earrings create a transaction-adjustment button
+
+    @FindBy(xpath = "//span[@role='combobox']")
+    public WebElement merchantFinder; // admin merchant earrings create a transaction-adjustment-merchants
+
+    @FindBy(xpath = "//li[@class='select2-results__option select2-results__option--selectable']")
+    public List<WebElement> merchantList;
+
+    @FindBy(xpath = "//label[@for='transaction_description']")
+    public WebElement transactionDescriptionText;
+
+    @FindBy(id = "transaction_description")
+    public WebElement transactionDescriptionBox;
+
+    @FindBy(xpath = "//select[@class='form-control custom-select form-control-select mb-3']")
+    public WebElement payType;
+
+    @FindBy(xpath = "//*[text()='Amount']")
+    public WebElement amountText;
+
+    @FindBy(id = "transaction_amount")
+    public WebElement amountBox;
+
+    @FindBy(xpath = "//span[normalize-space()='Submit']")
+    public WebElement submitButton;
+
+    @FindBy(xpath = "//*[@class='notyf__message']")
+    public WebElement notfyMessage;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-eye'])[1]")
+    public WebElement firstActionButton;
+
+    @FindBy(xpath = "(//tbody//tr[1]//td[2])[1]")
+    public WebElement firstMerchantName;
+
+    @FindBy(xpath = "//*[@class='col-md-4 position-relative']")
+    public WebElement merchantInfoText;
+
+    @FindBy(xpath = "//*[@class='rounded-pill img-50 mb-2 lozad loaded']")
+    public WebElement merchantPicture;
+
+    @FindBy(id="exampleModalLabel")
+    public WebElement merchantPageName;
+
+    @FindBy(xpath = "//*[@class='form-control py-2 border-right-0 border']")
+    public WebElement adminPageDate;
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-calendar-alt']")
+    public WebElement calenderIcon;
 
 
 
