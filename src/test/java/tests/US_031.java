@@ -86,7 +86,6 @@ public class US_031 {
         Actions actions = new Actions(Driver.getDriver());
         actions.click(merchantPage.allOrdersPageDateBanner).perform();
 
-
         ReusableMethods.searchDateBeginFinish("11", "Apr", "2023", "10", "Jun", "2024");
 
 
@@ -95,18 +94,43 @@ public class US_031 {
     }
 
     @Test
-    public void TC_3106() {
+    public void TC_3106() //Orders Information Tags Test (ORDERS/CANCEL/TOTAL REFUND/TOTAL ORDERS)
+    {
+        accessToAllOrders();
+
+        Assert.assertTrue(Driver.getDriver().findElement(By.xpath("(//h5[@class='m-0'])[1]")).isDisplayed());
+        Assert.assertTrue(Driver.getDriver().findElement(By.xpath("(//h5[@class='m-0'])[2]")).isDisplayed());
+        Assert.assertTrue(Driver.getDriver().findElement(By.xpath("(//h5[@class='m-0'])[3]")).isDisplayed());
+        Assert.assertTrue(Driver.getDriver().findElement(By.xpath("(//h5[@class='m-0'])[4]")).isDisplayed());
+        Driver.quitDriver();
+
 
     }
 
     @Test
-    public void TC_3107() {
+    public void TC_3107()
+    {
+        accessToAllOrders();
+
 
     }
 
     @Test
-    public void TC_3108() {
+    public void TC_3108() //Orders ID Sort Test
+    {
+        accessToAllOrders();
 
+        Driver.getDriver().findElement(By.xpath("//*[text()='Order ID']")).click();
+
+        List<String> allOrdesIdStringList = ReusableMethods.stringListesineDonustur(merchantPage.allOrdersIdList);
+        List<Integer> allOrdesIdIntegerList = new ArrayList<>();
+        ReusableMethods.stringListToIntegerList(allOrdesIdStringList, allOrdesIdIntegerList);
+
+        for (int i = 0; i > allOrdesIdIntegerList.size() - 1; i++) {
+            Assert.assertTrue(allOrdesIdIntegerList.get(i) > allOrdesIdIntegerList.get(i + 1));
+        }
+        ReusableMethods.wait(1);
+        Driver.quitDriver();
     }
 
     @Test
