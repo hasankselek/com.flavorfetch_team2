@@ -589,7 +589,7 @@ public class MerchantPage {
     @FindBy(xpath = "//*[text()='Reject order']")
     public WebElement rejectOrderButton; //  scheduled order reject page
 
-    @FindBy(xpath = "//*[@class='mb-1']")
+    @FindBy(xpath = "(//*[@class='mb-1'])[1]")
     public WebElement productNameOrderSummary; //  scheduled order page
 
     @FindBy(xpath = "//*[@class='m-0 font11']")
