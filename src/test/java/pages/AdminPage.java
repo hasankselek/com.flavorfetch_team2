@@ -533,6 +533,36 @@ public class AdminPage {
     @FindBy(xpath = "(//*[@class='page-link'])[3]")
     public WebElement samplePageNumber;
 
+    @FindBy(xpath = "//*[@data-range-key='Custom Range'")
+    public WebElement customRange;
+
+    @FindBy(xpath = "(//tbody)[2]//tr")
+    public List<WebElement> customRangeProductList;
+
+    @FindBy(xpath = "//li//a[@role='option']")
+    public List<WebElement> allTransaction;
+
+    @FindBy(xpath = "//*[@class='filter-option-inner-inner']")
+    public WebElement allTransactionFilter;
+
+    @FindBy(xpath = "(//table)[2]//th")
+    public List<WebElement> merchantInfoTable;
+
+    @FindBy(xpath = "//div//ul//li[@data-range-key]")
+    public List<WebElement> dateRangeKey;
+
+    @FindBy(xpath = "(//*[text()='Deactivate Merchant'])")
+    public WebElement deactiveMerchantButton;
+
+    @FindBy(xpath = "//*[@class='bootbox-body']")
+    public WebElement deactiveInformation;
+
+    @FindBy(xpath = "(//*[@type='button'])[11]")
+    public WebElement confirmButton;
+
+    @FindBy(xpath = "(//*[text()='Activate Merchant'])")
+    public WebElement activateMerchantButton;
+
 
 
 

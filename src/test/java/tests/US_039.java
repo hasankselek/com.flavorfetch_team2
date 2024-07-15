@@ -1,11 +1,7 @@
 package tests;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.github.javafaker.Faker;
-import io.github.bonigarcia.wdm.online.GeckodriverSupport;
-import org.bouncycastle.pqc.crypto.newhope.NHSecretKeyProcessor;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -13,15 +9,13 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AdminPage;
-import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -61,20 +55,26 @@ public class US_039 {
 
     @Test //Test of display and calculation of total commission and balance
     public void TC_3902() {
-        adminPage = new AdminPage();
-        actions = new Actions(Driver.getDriver());
-        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
-        actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
+
+        try {
+            adminPage = new AdminPage();
+            actions = new Actions(Driver.getDriver());
+            ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+            actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
 
-        for (int i = 0; i < adminPage.merchantEarringTotalHeadings.size(); i++) {
-            Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(i).isDisplayed());
-            Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(i).getText().contains("Total Commission") ||
-                    adminPage.merchantEarringTotalHeadings.get(i).getText().contains("Total Balance"));
-            Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(i).getText().contains("$"));
+            for (int i = 0; i < adminPage.merchantEarringTotalHeadings.size(); i++) {
+                Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(i).isDisplayed());
+                Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(i).getText().contains("Total Commission") ||
+                        adminPage.merchantEarringTotalHeadings.get(i).getText().contains("Total Balance"));
+                Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(i).getText().contains("$"));
+            }
+
+        }
+        finally {
+            Driver.quitDriver();
         }
 
-        Driver.quitDriver();
 
     }
 
@@ -90,87 +90,97 @@ public class US_039 {
         Assert.assertTrue(adminPage.merchantEarringActionTitle.isDisplayed());
 
         Driver.quitDriver();
+
+        ReusableMethods.wait(1);
     }
 
     @Test
     public void TC_3904() {
-        adminPage = new AdminPage();
-        actions = new Actions(Driver.getDriver());
-        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
-        actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
-        JSUtilities.sayfaOlcegiDegistirme(Driver.getDriver(),75);
+        try {
 
-        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.merchantEarringMerchantTitle);
-        ReusableMethods.wait(1);
 
-        List<String> totalMerchantNames = new ArrayList<>();
+            adminPage = new AdminPage();
+            actions = new Actions(Driver.getDriver());
+            ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+            actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
-        for (int page = 1; page <= 3; page++) {
+            JSUtilities.sayfaOlcegiDegistirme(Driver.getDriver(), 75);
+
+            JSUtilities.clickWithJS(Driver.getDriver(), adminPage.merchantEarringMerchantTitle);
             ReusableMethods.wait(1);
-            // Restoranların isimlerini alın
-            List<WebElement> nameElements = adminPage.merchantEarringMerchantList;
-            for (WebElement nameElement : nameElements) {
-                totalMerchantNames.add(nameElement.getText().toLowerCase().trim());
-            }
 
-            if (page < 3) {
-                WebElement nextPageButton = Driver.getDriver().findElement(By.xpath("//*[@data-dt-idx='4']")); // AdminPage sınıfında nextPageButton öğesini tanımladığınızdan emin olun
-                JSUtilities.clickWithJS(Driver.getDriver(),nextPageButton);
+            List<String> totalMerchantNames = new ArrayList<>();
+
+            for (int page = 1; page <= 3; page++) {
                 ReusableMethods.wait(1);
-            }
-        }
+                // Restoranların isimlerini alın
+                List<WebElement> nameElements = adminPage.merchantEarringMerchantList;
+                for (WebElement nameElement : nameElements) {
+                    totalMerchantNames.add(nameElement.getText().toLowerCase().trim());
+                }
 
-        // Sıralamayı kontrol et (alfabetik sırayla)
-        boolean isSortedMerchant = true;
-        for (int i = 1; i < totalMerchantNames.size(); i++) {
-            if (totalMerchantNames.get(i).compareTo(totalMerchantNames.get(i - 1)) < 0) {
-                isSortedMerchant = false;
-                break;
-            }
-        }
-
-        Assert.assertTrue(isSortedMerchant);
-
-
-        // "Balance" butonuna tıklayın
-        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.merchantEarringBalanceTitle);
-        ReusableMethods.wait(3);
-
-        List<Double> totalBalances = new ArrayList<>();
-
-        for (int page = 1; page <= 3; page++) {
-
-            ReusableMethods.wait(1);
-            // Restoranların bakiyelerini alın
-            List<WebElement> balanceElements = adminPage.merchantEarringBalanceList;
-            for (WebElement balanceElement : balanceElements) {
-                String balanceText = balanceElement.getText().replace("$", "").replace(".", "").replace(".", "");
-                totalBalances.add(Double.parseDouble(balanceText));
+                if (page < 3) {
+                    WebElement nextPageButton = Driver.getDriver().findElement(By.xpath("//*[@data-dt-idx='4']")); // AdminPage sınıfında nextPageButton öğesini tanımladığınızdan emin olun
+                    JSUtilities.clickWithJS(Driver.getDriver(), nextPageButton);
+                    ReusableMethods.wait(1);
+                }
             }
 
-            if (page < 3) {
-                WebElement nextPageButton = Driver.getDriver().findElement(By.xpath("//*[@data-dt-idx='4']")); // next butonu
-                JSUtilities.clickWithJS(Driver.getDriver(),nextPageButton);
+            // Sıralamayı kontrol et (alfabetik sırayla)
+            boolean isSortedMerchant = true;
+            for (int i = 1; i < totalMerchantNames.size(); i++) {
+                if (totalMerchantNames.get(i).compareTo(totalMerchantNames.get(i - 1)) < 0) {
+                    isSortedMerchant = false;
+                    break;
+                }
+            }
+
+            Assert.assertTrue(isSortedMerchant);
+
+
+            // "Balance" butonuna tıklayın
+            JSUtilities.clickWithJS(Driver.getDriver(), adminPage.merchantEarringBalanceTitle);
+            ReusableMethods.wait(3);
+
+            List<Double> totalBalances = new ArrayList<>();
+
+            for (int page = 1; page <= 3; page++) {
+
                 ReusableMethods.wait(1);
+                // Restoranların bakiyelerini alın
+                List<WebElement> balanceElements = adminPage.merchantEarringBalanceList;
+                for (WebElement balanceElement : balanceElements) {
+                    String balanceText = balanceElement.getText().replace("$", "").replace(".", "").replace(".", "");
+                    totalBalances.add(Double.parseDouble(balanceText));
+                }
+
+                if (page < 3) {
+                    WebElement nextPageButton = Driver.getDriver().findElement(By.xpath("//*[@data-dt-idx='4']")); // next butonu
+                    JSUtilities.clickWithJS(Driver.getDriver(), nextPageButton);
+                    ReusableMethods.wait(1);
+                }
             }
+
+            // Tüm sayfalardaki restoran bakiyelerinin doğru sıralandığını kontrol edin
+
+            // Sıralamayı kontrol et (büyükten küçüğe)
+            boolean isSortedBalance = true;
+            for (int i = 1; i < totalBalances.size(); i++) {
+                if (totalBalances.get(i) > totalBalances.get(i - 1)) {
+                    isSortedBalance = false;
+                    break;
+                }
+
+            }
+
+            Assert.assertTrue(isSortedBalance);
+        }
+        finally {
+            Driver.quitDriver();
         }
 
-        // Tüm sayfalardaki restoran bakiyelerinin doğru sıralandığını kontrol edin
 
-        // Sıralamayı kontrol et (büyükten küçüğe)
-        boolean isSortedBalance = true;
-        for (int i = 1; i < totalBalances.size(); i++) {
-            if (totalBalances.get(i) > totalBalances.get(i - 1)) {
-                isSortedBalance = false;
-                break;
-            }
-
-        }
-
-        Assert.assertTrue(isSortedBalance);
-
-        Driver.quitDriver();
     }
 
     @Test
@@ -222,14 +232,6 @@ public class US_039 {
         ReusableMethods.wait(1);
 
         Driver.quitDriver();
-
-
-
-
-
-
-
-
 
     }
 
@@ -297,10 +299,7 @@ public class US_039 {
     }
 
     @Test
-    public void TC_3908(){}
-
-    @Test
-    public void TC_3909(){
+    public void TC_3908(){
         adminPage = new AdminPage();
         actions = new Actions(Driver.getDriver());
         ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
@@ -310,19 +309,102 @@ public class US_039 {
 
         actions.moveToElement(adminPage.merchantEarringPageSearchBox).click().perform();
         adminPage.merchantEarringPageSearchBox.sendKeys("Team2" + Keys.ENTER);
-        ReusableMethods.wait(3);
+        ReusableMethods.wait(1);
+
+        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.firstActionButton);
+        ReusableMethods.wait(1);
+
+        adminPage.dateRangeBox.click();
+        ReusableMethods.wait(1);
+
+        Assert.assertTrue(adminPage.dateRangeKey.get(0).getText().contains("Today"));
+        Assert.assertTrue(adminPage.dateRangeKey.get(1).getText().contains("Yesterday"));
+        Assert.assertTrue(adminPage.dateRangeKey.get(2).getText().contains("Last 7 Days"));
+        Assert.assertTrue(adminPage.dateRangeKey.get(3).getText().contains("Last 30 Days"));
+        Assert.assertTrue(adminPage.dateRangeKey.get(4).getText().contains("This Month"));
+        Assert.assertTrue(adminPage.dateRangeKey.get(5).getText().contains("Last Month"));
+
+
+        adminPage.dateRangeBox.sendKeys("2024-06-24"+Keys.ENTER);
+        ReusableMethods.wait(1);
+        adminPage.allTransactionFilter.click();
+        ReusableMethods.wait(1);
+
+        for (int i = 0; i < adminPage.merchantInfoTable.size(); i++) {
+            Assert.assertTrue(adminPage.merchantInfoTable.get(i).isDisplayed());
+        }
+        Assert.assertTrue(adminPage.merchantInfoTable.get(0).getText().contains("Date"));
+        Assert.assertTrue(adminPage.merchantInfoTable.get(1).getText().contains("Transaction"));
+        Assert.assertTrue(adminPage.merchantInfoTable.get(2).getText().contains("Debit/Credit"));
+        Assert.assertTrue(adminPage.merchantInfoTable.get(3).getText().contains("Running Balance"));
+
+        ReusableMethods.wait(1);
+
+        for (int i = 0; i < adminPage.allTransaction.size(); i++) {
+            Assert.assertTrue(adminPage.allTransaction.get(i).isEnabled());
+        }
+        Assert.assertTrue(adminPage.allTransaction.get(0).getText().contains("Credit"));
+        Assert.assertTrue(adminPage.allTransaction.get(1).getText().contains("Debit"));
+        Assert.assertTrue(adminPage.allTransaction.get(2).getText().contains("Payout"));
+        Assert.assertTrue(adminPage.allTransaction.get(3).getText().contains("Cash In"));
+
+        ReusableMethods.wait(1);
+        adminPage.allTransaction.get(3).click();
+        adminPage.allTransactionFilter.click();
+        ReusableMethods.wait(1);
+
+        for (int i = 0; i < adminPage.customRangeProductList.size(); i++) {
+            Assert.assertTrue(adminPage.customRangeProductList.get(i).getText().contains("24 Jun 2024"));
+        }
+
+
+        String text = Driver.getDriver().findElement(By.xpath("//*[text()='Showing 1 to 2 of 2 entries']")).getText();
+        String[] parts = text.split("Showing 1 to 2 of ");
+        String entriesResult = parts[1];
+        entriesResult = entriesResult.replace(" entries", "");
+
+        Assert.assertEquals(adminPage.customRangeProductList.size(), Integer.parseInt(entriesResult));
+
+        ReusableMethods.wait(1);
+
+
+        Driver.quitDriver();
+    }
+
+    @Test
+    public void TC_3909(){
+        adminPage = new AdminPage();
+        actions = new Actions(Driver.getDriver());
+        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
+
+        actions.moveToElement(adminPage.merchantEarringPageSearchBox).click().perform();
+        adminPage.merchantEarringPageSearchBox.sendKeys("Team2" + Keys.ENTER);
+        ReusableMethods.wait(1);
 
         JSUtilities.clickWithJS(Driver.getDriver(),adminPage.firstActionButton);
         ReusableMethods.wait(3);
 
-        adminPage.dateRangeBox.click();
-        Driver.getDriver().findElement(By.xpath("//*[@data-range-key='Custom Range'")).click();
+
+        adminPage.deactiveMerchantButton.click();
+        ReusableMethods.wait(1);
 
 
-        ReusableMethods.wait(3);
+        String expectedInfo = "You are about to deactivate this merchant, click confirm to continue?";
+        String actualInfo = adminPage.deactiveInformation.getText();
+        Assert.assertTrue(actualInfo.contains(expectedInfo));
+        adminPage.confirmButton.click();
+        ReusableMethods.wait(2);
+
+        Assert.assertTrue(adminPage.activateMerchantButton.isEnabled());
+        adminPage.activateMerchantButton.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(adminPage.deactiveMerchantButton.isEnabled());
+
 
 
         Driver.quitDriver();
+
     }
 
 
