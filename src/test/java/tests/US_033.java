@@ -29,7 +29,7 @@ public class US_033 {
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();
         ReusableMethods.wait(1);
-        Assert.assertTrue(merchantPage.couponLink.isDisplayed());git log
+        Assert.assertTrue(merchantPage.couponLink.isDisplayed());
         merchantPage.couponLink.click();
         ReusableMethods.wait(1);
         String expectedTitle = "Coupon list";
