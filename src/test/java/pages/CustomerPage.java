@@ -376,7 +376,7 @@ public class CustomerPage {
     @FindBy (xpath= "(//*[@class='dropdown'])[2]")
     public  WebElement paymentDefaultThreeDat ; // checkout page
 
-    @FindBy (xpath= " //*[@class='dropdown-item a-12']")
+    @FindBy (xpath= "//*[@class='dropdown-item a-12']")
     public  WebElement deleteLinkThreeDat ; // checkout page
 
     @FindBy(xpath ="(//*[@class='btn normal small'])[1]" )
@@ -493,15 +493,14 @@ public class CustomerPage {
     @FindBy(xpath ="(//*[@class='w-25 align-self-center'])[6]")
     public WebElement saveStoreText;
 
+    @FindBy (xpath= "//h5[@class='m-0 mb-1']")
+    public  WebElement confirmingText ; // checkout page
 
-
-
-
-
-
-
-
-
+    @FindBy (xpath= "//*[@class='btn btn-green w-100 pointer']")
+    public  WebElement placeOrderButton ; // checkout page
+  
+    @FindBy (xpath= "//span[normalize-space()='Place Order']")
+    public  WebElement placeOrderButtonText ; // checkout page
 
 
 
