@@ -325,7 +325,7 @@ public class US_039 {
         Assert.assertTrue(adminPage.dateRangeKey.get(5).getText().contains("Last Month"));
 
 
-        adminPage.dateRangeBox.sendKeys("2024-06-24"+Keys.ENTER);
+        ReusableMethods.searchDateBeginFinish("1","January","2024","31","December","2024");
         ReusableMethods.wait(1);
         adminPage.allTransactionFilter.click();
         ReusableMethods.wait(1);
