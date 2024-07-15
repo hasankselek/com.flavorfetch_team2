@@ -485,21 +485,7 @@ public class ReusableMethods {
         Actions actions = new Actions(Driver.getDriver());
         actions.click(merchantPage.updateExpiration).perform();
 
-        String monthYearValue = Driver.getDriver().findElement(By.xpath("(//*//th[@class='month'])[1]")).getText();
-
-        String month = monthYearValue.split(" ")[0].trim();
-        String year = monthYearValue.split(" ")[1].trim();
-
-
-
-        while (!(month.equals("Apr") && year.equals("2025"))) {
-            Driver.getDriver().findElement(By.xpath("(//tr//th[@class='next available'])[1]")).click();
-            monthYearValue = Driver.getDriver().findElement(By.xpath("(//*//th[@class='month'])[1]")).getText();
-            month = monthYearValue.split(" ")[0].trim();
-            year = monthYearValue.split(" ")[1].trim();
-
-        }
-        Driver.getDriver().findElement(By.xpath("(//tr//td[text()='27'])[1]")).click();
+        searchDate("25","Apr","2027");
 
 
         //Coupon Options
@@ -519,6 +505,24 @@ public class ReusableMethods {
         Assert.assertTrue(merchantPage.updateSaveButton.isEnabled());
         merchantPage.updateSaveButton.click();
     }
+    public static void searchDate(String beginDay,String beginMonth,String beginYear){
+
+        String monthYearValue = Driver.getDriver().findElement(By.xpath("(//*//th[@class='month'])[1]")).getText();
+
+        String month = monthYearValue.split(" ")[0].trim();
+        String year = monthYearValue.split(" ")[1].trim();
+
+
+
+        while (!(month.equals(beginMonth) && year.equals(beginYear))) {
+            Driver.getDriver().findElement(By.xpath("(//tr//th[@class='next available'])[1]")).click();
+            monthYearValue = Driver.getDriver().findElement(By.xpath("(//*//th[@class='month'])[1]")).getText();
+            month = monthYearValue.split(" ")[0].trim();
+            year = monthYearValue.split(" ")[1].trim();
+
+        }
+        Driver.getDriver().findElement(By.xpath("(//tr//td[text()='"+beginDay+"'])[1]")).click();
+    }
 
     public static void stringListToIntegerList(List<String > stringList,List<Integer> integerList){
 
@@ -529,6 +533,33 @@ public class ReusableMethods {
                 Assert.assertTrue(false);
             }
         }
+    }
+
+    public static void searchDateBeginFinish(String beginDay, String beginMonth, String beginYear, String finishDay, String finishMonth, String finishYear) {
+        String monthYearValue = Driver.getDriver().findElement(By.xpath("(//th[@class='month'])[1]")).getText();
+
+        String month = monthYearValue.split(" ")[0].trim();
+        String year = monthYearValue.split(" ")[1].trim();
+
+        while (!(month.equals(beginMonth) && year.equals(beginYear))) {
+            Driver.getDriver().findElement(By.xpath("(//tr//th[@class='prev available'])[1]")).click();
+            monthYearValue = Driver.getDriver().findElement(By.xpath("(//*//th[@class='month'])[1]")).getText();
+            month = monthYearValue.split(" ")[0].trim();
+            year = monthYearValue.split(" ")[1].trim();
+        }
+        Driver.getDriver().findElement(By.xpath("(//tr//td[text()='" + beginDay + "'])[1]")).click();
+        ReusableMethods.wait(1);
+
+        while (!(month.equals(finishMonth) && year.equals(finishYear))) {
+            Driver.getDriver().findElement(By.xpath("(//tr//th[@class='next available'])[1]")).click();
+            ReusableMethods.wait(1);
+            monthYearValue = Driver.getDriver().findElement(By.xpath("(//*//th[@class='month'])[1]")).getText();
+            month = monthYearValue.split(" ")[0].trim();
+            year = monthYearValue.split(" ")[1].trim();
+        }
+        Driver.getDriver().findElement(By.xpath("(//tr//td[text()='" + finishDay + "'])[1]")).click();
+        ReusableMethods.wait(2);
+
     }
 
 
