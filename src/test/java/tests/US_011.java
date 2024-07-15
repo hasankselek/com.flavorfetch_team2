@@ -12,19 +12,16 @@ import utilities.ReusableMethods;
 
 public class US_011 {
 
-    CustomerPage customerPage = new CustomerPage();
+    static CustomerPage customerPage = new CustomerPage();
     Actions actions = new Actions(Driver.getDriver());
 
     @Test
     public void TC_1101(){
         actions = new Actions(Driver.getDriver());
         customerPage = new CustomerPage();
-        // Kullanıcı qa.flavorfetch.com'a gider
-        Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+        ReusableMethods.accessToCustomer("customeruser_hasan","customerpassword_hasan");
 
-        // Geçerli email ve şifre ile giriş yapar
-        customerPage.signInButton.click();
-        ReusableMethods.accessToCustomer("customerusername_hasan","customerpassword_hasan");
+
         // Cookie'yi kabul eder
         customerPage.cookieAccept.click();
 
