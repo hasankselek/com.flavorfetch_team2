@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import pages.CustomerPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class US_011 {
 
@@ -23,8 +24,7 @@ public class US_011 {
 
         // Geçerli email ve şifre ile giriş yapar
         customerPage.signInButton.click();
-        customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_hasan")+Keys.TAB+
-                                                    ConfigReader.getProperty("customerpassword_hasan")+Keys.ENTER);
+        ReusableMethods.accessToCustomer("customerusername_hasan","customerpassword_hasan");
         // Cookie'yi kabul eder
         customerPage.cookieAccept.click();
 
