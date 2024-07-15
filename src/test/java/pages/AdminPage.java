@@ -398,15 +398,54 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[@href='/backoffice/reports/merchant_registration']")
     public WebElement merchantRegestration;
+    @FindBy(xpath = "//*[@class='m-0 mr-2 text-muted text-truncate']")
+    public List<WebElement> topNameMerchantRegistration;
 
     @FindBy(xpath = "//h5")   //pageItem + page top data
     public List<WebElement> topDatas;
 
-    @FindBy(xpath = "//thead/tr/th")
-    public List<WebElement> tableHeadMerchantRegistration;
+    @FindBy(xpath = "//ul[@class='pagination']/li") //Merchant Registrtion
+    public List<WebElement> pagesNevigate;
+
+    @FindBy(xpath = "//*[@class='month']")
+    public  List<WebElement> calendarMonthHead;
+
+    @FindBy(xpath = "//*[@class='prev available']")//Merchant Registratio/calendarDropDown
+    public  WebElement prevFlashCalendar;
+    @FindBy(xpath = "//*[@class='filter-option']")
+    public WebElement statusBoxFilter;
+    @FindBy(xpath = "//*[@type='search']")
+    public WebElement dateInputBox; //Start Date - End Date
+    @FindBy(xpath = "//*[@class='ranges']/ul/li")// calendarInputBox / DropDown
+    public List<WebElement>  dateRange;
+
+    @FindBy(xpath = "//*[@class='week']")//MerchantRegistration /dropdown calendar(index = 0-13)
+    public List<WebElement> weekList;
+
+    @FindBy(xpath = "//*[@class='input-group-text bg-transparent']")
+    public WebElement calendarIcone;
+
+    @FindBy(xpath = "//thead/tr/th[2]")
+    public WebElement nameHead;//MerchantRegistration/Table Head
+    @FindBy(xpath = "//thead/tr/th[3]")
+    public WebElement addressHead;//MerchantRegistration/Table Head
+    @FindBy(xpath = "//thead/tr/th[4]")
+    public WebElement membershipHead;//MerchantRegistration/Table Head
+    @FindBy(xpath = "//tbody//td[1]")
+    public List<WebElement> columnPicOfMerchantRegestration;
 
     @FindBy(xpath = "//tbody//td[2]")
-    public List<WebElement> column_2_OfMerchantRegestration;
+    public List<WebElement> columnNameOfMerchantRegestration;
+    @FindBy(xpath = "//tbody//td/p[1]")
+    public List<WebElement>  columnJustNameOfMerchantRegistration;
+
+    @FindBy(xpath = "//tbody//td/div")
+    public List<WebElement> columnStatusOfMerchantRegistration;
+    @FindBy(xpath = "//tbody//td[3]")
+    public List<WebElement> columnAddressOfMerchantRegestration;
+
+    @FindBy(xpath = "//tbody//td[4]")
+    public List<WebElement> columnMembershipOfMerchantRegestration;
 
     @FindBy(xpath = "//*[@for='AR_client_last_name']")
     public WebElement lastNamebutton; // on add customer page
