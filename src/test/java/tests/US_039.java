@@ -1,11 +1,15 @@
 package tests;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.github.javafaker.Faker;
+import io.github.bonigarcia.wdm.online.GeckodriverSupport;
 import org.bouncycastle.pqc.crypto.newhope.NHSecretKeyProcessor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AdminPage;
@@ -14,9 +18,12 @@ import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class US_039 {
 
@@ -173,7 +180,149 @@ public class US_039 {
         ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
         actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
+        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.createTransactionButton);
+        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.adjustmentButton);
 
+        String expectedTitle = "Create adjustment";
+        String actualTitle = Driver.getDriver().findElement(By.xpath("//form//h5[@id='exampleModalLabel']")).getText();
+        Assert.assertEquals(actualTitle,expectedTitle);
+
+        String expectedMerchantTitle = "Merchant";
+        String actualMerchantTitle = Driver.getDriver().findElement(By.xpath("//b[normalize-space()='Merchant']")).getText();
+        Assert.assertEquals(actualMerchantTitle,expectedMerchantTitle);
+
+        // rastgele bir merchant seçme
+        actions.moveToElement(adminPage.merchantFinder).click().perform();
+        ReusableMethods.wait(1);
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(adminPage.merchantList.size());
+        WebElement randomElement = adminPage.merchantList.get(randomIndex);
+        actions.moveToElement(randomElement).click().perform();
+        ReusableMethods.wait(1);
+
+
+        Assert.assertTrue(adminPage.transactionDescriptionText.getText().contains("Transaction Description"));
+        Faker faker = new Faker();
+        actions.click(adminPage.transactionDescriptionBox).sendKeys(faker.lorem().sentence()).perform();
+        ReusableMethods.wait(3);
+
+        Select select = new Select(adminPage.payType);
+        List<WebElement> options = select.getOptions();
+        int randomIndex2 = rand.nextInt(options.size());
+        select.selectByIndex(randomIndex2);
+        ReusableMethods.wait(3);
+
+        Assert.assertTrue(adminPage.amountText.getText().contains("Amount"));
+        int randomPrice = rand.nextInt(100);
+        actions.click(adminPage.amountBox).sendKeys(String.valueOf(randomPrice)).perform();
+        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.submitButton);
+        ReusableMethods.wait(2);
+
+        Assert.assertTrue(adminPage.notfyMessage.isDisplayed());
+        ReusableMethods.wait(1);
+
+        Driver.quitDriver();
+
+
+
+
+
+
+
+
+
+    }
+
+    @Test
+    public void TC_3906() {
+        adminPage = new AdminPage();
+        actions = new Actions(Driver.getDriver());
+        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
+
+        Assert.assertTrue(adminPage.firstActionButton.isDisplayed());
+        Assert.assertTrue(adminPage.firstActionButton.isEnabled());
+
+        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.firstActionButton);
+        ReusableMethods.wait(1);
+        String expectedMerchantName = adminPage.firstMerchantName.getText();
+        String actualMerchantName = Driver.getDriver().findElement(By.id("exampleModalLabel")).getText();
+        Assert.assertEquals(actualMerchantName,expectedMerchantName);
+
+        Driver.quitDriver();
+    }
+
+    @Test
+    public void TC_3907() {
+        adminPage = new AdminPage();
+        actions = new Actions(Driver.getDriver());
+        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
+
+        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.firstActionButton);
+        ReusableMethods.wait(1);
+
+        for (int i = 0; i < adminPage.customerPageAltBasliklar.size(); i++) {
+            Assert.assertTrue(adminPage.customerPageAltBasliklar.get(i).isDisplayed());
+        }
+
+        Assert.assertTrue(adminPage.customerPageAltBasliklar.get(0).getText().contains("Orders"));
+
+        Assert.assertTrue(adminPage.customerPageAltBasliklar.get(1).getText().contains("Cancel"));
+
+        Assert.assertTrue(adminPage.customerPageAltBasliklar.get(2).getText().contains("Refund"));
+        Assert.assertTrue(adminPage.customerPageAltBasliklar.get(2).getText().contains("$"));
+
+        Assert.assertTrue(adminPage.customerPageAltBasliklar.get(3).getText().contains("Total"));
+        Assert.assertTrue(adminPage.customerPageAltBasliklar.get(3).getText().contains("$"));
+
+        Assert.assertTrue(adminPage.merchantInfoText.isDisplayed());
+        Assert.assertTrue(adminPage.merchantInfoText.getText().contains("Merchant Info"));
+        Assert.assertTrue(adminPage.merchantPicture.isDisplayed());
+        Assert.assertTrue(adminPage.merchantInfoText.getText().contains("Name"));
+        Assert.assertTrue(adminPage.merchantInfoText.getText().contains("Contact"));
+        Assert.assertTrue(adminPage.merchantInfoText.getText().contains("Email"));
+        Assert.assertTrue(adminPage.merchantInfoText.getText().contains("@"));
+        Assert.assertTrue(adminPage.merchantInfoText.getText().contains("Member since"));
+        Assert.assertTrue(adminPage.merchantInfoText.getText().contains("Membership History"));
+
+        String expectedMerchantName = adminPage.merchantPageName.getText();
+        String actualMerchantName = Driver.getDriver().findElement(By.xpath("(//*[@class='col-sm-7 text-secondary'])[1]")).getText();
+        Assert.assertEquals(actualMerchantName,expectedMerchantName);
+
+
+        Driver.quitDriver();
+
+
+    }
+
+    @Test
+    public void TC_3908(){}
+
+    @Test
+    public void TC_3909(){
+        adminPage = new AdminPage();
+        actions = new Actions(Driver.getDriver());
+        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
+
+
+
+        actions.moveToElement(adminPage.merchantEarringPageSearchBox).click().perform();
+        adminPage.merchantEarringPageSearchBox.sendKeys("Team2" + Keys.ENTER);
+        ReusableMethods.wait(3);
+
+        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.firstActionButton);
+        ReusableMethods.wait(3);
+
+        adminPage.dateRangeBox.click();
+        Driver.getDriver().findElement(By.xpath("//*[@data-range-key='Custom Range'")).click();
+
+
+        ReusableMethods.wait(3);
+
+
+        Driver.quitDriver();
     }
 
 

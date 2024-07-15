@@ -434,6 +434,7 @@ public class ReusableMethods {
         adminPage.signInButton.click();
     }
 
+
     public static void accessToCustomer(String costumerUsername , String customerPassword){
         CustomerPage customerPage=new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -442,6 +443,7 @@ public class ReusableMethods {
         customerPage.emailBox.sendKeys(ConfigReader.getProperty(costumerUsername)+Keys.TAB+ConfigReader.getProperty(customerPassword));
         customerPage.loginSigninButton.click();
     }
+
 
     public static void fillTheCouponInformations(String couponName) {
         //Coupon Name Test
