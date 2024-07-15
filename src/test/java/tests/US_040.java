@@ -1,12 +1,12 @@
 package tests;
 
 import com.beust.ah.A;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Sleeper;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -17,6 +17,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.util.List;
+import java.util.Random;
 
 import static utilities.Driver.driver;
 import static utilities.Driver.getDriver;
@@ -86,7 +87,6 @@ import static utilities.Driver.getDriver;
             selectCouponDay.selectByValue ( "monday" );
             selectCouponDay.selectByValue ( "sunday" );
 
-
             adminPage.couponMerchant.click ();
 
             WebElement team2Option = Driver.getDriver ().findElement ( By.xpath ( "(//*[@class='select2-results__option select2-results__option--selectable'])[12]" ) );
@@ -101,24 +101,24 @@ import static utilities.Driver.getDriver;
 
             // İleri ay butonuna tıklamak gerekiyorsa
 
-              WebElement nextMonthButton = Driver.getDriver ().findElement ( By.xpath ( "(//*[@class='next available'])[1]" ) ); // İleri ay butonunun xpath'i
-              actions.moveToElement ( nextMonthButton ).click ().perform ();
+            WebElement nextMonthButton = Driver.getDriver ().findElement ( By.xpath ( "(//*[@class='next available'])[1]" ) ); // İleri ay butonunun xpath'i
+            actions.moveToElement ( nextMonthButton ).click ().perform ();
 
 
             WebElement ayGun = Driver.getDriver ().findElement ( By.xpath ( "(*//div//tbody/tr/td)[17]" ) );
             ayGun.click ();
 
-            Select couponOptions1 = new Select (adminPage.couponOptions);
+            Select couponOptions1 = new Select ( adminPage.couponOptions );
 
             couponOptions1.selectByValue ( "2" );
 
-            Select copuponStatus = new Select ( adminPage.copuponStatus );
+            Select copuponStatus = new Select ( adminPage.couponStatus );
 
             copuponStatus.selectByValue ( "publish" );
 
             adminPage.couponSaved.click ();
 
-
+            Driver.quitDriver ();
 
 
         }
@@ -128,36 +128,75 @@ import static utilities.Driver.getDriver;
         public void US_4003() {
 
 
+           Driver.getDriver ().get ( ConfigReader.getProperty ( "admin_Url" ) );
 
+            adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_serhat") + Keys.TAB +
+                    ConfigReader.getProperty("adminpassword_serhat"));
+            adminPage.signInButton.click();
 
+            adminPage.promoAdmin.click();
+            adminPage.couponAdmin.click();
+            adminPage.couponActions.click();
 
+            Select select = new Select ( adminPage.couponStatus );
 
+            select.selectByValue ( "pending" );
 
+            ReusableMethods.clickWithJS ( adminPage.couponSaved );
 
+            driver.navigate().back();
 
+            ReusableMethods.clickWithJS ( adminPage.couponSaved );
 
+            select.selectByValue ( "draft" );
 
+            ReusableMethods.clickWithJS ( adminPage.couponSaved );
 
+            Driver.getDriver ().navigate ().to ( "https://qa.flavorfetch.com/backoffice/promo/coupon" );
 
+            WebElement couponUpdateStatusu = driver.findElement(By.xpath("(//span[contains(@class, 'badge ml-2 post')])[1]"));
+            String newStatus = couponUpdateStatusu.getText();
 
+            // Durumu kontrol etmek için
+
+            Assert.assertEquals(newStatus, "Draft");
+
+            Driver.quitDriver ();
 
 
         }
 
 
-        @Test
-        public void US_4004() {
+            @Test
+            public void US_4004 () {
 
+                Driver.getDriver ().get ( ConfigReader.getProperty ( "admin_Url" ) );
+
+                adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_serhat") + Keys.TAB +
+                        ConfigReader.getProperty("adminpassword_serhat"));
+                adminPage.signInButton.click();
+
+                adminPage.promoAdmin.click();
+
+                adminPage.couponAdmin.click();
+
+                adminPage.couponDelete.click ();
+
+
+
+
+
+
+
+
+
+            }
+
+            @Test
+            public void US_4005 () {
+
+            }
         }
-
-
-        @Test
-        public void US_4005() {
-
-        }
-
-
-    }
 
 
 

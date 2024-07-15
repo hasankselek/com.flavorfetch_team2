@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.security.PublicKey;
 import java.util.List;
 
 public class AdminPage {
@@ -190,7 +191,7 @@ public class AdminPage {
     @FindBy (xpath = "//*[@id=\"AR_voucher_amount\"]")
     public WebElement couponAmount;  // admin coupon discount amount
 
-    @FindBy(xpath = "//*[@id=\"AR_voucher_min_order\"]")
+    @FindBy(xpath = "//*[@name='AR_voucher[min_order]']")
     public WebElement couponMinOrder;  // Minimum Order
 
     @FindBy(xpath = "//select[@name=\"AR_voucher[days_available][]\"]")
@@ -203,14 +204,14 @@ public class AdminPage {
     public WebElement couponOptions;   // coupon options
 
     @FindBy(xpath = "//*[@id='AR_voucher_status']")
-    public WebElement copuponStatus;    // coupon status
+    public WebElement couponStatus;    // coupon status
 
     @FindBy(xpath = "//*[@class='btn btn-green btn-full mt-3']")
     public WebElement couponSaved;      // coupon saved
 
     @FindBy(xpath = "//*[@class='promo']")
     public  WebElement adminPromo;
-  
+
     @FindBy(xpath = "//a[text()='Orders']")
     public  WebElement dasboardOrders;
   
@@ -311,156 +312,6 @@ public class AdminPage {
     public List<WebElement> orderIdColumn;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @FindBy(xpath = "(//*[text()='Block Customer'])")
     public WebElement blockCustomerButton; // admin dashboard customer special page block customer button
 
@@ -479,16 +330,17 @@ public class AdminPage {
     @FindBy(xpath = "(//div[@class='card-body'])[14]")
     public WebElement recentPayoutTable; // admin dashboard recent payout table
 
+    @FindBy(xpath = "(//*[@class=\"btn btn-light tool_tips\"])[1]")
+    public WebElement couponActions;
 
+    @FindBy(xpath = "//*[@id='AR_voucher_status']")
+    public WebElement couponUpdateStatus;
 
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-delete'])[1]")
+    public WebElement couponDelete;
 
-
-
-
-
-
-
-
+    @FindBy(xpath = "//*[@class='btn btn-green item_delete']")
+    public WebElement couponAlertDelete;
 
 
 
