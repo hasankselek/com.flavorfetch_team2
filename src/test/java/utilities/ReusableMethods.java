@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import pages.AdminPage;
+import pages.CustomerPage;
 import pages.MerchantPage;
 
 import java.io.File;
@@ -432,7 +433,18 @@ public class ReusableMethods {
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty(adminUsername)+Keys.TAB+ConfigReader.getProperty(adminPassword));
         adminPage.signInButton.click();
     }
-  
+
+
+    public static void accessToCustomer(String costumerUsername , String customerPassword){
+        CustomerPage customerPage=new CustomerPage();
+        Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+        ReusableMethods.wait(1);
+        customerPage.signInButton.click();
+        customerPage.emailBox.sendKeys(ConfigReader.getProperty(costumerUsername)+Keys.TAB+ConfigReader.getProperty(customerPassword));
+        customerPage.loginSigninButton.click();
+    }
+
+
     public static void fillTheCouponInformations(String couponName) {
         //Coupon Name Test
         Assert.assertTrue(merchantPage.updateCouponName.isEnabled());
