@@ -356,7 +356,7 @@ public class US_039 {
         ReusableMethods.wait(1);
 
         for (int i = 0; i < adminPage.customRangeProductList.size(); i++) {
-            Assert.assertTrue(adminPage.customRangeProductList.get(i).getText().contains("24 Jun 2024"));
+            Assert.assertTrue(adminPage.customRangeProductList.get(i).getText().contains("24 Jun 2024") );
         }
 
 
