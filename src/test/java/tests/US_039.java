@@ -325,10 +325,14 @@ public class US_039 {
         Assert.assertTrue(adminPage.dateRangeKey.get(5).getText().contains("Last Month"));
 
 
+        ReusableMethods.searchDateBeginFinish("1","August","2024","31","December","2024");
+        ReusableMethods.wait(3);
+        /*
         adminPage.dateRangeBox.sendKeys("2024-06-24"+Keys.ENTER);
         ReusableMethods.wait(1);
         adminPage.allTransactionFilter.click();
         ReusableMethods.wait(1);
+         */
 
         for (int i = 0; i < adminPage.merchantInfoTable.size(); i++) {
             Assert.assertTrue(adminPage.merchantInfoTable.get(i).isDisplayed());
