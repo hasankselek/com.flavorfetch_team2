@@ -22,7 +22,8 @@ public class US_033 {
 
     MerchantPage merchantPage=new MerchantPage();
     @Test
-    public void TC_3301() {
+    public void TC_3301()
+    {
         MerchantPage merchantPage = new MerchantPage();
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
@@ -66,7 +67,8 @@ public class US_033 {
     }
 
     @Test
-    public void TC_3302() { //Update Coupon Information Test
+    public void TC_3302() //Update Coupon Information Test
+     {
         MerchantPage merchantPage=new MerchantPage();
 
         ReusableMethods.accessToMerchant();
@@ -98,7 +100,8 @@ public class US_033 {
     }
 
     @Test
-    public void TC_3303() { //Add new Coupon Test
+    public void TC_3303() //Add new Coupon Test
+    {
         MerchantPage merchantPage=new MerchantPage();
         ReusableMethods.wait(1);
         ReusableMethods.accessToMerchant();
@@ -125,8 +128,8 @@ public class US_033 {
     }
 
     @Test
-    public void TC_3304() { //Check Added Coupon Test
-
+    public void TC_3304()  //Check Added Coupon Test
+        {
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();
@@ -154,8 +157,8 @@ public class US_033 {
     }
 
     @Test
-    public void TC_3305() { //Sort Test With Number,Name And Used Tags
-
+    public void TC_3305()  //Sort Test With Number,Name And Used Tags
+        {
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();

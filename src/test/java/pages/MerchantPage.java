@@ -74,6 +74,18 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='All Orders']")
     public WebElement allOrdersLink;// merchant sidebar page
 
+    @FindBy(xpath = "//tr//td[2]")
+    public  List<WebElement> allOrdersIdList;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-eye'])[1]")
+    public WebElement allOrdersPageFirstViewButton;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-download'])[1]")
+    public WebElement allOrdersPageFirstDownloadButton;
+
+    @FindBy(xpath = "//*[@class='input-group fixed-width-field mr-2']")
+    public WebElement allOrdersPageDateBanner;
+
     @FindBy(xpath = "//a[text()='Attributes']")
     public WebElement attributesLink;// merchant sidebar page
 
@@ -575,7 +587,7 @@ public class MerchantPage {
     @FindBy(xpath = "//*[text()='Reject order']")
     public WebElement rejectOrderButton; //  scheduled order reject page
 
-    @FindBy(xpath = "//*[@class='mb-1']")
+    @FindBy(xpath = "(//*[@class='mb-1'])[1]")
     public WebElement productNameOrderSummary; //  scheduled order page
 
     @FindBy(xpath = "//*[@class='m-0 font11']")

@@ -1,6 +1,7 @@
 package tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,6 +9,7 @@ import pages.CustomerPage;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class US_015 {
@@ -115,7 +117,8 @@ public class US_015 {
     }
 
     @Test
-    public void TC_1506() {
+    public void TC_1506() //Write A Review Test
+    {
         accesOrdersPage();
         customerPage.firstOrdersDropdownButton.click();
         ReusableMethods.wait(1);
@@ -124,9 +127,75 @@ public class US_015 {
         Assert.assertTrue(customerPage.ordersPageWriteAReviewButton.isEnabled());
         customerPage.ordersPageWriteAReviewButton.click();
 
+        for (int i = 1; i <6 ; i++) {
+            WebElement starLink = Driver.getDriver().findElement(By.xpath("//span["+i+"]//*[name()='svg']"));
+            Assert.assertTrue(starLink.isEnabled());
+            Assert.assertTrue(starLink.isDisplayed());
+        }
+        WebElement fiveStarLink = Driver.getDriver().findElement(By.xpath("//span[5]//*[name()='svg']"));
+        fiveStarLink.click();
+        WebElement didYouLike = Driver.getDriver().findElement(By.xpath("(//*[@data-placeholder='Search tag'])[1]"));
+        didYouLike.sendKeys("Kebap", Keys.ENTER,"cola",Keys.ENTER);
+        WebElement didYouNotLike = Driver.getDriver().findElement(By.xpath("(//*[@data-placeholder='Search tag'])[2]"));
+        didYouNotLike.sendKeys("Pizza",Keys.ENTER);
+        WebElement yourReview = Driver.getDriver().findElement(By.xpath("//*[@id='review_content']"));
+        yourReview.sendKeys("Beatiful Restaurant");
+
+        Driver.getDriver().findElement(By.xpath("//*[text()='Add Review']")).click(); // Add review button
+
+        ReusableMethods.wait(1);
+
+        Driver.quitDriver();
+
+
+    }
+
+    @Test
+    public void TC_1507() //Cancel Order Test
+    {
+        accesOrdersPage();
+        customerPage.firstOrdersDropdownButton.click();
+        ReusableMethods.wait(1);
+
+        Assert.assertTrue(customerPage.ordersPageCancelOrderLink.isDisplayed());
+        Assert.assertTrue(customerPage.ordersPageCancelOrderLink.isEnabled());
+        customerPage.ordersPageCancelOrderLink.click();
+        ReusableMethods.wait(2);
+
+        WebElement doNotCancelButton = Driver.getDriver().findElement(By.xpath("(//*[@class='btn btn-black w-100'])[1]"));
+        doNotCancelButton.click();
+        ReusableMethods.wait(2);
 
 
         Driver.quitDriver();
+
+
+
+    }
+
+    @Test
+    public void TC_1508() //Track Button Test
+    {
+        accesOrdersPage();
+        customerPage.firstOrdersDropdownButton.click();
+        ReusableMethods.wait(1);
+
+        Assert.assertTrue(customerPage.ordersPageTrackButton.isDisplayed());
+        Assert.assertTrue(customerPage.ordersPageTrackButton.isEnabled());
+        customerPage.ordersPageTrackButton.click();
+        ReusableMethods.wait(1);
+
+
+        List<String> windows =new ArrayList<>(Driver.getDriver().getWindowHandles());
+        Driver.getDriver().switchTo().window(windows.get(1));
+
+        String actualText =Driver.getDriver().findElement(By.xpath("//h5[@class='m-0 mb-1']")).getText();
+        String expectedText = "Confirming your order";
+        Assert.assertEquals(actualText,expectedText);
+        ReusableMethods.wait(1);
+
+        Driver.quitDriver();
+
 
 
     }
