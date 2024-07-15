@@ -16,6 +16,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 
@@ -181,6 +182,29 @@ import static utilities.Driver.getDriver;
                 adminPage.couponAdmin.click();
 
                 adminPage.couponDelete.click ();
+
+
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                WebElement promoAdmin = wait.until(ExpectedConditions.elementToBeClickable(By.id("promoAdminId"))); // ID'yi değiştirin
+                promoAdmin.click();
+
+                WebElement couponAdmin = wait.until(ExpectedConditions.elementToBeClickable(By.id("couponAdminId"))); // ID'yi değiştirin
+                couponAdmin.click();
+
+                // Delete bağlantısını bulma
+                WebElement deleteButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".modal-footer a.btn.btn-green.item_delete")));
+
+                // JavaScript Executor kullanarak delete butonuna tıklama
+                JavascriptExecutor executor = (JavascriptExecutor) driver;
+                executor.executeScript("arguments[0].click();", deleteButton);
+
+                // Alert'in görünür olmasını bekleyin ve kabul edin
+                wait.until(ExpectedConditions.alertIsPresent());
+                Alert alert = driver.switchTo().alert();
+                alert.accept();
+
+
+
 
 
 
