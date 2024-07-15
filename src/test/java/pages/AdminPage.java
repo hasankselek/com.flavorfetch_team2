@@ -226,91 +226,82 @@ public class AdminPage {
     public  WebElement filterButton;//admin_allOrders
 
     @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[2]")
-    public WebElement filtersByCustomerBox;
+    public WebElement filtersByCustomerBox;//admin_allOrders
 
     @FindBy(xpath = "(//li[@role='option'])[2]")
-    public WebElement customerNameOption;
+    public WebElement customerNameOption;//admin_allOrders
   
     @FindBy(xpath = "//button[text()='Apply Filters']")
-    public WebElement applyFiltersButton;
+    public WebElement applyFiltersButton;//admin_allOrders
   
     @FindBy(xpath = "//tbody/tr/td[5]")
-    public List<WebElement> elementsOfTheThirdColumn;
+    public List<WebElement> elementsOfTheThirdColumn;//admin_allOrders
   
     @FindBy(xpath = "(//span[@role='combobox'])[3]")
-    public WebElement filtersByStatusBox;
+    public WebElement filtersByStatusBox;//admin_allOrders
   
     @FindBy(xpath = "//li[text()='complete']")
-    public WebElement byStatusOption;
+    public WebElement byStatusOption;//admin_allOrders
   
     @FindBy(xpath = "//tbody/tr/td[2]/span[text()='complete']")
-    public List<WebElement> elementsOfTheSecondColumnByStatus;//By status
+    public List<WebElement> elementsOfTheSecondColumnByStatus;//By status//admin_allOrders
   
     @FindBy(xpath = "(//span[@role='combobox'])[4]")
-    public  WebElement filtersByOrderTypeBox;
+    public  WebElement filtersByOrderTypeBox;//admin_allOrders
   
     @FindBy(xpath = "//li[text()='Delivery']")
-    public WebElement byOrderTypeOption;
+    public WebElement byOrderTypeOption;//admin_allOrders
   
     @FindBy(xpath = "//tbody/tr/td[2]//span[@class='ml-2 services badge delivery']")
     public List<WebElement> elementsOfTheSecondColumnByOrderType;
 
     @FindBy(xpath = "(//span[@role='combobox'])[1]")
-    public  WebElement filtersByMerchantBox;
+    public  WebElement filtersByMerchantBox;//admin_allOrders
   
     @FindBy(xpath = "//input[@role='searchbox']")
-    public WebElement nameBoxBelowByMerchant;
+    public WebElement nameBoxBelowByMerchant;//admin_allOrders
   
     @FindBy(xpath = "//li[text()='Dolan Uyghur Restaurant']")
-    public  WebElement byMerchantOption;
+    public  WebElement byMerchantOption;//admin_allOrders
   
     @FindBy(xpath = "//tbody/tr/td[4]")
-    public List<WebElement>elementsOfTheFourthColumnByMerchant;
+    public List<WebElement>elementsOfTheFourthColumnByMerchant;//admin_allOrders
   
     @FindBy(xpath = "//p[text()='Orders']")
-    public WebElement ordersIcon;
+    public WebElement ordersIcon;//admin_allOrders
   
-    @FindBy(xpath = "//h5[text()='496']")
-    public  WebElement ordersNumber;
+    @FindBy(xpath = "(//h5[@class='m-0'])[1]")
+    public  WebElement ordersNumber;//admin_allOrders
   
     @FindBy(xpath = "//p[text()='Cancel']")
-    public WebElement cancelIcon;
+    public WebElement cancelIcon;//admin_allOrders
 
-    @FindBy(xpath = "//h5[text()='43']")
-    public  WebElement cancelNumber;
+    @FindBy(xpath = "(//h5[@class='m-0'])[2]")
+    public  WebElement cancelNumber;//admin_allOrders
   
     @FindBy(xpath = "//p[text()='Total refund']")
-    public WebElement totalRefundIcon;
+    public WebElement totalRefundIcon;//admin_allOrders
   
-    @FindBy(xpath = "//h5[text()='$2340.75']")
-    public WebElement totalRefunQuantity;
+    @FindBy(xpath = "(//h5[@class='m-0'])[3]")
+    public WebElement totalRefunQuantity;//admin_allOrders
   
     @FindBy(xpath = "//p[text()='Total Orders']")
-    public  WebElement totalOrdersIcon;
+    public  WebElement totalOrdersIcon;//admin_allOrders
   
-    @FindBy(xpath = "//h5[text()='$12619.34']")
-    public  WebElement totalOrdersQuantity;
+    @FindBy(xpath = "(//h5[@class='m-0'])[4]")
+    public  WebElement totalOrdersQuantity;//admin_allOrders
   
     @FindBy(xpath = "//input[@placeholder='Start date -- End date']")
-    public WebElement dateRangeBox;
+    public WebElement dateRangeBox;//admin_allOrders
   
-    @FindBy(xpath = "(//thead)[2]/tr/th[2]")
-    public WebElement dateRangeBoxBackIcon;
-  
-    @FindBy(xpath = "(//tbody)[2]//tr[4]/td[5]")
-    public WebElement startDateOption;
-  
-    @FindBy(xpath = "(//tbody)[2]//tr[4]/td[6]")
-    public  WebElement endDateOption;
-
-    @FindBy(xpath = "//tbody/tr/td[2]/p[@class='dim m-0'][4]")
-    public  List<WebElement> dateRangeResult;
+   @FindBy(xpath = "(//tbody)[2]//tr[3]/td[2]")
+   public WebElement selectedDate;//admin_allOrders
   
     @FindBy(xpath = "//table/thead/tr/th[3]")
-    public WebElement orderIdIcon;
+    public WebElement orderIdIcon;//admin_allOrders
   
     @FindBy(xpath = "//tbody/tr/td[3]")
-    public List<WebElement> orderIdColumn;
+    public List<WebElement> orderIdColumn;//admin_allOrders
 
     @FindBy(xpath = "(//*[text()='Block Customer'])")
     public WebElement blockCustomerButton; // admin dashboard customer special page block customer button
@@ -533,6 +524,36 @@ public class AdminPage {
 
     @FindBy(xpath = "(//*[@class='page-link'])[3]")
     public WebElement samplePageNumber;
+
+    @FindBy(xpath = "(//p[@class='dim m-0'])[1]")
+    public WebElement paymentType;//admin_allOrders
+  
+    @FindBy(xpath = "(//p[@class='dim m-0'])[2]")
+    public  WebElement orderType;//admin_allOrders
+  
+    @FindBy(xpath = "(//p[@class='dim m-0'])[3]")
+    public  WebElement totalPrice;//admin_allOrders
+
+    @FindBy(xpath = "//a[@class='ref_view_order normal btn btn-light tool_tips']")
+    public  WebElement eyeSignUnderActions;
+  
+    @FindBy(xpath = "(//h5[@class='m-0'])[1]")
+    public  WebElement orderIdOrderDetailPage;
+  
+    @FindBy(xpath = "(//p[@class='m-0'])[3]")
+    public  WebElement restaurantNameOrderDetailPage;
+
+    @FindBy(xpath = "(//table)[1]/tr[5]/td[1]")
+    public  WebElement paymentStatusOrderDetailPage;
+  
+    @FindBy(xpath = "//button[text()='Print']")
+    public WebElement printButtonOrderDetailPage;
+  
+    @FindBy(xpath = "(//p[@class='m-0'])[2]")
+    public WebElement orderDateOrderDetailPage;
+  
+    @FindBy(xpath = "(//a[@class='ref_pdf_order normal btn btn-light tool_tips'])[1]")
+    public  WebElement downloadIcon;
 
     @FindBy(xpath = "//*[@data-range-key='Custom Range'")
     public WebElement customRange;
