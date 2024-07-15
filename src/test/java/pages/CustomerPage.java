@@ -337,6 +337,48 @@ public class CustomerPage {
     @FindBy (xpath= "(//*[text()='New York, NY, USA'])[2]")
     public  WebElement chooseDeliveryText ; // team2 page
 
+    @FindBy (xpath= "//span[normalize-space()='Cash On delivery']")
+    public  WebElement cashOnDeliveryButton ; // checkout page
+
+    @FindBy (xpath= "//*[text()='Add Cash']")
+    public  WebElement addCashButton ; // checkout page
+
+    @FindBy (xpath= "//*[text()='Saved Payment Methods']")
+    public  WebElement savedPaymentMethodsText ; // checkout page
+
+    @FindBy (xpath= "//span[normalize-space()='Stripe']")
+    public  WebElement stripeButton ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='btn btn-green w-100'])[10]")
+    public  WebElement addStripeButton ; // checkout page
+
+    @FindBy (xpath= "//h5[normalize-space()='Order type and time']")
+    public  WebElement orderTypeMenuText ; // checkout page
+
+    @FindBy (xpath= "//a[@class='d-block chevron-section transaction-section d-flex align-items-center rounded mb-2']")
+    public  WebElement orderTypeLink ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='custom-control-label font14 bold'])[1]")
+    public  WebElement deliveryRadioButton ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='custom-control-label font14 bold'])[2]")
+    public  WebElement dineinRadioButton ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='custom-control-label font14 bold'])[3]")
+    public  WebElement pickUpRadioButton ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='btn btn-green w-100'])[2]")
+    public  WebElement orderTypeSaveButton ; // checkout page
+
+    @FindBy (xpath= "(//*[text()='Cash On delivery'])[1]")
+    public  WebElement paymentDefaultText ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='dropdown'])[2]")
+    public  WebElement paymentDefaultThreeDat ; // checkout page
+
+    @FindBy (xpath= " //*[@class='dropdown-item a-12']")
+    public  WebElement deleteLinkThreeDat ; // checkout page
+
     @FindBy(xpath ="(//*[@class='btn normal small'])[1]" )
     public WebElement addressEdit;
 

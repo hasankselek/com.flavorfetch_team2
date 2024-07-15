@@ -541,6 +541,7 @@ public class ReusableMethods {
         String month = monthYearValue.split(" ")[0].trim();
         String year = monthYearValue.split(" ")[1].trim();
 
+
         while (!(month.equals(beginMonth) && year.equals(beginYear))) {
             Driver.getDriver().findElement(By.xpath("(//tr//th[@class='prev available'])[1]")).click();
             monthYearValue = Driver.getDriver().findElement(By.xpath("(//*//th[@class='month'])[1]")).getText();
@@ -552,7 +553,6 @@ public class ReusableMethods {
 
         while (!(month.equals(finishMonth) && year.equals(finishYear))) {
             Driver.getDriver().findElement(By.xpath("(//tr//th[@class='next available'])[1]")).click();
-            ReusableMethods.wait(1);
             monthYearValue = Driver.getDriver().findElement(By.xpath("(//*//th[@class='month'])[1]")).getText();
             month = monthYearValue.split(" ")[0].trim();
             year = monthYearValue.split(" ")[1].trim();

@@ -328,7 +328,6 @@ public class US_039 {
         ReusableMethods.searchDateBeginFinish("31","May","2024","31","September","2024");
         ReusableMethods.wait(3);
 
-
         for (int i = 0; i < adminPage.merchantInfoTable.size(); i++) {
             Assert.assertTrue(adminPage.merchantInfoTable.get(i).isDisplayed());
         }

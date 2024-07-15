@@ -1,11 +1,13 @@
 package tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MerchantPage;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 import java.util.ArrayList;
@@ -86,7 +88,6 @@ public class US_031 {
         Actions actions = new Actions(Driver.getDriver());
         actions.click(merchantPage.allOrdersPageDateBanner).perform();
 
-
         ReusableMethods.searchDateBeginFinish("11", "Apr", "2023", "10", "Jun", "2024");
 
 
@@ -95,22 +96,77 @@ public class US_031 {
     }
 
     @Test
-    public void TC_3106() {
+    public void TC_3106() //Orders Information Tags Test (ORDERS/CANCEL/TOTAL REFUND/TOTAL ORDERS)
+    {
+        accessToAllOrders();
+
+        Assert.assertTrue(Driver.getDriver().findElement(By.xpath("(//h5[@class='m-0'])[1]")).isDisplayed());
+        Assert.assertTrue(Driver.getDriver().findElement(By.xpath("(//h5[@class='m-0'])[2]")).isDisplayed());
+        Assert.assertTrue(Driver.getDriver().findElement(By.xpath("(//h5[@class='m-0'])[3]")).isDisplayed());
+        Assert.assertTrue(Driver.getDriver().findElement(By.xpath("(//h5[@class='m-0'])[4]")).isDisplayed());
+        Driver.quitDriver();
+
 
     }
 
     @Test
-    public void TC_3107() {
+    public void TC_3107() // NEXT Previous Button Test
+    {
+        accessToAllOrders();
+
+        WebElement nextButton = Driver.getDriver().findElement(By.xpath("//*[@id='DataTables_Table_0_next']"));
+        Assert.assertTrue(nextButton.isDisplayed());
+        Assert.assertTrue(nextButton.isEnabled());
+        nextButton.click();
+        ReusableMethods.wait(1);
+
+        WebElement thirdPageButton = Driver.getDriver().findElement(By.xpath("//*/a[@data-dt-idx='3']"));
+        Assert.assertTrue(thirdPageButton.isEnabled());
+        Assert.assertTrue(thirdPageButton.isDisplayed());
+        thirdPageButton.click();
+        ReusableMethods.wait(1);
+
+        WebElement previousButton = Driver.getDriver().findElement(By.xpath("//*[@id='DataTables_Table_0_previous']"));
+        Assert.assertTrue(previousButton.isDisplayed());
+        Assert.assertTrue(previousButton.isEnabled());
+        previousButton.click();
+        ReusableMethods.wait(1);
+
+        Driver.quitDriver();
+
 
     }
 
     @Test
-    public void TC_3108() {
+    public void TC_3108() //Orders ID Sort Test
+    {
+        accessToAllOrders();
 
+        Driver.getDriver().findElement(By.xpath("//*[text()='Order ID']")).click();
+
+        List<String> allOrdesIdStringList = ReusableMethods.stringListesineDonustur(merchantPage.allOrdersIdList);
+        List<Integer> allOrdesIdIntegerList = new ArrayList<>();
+        ReusableMethods.stringListToIntegerList(allOrdesIdStringList, allOrdesIdIntegerList);
+
+        for (int i = 0; i > allOrdesIdIntegerList.size() - 1; i++) {
+            Assert.assertTrue(allOrdesIdIntegerList.get(i) > allOrdesIdIntegerList.get(i + 1));
+        }
+        ReusableMethods.wait(1);
+        Driver.quitDriver();
     }
 
     @Test
     public void TC_3109() {
+        accessToAllOrders();
+        JSUtilities.scrollToBottom(Driver.getDriver());
+
+        String entriesAllText = Driver.getDriver().findElement(By.xpath("//*[@class='dataTables_info']")).getText();
+        String actualEntriesText = entriesAllText.split(" ")[5].trim();
+        String expectedEntriesText = "170";
+        Assert.assertEquals(actualEntriesText, expectedEntriesText);
+
+        Driver.quitDriver();
+
 
     }
 
