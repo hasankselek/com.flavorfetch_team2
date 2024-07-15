@@ -372,11 +372,17 @@ public class AdminPage {
     @FindBy(xpath = "//*[text()='Reviews']")
     public WebElement reviewsButton; // dashboard menu under buyers
 
+    @FindBy(xpath = "//*[@class='zmdi zmdi-desktop-mac']")
+    public WebElement iconvisible;  //Custormer list page
+  
+    @FindBy(xpath = "//*[@class='sorting sorting_desc']")
+    public WebElement nameSortingButton;  //sorting desc customername
+
     @FindBy(xpath = "(//*[text()='Customer list'])[1]")
     public WebElement customerListPage;  //Custormer list page
 
     @FindBy(xpath = "//tbody//tr//td//h6")
-    public WebElement sortingCustomerName; //sorting desc customername
+    public  List<WebElement> sortingCustomerName; //sorting desc customername
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-plus']")
     public WebElement addNewCustomerButton;  // Add customer button on customer list
@@ -423,8 +429,32 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='nav-link']")
     public WebElement uploadNew; // in browse button on add customer page
 
+    @FindBy(xpath = "//*[@class='nav-link active']")
+    public WebElement uploadNewButton; // in browse button on add customer page
+  
     @FindBy(xpath = "//*[@class='btn btn-green fileinput-button dz-clickable']")
     public WebElement selectFilesButton;  // in browse button on add customer page
+
+    @FindBy (xpath = "//*[@class='btn btn-green']")
+    public WebElement addFilesButton; // in browse button on add customer page
+
+    @FindBy (xpath = "//*[@class='btn']")
+    public WebElement addMoreFileButton; // in browse button on add customer page
+
+    @FindBy (xpath = "//*[@aria-hidden='true']")
+    public WebElement closeProfileWindow; // in browse button on add customer page
+
+    @FindBy (xpath = "//*[@name='AR_client[status]']")
+    public WebElement statusCustomer; // on add customer page
+
+    @FindBy( xpath = "//*[@type='search']")
+    public WebElement nameSearchButton; // on customer list
+
+    @FindBy (xpath = "(//*[text()='John Doe '])[1]")
+    public WebElement searchedName;
+
+    @FindBy ( xpath = "//*[@class='dataTables_empty']")
+    public WebElement assertSearchedPage;
 
     @FindBy(xpath = "//button[@id='dropdownMenuButton']")
     public WebElement createTransactionButton; // admin merchant earrings create a transaction button
