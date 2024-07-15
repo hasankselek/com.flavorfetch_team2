@@ -99,7 +99,7 @@ public class CustomerPage {
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-youtube-play']")
     public WebElement footerYoutubeLogo;
-  
+
     @FindBy(xpath = "//*[@class=\"row no-gutters list-inline\"]")
     public WebElement localCuisine;
 
@@ -181,6 +181,63 @@ public class CustomerPage {
     @FindBy(xpath = "//*[text()=' Manage my account ']")
     public WebElement ManagemyAccount;  // customer  manage my account
 
+    @FindBy(xpath = "//*[text()=' My orders ']")
+    public WebElement myOrdersLink;
+
+    @FindBy(xpath = "//a[text()='Orders']")
+    public WebElement ordersLink;
+
+    @FindBy(xpath = "//div/div[1]/h6")
+    public List<WebElement> ordersList;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-more'])[1]")
+    public WebElement firstOrdersDropdownButton;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-eye mr-2'])[1]")
+    public WebElement ordersPageViewButton;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-collection-pdf mr-2'])[1]")
+    public WebElement ordersPageDownloadPdfButton;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-repeat mr-2'])[1]")
+    public WebElement ordersPagebuyAgainButton;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-star-outline mr-2'])[1]")
+    public WebElement ordersPageWriteAReviewButton;
+
+    @FindBy(xpath = "//*[text()='Go to checkout']")
+    public WebElement orderpageGoToCheckoutLink;
+
+    @FindBy(xpath = "//span[text()='Place Order']")
+    public WebElement placeOrderLink;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-close mr-2'])[1]")
+    public WebElement ordersPageCancelOrderLink;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-car mr-2'])[1]")
+    public WebElement ordersPageTrackButton;
+
+    @FindBy(xpath = "//*[text()=' Payments Options ']")
+    public WebElement paymentsOptions;  // customer payment page
+
+    @FindBy(xpath = "//*[text()='Add new payment']")
+    public WebElement addPayment;  // customer add payment
+
+    @FindBy(xpath = "//*[text()='Cash On delivery']")
+    public WebElement addCashOnDelivery;  // customer add cash on delivery payment
+
+    @FindBy(xpath = "//*[text()='Stripe']")
+    public WebElement stripe;  // customer add stripe payment
+
+    @FindBy(xpath = "//*[text()='Add Cash']")
+    public WebElement addCash;  // customer add cash
+
+    @FindBy(xpath = "//*[text()='Delete']")
+    public WebElement deletePayment;  // customer delete payment
+
+    @FindBy(xpath = "//*[text()='Edit']")
+    public WebElement editPayment;  // customer edit payment
+
     @FindBy(xpath = "//*[@id='first_name']")
     public WebElement FirstName;  // customer manage account
 
@@ -238,17 +295,212 @@ public class CustomerPage {
     @FindBy(xpath = "//h5[text()='Home']")
     public WebElement addressType;
 
-    @FindBy(xpath = "//*[@class='card p-3 fixed-height address-slot'")
+    @FindBy(xpath = "//*[@class='card p-3 fixed-height address-slot']")
     public List<WebElement> addressCount;
 
     @FindBy(xpath = "//*[@class='col-md-3']")
     public WebElement viewAddressCount;
 
+    @FindBy (xpath= "//div[@id='vue-home-search']//input[@placeholder='Enter delivery address']")
+    public  WebElement enterDeliveryAddresstextBox ; // customerpage
 
+    @FindBy (xpath= "//h6[normalize-space()='New York']")
+    public  WebElement newYorkAddressTextBox ; // customerpage
 
+    @FindBy (xpath= "//*[text()='Show more']")
+    public  WebElement showMoreButton ; // restaurants page
 
+    @FindBy (xpath= "//*[@id='cuisine5']")
+    public  WebElement sandwichRAdioButton ; // restaurants page
 
+    @FindBy (xpath= "//h5[normalize-space()='Team2']")
+    public  WebElement team2Page ; // restaurants page
 
+    @FindBy (xpath= "(//*[text()=' Add to cart '])[1]")
+    public  WebElement iskenderButton ; // team2 page
+
+    @FindBy (xpath= "//a[@class='btn btn-green w-100 pointer d-flex justify-content-between']")
+    public  WebElement checkoutButton ; // team2 page
+
+    @FindBy (xpath= "//*[text()='Add new address']")
+    public  WebElement addNewAddressLink ; // team2 page
+
+    @FindBy (xpath= "(//*[@class='form-control form-control-text'])[4]")
+    public  WebElement addressPopupTextBox ; // team2 page
+
+    @FindBy (xpath= "(//*[text()='New York'])[3]")
+    public  WebElement newYorkChangeAddress ; // team2 page
+
+    @FindBy (xpath= "(//*[@class='btn btn-green w-100'])[8]")
+    public  WebElement saveButtonChangeAddress ; // team2 page
+
+    @FindBy (xpath= "(//*[text()='New York, NY, USA'])[2]")
+    public  WebElement chooseDeliveryText ; // team2 page
+
+    @FindBy (xpath= "//span[normalize-space()='Cash On delivery']")
+    public  WebElement cashOnDeliveryButton ; // checkout page
+
+    @FindBy (xpath= "//*[text()='Add Cash']")
+    public  WebElement addCashButton ; // checkout page
+
+    @FindBy (xpath= "//*[text()='Saved Payment Methods']")
+    public  WebElement savedPaymentMethodsText ; // checkout page
+
+    @FindBy (xpath= "//span[normalize-space()='Stripe']")
+    public  WebElement stripeButton ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='btn btn-green w-100'])[10]")
+    public  WebElement addStripeButton ; // checkout page
+
+    @FindBy (xpath= "//h5[normalize-space()='Order type and time']")
+    public  WebElement orderTypeMenuText ; // checkout page
+
+    @FindBy (xpath= "//a[@class='d-block chevron-section transaction-section d-flex align-items-center rounded mb-2']")
+    public  WebElement orderTypeLink ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='custom-control-label font14 bold'])[1]")
+    public  WebElement deliveryRadioButton ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='custom-control-label font14 bold'])[2]")
+    public  WebElement dineinRadioButton ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='custom-control-label font14 bold'])[3]")
+    public  WebElement pickUpRadioButton ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='btn btn-green w-100'])[2]")
+    public  WebElement orderTypeSaveButton ; // checkout page
+
+    @FindBy (xpath= "(//*[text()='Cash On delivery'])[1]")
+    public  WebElement paymentDefaultText ; // checkout page
+
+    @FindBy (xpath= "(//*[@class='dropdown'])[2]")
+    public  WebElement paymentDefaultThreeDat ; // checkout page
+
+    @FindBy (xpath= "//*[@class='dropdown-item a-12']")
+    public  WebElement deleteLinkThreeDat ; // checkout page
+
+    @FindBy(xpath ="(//*[@class='btn normal small'])[1]" )
+    public WebElement addressEdit;
+
+    @FindBy(xpath ="(//*[@class='btn normal small'])[2]" )
+    public WebElement addressDelete;
+
+    @FindBy(xpath ="//*[@id='cmaps'] " )
+    public WebElement viewGoogleMaps;
+
+    @FindBy(xpath =" //*[text()='Aparment, suite or floor'] " )
+    public WebElement apartmentTextView;
+
+    @FindBy(xpath =" //select[@class='form-control custom-select'] " )
+    public WebElement deliveryOptionsType;
+
+    @FindBy(xpath =" //*[text()='Add delivery instructions'] " )
+    public WebElement adddeliveryInstructions;
+
+    @FindBy(xpath ="  //*[text()='Address label']" )
+    public WebElement addressLabel;
+
+    @FindBy(xpath = "//*[@class='btn-group btn-group-toggle input-group-small mb-4']")
+    public WebElement addressLabelType;
+
+    @FindBy(xpath ="(//*[@href='javascript:;'])[8]" )
+    public WebElement addressEdit2;
+
+    @FindBy(xpath ="//*[text()='Complete Address']" )
+    public WebElement completeAddressField;
+
+    @FindBy(xpath ="(//*[@class='form-control form-control-text'])[2]" )
+    public WebElement completeAddressText;
+
+    @FindBy(xpath ="(//*[@class='mr-2'])[2]" )
+    public WebElement saveButtonField;  // completed address side
+
+    @FindBy(xpath ="(//*[@class='ml-1'])[2]" )
+    public WebElement cancelButtonField;  // completed address side
+
+    @FindBy(xpath ="(//*[@class='btn btn-black btn-circle rounded-pill'])[2]" )
+    public WebElement addressDetailsCloseButton;  // completed address side
+
+    @FindBy(xpath =" //*[@class='btn btn-green w-100']" )
+    public WebElement saveAddressButton;  // completed address side
+
+    @FindBy(xpath =" //*[@class='card p-3 fixed-height address-slot']" )
+    public WebElement addressInfoTable;  // completed address side
+
+    @FindBy(xpath =" //*[@class='btn btn-black w-100']" )
+    public WebElement cancelAdressButton;  // completed address side
+
+    @FindBy(xpath =" (//*[text()=' Add new address '])[1] " )
+    public WebElement addAddressButton;  // completed address side
+
+    @FindBy(xpath =" (//*[@class='form-control form-control-text'])[1] " )
+    public WebElement enterAddressField;  // completed address side
+
+    @FindBy(xpath =" (//h6[@class='m-0'])[1]" )
+    public WebElement chooseAddressField;  // completed address side
+
+    @FindBy(xpath =" (//*[@class='module truncate-overflow'])[1]" )
+    public WebElement addressNameNew;  // completed address side
+
+    @FindBy(xpath = "(//input[@type='radio'])[3]")
+    public WebElement addressLabelSchool;
+
+    @FindBy(xpath = "//*[@class='alert alert-warning mb-2']")
+    public WebElement addressSameAlert;
+
+    @FindBy(xpath = "(//*[@class='modal-content'])[3]")
+    public WebElement addressDeleteAlert;
+
+    @FindBy(xpath = "(//*[@class='btn btn-black small pl-4 pr-4 bootbox-cancel'])[1]")
+    public WebElement addressDeleteAlertCancel;
+
+    @FindBy(xpath = "//*[@class='btn btn-green small pl-4 pr-4 bootbox-accept']")
+    public WebElement addressDeleteAlertAccept;
+
+    @FindBy(xpath = "//div[@id='vue-home-search']//input[@placeholder='Enter delivery address']")
+    public WebElement homepageSearchBox;
+
+    @FindBy(xpath = "//h6[normalize-space()='Seattle']")
+    public WebElement seattleCity;
+
+    @FindBy(xpath = "(//*[@class='w-50 align-self-center'])[1]")
+    public WebElement restaurantName;
+
+    @FindBy(xpath = "//*[@class='el-image__inner']")
+    public WebElement restaurantPicture;
+
+    @FindBy(xpath = "(//*[@class='w-50 align-self-center'])[2]")
+    public WebElement restraurantPriceType;
+
+    @FindBy(xpath = "//*[@class='badge badge-white mr-1']")
+    public WebElement restraurantType;
+
+    @FindBy(xpath = "//*[@class='badge badge-white rounded-pill']")
+    public WebElement restaurantScore;
+
+    @FindBy(xpath = "//a[@href='#section-review']")
+    public WebElement restaurantReviews;
+
+    @FindBy(id = "section-review")
+    public WebElement sectionReviews;
+
+    @FindBy(xpath ="(//*[@class='zmdi zmdi-favorite-outline'])[1]")
+    public WebElement favSaveStoreButton;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-favorite text-green'])[1]")
+    public WebElement favSavedButton;
+
+    @FindBy(xpath ="(//*[@class='w-25 align-self-center'])[6]")
+    public WebElement saveStoreText;
+
+    @FindBy (xpath= "//h5[@class='m-0 mb-1']")
+    public  WebElement confirmingText ; // checkout page
+
+    @FindBy (xpath= "//*[@class='btn btn-green w-100 pointer']")
+    public  WebElement placeOrderButton ; // checkout page
+  
+    @FindBy (xpath= "//span[normalize-space()='Place Order']")
+    public  WebElement placeOrderButtonText ; // checkout page
 
 
 
