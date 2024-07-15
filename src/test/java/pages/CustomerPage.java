@@ -181,6 +181,36 @@ public class CustomerPage {
     @FindBy(xpath = "//*[text()=' Manage my account ']")
     public WebElement ManagemyAccount;  // customer  manage my account
 
+    @FindBy(xpath = "//*[text()=' My orders ']")
+    public WebElement myOrdersLink;
+
+    @FindBy(xpath = "//a[text()='Orders']")
+    public WebElement ordersLink;
+
+    @FindBy(xpath = "//div/div[1]/h6")
+    public List<WebElement> ordersList;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-more'])[1]")
+    public WebElement firstOrdersDropdownButton;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-eye mr-2'])[1]")
+    public WebElement ordersPageViewButton;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-collection-pdf mr-2'])[1]")
+    public WebElement ordersPageDownloadPdfButton;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-repeat mr-2'])[1]")
+    public WebElement ordersPagebuyAgainButton;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-star-outline mr-2'])[1]")
+    public WebElement ordersPageWriteAReviewButton;
+
+    @FindBy(xpath = "//*[text()='Go to checkout']")
+    public WebElement orderpageGoToCheckoutLink;
+
+    @FindBy(xpath = "//span[text()='Place Order']")
+    public WebElement placeOrderLink;
+
     @FindBy(xpath = "//*[text()=' Payments Options ']")
     public WebElement paymentsOptions;  // customer payment page
 
