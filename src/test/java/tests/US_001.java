@@ -14,7 +14,7 @@ public class  US_001{
         String expectedUrl = "https://qa.flavorfetch.com/" ;
         String actualUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualUrl,expectedUrl);
-
+        Driver.quitDriver();
     }
 
 }
