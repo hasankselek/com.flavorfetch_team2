@@ -160,7 +160,7 @@ public class US_030 extends TestBaseRapor {
         //Orders alt menulerinden Scheduled'a tiklar
         merchantPage.scheduledLink.click();
         //Verilen siparise tiklar
-        merchantPage.scheduledOrdersList.get(2).click();
+        merchantPage.scheduledOrdersList.get(1).click();
         //Reject butonunun oldugunu dogrular
         String expectedButtonText = "Reject";
         String actualButtonText = merchantPage.rejectButton.getText();
@@ -168,7 +168,7 @@ public class US_030 extends TestBaseRapor {
         //Reject butonun erisilebilir oldugunu dogrular
         Assert.assertTrue(merchantPage.rejectButton.isEnabled());
         //Reject butonuna basar
-        ReusableMethods.wait(2);
+        ReusableMethods.wait(1);
         merchantPage.rejectButton.click();
         //Gerekcenin yazilabilecegi box'in oldugunu dogrular
         Assert.assertTrue(merchantPage.rejectReasonTextBox.isEnabled());
@@ -236,7 +236,7 @@ public class US_030 extends TestBaseRapor {
         //Orders alt menulerinden Scheduled'a tiklar
         merchantPage.scheduledLink.click();
         //Verilen siparise tiklar
-        merchantPage.scheduledOrdersList.get(2).click();
+        merchantPage.scheduledOrdersList.get(1).click();
         //Siparis fisini yazdirmak icin print butonu bulundugunu dogrular
         Assert.assertTrue(merchantPage.printButton.isDisplayed());
         //Print butonunun erisilebilir oldugunu dogrular
