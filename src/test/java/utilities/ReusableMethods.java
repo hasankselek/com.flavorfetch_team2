@@ -426,7 +426,7 @@ public class ReusableMethods {
         merchantPage.singinButton.click();
     }
 
-    public static void accessToAdmin(String adminUsername , String adminPassword){
+    public static void accessAdmin(String adminUsername , String adminPassword){
         AdminPage adminPage = new AdminPage();
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         adminPage.userNameButton.sendKeys(ConfigReader.getProperty(adminUsername)+Keys.TAB+ConfigReader.getProperty(adminPassword));
