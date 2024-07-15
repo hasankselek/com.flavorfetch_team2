@@ -211,6 +211,12 @@ public class CustomerPage {
     @FindBy(xpath = "//span[text()='Place Order']")
     public WebElement placeOrderLink;
 
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-close mr-2'])[1]")
+    public WebElement ordersPageCancelOrderLink;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-car mr-2'])[1]")
+    public WebElement ordersPageTrackButton;
+
     @FindBy(xpath = "//*[text()=' Payments Options ']")
     public WebElement paymentsOptions;  // customer payment page
 
