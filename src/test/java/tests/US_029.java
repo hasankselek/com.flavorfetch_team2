@@ -27,7 +27,7 @@ public class US_029 {
     public void TC_2901() {
 
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_cimen","adminpassword_cimen");
+        ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
 
         adminPage.MerchantSide.click();
 
@@ -128,7 +128,7 @@ public class US_029 {
     public void TC_2902() {
 
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_cimen","adminpassword_cimen");
+        ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
 
         adminPage.MerchantSide.click();
 
