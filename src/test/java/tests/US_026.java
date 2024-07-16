@@ -12,18 +12,20 @@ import pages.MerchantPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class US_026 {
+public class US_026 extends TestBaseRapor {
 
-    MerchantPage merchantPage = new MerchantPage();
+   static MerchantPage merchantPage = new MerchantPage();
 
 
     @Test
     public  void TC_2601(){
+        merchantPage=new MerchantPage();
         ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();
@@ -37,7 +39,9 @@ public class US_026 {
         }
         else{ merchantPage.newIcon.click();
 
-            Assert.assertTrue(merchantPage.orderId1.size()>0);
+            Assert.assertTrue(merchantPage.newOrdersList.size()>0);
+
+           // Assert.assertTrue(merchantPage.orderId1.size()>0);
             Assert.assertTrue(merchantPage.customerName.isDisplayed());
             Assert.assertTrue(merchantPage.orderDateAndTime.isDisplayed());
             Assert.assertTrue(merchantPage.totalOrderPrice.isDisplayed());
@@ -48,6 +52,7 @@ public class US_026 {
     }
     @Test
     public  void  TC_2602(){
+        merchantPage=new MerchantPage();
         ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();
@@ -64,39 +69,39 @@ public class US_026 {
             Assert.assertTrue(merchantPage.rejectButton.isDisplayed() && merchantPage.rejectButton.isEnabled());
 
 
-            List<WebElement> orderIdListIlkHali = merchantPage.orderId1;
-
-            String reddedilecekOrder = orderIdListIlkHali.get(0).getText();
+            String expectedOrderId = merchantPage.newOrdersList.get(0).getText().replaceAll("\\D", "").replaceFirst("^.", "");
+            System.out.println(expectedOrderId);
 
             merchantPage.rejectButton.click();
             ReusableMethods.wait(3);
             merchantPage.outOfItems.click();
             ReusableMethods.wait(2);
             merchantPage.pupupRejectButton.click();
+            List<String> newOrdersListSonHal = ReusableMethods.stringListesineDonustur(merchantPage.newOrdersList);
+            Assert.assertFalse(newOrdersListSonHal.contains(expectedOrderId));
 
-            List<WebElement> orderIdListSonHali = merchantPage.orderId2;
-            String kalanSiparisOrderId = orderIdListSonHali.get(0).getText();
+    }
 
-            Assert.assertNotEquals(kalanSiparisOrderId, reddedilecekOrder);
-        }
         Driver.quitDriver();
-
-
     }
     @Test
     public  void TC_2603(){
+        extentTest=extentReports.createTest("TC_2603","Testing the visibility and functionality of the 'Accepting Orders' button");
         ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();
+        extentTest.info("Merchant sayfasından new orders sayfasina ulasir");
         String siparisAdediStr=merchantPage.ordersQuantitty.getText().replaceAll("\\D","");
         int siparisAdedi=Integer.parseInt(siparisAdediStr);
 
 
         if(siparisAdedi==0){
             Assert.assertTrue(merchantPage.noNewOrders.isDisplayed());
+            extentTest.info("sayfada siparis var mi test eder");
         }
         else {
         Assert.assertTrue(merchantPage.acceptingOrderButton.isDisplayed());
+        extentTest.info("aceppting orders butonu gorunurlugu dogrulanir");
 
         merchantPage.acceptingOrderButton.click();
 
@@ -105,8 +110,11 @@ public class US_026 {
         merchantPage.nextButton.click();
         merchantPage.reasonForPausing.click();
         merchantPage.pausingConfirmButton.click();
+        extentTest.info("Siparis duraklatma sebebi secilir.");
 
-        Assert.assertFalse(merchantPage.acceptingOrderButton.isEnabled());}
+        Assert.assertFalse(merchantPage.acceptingOrderButton.isEnabled());
+        extentTest.info("siparisin duraklatildigi dogrulanir");
+        }
         Driver.quitDriver();
 
     }
@@ -208,7 +216,7 @@ public class US_026 {
         merchantPage.reasonCancel.click();
         merchantPage.cancelRejectOrderButton.click();
             WebDriverWait wait=new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='notyf-announcer']")));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Order is cancelled']")));
 
             String expectedCancelMesajYazisi="Order is cancelled";
             String actualCancelMesajYazisi=merchantPage.cancelOrderMessage.getText();
@@ -252,34 +260,12 @@ public class US_026 {
 
           merchantPage.filterBox.click();
           merchantPage.filterBox.sendKeys(ConfigReader.getProperty("orderId"));
-       // List<String>fitrelemeSocuElemetleri= ReusableMethods.stringListesineDonustur(merchantPage.filterResultElementleri);
 
-       // System.out.println(fitrelemeSocuElemetleri);
-       // List<String > sadeceRakamlarList=new ArrayList<>();
-
-       // for (int i = 0; i <fitrelemeSocuElemetleri.size() ; i++) {
-       //     String enSonElement=fitrelemeSocuElemetleri.get(i);
-       //     String elementlerinRakamHali=enSonElement.replaceAll("\\s+"," ").replaceAll("\\s","5").replaceAll("\\D","").replaceAll("5"," ");
-
-       //     sadeceRakamlarList.add(elementlerinRakamHali);
-
-       // }
-
-
-           //List<String>rakamlarListSonHali=new ArrayList<>();
-           //for (String eachRakam  :sadeceRakamlarList ) {
-           //   if (eachRakam.equals(ConfigReader.getProperty("orderID"))){
-           //       rakamlarListSonHali.add(eachRakam);
-           //   }
-
-           //}
-           //System.out.println(sadeceRakamlarList);
-           //System.out.println(rakamlarListSonHali);
-
-           // Assert.assertTrue(rakamlarListSonHali.contains("orderID"));
-
-           String expectedOrderId=ConfigReader.getProperty("orderId");
+            String expectedOrderId=ConfigReader.getProperty("orderId");
+            System.out.println(expectedOrderId);
+            ReusableMethods.wait(3);
             String actualOrderId=merchantPage.orderId1.get(0).getText().replaceAll("\\D","");
+            System.out.println(actualOrderId);
 
             System.out.println(actualOrderId);
             Assert.assertEquals(actualOrderId,expectedOrderId);

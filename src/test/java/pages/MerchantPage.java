@@ -309,10 +309,8 @@ public class MerchantPage {
     public  WebElement dasboardNewOrdersIcon;//merhant Page
 
     @FindBy(xpath = "(//p[@class='m-0'])[7]")
-    public List<WebElement> orderId1;//merchant_New order page
+    public List <WebElement> orderId1;//merchant_New order page
   
-    @FindBy (xpath ="(//p[@class='m-0'])[11]" )
-    public List<WebElement> orderId2;
 
     @FindBy(xpath = " (//p[@class='m-0'])[5]")
     public  WebElement customerName;//merchant_New order page
@@ -431,7 +429,7 @@ public class MerchantPage {
     @FindBy(xpath = "//span[text()='Reject order']")
     public  WebElement cancelRejectOrderButton;;//merchant_New order page
 
-    @FindBy(xpath = "//div[@class='notyf-announcer']")
+    @FindBy(xpath = "//div[text()='Order is cancelled']")
     public  WebElement cancelOrderMessage;;//merchant_New order page
 
     @FindBy(xpath = "//a[text()='Download PDF (A4)']")
@@ -592,7 +590,7 @@ public class MerchantPage {
     @FindBy(xpath = "//*[text()='Reject order']")
     public WebElement rejectOrderButton; //  scheduled order reject page
 
-    @FindBy(xpath = "//*[@class='mb-1']")
+    @FindBy(xpath = "(//*[@class='mb-1'])[1]")
     public WebElement productNameOrderSummary; //  scheduled order page
 
     @FindBy(xpath = "//*[@class='m-0 font11']")
@@ -647,10 +645,15 @@ public class MerchantPage {
     @FindBy(xpath = "//*[@class='col-md-5']")
     public WebElement orderView;
 
+    @FindBy(xpath = "//*[@class='row align-items-start']")
+    public List<WebElement>  newOrdersList;
 
 
 
 
 
-  
+
+
+
+
 }

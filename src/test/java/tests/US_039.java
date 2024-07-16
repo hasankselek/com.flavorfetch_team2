@@ -325,10 +325,8 @@ public class US_039 {
         Assert.assertTrue(adminPage.dateRangeKey.get(5).getText().contains("Last Month"));
 
 
-        ReusableMethods.searchDateBeginFinish("1","January","2024","31","December","2024");
-        ReusableMethods.wait(1);
-        adminPage.allTransactionFilter.click();
-        ReusableMethods.wait(1);
+        ReusableMethods.searchDateBeginFinish("31","May","2024","31","September","2024");
+        ReusableMethods.wait(3);
 
         for (int i = 0; i < adminPage.merchantInfoTable.size(); i++) {
             Assert.assertTrue(adminPage.merchantInfoTable.get(i).isDisplayed());
@@ -340,9 +338,13 @@ public class US_039 {
 
         ReusableMethods.wait(1);
 
+        adminPage.allTransactionFilter.click();
+        ReusableMethods.wait(1);
+
         for (int i = 0; i < adminPage.allTransaction.size(); i++) {
             Assert.assertTrue(adminPage.allTransaction.get(i).isEnabled());
         }
+
         Assert.assertTrue(adminPage.allTransaction.get(0).getText().contains("Credit"));
         Assert.assertTrue(adminPage.allTransaction.get(1).getText().contains("Debit"));
         Assert.assertTrue(adminPage.allTransaction.get(2).getText().contains("Payout"));
@@ -354,7 +356,7 @@ public class US_039 {
         ReusableMethods.wait(1);
 
         for (int i = 0; i < adminPage.customRangeProductList.size(); i++) {
-            Assert.assertTrue(adminPage.customRangeProductList.get(i).getText().contains("24 Jun 2024"));
+            Assert.assertTrue(adminPage.customRangeProductList.get(i).getText().contains("24 Jun 2024") );
         }
 
 
