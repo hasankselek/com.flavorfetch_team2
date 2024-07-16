@@ -18,7 +18,7 @@ import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 public class US_043 {
-    AdminPage adminPage = new AdminPage();
+    static AdminPage adminPage = new AdminPage();
 
     @Test
     public void test_4301() {

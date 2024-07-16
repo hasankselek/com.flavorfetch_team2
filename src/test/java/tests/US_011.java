@@ -20,7 +20,7 @@ import java.util.Random;
 public class US_011 {
 
     static CustomerPage customerPage = new CustomerPage();
-    Actions actions = new Actions(Driver.getDriver());
+    static Actions actions = new Actions(Driver.getDriver());
 
     @Test
     public void TC_1101(){
