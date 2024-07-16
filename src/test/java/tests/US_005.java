@@ -12,7 +12,7 @@ public class US_005 {
 
     //As a user, I want to be able to login with my email and password information that I registered on the site.
 
-    static CustomerPage customerPage = new CustomerPage();
+    static CustomerPage customerPage;
 
     @Test
     public void TC_0501 (){

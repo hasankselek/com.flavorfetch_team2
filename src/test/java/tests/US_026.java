@@ -113,9 +113,10 @@ public class US_026 extends TestBaseRapor {
         extentTest.info("Siparis duraklatma sebebi secilir.");
 
         Assert.assertFalse(merchantPage.acceptingOrderButton.isEnabled());
-        extentTest.info("siparisin duraklatildigi dogrulanir");
+        extentTest.pass("siparisin duraklatildigi dogrulanir");
         }
         Driver.quitDriver();
+        extentTest.info("Sayfayi kapatir");
 
     }
 
