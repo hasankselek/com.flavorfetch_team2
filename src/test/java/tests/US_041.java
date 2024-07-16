@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
 import pages.AdminPage;
-import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ public class US_041 {
     @Test
     public void TC_4101() {
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_meltem", "adminpassword_meltem");
+        ReusableMethods.accessAdmin("adminuser_meltem", "adminpassword_meltem");
         //Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         // adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_meltem"));
         //Driver.getDriver().findElement(By.xpath("//*[@for='LoginForm_password']")).sendKeys("Flavor.2106");
@@ -99,7 +97,7 @@ public class US_041 {
         @Test
         public void TC_4103 () {
             adminPage = new AdminPage();
-            ReusableMethods.accessToAdmin("adminuser_meltem", "adminpassword_meltem");
+            ReusableMethods.accessAdmin("adminuser_meltem", "adminpassword_meltem");
             adminPage.buyersButton.click();
             adminPage.customersButton.click();
             String name = adminPage.searchedName.getText();
@@ -111,7 +109,7 @@ public class US_041 {
         @Test
         public void TC_4104 () {
             adminPage = new AdminPage();
-            ReusableMethods.accessToAdmin("adminuser_meltem", "adminpassword_meltem");
+            ReusableMethods.accessAdmin("adminuser_meltem", "adminpassword_meltem");
             adminPage.buyersButton.click();
             Assert.assertTrue(adminPage.customersButton.isDisplayed());
             Assert.assertTrue(adminPage.reviewsButton.isDisplayed());

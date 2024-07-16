@@ -7,7 +7,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AdminPage;
-import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
@@ -20,7 +19,7 @@ public class US_036 {
     @Test
     public void TC_3601(){
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         Assert.assertTrue(adminPage.previewStoreButton.isDisplayed());
         Assert.assertTrue(adminPage.previewStoreButton.isEnabled());
@@ -49,7 +48,7 @@ public class US_036 {
     @Test
     public void TC_3602(){
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         Assert.assertTrue(adminPage.notificationsIcon.isDisplayed());
         adminPage.notificationsIcon.click();
@@ -89,7 +88,7 @@ public class US_036 {
     public void TC_3603(){
 
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         for (int i = 0; i < adminPage.dashboardTotalHeadings.size(); i++) {
             Assert.assertTrue(adminPage.dashboardTotalHeadings.get(i).isDisplayed());
@@ -108,7 +107,7 @@ public class US_036 {
     @Test
     public void TC_3606(){
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         // Processing
         adminPage.orderStatus.get(1).click();
@@ -139,7 +138,7 @@ public class US_036 {
     @Test
     public void TC_3607(){
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         JSUtilities.scrollToElement(Driver.getDriver(),adminPage.popularItemsTitle);
 
@@ -181,7 +180,7 @@ public class US_036 {
     public void TC_3608(){
 
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         //Check "Scroll down the page" and "most reviewed" titles are visible
         JSUtilities.scrollToBottom(Driver.getDriver());
@@ -231,7 +230,7 @@ public class US_036 {
     @Test
     public void TC_3609(){
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         //Check "Sales overview" graph
         Assert.assertTrue(adminPage.salesOverviewGraph.isDisplayed());
@@ -243,7 +242,7 @@ public class US_036 {
     @Test
     public void TC_3610(){
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         Assert.assertTrue(adminPage.topCustomersText.isDisplayed());
 
@@ -262,7 +261,7 @@ public class US_036 {
     @Test
     public void TC_3611(){
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         adminPage.firstCustomerButton.click();
 
@@ -323,7 +322,7 @@ public class US_036 {
     public void TC_3612(){
         actions = new Actions(Driver.getDriver());
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         ReusableMethods.wait(3);
 
@@ -357,7 +356,7 @@ public class US_036 {
     public void TC_3613(){
         actions = new Actions(Driver.getDriver());
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         ReusableMethods.wait(3);
 
@@ -392,7 +391,7 @@ public class US_036 {
     public void TC_3614(){
         actions = new Actions(Driver.getDriver());
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         ReusableMethods.wait(1);
 
@@ -423,7 +422,7 @@ public class US_036 {
     public void TC_3615(){
         actions = new Actions(Driver.getDriver());
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         JSUtilities.scrollToElement(Driver.getDriver(),adminPage.recentPayoutTable);
 
@@ -444,7 +443,7 @@ public class US_036 {
     public void TC_3616(){
         actions = new Actions(Driver.getDriver());
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         JSUtilities.scrollToElement(Driver.getDriver(),adminPage.overviewOfReviewTable);
         Assert.assertTrue(adminPage.overviewOfReviewTable.isDisplayed());

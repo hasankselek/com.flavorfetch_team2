@@ -1,10 +1,7 @@
 package tests;
 
-import org.apache.hc.core5.http.impl.nio.ClientHttp1IOEventHandlerFactory;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AdminPage;
@@ -14,7 +11,6 @@ import utilities.ReusableMethods;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class US_029 {
 
@@ -27,7 +23,7 @@ public class US_029 {
     public void TC_2901() {
 
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_cimen","adminpassword_cimen");
+        ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
 
         adminPage.MerchantSide.click();
 
@@ -128,7 +124,7 @@ public class US_029 {
     public void TC_2902() {
 
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_cimen","adminpassword_cimen");
+        ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
 
         adminPage.MerchantSide.click();
 

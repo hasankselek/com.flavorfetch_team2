@@ -1,12 +1,10 @@
 package utilities;
-import com.github.javafaker.Faker;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 import pages.AdminPage;
 import pages.CustomerPage;
 import pages.MerchantPage;
