@@ -651,6 +651,39 @@ public class MerchantPage {
 
 
 
+    @FindBy(xpath = " //*[@class='m-0 pb-2']")
+    public WebElement assignDriverField;
+
+    @FindBy(xpath = "  (//*[@class='col-6 d-flex justify-content-start flex-column'])[4]")
+    public WebElement serviceFeeField;
+
+    @FindBy(xpath = "  (//*[@class='col-6 d-flex justify-content-start flex-column'])[5]")
+    public WebElement deliveryFeeField;
+
+    @FindBy(xpath = "//*[@class='table table-bordered']")
+    public WebElement tableOrderPayment;
+
+    @FindBy(xpath = "//*[@class='table table-bordered']/tr")
+    public List<WebElement>  tableOrderPaymentCount;
+
+    @FindBy(xpath = "(//*[@class='btn btn-green'])[2]")
+    public WebElement printOrdersAccept;
+
+    @FindBy(xpath = "(//*[@class='btn btn-black'])[4]")
+    public WebElement printOrdersCancel;
+
+    @FindBy(xpath = " (//*[@class='close'])[13]")
+    public WebElement printOrdersClose;
+
+
+    @FindBy(xpath = "//*[@class='font13 m-0 badge'] ")  //     //*[@class='row mt-3']
+    public WebElement checkOrderType;
+
+    @FindBy(xpath = "//*[@class='ml-2 badge services']")
+    public List<WebElement> deliveryType2;
+
+
+
 
 
 
