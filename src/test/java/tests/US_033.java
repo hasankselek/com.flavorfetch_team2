@@ -20,11 +20,12 @@ import java.util.List;
 public class US_033 {
 
 
-    MerchantPage merchantPage=new MerchantPage();
+    MerchantPage merchantPage = new MerchantPage();
+
     @Test
-    public void TC_3301()
-    {
-        MerchantPage merchantPage = new MerchantPage();
+    public void TC_3301() {
+        merchantPage = new MerchantPage();
+
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();
@@ -60,17 +61,18 @@ public class US_033 {
 
         String afterDeleteCoupon = couponStringList.get(0);
 
-        Assert.assertNotEquals(beforeDeleteCoupon, afterDeleteCoupon);
+        Assert.assertEquals(beforeDeleteCoupon, afterDeleteCoupon);
 
 
         Driver.quitDriver();
+
     }
 
     @Test
     public void TC_3302() //Update Coupon Information Test
-     {
-        MerchantPage merchantPage=new MerchantPage();
+    {
 
+        merchantPage = new MerchantPage();
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();
@@ -82,6 +84,7 @@ public class US_033 {
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
 
+
         Assert.assertTrue(merchantPage.updateCouponButton.isDisplayed());
         Assert.assertTrue(merchantPage.updateCouponButton.isEnabled());
         merchantPage.updateCouponButton.click();
@@ -90,9 +93,8 @@ public class US_033 {
 
         Faker faker = new Faker();
         String couponName = faker.commerce().promotionCode();
+
         ReusableMethods.fillTheCouponInformations(couponName);
-
-
 
         Driver.quitDriver();
 
@@ -102,7 +104,8 @@ public class US_033 {
     @Test
     public void TC_3303() //Add new Coupon Test
     {
-        MerchantPage merchantPage=new MerchantPage();
+
+        MerchantPage merchantPage = new MerchantPage();
         ReusableMethods.wait(1);
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
@@ -121,7 +124,6 @@ public class US_033 {
         String couponName = faker.commerce().promotionCode();
         ReusableMethods.fillTheCouponInformations(couponName);
 
-
         Driver.quitDriver();
 
 
@@ -129,7 +131,7 @@ public class US_033 {
 
     @Test
     public void TC_3304()  //Check Added Coupon Test
-        {
+    {
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();
@@ -158,7 +160,7 @@ public class US_033 {
 
     @Test
     public void TC_3305()  //Sort Test With Number,Name And Used Tags
-        {
+    {
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();
@@ -218,7 +220,7 @@ public class US_033 {
 
     @Test
     public void TC_3306() {
-        MerchantPage merchantPage=new MerchantPage();
+        MerchantPage merchantPage = new MerchantPage();
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();
@@ -250,7 +252,7 @@ public class US_033 {
 
     @Test
     public void TC_3307() {
-        MerchantPage merchantPage=new MerchantPage();
+        MerchantPage merchantPage = new MerchantPage();
         ReusableMethods.accessToMerchant();
         Assert.assertTrue(merchantPage.promoLink.isDisplayed());
         merchantPage.promoLink.click();

@@ -2,10 +2,8 @@ package tests;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AdminPage;
@@ -15,7 +13,7 @@ import utilities.ReusableMethods;
 
 import java.util.List;
 
-public class US_41 {
+public class US_041 {
     AdminPage adminPage=new AdminPage();
 
     @Test
