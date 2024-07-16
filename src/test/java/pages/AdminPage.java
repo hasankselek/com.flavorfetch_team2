@@ -261,7 +261,7 @@ public class AdminPage {
     @FindBy(xpath = "//input[@role='searchbox']")
     public WebElement nameBoxBelowByMerchant;//admin_allOrders
   
-    @FindBy(xpath = "//li[text()='Dolan Uyghur Restaurant']")
+    @FindBy(xpath = "//li[text()='Olio E Più']")
     public  WebElement byMerchantOption;//admin_allOrders
   
     @FindBy(xpath = "//tbody/tr/td[4]")
