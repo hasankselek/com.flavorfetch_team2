@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.Assertion;
@@ -21,7 +22,7 @@ public class US_041 {
     @Test
     public void TC_4101() {
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_meltem", "adminpassword_meltem");
+        ReusableMethods.accessAdmin("adminuser_meltem", "adminpassword_meltem");
         //Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
         // adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_meltem"));
         //Driver.getDriver().findElement(By.xpath("//*[@for='LoginForm_password']")).sendKeys("Flavor.2106");
@@ -44,53 +45,26 @@ public class US_041 {
             // List<String> CustomerList = ReusableMethods.stringListesineDonustur(sortingCustomerName);
             List<WebElement> sortingCustomerName = Driver.getDriver().findElements(By.xpath("//tbody//tr//td//h6"));
             for (WebElement each : sortingCustomerName) {
-                // sortedCustomer.add(sortingCustomerName.getText().toLowerCase().trim());
+               // sortedCustomer.add(sortingCustomerName.get(each).getText().toLowerCase().trim());
             }
 
         }
     }
         @Test
         public void TC_4102 () {
-            adminPage = new AdminPage();
-            adminPage.addNewCustomerButton.click();
-            adminPage.firstNamebutton.sendKeys("Ayse");
-            Faker faker = new Faker();
-            Actions actions = new Actions(Driver.getDriver());
-            actions.click(adminPage.firstNamebutton)
-                    .sendKeys(faker.name().firstName()).perform();
+            ReusableMethods.addCustomer("C:\\Users\\Meltem\\IdeaProjects\\com.flavorfetch_team2\\src\\test\\java\\tests\\upload.png");
+            ReusableMethods.wait(3);
 
-            actions.click((adminPage.lastNamebutton))
-                    .sendKeys(faker.name().lastName()).perform();
+            // eklenen customer silinir
+             adminPage.deleteCustomerButton.click();
+             ReusableMethods.wait(3);
+             // çıkan popup delete butonuna tıklanır
+             adminPage.cDeleteButton.click();
 
-            actions.click(adminPage.emailNameButton)
-                    .sendKeys(faker.internet().emailAddress()).perform();
-
-            // actions.click(adminPage.contactPhone).sendKeys((CharSequence) faker.phoneNumber()).perform();
-            actions.click(adminPage.contactPhone).sendKeys(faker.phoneNumber().phoneNumber()).perform();
-            String fakePassword = faker.internet().password();
-            actions.click(adminPage.passwordButton).sendKeys(fakePassword).perform();
-            actions.click(adminPage.confirmPasswordButton).sendKeys(fakePassword).perform();
-
-            adminPage.browseButton.click();
-            adminPage.uploadNewButton.click();
-
-
-            String yuklenecekDosyaninDosyaYolu = "C:\\Users\\Meltem\\IdeaProjects\\com.flavorfetch_team2\\src\\test\\java\\tests\\upload.png";
-            adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
-
-            adminPage.addFilesButton.click();
-
-            adminPage.addMoreFileButton.click();
-
-            adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
-
-            adminPage.addFilesButton.click();
-
-            adminPage.closeProfileWindow.click();
-
-            adminPage.statusCustomer.click();
-
-            // status barinda dropdown secilmesi yazilacaktir
+             ReusableMethods.wait(3);
+             //customer düzenlenir
+             adminPage.updateButton.click();
+             ReusableMethods.addCustomer("C:\\Users\\Meltem\\IdeaProjects\\com.flavorfetch_team2\\src\\test\\java\\tests\\upload.png");
 
             Driver.getDriver().quit();
 
@@ -99,7 +73,7 @@ public class US_041 {
         @Test
         public void TC_4103 () {
             adminPage = new AdminPage();
-            ReusableMethods.accessToAdmin("adminuser_meltem", "adminpassword_meltem");
+            ReusableMethods.accessAdmin("adminuser_meltem", "adminpassword_meltem");
             adminPage.buyersButton.click();
             adminPage.customersButton.click();
             String name = adminPage.searchedName.getText();
@@ -111,7 +85,7 @@ public class US_041 {
         @Test
         public void TC_4104 () {
             adminPage = new AdminPage();
-            ReusableMethods.accessToAdmin("adminuser_meltem", "adminpassword_meltem");
+            ReusableMethods.accessAdmin("adminuser_meltem", "adminpassword_meltem");
             adminPage.buyersButton.click();
             Assert.assertTrue(adminPage.customersButton.isDisplayed());
             Assert.assertTrue(adminPage.reviewsButton.isDisplayed());

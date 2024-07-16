@@ -20,7 +20,7 @@ public class US_036 {
     @Test
     public void TC_3601(){
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         Assert.assertTrue(adminPage.previewStoreButton.isDisplayed());
         Assert.assertTrue(adminPage.previewStoreButton.isEnabled());
