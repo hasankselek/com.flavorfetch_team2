@@ -8,10 +8,11 @@ import pages.CustomerPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 import java.io.FileNotFoundException;
 
-public class US_014 {
+public class US_014 extends TestBaseRapor {
 
 
     @Test
@@ -183,15 +184,24 @@ public class US_014 {
     @Test
     public void TC_1403(){
 
+        extentTest=extentReports.createTest("TC_1403","Verify code for mail address and/or mobile phone");
+
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+
+        extentTest.info("Kullanıcının hesabına erisebilmesi için linke giris yapar.");
 
         CustomerPage customerPage =new CustomerPage();
 
+
         customerPage.signInButton.click();
+
+        extentTest.info("Sign in butonuna tıklar.");
 
         customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_cimen"));
 
         customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_cimen"));
+
+        extentTest.info("Mail adresi veya şifre ile oturum açma işlemi yapar");
 
         customerPage.loginSigninButton.click();
 
@@ -208,16 +218,24 @@ public class US_014 {
 
         customerPage.SubmitButton.click();
 
+        extentTest.info("Basic details kısmında kullanıcı e-posta adresi ve/veya telefon numarası değişiklik yapar.");
+
         Assert.assertTrue(customerPage.codeView.isDisplayed());
+
+        extentTest.pass("Codeview gözüktügünü dogrular");
 
         ReusableMethods.waitFor(3);
 
         Assert.assertTrue(customerPage.SubmitButton.isSelected());
 
+        extentTest.pass("Submit Button secilebilir oldugunu dogrular");
+
         ReusableMethods.waitFor(5);
+
 
         Driver.quitDriver();
 
+        extentTest.info("Sayfayı kapatir");
     }
 }
 

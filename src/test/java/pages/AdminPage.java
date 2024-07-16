@@ -684,6 +684,35 @@ public class AdminPage {
     @FindBy( xpath = "(//*[@class='zmdi zmdi-border-color'])[1]")
     public WebElement updateButton;
 
+    @FindBy(xpath = "//li[@class='admin_dashboard active']")
+    public WebElement adminDashboardmenu;
+
+    @FindBy(xpath = "//a[@class='navbar-brand']")
+    public WebElement reviewView;
+
+    @FindBy(xpath = "//table/thead[1]")
+    public List<WebElement> headDashboard;
+
+    @FindBy(xpath = "//thead//th[2]")
+    public WebElement headMerchant;
+
+    @FindBy(xpath = "//thead//th[3]")
+    public WebElement headReview;
+
+    @FindBy(xpath = "//thead//th[4]")
+    public WebElement headActions;
+
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-delete']")
+    public WebElement deleteButtonDashboard; //
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-border-color'])[2]")
+    public WebElement updateButtonDashboard; //
+
+
+    @FindBy(xpath = "//*[@class='page-link']")
+    public WebElement dashboardPageNumbers;
+
 
 
 

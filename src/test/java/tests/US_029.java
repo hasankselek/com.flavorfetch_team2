@@ -181,8 +181,72 @@ Driver.quitDriver();
 
     }
 
+    @Test
+    public void TC_2903() {
+
+        adminPage = new AdminPage();
+        ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
+
+        adminPage.MerchantSide.click();
+
+        adminPage.ListSide.click();
+
+        adminPage.SearchSide.sendKeys(" Havana"+ Keys.ENTER);
+
+        adminPage.AutoLoginSide.click();
+
+        ReusableMethods.windowaGec("https://qa.flavorfetch.com/backoffice/merchant/dashboard",Driver.getDriver());
+
+        ReusableMethods.waitFor(3);
+
+        merchantPage.ordersLink.click();
+
+        merchantPage.ordersCompletedLink.click();
+
+        int OrderView =merchantPage.orderProcessingList.size();
 
 
+        if (OrderView>0) {
+
+            for (int i = 0; i < merchantPage.orderProcessingList.size(); i++) {
+                merchantPage.orderProcessingList.get(i).click();
+                ReusableMethods.waitFor(5);
+//
+//        //    customer.deneme.get(i).click();
+//        //    System.out.println(customer.deneme.get(i));
+                if (merchantPage.deliveryType2.get(i).getText() == ("Delivery"))
+                    Assert.assertTrue(merchantPage.checkOrderType.getText().contains("delivery"));
+
+
+            }
+
+
+            for (int i = 0; i < merchantPage.orderProcessingList.size(); i++) {
+                //   for (int j = 0; j < customer.ar.size(); j++) {
+                merchantPage.orderProcessingList.get(i).click();
+                ReusableMethods.waitFor(2);
+                if (merchantPage.deliveryType2.get(i).getText() == "Dinein")
+                    Assert.assertTrue(merchantPage.checkOrderType.getText().contains("complete"));
+
+
+            }
+
+//            System.out.println(customer.deneme1.getText());
+
+            for (int i = 0; i < merchantPage.orderProcessingList.size(); i++) {
+                //   for (int j = 0; j < customer.ar.size(); j++) {
+                merchantPage.orderProcessingList.get(i).click();
+                ReusableMethods.waitFor(2);
+                if (merchantPage.deliveryType2.get(i).getText() == "Pickup")
+                    Assert.assertTrue(merchantPage.checkOrderType.getText().contains("complete"));
+
+
+            }
+        }
+
+
+        Driver.quitDriver();
+    }
 
 
 
