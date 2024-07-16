@@ -44,8 +44,9 @@ public class US_041 {
             // List<String> CustomerList = ReusableMethods.stringListesineDonustur(sortingCustomerName);
             List<WebElement> sortingCustomerName = Driver.getDriver().findElements(By.xpath("//tbody//tr//td//h6"));
             for (WebElement each : sortingCustomerName) {
-                // sortedCustomer.add(sortingCustomerName.getText().toLowerCase().trim());
+                // sortedCustomer.add(sortingCustomerName.get(each).getText().toLowerCase().trim());
             }
+
 
         }
     }

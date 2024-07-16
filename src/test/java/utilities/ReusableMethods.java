@@ -24,6 +24,8 @@ public class ReusableMethods {
     private static int timeout = 5;
     static AdminPage adminPage = new AdminPage();
     static MerchantPage merchantPage = new MerchantPage();
+    static CustomerPage customerPage = new CustomerPage();
+    static Actions actions = new Actions(Driver.getDriver());
 
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
@@ -560,6 +562,24 @@ public class ReusableMethods {
         Driver.getDriver().findElement(By.xpath("(//tr//td[text()='" + finishDay + "'])[1]")).click();
         ReusableMethods.wait(2);
 
+    }
+
+    public static void customerHasanAccesToTeam2Restaurent(String costumerUsername , String customerPassword){
+        CustomerPage customerPage=new CustomerPage();
+        Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+        ReusableMethods.wait(1);
+        customerPage.signInButton.click();
+        customerPage.emailBox.sendKeys(ConfigReader.getProperty(costumerUsername)+Keys.TAB+ConfigReader.getProperty(customerPassword));
+        customerPage.loginSigninButton.click();
+        customerPage.cookieAccept.click();
+        customerPage.enterDeliveryAddresstextBox.sendKeys("Seattle");
+        ReusableMethods.wait(1);
+        customerPage.seattleCity.click();
+        ReusableMethods.wait(1);
+        Driver.getDriver().navigate().back();
+        ReusableMethods.wait(1);
+        actions.click(customerPage.sandwichAndWraps).perform();
+        customerPage.team2Restaurant.click();
     }
 
 
