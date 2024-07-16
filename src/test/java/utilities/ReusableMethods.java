@@ -1,4 +1,5 @@
 package utilities;
+import com.github.javafaker.Faker;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
@@ -561,51 +562,51 @@ public class ReusableMethods {
     }
 
     public static  void addCustomer(String DosyaYolu){
-        adminPage = new AdminPage();
-        adminPage.addNewCustomerButton.click();
-        adminPage.firstNamebutton.sendKeys("Ayse");
-        Faker faker = new Faker();
-        Actions actions = new Actions(Driver.getDriver());
-        actions.click(adminPage.firstNamebutton)
-                .sendKeys(faker.name().firstName()).perform();
+      adminPage = new AdminPage();
+      adminPage.addNewCustomerButton.click();
+      adminPage.firstNamebutton.sendKeys("Ayse");
+      Faker faker = new Faker();
+      Actions actions = new Actions(Driver.getDriver());
+      actions.click(adminPage.firstNamebutton)
+              .sendKeys(faker.name().firstName()).perform();
 
-        actions.click((adminPage.lastNamebutton))
-                .sendKeys(faker.name().lastName()).perform();
+      actions.click((adminPage.lastNamebutton))
+              .sendKeys(faker.name().lastName()).perform();
 
-        actions.click(adminPage.emailNameButton)
-                .sendKeys(faker.internet().emailAddress()).perform();
+      actions.click(adminPage.emailNameButton)
+              .sendKeys(faker.internet().emailAddress()).perform();
 
-        // actions.click(adminPage.contactPhone).sendKeys((CharSequence) faker.phoneNumber()).perform();
-        actions.click(adminPage.contactPhone).sendKeys(faker.phoneNumber().phoneNumber()).perform();
-        String fakePassword = faker.internet().password();
-        actions.click(adminPage.passwordButton).sendKeys(fakePassword).perform();
-        actions.click(adminPage.confirmPasswordButton).sendKeys(fakePassword).perform();
+      // actions.click(adminPage.contactPhone).sendKeys((CharSequence) faker.phoneNumber()).perform();
+      actions.click(adminPage.contactPhone).sendKeys(faker.phoneNumber().phoneNumber()).perform();
+      String fakePassword = faker.internet().password();
+      actions.click(adminPage.passwordButton).sendKeys(fakePassword).perform();
+      actions.click(adminPage.confirmPasswordButton).sendKeys(fakePassword).perform();
 
-        adminPage.browseButton.click();
-        adminPage.uploadNewButton.click();
+      adminPage.browseButton.click();
+      adminPage.uploadNewButton.click();
 
 
-        String yuklenecekDosyaninDosyaYolu = "C:\\Users\\Meltem\\IdeaProjects\\com.flavorfetch_team2\\src\\test\\java\\tests\\upload.png";
-        adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
+      String yuklenecekDosyaninDosyaYolu = "C:\\Users\\Meltem\\IdeaProjects\\com.flavorfetch_team2\\src\\test\\java\\tests\\upload.png";
+      adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
 
-        adminPage.addFilesButton.click();
+      adminPage.addFilesButton.click();
 
-        adminPage.addMoreFileButton.click();
+      adminPage.addMoreFileButton.click();
 
-        adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
+      adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
 
-        adminPage.addFilesButton.click();
+      adminPage.addFilesButton.click();
 
-        adminPage.closeProfileWindow.click();
+      adminPage.closeProfileWindow.click();
 
-        adminPage.statusCustomer.click();
+      adminPage.statusCustomer.click();
 
-        // status barinda dropdown secilmesi yazilacaktir
-        //dropdown olmasi icin select tagıyla olusmasi lazim, altindaki seceneklerde option tagiyla olusturulmasi lazim.
-        // statu active secilir
-        Select select=new Select(adminPage.statusDropdownMenu);
-        select.selectByVisibleText("active");
-        adminPage.saveCustomerButton.click();
+      // status barinda dropdown secilmesi yazilacaktir
+      //dropdown olmasi icin select tagıyla olusmasi lazim, altindaki seceneklerde option tagiyla olusturulmasi lazim.
+      // statu active secilir
+      Select select=new Select(adminPage.statusDropdownMenu);
+      select.selectByVisibleText("active");
+      adminPage.saveCustomerButton.click();
 
     }
 
