@@ -11,7 +11,6 @@ import pages.AdminPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +30,7 @@ public class US_041 {
         Assert.assertTrue(adminPage.customersButton.isDisplayed());
         Assert.assertTrue(adminPage.reviewsButton.isDisplayed());
         adminPage.customersButton.click();
+
         ReusableMethods.wait(5);
         Assert.assertTrue(adminPage.iconvisible.isDisplayed());
         adminPage.nameSortingButton.click();

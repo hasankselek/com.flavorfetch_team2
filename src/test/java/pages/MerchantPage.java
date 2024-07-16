@@ -29,20 +29,23 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Information']")
     public WebElement informationLink;// merchant sidebar page
   
-    @FindBy(xpath = "//a[text()='Setting']")
+    @FindBy(xpath = "(//a[text()='Settings'])[1]")
     public WebElement settingLink;// merchant sidebar page
   
-    @FindBy(xpath = "//a[text()='Order Limit']")
+    @FindBy(xpath = "(//a[text()='Order Limit'])[1]")
     public WebElement orderLimitLink;// merchant sidebar page
   
-    @FindBy(xpath = "//a[text()='Banner']")
+    @FindBy(xpath = "(//a[text()='Banner'])[1]")
     public WebElement bannerLink;// merchant sidebar page
   
-    @FindBy(xpath = "//a[text()='Pages']")
+    @FindBy(xpath = "(//a[text()='Pages'])[1]")
     public WebElement pagesLink;// merchant sidebar page
   
-    @FindBy(xpath = "//a[text()='Menu']")
+    @FindBy(xpath = "(//a[text()='Menu'])[1]")
     public WebElement menuLink;// merchant sidebar page
+
+    @FindBy(xpath = "//div[4]/ul[1]/li/a[1]")
+    public List<WebElement> merchantMenuList;
 
     @FindBy(xpath = "//a[text()='Orders']")
     public WebElement ordersLink;// merchant sidebar page
@@ -95,7 +98,7 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Ingredients']")
     public WebElement ingredientsLink;// merchant sidebar page
 
-    @FindBy(xpath = "//a[text()='Cooking Reference']")
+    @FindBy(xpath = "//a[text()='Cooking Reference ']")
     public WebElement cookingReferenceLink;// merchant sidebar page
 
     @FindBy(xpath = "//a[text()='Food']")
@@ -254,7 +257,7 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Buyers']")
     public WebElement buyersLink;// merchant sidebar page
 
-    @FindBy(xpath = "//a[text()='List']")
+    @FindBy(xpath = "(//ul/li/a[text()='List'])[3]")
     public WebElement listLink;// merchant sidebar page
 
     @FindBy(xpath = "//a[text()='Reviews']")
