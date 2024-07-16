@@ -23,6 +23,8 @@ public class ReusableMethods {
     private static int timeout = 5;
     static AdminPage adminPage = new AdminPage();
     static MerchantPage merchantPage = new MerchantPage();
+    static CustomerPage customerPage = new CustomerPage();
+    static Actions actions = new Actions(Driver.getDriver());
 
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
@@ -560,7 +562,23 @@ public class ReusableMethods {
         ReusableMethods.wait(2);
 
     }
-
+    public static void customerHasanAccesToTeam2Restaurent(String costumerUsername , String customerPassword){
+        CustomerPage customerPage=new CustomerPage();
+        Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+        ReusableMethods.wait(1);
+        customerPage.signInButton.click();
+        customerPage.emailBox.sendKeys(ConfigReader.getProperty(costumerUsername)+Keys.TAB+ConfigReader.getProperty(customerPassword));
+        customerPage.loginSigninButton.click();
+        customerPage.cookieAccept.click();
+        customerPage.enterDeliveryAddresstextBox.sendKeys("Seattle");
+        ReusableMethods.wait(1);
+        customerPage.seattleCity.click();
+        ReusableMethods.wait(1);
+        Driver.getDriver().navigate().back();
+        ReusableMethods.wait(1);
+        actions.click(customerPage.sandwichAndWraps).perform();
+        customerPage.team2Restaurant.click();
+      
     public static  void addCustomer(String DosyaYolu){
       adminPage = new AdminPage();
       adminPage.addNewCustomerButton.click();
@@ -607,6 +625,7 @@ public class ReusableMethods {
       Select select=new Select(adminPage.statusDropdownMenu);
       select.selectByVisibleText("active");
       adminPage.saveCustomerButton.click();
+
 
     }
 
