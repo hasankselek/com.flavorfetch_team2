@@ -25,7 +25,7 @@ public class US_038  extends  TestBaseRapor{
     @Test
     public  void  TC_3801(){
         adminPage=new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_kubra","adminpassword_kubra");
+        ReusableMethods.accessAdmin("adminuser_kubra","adminpassword_kubra");
         adminPage.dasboardOrders.click();
         adminPage.dashboardAllOrders.click();
         adminPage.desktopImages.click();
@@ -42,7 +42,7 @@ public class US_038  extends  TestBaseRapor{
     public  void TC_3802(){
 
         adminPage=new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_kubra","adminpassword_kubra");
+        ReusableMethods.accessAdmin("adminuser_kubra","adminpassword_kubra");
         adminPage.dasboardOrders.click();
         adminPage.dashboardAllOrders.click();
         adminPage.filterButton.click();
@@ -64,7 +64,7 @@ public class US_038  extends  TestBaseRapor{
     public  void TC_3803(){
 
         adminPage=new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_kubra","adminpassword_kubra");
+        ReusableMethods.accessAdmin("adminuser_kubra","adminpassword_kubra");
         adminPage.dasboardOrders.click();
         adminPage.dashboardAllOrders.click();
         adminPage.filterButton.click();
@@ -85,7 +85,7 @@ public class US_038  extends  TestBaseRapor{
     public void TC_3804(){
 
         adminPage=new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_kubra","adminpassword_kubra");
+        ReusableMethods.accessAdmin("adminuser_kubra","adminpassword_kubra");
         adminPage.dasboardOrders.click();
         adminPage.dashboardAllOrders.click();
         adminPage.filterButton.click();
@@ -106,7 +106,7 @@ public class US_038  extends  TestBaseRapor{
         try {
             extentTest=extentReports.createTest("TC_3805","Visibility and functionality test for the Filters button(By Merchant)");
             adminPage = new AdminPage();
-            ReusableMethods.accessToAdmin("adminuser_kubra", "adminpassword_kubra");
+            ReusableMethods.accessAdmin("adminuser_kubra", "adminpassword_kubra");
             adminPage.dasboardOrders.click();
             adminPage.dashboardAllOrders.click();
             extentTest.info("Admin all orders sayfasina gider");
@@ -137,7 +137,7 @@ public class US_038  extends  TestBaseRapor{
     @Test
     public  void T_3806(){
         adminPage=new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_kubra","adminpassword_kubra");
+        ReusableMethods.accessAdmin("adminuser_kubra","adminpassword_kubra");
         adminPage.dasboardOrders.click();
         adminPage.dashboardAllOrders.click();
 
@@ -173,7 +173,7 @@ public class US_038  extends  TestBaseRapor{
     public void TC_3807(){
         adminPage=new AdminPage();
         Actions actions =new Actions(Driver.getDriver());
-        ReusableMethods.accessToAdmin("adminuser_kubra","adminpassword_kubra");
+        ReusableMethods.accessAdmin("adminuser_kubra","adminpassword_kubra");
         adminPage.dasboardOrders.click();
         adminPage.dashboardAllOrders.click();
         adminPage.dateFilterBox.click();
@@ -188,7 +188,7 @@ public class US_038  extends  TestBaseRapor{
     @Test
     public  void TC_3808(){
         adminPage=new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_kubra","adminpassword_kubra");
+        ReusableMethods.accessAdmin("adminuser_kubra","adminpassword_kubra");
         adminPage.dasboardOrders.click();
         adminPage.dashboardAllOrders.click();
         ReusableMethods.wait(3);
@@ -210,7 +210,7 @@ public class US_038  extends  TestBaseRapor{
     @Test
     public  void  TC_3809(){
         adminPage=new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_kubra","adminpassword_kubra");
+        ReusableMethods.accessAdmin("adminuser_kubra","adminpassword_kubra");
         adminPage.dasboardOrders.click();
         adminPage.dashboardAllOrders.click();
        Assert.assertTrue(adminPage.paymentType.isDisplayed());
@@ -223,7 +223,7 @@ public class US_038  extends  TestBaseRapor{
     @Test
     public  void TC_3810(){
         adminPage=new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_kubra","adminpassword_kubra");
+        ReusableMethods.accessAdmin("adminuser_kubra","adminpassword_kubra");
         adminPage.dasboardOrders.click();
         adminPage.dashboardAllOrders.click();
         adminPage.eyeSignUnderActions.click();
@@ -243,7 +243,7 @@ public class US_038  extends  TestBaseRapor{
     @Test
     public  void TC_3811(){
         adminPage=new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_kubra","adminpassword_kubra");
+        ReusableMethods.accessAdmin("adminuser_kubra","adminpassword_kubra");
         adminPage.dasboardOrders.click();
         adminPage.dashboardAllOrders.click();
         Assert.assertTrue(adminPage.downloadIcon.isDisplayed());

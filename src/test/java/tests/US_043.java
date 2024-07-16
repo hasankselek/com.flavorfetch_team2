@@ -220,7 +220,9 @@ public class US_043 {
     //Click the "< "sign of calendar .
     ReusableMethods.wait(2);
    Assert.assertTrue(adminPage.calendarMonthHead.get(0).isDisplayed());
-   String unexpectedMonth="July";
+    System.out.println("exp:"+ConfigReader.getProperty("monthName2"));
+    System.out.println("act:"+adminPage.calendarMonthHead.get(0).getText());
+   String unexpectedMonth=ConfigReader.getProperty("monthName2");
    String actualMonth=adminPage.calendarMonthHead.get(0).getText();
    Assert.assertTrue(actualMonth.contains(unexpectedMonth));
     //Verify single visibility of "July".
