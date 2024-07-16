@@ -28,7 +28,7 @@ public class US_039 {
     public void TC_3901() {
         actions = new Actions(Driver.getDriver());
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
         actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
 
@@ -59,7 +59,7 @@ public class US_039 {
         try {
             adminPage = new AdminPage();
             actions = new Actions(Driver.getDriver());
-            ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+            ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
             actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
 
@@ -82,7 +82,7 @@ public class US_039 {
     public void TC_3903() {
         adminPage = new AdminPage();
         actions = new Actions(Driver.getDriver());
-        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
         actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
         Assert.assertTrue(adminPage.merchantEarringMerchantTitle.isDisplayed());
@@ -102,7 +102,7 @@ public class US_039 {
 
             adminPage = new AdminPage();
             actions = new Actions(Driver.getDriver());
-            ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+            ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
             actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
             JSUtilities.sayfaOlcegiDegistirme(Driver.getDriver(), 75);
@@ -187,7 +187,7 @@ public class US_039 {
     public void TC_3905() {
         adminPage = new AdminPage();
         actions = new Actions(Driver.getDriver());
-        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
         actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
         JSUtilities.clickWithJS(Driver.getDriver(),adminPage.createTransactionButton);
@@ -239,7 +239,7 @@ public class US_039 {
     public void TC_3906() {
         adminPage = new AdminPage();
         actions = new Actions(Driver.getDriver());
-        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
         actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
         Assert.assertTrue(adminPage.firstActionButton.isDisplayed());
@@ -258,7 +258,7 @@ public class US_039 {
     public void TC_3907() {
         adminPage = new AdminPage();
         actions = new Actions(Driver.getDriver());
-        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
         actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
         JSUtilities.clickWithJS(Driver.getDriver(),adminPage.firstActionButton);
@@ -302,7 +302,7 @@ public class US_039 {
     public void TC_3908(){
         adminPage = new AdminPage();
         actions = new Actions(Driver.getDriver());
-        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
         actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
 
@@ -377,7 +377,7 @@ public class US_039 {
     public void TC_3909(){
         adminPage = new AdminPage();
         actions = new Actions(Driver.getDriver());
-        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
         actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
         actions.moveToElement(adminPage.merchantEarringPageSearchBox).click().perform();
