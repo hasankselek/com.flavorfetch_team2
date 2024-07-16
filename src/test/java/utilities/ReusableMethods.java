@@ -1,4 +1,5 @@
 package utilities;
+import com.github.javafaker.Faker;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
@@ -22,6 +23,8 @@ public class ReusableMethods {
     private static int timeout = 5;
     static AdminPage adminPage = new AdminPage();
     static MerchantPage merchantPage = new MerchantPage();
+    static CustomerPage customerPage = new CustomerPage();
+    static Actions actions = new Actions(Driver.getDriver());
 
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
@@ -557,6 +560,72 @@ public class ReusableMethods {
         }
         Driver.getDriver().findElement(By.xpath("(//tr//td[text()='" + finishDay + "'])[1]")).click();
         ReusableMethods.wait(2);
+
+    }
+    public static void customerHasanAccesToTeam2Restaurent(String costumerUsername , String customerPassword){
+        CustomerPage customerPage=new CustomerPage();
+        Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+        ReusableMethods.wait(1);
+        customerPage.signInButton.click();
+        customerPage.emailBox.sendKeys(ConfigReader.getProperty(costumerUsername)+Keys.TAB+ConfigReader.getProperty(customerPassword));
+        customerPage.loginSigninButton.click();
+        customerPage.cookieAccept.click();
+        customerPage.enterDeliveryAddresstextBox.sendKeys("Seattle");
+        ReusableMethods.wait(1);
+        customerPage.seattleCity.click();
+        ReusableMethods.wait(1);
+        Driver.getDriver().navigate().back();
+        ReusableMethods.wait(1);
+        actions.click(customerPage.sandwichAndWraps).perform();
+        customerPage.team2Restaurant.click();
+      
+    public static  void addCustomer(String DosyaYolu){
+      adminPage = new AdminPage();
+      adminPage.addNewCustomerButton.click();
+      adminPage.firstNamebutton.sendKeys("Ayse");
+      Faker faker = new Faker();
+      Actions actions = new Actions(Driver.getDriver());
+      actions.click(adminPage.firstNamebutton)
+              .sendKeys(faker.name().firstName()).perform();
+
+      actions.click((adminPage.lastNamebutton))
+              .sendKeys(faker.name().lastName()).perform();
+
+      actions.click(adminPage.emailNameButton)
+              .sendKeys(faker.internet().emailAddress()).perform();
+
+      // actions.click(adminPage.contactPhone).sendKeys((CharSequence) faker.phoneNumber()).perform();
+      actions.click(adminPage.contactPhone).sendKeys(faker.phoneNumber().phoneNumber()).perform();
+      String fakePassword = faker.internet().password();
+      actions.click(adminPage.passwordButton).sendKeys(fakePassword).perform();
+      actions.click(adminPage.confirmPasswordButton).sendKeys(fakePassword).perform();
+
+      adminPage.browseButton.click();
+      adminPage.uploadNewButton.click();
+
+
+      String yuklenecekDosyaninDosyaYolu = "C:\\Users\\Meltem\\IdeaProjects\\com.flavorfetch_team2\\src\\test\\java\\tests\\upload.png";
+      adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
+
+      adminPage.addFilesButton.click();
+
+      adminPage.addMoreFileButton.click();
+
+      adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
+
+      adminPage.addFilesButton.click();
+
+      adminPage.closeProfileWindow.click();
+
+      adminPage.statusCustomer.click();
+
+      // status barinda dropdown secilmesi yazilacaktir
+      //dropdown olmasi icin select tagıyla olusmasi lazim, altindaki seceneklerde option tagiyla olusturulmasi lazim.
+      // statu active secilir
+      Select select=new Select(adminPage.statusDropdownMenu);
+      select.selectByVisibleText("active");
+      adminPage.saveCustomerButton.click();
+
 
     }
 
