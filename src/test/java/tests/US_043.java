@@ -214,17 +214,17 @@ public class US_043 {
     adminPage.itemsAndNames.get(5).sendKeys(Keys.ENTER);
     adminPage.merchantRegestration.sendKeys(Keys.ENTER);
     ReusableMethods.wait(2);
-    Assert.assertTrue(adminPage.prevFlashCalendar.isDisplayed());
-    //Verify  the  "< "sign of calendar  is visible.
-    adminPage.prevFlashCalendar.sendKeys(Keys.ENTER);
+    adminPage.dateInputBox.sendKeys(Keys.ENTER);
+    ReusableMethods.wait(5);
+
+    JSUtilities.clickWithJS(Driver.getDriver(),adminPage.prevFlashCalendar);
     //Click the "< "sign of calendar .
     ReusableMethods.wait(2);
-   Assert.assertTrue(adminPage.calendarMonthHead.get(0).isDisplayed());
     System.out.println("exp:"+ConfigReader.getProperty("monthName2"));
-    System.out.println("act:"+adminPage.calendarMonthHead.get(0).getText());
-   String unexpectedMonth=ConfigReader.getProperty("monthName2");
-   String actualMonth=adminPage.calendarMonthHead.get(0).getText();
-   Assert.assertTrue(actualMonth.contains(unexpectedMonth));
+    System.out.println("act:"+adminPage.calendarLefttMonth.getText());
+   String expectedMonth=adminPage.calendarLefttMonth.getText();
+   String actualMonth=adminPage.calendarRightMonth.getText();
+   Assert.assertNotEquals(actualMonth,expectedMonth);
     //Verify single visibility of "July".
   Driver.quitDriver();
 }
@@ -239,9 +239,18 @@ public class US_043 {
     adminPage.itemsAndNames.get(5).sendKeys(Keys.ENTER);
     adminPage.merchantRegestration.sendKeys(Keys.ENTER);
     ReusableMethods.wait(2);
-
-    //Verify  the  "< "sign of calendar  is visible.
+    adminPage.dateInputBox.sendKeys(Keys.ENTER);
+    JSUtilities.clickWithJS(Driver.getDriver(),adminPage.prevFlashCalendar);
+    JSUtilities.clickWithJS(Driver.getDriver(),adminPage.prevFlashCalendar);
+    JSUtilities.clickWithJS(Driver.getDriver(),adminPage.prevFlashCalendar);
     //Click the "< "sign of calendar .
+    ReusableMethods.wait(2);
+    System.out.println("exp:"+adminPage.calendarRightMonth.getText());
+    System.out.println("act:"+adminPage.calendarLefttMonth.getText());
+    JSUtilities.getTextWithJS(Driver.getDriver(),adminPage.calendarLefttMonth);
+    String expectedMonth=adminPage.calendarLefttMonth.getText();
+    String actualMonth=adminPage.calendarRightMonth.getText();
+    Assert.assertNotEquals(actualMonth,expectedMonth);
     //Verify single visibility of "May".
    Driver.quitDriver();
 }
@@ -256,6 +265,19 @@ public class US_043 {
     adminPage.itemsAndNames.get(5).sendKeys(Keys.ENTER);
     adminPage.merchantRegestration.sendKeys(Keys.ENTER);
     ReusableMethods.wait(2);
+    adminPage.dateInputBox.sendKeys(Keys.ENTER);
+    JSUtilities.clickWithJS(Driver.getDriver(),adminPage.prevFlashCalendar);
+    JSUtilities.clickWithJS(Driver.getDriver(),adminPage.prevFlashCalendar);
+
+    String expectedMonth=ConfigReader.getProperty("monthName1");
+    JSUtilities.getTextWithJS(Driver.getDriver(),adminPage.calendarLefttMonth);
+    String actual1Month=adminPage.calendarLefttMonth.getText();
+    JSUtilities.getTextWithJS(Driver.getDriver(),adminPage.calendarRightMonth);
+    String actual2Month=adminPage.calendarRightMonth.getText();
+
+        Assert.assertEquals(actual1Month,expectedMonth);
+        Assert.assertEquals(actual2Month,expectedMonth);
+
     //Verify  the  "< "sign of calendar  is visible.
     //Click the "< "sign of calendar .
     //Verify single visibility of "Jun".

@@ -4,11 +4,10 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
 import pages.AdminPage;
-import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 import java.util.ArrayList;
@@ -52,46 +51,19 @@ public class US_041 {
     }
         @Test
         public void TC_4102 () {
-            adminPage = new AdminPage();
-            adminPage.addNewCustomerButton.click();
-            adminPage.firstNamebutton.sendKeys("Ayse");
-            Faker faker = new Faker();
-            Actions actions = new Actions(Driver.getDriver());
-            actions.click(adminPage.firstNamebutton)
-                    .sendKeys(faker.name().firstName()).perform();
+            ReusableMethods.addCustomer("C:\\Users\\Meltem\\IdeaProjects\\com.flavorfetch_team2\\src\\test\\java\\tests\\upload.png");
+            ReusableMethods.wait(3);
 
-            actions.click((adminPage.lastNamebutton))
-                    .sendKeys(faker.name().lastName()).perform();
+            // eklenen customer silinir
+             adminPage.deleteCustomerButton.click();
+             ReusableMethods.wait(3);
+             // çıkan popup delete butonuna tıklanır
+             adminPage.cDeleteButton.click();
 
-            actions.click(adminPage.emailNameButton)
-                    .sendKeys(faker.internet().emailAddress()).perform();
-
-            // actions.click(adminPage.contactPhone).sendKeys((CharSequence) faker.phoneNumber()).perform();
-            actions.click(adminPage.contactPhone).sendKeys(faker.phoneNumber().phoneNumber()).perform();
-            String fakePassword = faker.internet().password();
-            actions.click(adminPage.passwordButton).sendKeys(fakePassword).perform();
-            actions.click(adminPage.confirmPasswordButton).sendKeys(fakePassword).perform();
-
-            adminPage.browseButton.click();
-            adminPage.uploadNewButton.click();
-
-
-            String yuklenecekDosyaninDosyaYolu = "C:\\Users\\Meltem\\IdeaProjects\\com.flavorfetch_team2\\src\\test\\java\\tests\\upload.png";
-            adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
-
-            adminPage.addFilesButton.click();
-
-            adminPage.addMoreFileButton.click();
-
-            adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
-
-            adminPage.addFilesButton.click();
-
-            adminPage.closeProfileWindow.click();
-
-            adminPage.statusCustomer.click();
-
-            // status barinda dropdown secilmesi yazilacaktir
+             ReusableMethods.wait(3);
+             //customer düzenlenir
+             adminPage.updateButton.click();
+             ReusableMethods.addCustomer("C:\\Users\\Meltem\\IdeaProjects\\com.flavorfetch_team2\\src\\test\\java\\tests\\upload.png");
 
             Driver.getDriver().quit();
 

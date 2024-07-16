@@ -6,7 +6,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 import pages.AdminPage;
 import pages.CustomerPage;
 import pages.MerchantPage;
@@ -563,7 +562,6 @@ public class ReusableMethods {
         ReusableMethods.wait(2);
 
     }
-
     public static void customerHasanAccesToTeam2Restaurent(String costumerUsername , String customerPassword){
         CustomerPage customerPage=new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -580,6 +578,55 @@ public class ReusableMethods {
         ReusableMethods.wait(1);
         actions.click(customerPage.sandwichAndWraps).perform();
         customerPage.team2Restaurant.click();
+      
+    public static  void addCustomer(String DosyaYolu){
+      adminPage = new AdminPage();
+      adminPage.addNewCustomerButton.click();
+      adminPage.firstNamebutton.sendKeys("Ayse");
+      Faker faker = new Faker();
+      Actions actions = new Actions(Driver.getDriver());
+      actions.click(adminPage.firstNamebutton)
+              .sendKeys(faker.name().firstName()).perform();
+
+      actions.click((adminPage.lastNamebutton))
+              .sendKeys(faker.name().lastName()).perform();
+
+      actions.click(adminPage.emailNameButton)
+              .sendKeys(faker.internet().emailAddress()).perform();
+
+      // actions.click(adminPage.contactPhone).sendKeys((CharSequence) faker.phoneNumber()).perform();
+      actions.click(adminPage.contactPhone).sendKeys(faker.phoneNumber().phoneNumber()).perform();
+      String fakePassword = faker.internet().password();
+      actions.click(adminPage.passwordButton).sendKeys(fakePassword).perform();
+      actions.click(adminPage.confirmPasswordButton).sendKeys(fakePassword).perform();
+
+      adminPage.browseButton.click();
+      adminPage.uploadNewButton.click();
+
+
+      String yuklenecekDosyaninDosyaYolu = "C:\\Users\\Meltem\\IdeaProjects\\com.flavorfetch_team2\\src\\test\\java\\tests\\upload.png";
+      adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
+
+      adminPage.addFilesButton.click();
+
+      adminPage.addMoreFileButton.click();
+
+      adminPage.selectFilesButton.sendKeys(yuklenecekDosyaninDosyaYolu);
+
+      adminPage.addFilesButton.click();
+
+      adminPage.closeProfileWindow.click();
+
+      adminPage.statusCustomer.click();
+
+      // status barinda dropdown secilmesi yazilacaktir
+      //dropdown olmasi icin select tagıyla olusmasi lazim, altindaki seceneklerde option tagiyla olusturulmasi lazim.
+      // statu active secilir
+      Select select=new Select(adminPage.statusDropdownMenu);
+      select.selectByVisibleText("active");
+      adminPage.saveCustomerButton.click();
+
+
     }
 
 

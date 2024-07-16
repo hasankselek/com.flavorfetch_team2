@@ -586,12 +586,17 @@ public class CustomerPage {
     @FindBy(xpath = "//*[@id='section-address']/div/div[1]/div[1]/div[2]/div/a/u")
     public WebElement restaurantGetDirectionLink;
 
+    @FindBy (xpath= "//a[@href='https://qa.flavorfetch.com/avo-salads-bowls']//div[@class='el-image']//img[@class='el-image__inner']")
+    public  WebElement avoSaladsMarket ;
 
+    @FindBy (xpath= "//h3[normalize-space()='Become Restaurant partner']")
+    public  WebElement becomeRestaurantText ;
 
+    @FindBy (xpath= " //a[@class='btn btn-link w25']")
+    public  WebElement joinButton ; //homepage
 
-
-
-
+    @FindBy(xpath= "//*[@class='col-lg-4 col-md-4 mb-4 mb-lg-3']")
+    public WebElement informationBox;
 
 
 

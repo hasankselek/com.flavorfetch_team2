@@ -261,7 +261,7 @@ public class AdminPage {
     @FindBy(xpath = "//input[@role='searchbox']")
     public WebElement nameBoxBelowByMerchant;//admin_allOrders
   
-    @FindBy(xpath = "//li[text()='Dolan Uyghur Restaurant']")
+    @FindBy(xpath = "//li[text()='Olio E Più']")
     public  WebElement byMerchantOption;//admin_allOrders
   
     @FindBy(xpath = "//tbody/tr/td[4]")
@@ -407,10 +407,13 @@ public class AdminPage {
     @FindBy(xpath = "//ul[@class='pagination']/li") //Merchant Registrtion
     public List<WebElement> pagesNevigate;
 
-    @FindBy(xpath = "//*[@class='month']")
-    public  List<WebElement> calendarMonthHead;
+    @FindBy(xpath = "(//thead/tr/th)[19]")  // Merchant Registration /calendar DropDown
+    public  WebElement calendarRightMonth;
 
-    @FindBy(xpath = "//*[@class='prev available']")//Merchant Registratio/calendarDropDown
+    @FindBy(xpath = "(//thead/tr/th)[7]")  // Merchant Registration /calendar DropDown
+    public  WebElement calendarLefttMonth;
+
+    @FindBy(xpath = "//table/thead/tr/th[@class='prev available']")//Merchant Registratio/calendarDropDown
     public  WebElement prevFlashCalendar;
     @FindBy(xpath = "//*[@class='filter-option']")
     public WebElement statusBoxFilter;
@@ -666,6 +669,20 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='btn btn-green item_delete']")
     public WebElement couponAlertDelete;
 
+    @FindBy(xpath = "//select[@class='form-control custom-select form-control-select']")
+    public WebElement statusDropdownMenu; // add customer page
+
+    @FindBy(xpath = "//*[@class='btn btn-green btn-full mt-3']")
+    public WebElement saveCustomerButton;  // add customer page
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-delete'])[1]")
+    public WebElement deleteCustomerButton; // on customer list page
+
+    @FindBy(xpath = " //*[@class='btn btn-green item_delete']")
+    public WebElement cDeleteButton;
+
+    @FindBy( xpath = "(//*[@class='zmdi zmdi-border-color'])[1]")
+    public WebElement updateButton;
 
 
 
