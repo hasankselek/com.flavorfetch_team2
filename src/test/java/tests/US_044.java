@@ -21,7 +21,7 @@ public class US_044 {
 
         //kullanıcı browser açar
         //url girer
-        ReusableMethods.accessToAdmin("adminuser_emine","adminpassword_emine");
+        ReusableMethods.accessAdmin("adminuser_emine","adminpassword_emine");
         //admin olarak giriş yaptıktan sonra sola dashboad sekmesi altında orders sekmesi varlığı görüntüler
         Assert.assertTrue(adminPage.dasboardOrders.isDisplayed());
         //order sekmesi altında tüm siparişlere ulaşabileceğim all order sekmesi varlığı görüntüler
@@ -44,7 +44,7 @@ public class US_044 {
         Actions actions = new Actions(Driver.getDriver());
         //kullanıcı browser açar
         //url girer
-        ReusableMethods.accessToAdmin("adminuser_emine","adminpassword_emine");
+        ReusableMethods.accessAdmin("adminuser_emine","adminpassword_emine");
         //All order sayfasında sipariş sayısına ve iptal edilen sipariş sayısına ulaşılabildiğini görüntüler
         adminPage.dasboardOrders.click();
         adminPage.dashboardAllOrders.click();

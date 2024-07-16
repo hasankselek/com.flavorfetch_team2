@@ -407,10 +407,13 @@ public class AdminPage {
     @FindBy(xpath = "//ul[@class='pagination']/li") //Merchant Registrtion
     public List<WebElement> pagesNevigate;
 
-    @FindBy(xpath = "//*[@class='month']")
-    public  List<WebElement> calendarMonthHead;
+    @FindBy(xpath = "(//thead/tr/th)[19]")  // Merchant Registration /calendar DropDown
+    public  WebElement calendarRightMonth;
 
-    @FindBy(xpath = "//*[@class='prev available']")//Merchant Registratio/calendarDropDown
+    @FindBy(xpath = "(//thead/tr/th)[7]")  // Merchant Registration /calendar DropDown
+    public  WebElement calendarLefttMonth;
+
+    @FindBy(xpath = "//table/thead/tr/th[@class='prev available']")//Merchant Registratio/calendarDropDown
     public  WebElement prevFlashCalendar;
     @FindBy(xpath = "//*[@class='filter-option']")
     public WebElement statusBoxFilter;
