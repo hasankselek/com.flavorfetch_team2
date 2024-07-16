@@ -12,7 +12,7 @@ public class US_030 extends TestBaseRapor {
 
     //As a restaurant manager, I want future orders from my restaurant to be listed on the Scheduled page.
 
-    static MerchantPage merchantPage = new MerchantPage();
+    static MerchantPage merchantPage;
 
     @Test
     public void TC_3001() {
@@ -93,7 +93,7 @@ public class US_030 extends TestBaseRapor {
         merchantPage.logoutMerchantDashboard.click();
         extentTest.info("Hesaptan cikis yapar");
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
         extentTest.info("Sayfayi kapatir");
 
 
@@ -141,7 +141,7 @@ public class US_030 extends TestBaseRapor {
         merchantPage.logoutMerchantDashboard.click();
         extentTest.info("Hesaptan cikis yapar");
         //Sayfayi kapatr
-        Driver.getDriver().quit();
+        Driver.quitDriver();
         extentTest.info("Sayfayi kapatir");
 
     } // Test of the accept order function --> FAILED
@@ -184,7 +184,7 @@ public class US_030 extends TestBaseRapor {
         merchantPage.merchantNameDropdown.click();
         merchantPage.logoutMerchantDashboard.click();
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
 
     } // Test of the reject order function --> PASSED
@@ -217,7 +217,7 @@ public class US_030 extends TestBaseRapor {
         merchantPage.merchantNameDropdown.click();
         merchantPage.logoutMerchantDashboard.click();
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
 
     } // Test of order summary to include the names, prices, ,total quantity and total price of the ordered items --> PASSED
@@ -253,7 +253,7 @@ public class US_030 extends TestBaseRapor {
         merchantPage.merchantNameDropdown.click();
         merchantPage.logoutMerchantDashboard.click();
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
 
     } // Test of being able to print the order slip or download as a pdf format and able to contact option with customer --> PASSED
