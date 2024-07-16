@@ -669,6 +669,20 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='btn btn-green item_delete']")
     public WebElement couponAlertDelete;
 
+    @FindBy(xpath = "//select[@class='form-control custom-select form-control-select']")
+    public WebElement statusDropdownMenu; // add customer page
+
+    @FindBy(xpath = "//*[@class='btn btn-green btn-full mt-3']")
+    public WebElement saveCustomerButton;  // add customer page
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-delete'])[1]")
+    public WebElement deleteCustomerButton; // on customer list page
+
+    @FindBy(xpath = " //*[@class='btn btn-green item_delete']")
+    public WebElement cDeleteButton;
+
+    @FindBy( xpath = "(//*[@class='zmdi zmdi-border-color'])[1]")
+    public WebElement updateButton;
 
 
 
