@@ -247,7 +247,7 @@ public class US_043 {
     ReusableMethods.wait(2);
     System.out.println("exp:"+adminPage.calendarRightMonth.getText());
     System.out.println("act:"+adminPage.calendarLefttMonth.getText());
-    JSUtilities.getTextWithJS(Driver.getDriver(),adminPage.calendarLefttMonth)
+    JSUtilities.getTextWithJS(Driver.getDriver(),adminPage.calendarLefttMonth);
     String expectedMonth=adminPage.calendarLefttMonth.getText();
     String actualMonth=adminPage.calendarRightMonth.getText();
     Assert.assertNotEquals(actualMonth,expectedMonth);
