@@ -598,6 +598,8 @@ public class CustomerPage {
     @FindBy(xpath= "//*[@class='col-lg-4 col-md-4 mb-4 mb-lg-3']")
     public WebElement informationBox;
 
+    @FindBy(xpath = "//*[@id='vue-saved-store']//div[2]/h5")
+    public  WebElement noSavedRestaurantText;//orders_newOrders
 
 
 

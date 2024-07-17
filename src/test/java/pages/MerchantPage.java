@@ -681,6 +681,8 @@ public class MerchantPage {
 
     @FindBy(xpath = "//*[@class='ml-2 badge services']")
     public List<WebElement> deliveryType2;
+    @FindBy(xpath = "//p[text()='No results']")
+    public WebElement noResultText;
 
 
 
