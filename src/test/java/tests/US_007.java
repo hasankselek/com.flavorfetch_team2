@@ -9,7 +9,6 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
-import javax.print.attribute.standard.ReferenceUriSchemesSupported;
 
 public class US_007 extends TestBaseRapor {
 
@@ -22,12 +21,12 @@ public class US_007 extends TestBaseRapor {
     public void TC_0701 (){
 
         customerPage = new CustomerPage();
+        actions = new Actions(Driver.getDriver());
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         //Anasayfa footer bolumune kadar page down yapar
         customerPage.cookieAccept.click();
-        Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(customerPage.contactUsLink).perform();
         //Contact us' link baglantisina tiklar
         customerPage.contactUsLink.click();
@@ -47,7 +46,8 @@ public class US_007 extends TestBaseRapor {
     @Test
     public void TC_0702 (){
         customerPage = new CustomerPage();
-        extentTest=extentReports.createTest("TC_0702" , "Test of customer name, customer email, customer message fields and  image section.");
+        actions = new Actions(Driver.getDriver());
+        //extentTest=extentReports.createTest("TC_0702" , "Test of customer name, customer email, customer message fields and  image section.");
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -90,6 +90,7 @@ public class US_007 extends TestBaseRapor {
     @Test
     public void TC_0703 (){
         customerPage = new CustomerPage();
+        actions = new Actions(Driver.getDriver());
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -117,6 +118,7 @@ public class US_007 extends TestBaseRapor {
     @Test
     public void TC_0704 (){
         customerPage = new CustomerPage();
+        actions = new Actions(Driver.getDriver());
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -144,7 +146,8 @@ public class US_007 extends TestBaseRapor {
     @Test
     public void TC_0705 (){
         customerPage = new CustomerPage();
-        extentTest=extentReports.createTest("TC_0705","Test of unsuccessful submit with empty message");
+        actions = new Actions(Driver.getDriver());
+        //extentTest=extentReports.createTest("TC_0705","Test of unsuccessful submit with empty message");
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -187,3 +190,15 @@ public class US_007 extends TestBaseRapor {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
