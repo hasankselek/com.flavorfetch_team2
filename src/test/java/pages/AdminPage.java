@@ -373,7 +373,7 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='zmdi zmdi-desktop-mac']")
     public WebElement iconvisible;  //Custormer list page
   
-    @FindBy(xpath = "//*[@class='sorting sorting_desc']")
+    @FindBy(xpath = "(//*[@class='sorting'])[2]")
     public WebElement nameSortingButton;  //sorting desc customername
 
     @FindBy(xpath = "(//*[text()='Customer list'])[1]")
@@ -766,6 +766,12 @@ public class AdminPage {
 
     @FindBy(xpath = "//a[@aria-controls='DataTables_Table_0']")
     public List<WebElement> merchantEarringsSayfaNo;
+  
+    @FindBy(xpath = "//*[@for='AR_client_npassword']")
+    public WebElement buyersPassword; //update customer page password
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-search']")
+    public WebElement namesearchicon;
 
 
 

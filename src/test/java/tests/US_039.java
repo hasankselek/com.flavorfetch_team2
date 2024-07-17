@@ -62,8 +62,8 @@ public class US_039 extends TestBaseRapor {
             adminPage = new AdminPage();
             actions = new Actions(Driver.getDriver());
             ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
+            actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
             extentTest.info("Kullanici browser'ı açar geçerli üyelikle giriş yapar");
-
             actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
             extentTest.info("Ekranın solundaki menüden Earrings'e tıklar ve Merchant Earrings' tıklar");
 
@@ -205,56 +205,65 @@ public class US_039 extends TestBaseRapor {
     }
 
     @Test
-    public void TC_3905() {
+    public void TC_4101() {
         adminPage = new AdminPage();
-        actions = new Actions(Driver.getDriver());
-        ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
-        actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
-
-        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.createTransactionButton);
-        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.adjustmentButton);
-
-        String expectedTitle = "Create adjustment";
-        String actualTitle = Driver.getDriver().findElement(By.xpath("//form//h5[@id='exampleModalLabel']")).getText();
-        Assert.assertEquals(actualTitle,expectedTitle);
-
-        String expectedMerchantTitle = "Merchant";
-        String actualMerchantTitle = Driver.getDriver().findElement(By.xpath("//b[normalize-space()='Merchant']")).getText();
-        Assert.assertEquals(actualMerchantTitle,expectedMerchantTitle);
-
-        // rastgele bir merchant seçme
-        actions.moveToElement(adminPage.merchantFinder).click().perform();
-        ReusableMethods.wait(1);
-        Random rand = new Random();
-        int randomIndex = rand.nextInt(adminPage.merchantList.size());
-        WebElement randomElement = adminPage.merchantList.get(randomIndex);
-        actions.moveToElement(randomElement).click().perform();
-        ReusableMethods.wait(1);
-
-
-        Assert.assertTrue(adminPage.transactionDescriptionText.getText().contains("Transaction Description"));
-        Faker faker = new Faker();
-        actions.click(adminPage.transactionDescriptionBox).sendKeys(faker.lorem().sentence()).perform();
-        ReusableMethods.wait(3);
-
-        Select select = new Select(adminPage.payType);
-        List<WebElement> options = select.getOptions();
-        int randomIndex2 = rand.nextInt(options.size());
-        select.selectByIndex(randomIndex2);
-        ReusableMethods.wait(3);
-
-        Assert.assertTrue(adminPage.amountText.getText().contains("Amount"));
-        int randomPrice = rand.nextInt(100);
-        actions.click(adminPage.amountBox).sendKeys(String.valueOf(randomPrice)).perform();
-        JSUtilities.clickWithJS(Driver.getDriver(),adminPage.submitButton);
+        ReusableMethods.accessAdmin("adminuser_meltem", "adminpassword_meltem");
+        //Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
+        // adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_meltem"));
+        //Driver.getDriver().findElement(By.xpath("//*[@for='LoginForm_password']")).sendKeys("Flavor.2106");
+        //adminPage.passwordButton.sendKeys(ConfigReader.getProperty("adminpassword_meltem"));
+        // adminPage.signInButton.click();
+        adminPage.buyersButton.click();
+        Assert.assertTrue(adminPage.customersButton.isDisplayed());
+        //Assert.assertTrue(adminPage.reviewsButton.isDisplayed());
+        adminPage.customersButton.click();
+        ReusableMethods.wait(2);
+        adminPage.buyersButton.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(adminPage.iconvisible.isDisplayed());
         ReusableMethods.wait(2);
 
-        Assert.assertTrue(adminPage.notfyMessage.isDisplayed());
+        adminPage.nameSortingButton.click();
+        JSUtilities.sayfaOlcegiDegistirme(Driver.getDriver(), 30);
+
         ReusableMethods.wait(1);
 
-        Driver.quitDriver();
+        List<String> sortedCustomer = new ArrayList<>();
+        // for döngusu yazilacaktir
+        for (int page = 1; page <= 10; page++) {
+            ReusableMethods.wait(1);
+            // Customer isimleri alinir
+            // List<String> CustomerList = ReusableMethods.stringListesineDonustur(sortingCustomerName);
+            List<WebElement> sortingCustomerNames = Driver.getDriver().findElements(By.xpath("//tbody//tr//td//h6"));
+            for (WebElement sortingCustomerName : sortingCustomerNames) {
+                sortedCustomer.add(sortingCustomerName.getText().toLowerCase().trim());
+            }
+            if (page < 10) {
+                WebElement nextPageButton = Driver.getDriver().findElement(By.xpath("//*[@class='page-link']")); // AdminPage sınıfında nextPageButton öğesini tanımladığınızdan emin olun
+                JSUtilities.clickWithJS(Driver.getDriver(), nextPageButton);
+                ReusableMethods.wait(1);
+            }
+            // Alfabetik Sıralamayı kontrol et (alfabetik sırayla)
+            boolean issortedCustomer = true;
+            for (int i = 1; i < sortedCustomer.size(); i++) {
+                if (sortedCustomer.get(i).compareTo(sortedCustomer.get(i - 1)) < 0) {
+                    issortedCustomer = false;
+                    break;
+                }
 
+            }
+            Assert.assertTrue(issortedCustomer);
+
+            List<WebElement> sortingCustomerName = Driver.getDriver().findElements(By.xpath("//tbody//tr//td//h6"));
+            for (WebElement each : sortingCustomerName) {
+                // sortedCustomer.add(sortingCustomerName.get(each).getText().toLowerCase().trim());
+            }
+
+            Driver.quitDriver();
+        }
     }
+}
+
 
     @Test
     public void TC_3906() {
