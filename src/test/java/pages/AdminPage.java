@@ -13,7 +13,6 @@ public class AdminPage {
 
         PageFactory.initElements(Driver.getDriver(),this);
 
-
     }
 
     @FindBy (xpath = "//*[@id='LoginForm_username']")
