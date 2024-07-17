@@ -16,6 +16,21 @@ public class CustomerPage {
     @FindBy(xpath = "//*[text()='Sign in']")
     public WebElement signInButton; // customer page
 
+    @FindBy(xpath = "//*[@id=\"top-navigation\"]/div[1]/div/a/img")
+    public WebElement anaSayfaHeaderLogo; // customer page
+
+    @FindBy(xpath = "//*[@id=\"vue-cart-preview\"]/li[2]/a")
+    public WebElement cartHeaderButton; // customer page
+
+    @FindBy(xpath ="/html/body/div[11]/div/section")
+    public WebElement cartHeaderSayfa; // customer page
+
+    @FindBy(xpath ="//*[@id=\"vue-cart-preview\"]/li[3]/a/img")
+    public WebElement cartikonHeader; // customer page
+
+    @FindBy(xpath ="//*[@id=\"vue-cart-preview\"]/li[3]/a/span")
+    public WebElement cartikonSayi; // customer page
+
     @FindBy(id = "username")
     public WebElement emailBox; // customer login page
 
