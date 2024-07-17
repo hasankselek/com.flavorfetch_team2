@@ -20,9 +20,8 @@ public abstract class TestBaseRapor {
     public void setUpMethod(ITestResult result) {
         // extentReports ve extentHtmlReporter nesnelerini başlatmak için gerekli değişiklikler
         String testName = result.getMethod().getMethodName();
-        String description = result.getMethod().getDescription();
         extentReports = new ExtentReports();
-        extentTest = extentReports.createTest(testName,description);
+        extentTest = extentReports.createTest(testName);
     }
 
     @AfterMethod(alwaysRun = true)
