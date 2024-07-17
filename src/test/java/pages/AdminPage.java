@@ -770,6 +770,8 @@ public class AdminPage {
     public List<WebElement> merchantEarringsSayfaNo;
 
 
+    @FindBy(xpath = "//*[text()='All Review']")
+    public WebElement allReviewClick;
 
 
 
