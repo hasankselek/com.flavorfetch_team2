@@ -710,6 +710,24 @@ public class AdminPage {
     @FindBy( xpath = "(//*[@class='zmdi zmdi-border-color'])[1]")
     public WebElement updateButton;
 
+    @FindBy(xpath = "//*[@id='AR_merchant_restaurant_name']")
+    public WebElement updatePageRestaurantName;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_restaurant_slug']")
+    public WebElement updatePageRestaurantSlug;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_name']")
+    public WebElement updatePageContactName;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_phone']")
+    public WebElement updatePageContactPhone;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_email']")
+    public WebElement updatePageContactEmail;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-delete'])[1]")
+    public WebElement listPageDeleteButton;
+
     @FindBy(xpath = "//li[@class='admin_dashboard active']")
     public WebElement adminDashboardmenu;
 
