@@ -774,6 +774,8 @@ public class AdminPage {
     public WebElement namesearchicon;
 
 
+    @FindBy(xpath = "//*[text()='All Review']")
+    public WebElement allReviewClick;
 
 
 

@@ -159,6 +159,48 @@ public class US_042 {
 
         adminPage.deleteButtonDashboard.click();
 
+        ReusableMethods.waitFor(4);
+
+        Assert.assertTrue(adminPage.cDeleteButton.isEnabled());
+
+        adminPage.cDeleteButton.click();
+
+        Driver.quitDriver();
+
+    }
+
+    @Test
+    public void TC_4208() {
+
+        adminPage = new AdminPage();
+        ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
+
+        adminPage.adminDashboardmenu.click();
+
+        adminPage.buyersButton.click();
+
+        adminPage.reviewsButton.click();
+
+        adminPage.updateButtonDashboard.click();
+
+        ReusableMethods.waitFor(3);
+
+        //        Click save button
+        adminPage.saveCustomerButton.click();
+
+        //        Click All Review
+
+        adminPage.allReviewClick.click();
+
+        Driver.quitDriver();
+
+
+
+
+
+
+
+
 
 
     }
