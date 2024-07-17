@@ -28,7 +28,7 @@ public class US_039 {
     public void TC_3901() {
         actions = new Actions(Driver.getDriver());
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+        ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
         actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
 
@@ -59,7 +59,7 @@ public class US_039 {
         try {
             adminPage = new AdminPage();
             actions = new Actions(Driver.getDriver());
-            ReusableMethods.accessToAdmin("adminuser_hasan", "adminpassword_hasan");
+            ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
             actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
 
 
