@@ -87,31 +87,37 @@ public class US_026 extends TestBaseRapor {
     }
     @Test
     public  void TC_2603(){
-        extentTest=extentReports.createTest("TC_2603","Testing the visibility and functionality of the 'Accepting Orders' button");
+       // extentTest=extentReports.createTest("TC_2603","Testing the visibility and functionality of the 'Accepting Orders' button");
         ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
+        extentTest.info("Dashboard orders tıklanır");
         merchantPage.dasboardNewOrdersIcon.click();
-        extentTest.info("Merchant sayfasından new orders sayfasina ulasir");
+        extentTest.info("Dashboard  oredrs altindaki neworders secenegi tıklanir");
+
         String siparisAdediStr=merchantPage.ordersQuantitty.getText().replaceAll("\\D","");
         int siparisAdedi=Integer.parseInt(siparisAdediStr);
 
 
         if(siparisAdedi==0){
             Assert.assertTrue(merchantPage.noNewOrders.isDisplayed());
-            extentTest.info("sayfada siparis var mi test eder");
+            extentTest.pass("sayfada siparis var mi dogrular");
         }
         else {
         Assert.assertTrue(merchantPage.acceptingOrderButton.isDisplayed());
-        extentTest.info("aceppting orders butonu gorunurlugu dogrulanir");
+        extentTest.pass("aceppting orders butonu gorunurlugu dogrulanir");
 
         merchantPage.acceptingOrderButton.click();
+        extentTest.info("accepting orders butonu tıklanır");
 
 
         merchantPage.pauseNewOrdersMinutes.click();
+        extentTest.info("duraklatma dakikaksi secilir");
         merchantPage.nextButton.click();
         merchantPage.reasonForPausing.click();
+        extentTest.info("Duraklatma sebebi secilir");
         merchantPage.pausingConfirmButton.click();
-        extentTest.info("Siparis duraklatma sebebi secilir.");
+        extentTest.info("Siparis duraklatma sebebi onaylanır");
+        ReusableMethods.wait(3);
 
         Assert.assertFalse(merchantPage.acceptingOrderButton.isEnabled());
         extentTest.pass("siparisin duraklatildigi dogrulanir");

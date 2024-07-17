@@ -104,27 +104,31 @@ public class US_038  extends  TestBaseRapor {
     public void TC_3805() {
 
 
-        extentTest = extentReports.createTest("TC_3805", "Visibility and functionality test for the Filters button(By Merchant)");
+       // extentTest = extentReports.createTest("TC_3805", "Visibility and functionality test for the Filters button(By Merchant)");
         adminPage = new AdminPage();
         ReusableMethods.accessAdmin("adminuser_kubra", "adminpassword_kubra");
         adminPage.dasboardOrders.click();
+        extentTest.info("Dashboard orders tıklanır");
         adminPage.dashboardAllOrders.click();
-        extentTest.info("Admin all orders sayfasina gider");
+        extentTest.info("Orders altindaki all orders'a tiklar");
 
         adminPage.filterButton.click();
+        extentTest.info("Filters butonuna tıklar");
         adminPage.filtersByMerchantBox.click();
+        extentTest.info("By merchenat kutusuna tiklar");
 
         adminPage.nameBoxBelowByMerchant.sendKeys(ConfigReader.getProperty("ByMerchant"));//Olio E Più
-        extentTest.info("By merchant filtrelem kutusuna DolanUyghur Restaurant yazisini gonderirir");
+        extentTest.info("By merchant filtrelem kutusuna Olio E Più yazisini gonderirir");
         adminPage.byMerchantOption.click();
         adminPage.applyFiltersButton.click();
+        extentTest.info("Filtrelemeyi onaylar");
         ReusableMethods.wait(3);
-        extentTest.info("Filtreleme butonundan restaurant ismine gore filtreleme yapar");
+
         String expectedByOrderTypeValue = ConfigReader.getProperty("ByMerchant");
         for (WebElement cell : adminPage.elementsOfTheFourthColumnByMerchant) {
             Assert.assertEquals(cell.getText(), expectedByOrderTypeValue);
             ReusableMethods.wait(3);
-            extentTest.pass("filtreleme sonucunda secilen magaza ismi ve filtrelenen magaza isminin ayni oldugu dogrulanir");
+            extentTest.pass("Filtreleme sonucunda secilen magaza ismi ve filtrelenen magaza isminin ayni oldugu dogrulanir");
         }
 
 
