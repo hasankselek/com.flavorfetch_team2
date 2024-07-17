@@ -62,11 +62,12 @@ public class US_036 {
             Assert.assertTrue(adminPage.emptyNotifications.isDisplayed());
         }
         else{
-            Assert.assertTrue(adminPage.clearAllButton.isDisplayed());
-            Assert.assertTrue(adminPage.clearAllButton.isEnabled());
 
             Assert.assertTrue(adminPage.viewAllButton.isDisplayed());
             Assert.assertTrue(adminPage.viewAllButton.isEnabled());
+
+            Assert.assertTrue(adminPage.clearAllButton.isDisplayed());
+            Assert.assertTrue(adminPage.clearAllButton.isEnabled());
 
             adminPage.clearAllButton.click();
 
@@ -99,10 +100,89 @@ public class US_036 {
     }
 
     @Test
-    public void TC_3604(){}
+    public void TC_3604(){
+
+        //The users opens  the browsers
+        //Enters the URL
+        //Log in with admin email and admin password
+        adminPage = new AdminPage();
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
+        ReusableMethods.wait(3);
+
+        //Check visibility "Commission this week" title,price,picture
+        //Check visibility "Commission this month" title,price,picture
+        //Check visibility "Subscriptions this month" title,price,picture
+        for (int i = 0; i < adminPage.commissionAndSubscriptionsAdminDashboard.size(); i++) {
+            Assert.assertTrue(adminPage.commissionAndSubscriptionsAdminDashboard.get(i).isDisplayed());
+        }
+        Assert.assertTrue(adminPage.commissionAndSubscriptionsAdminDashboard.get(0).getText().contains("Commission this week"));
+        Assert.assertTrue(adminPage.commissionAndSubscriptionsAdminDashboard.get(0).getText().contains("$"));
+
+        Assert.assertTrue(adminPage.commissionAndSubscriptionsAdminDashboard.get(1).getText().contains("Commission this month"));
+        Assert.assertTrue(adminPage.commissionAndSubscriptionsAdminDashboard.get(1).getText().contains("$"));
+
+        Assert.assertTrue(adminPage.commissionAndSubscriptionsAdminDashboard.get(2).getText().contains("Subscriptions this month"));
+        Assert.assertTrue(adminPage.commissionAndSubscriptionsAdminDashboard.get(2).getText().contains("$"));
+
+        //Check "Order received"
+        Assert.assertTrue(adminPage.orderReceivedBox.isDisplayed());
+        Assert.assertTrue(adminPage.orderReceivedBox.getText().contains("Order received"));
+
+        //Check "Total delivered"
+        Assert.assertTrue(adminPage.totalDeliveredBox.isDisplayed());
+        Assert.assertTrue(adminPage.totalDeliveredBox.getText().contains("Today delivered"));
+
+        //Check "New Customer"
+        Assert.assertTrue(adminPage.newCustomerBox.isDisplayed());
+        Assert.assertTrue(adminPage.newCustomerBox.getText().contains("New customer"));
+
+        //Check "Total Refund"
+        Assert.assertTrue(adminPage.totalRefundBox.isDisplayed());
+        Assert.assertTrue(adminPage.totalRefundBox.getText().contains("Total refund"));
+        Assert.assertTrue(adminPage.totalRefundBox.getText().contains("$"));
+
+        //Closes the page
+        Driver.quitDriver();
+    }
 
     @Test
-    public void TC_3605(){}
+    public void TC_3605(){
+
+        //The users opens  the browsers
+        //Enters the URL
+        //Log in with admin email and admin password
+        adminPage = new AdminPage();
+        ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
+
+        //Check if new orders are displayed
+        Assert.assertEquals(adminPage.all5Orders.size(),5);
+
+        //Check customername, merchant name, order price, payment status, payment method, check order status can be displayed.
+        for (int i = 0; i < adminPage.all5Orders.size(); i++) {
+            Assert.assertTrue(adminPage.all5Orders.get(i).isDisplayed());
+        }
+
+        //Click on the View icon and check that you go to the order summary
+        for (int i = 0; i < adminPage.viewIconAdminDashboard.size(); i++) {
+            Assert.assertTrue(adminPage.viewIconAdminDashboard.get(i).isDisplayed());
+            Assert.assertTrue(adminPage.viewIconAdminDashboard.get(i).isEnabled());
+            adminPage.viewIconAdminDashboard.get(i).click();
+            ReusableMethods.wait(2);
+            String expectedUrlIcerik ="https://qa.flavorfetch.com/backoffice/order/view?order";
+            String actualUrl = Driver.getDriver().getCurrentUrl();
+            Assert.assertTrue(actualUrl.contains(expectedUrlIcerik));
+            Driver.getDriver().navigate().back();
+        }
+
+        //Click and check if order summary download is active
+        for (int i = 0; i < adminPage.downloadIconAdminDashboard.size(); i++) {
+            Assert.assertTrue(adminPage.downloadIconAdminDashboard.get(i).isDisplayed());
+            Assert.assertTrue(adminPage.downloadIconAdminDashboard.get(i).isEnabled());
+        }
+
+        //Closes the page
+        Driver.quitDriver();
+    }
 
     @Test
     public void TC_3606(){
@@ -178,7 +258,6 @@ public class US_036 {
 
     @Test
     public void TC_3608(){
-
         adminPage = new AdminPage();
         ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
@@ -197,15 +276,15 @@ public class US_036 {
         Assert.assertTrue(adminPage.popularByReviewButton.isEnabled());
 
         //Check merchant names,merchant types,merchant rating, total number of reviews and number of sales are visible.
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < adminPage.popularMerchantsInformation.size(); i++) {
             Assert.assertTrue(adminPage.popularMerchantsInformation.get(i).isDisplayed());
         }
 
-        for (int i =20; i < 25; i++) {
+        for (int i =0; i < adminPage.popularMerchantsQuantity.size(); i++) {
             Assert.assertTrue(adminPage.popularMerchantsQuantity.get(i).isDisplayed());
         }
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < adminPage.merchantName.size(); i++) {
             Assert.assertTrue(adminPage.merchantName.get(i).isEnabled());
         }
 
@@ -220,7 +299,7 @@ public class US_036 {
 
         Assert.assertTrue(adminPage.popularByReviewTable.isDisplayed());
 
-        for (int i = 0; i <= 4; i++) {
+        for (int i = 0; i < adminPage.merchantName.size(); i++) {
            Assert.assertTrue(adminPage.merchantName.get(i).isEnabled());
         }
 
