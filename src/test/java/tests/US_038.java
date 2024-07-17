@@ -91,6 +91,7 @@ public class US_038  extends  TestBaseRapor {
         adminPage.filtersByOrderTypeBox.click();
         adminPage.byOrderTypeOption.click();
         adminPage.applyFiltersButton.click();
+        ReusableMethods.wait(2);
         String expectedByOrderTypeValue = ConfigReader.getProperty("ByOrderType");
         for (WebElement cell : adminPage.elementsOfTheSecondColumnByStatus) {
             Assert.assertEquals(cell.getText(), expectedByOrderTypeValue);

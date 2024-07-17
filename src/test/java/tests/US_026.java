@@ -77,6 +77,7 @@ public class US_026 extends TestBaseRapor {
             merchantPage.outOfItems.click();
             ReusableMethods.wait(2);
             merchantPage.pupupRejectButton.click();
+            ReusableMethods.wait(2);
             List<String> newOrdersListSonHal = ReusableMethods.stringListesineDonustur(merchantPage.newOrdersList);
             Assert.assertFalse(newOrdersListSonHal.contains(expectedOrderId));
 
@@ -262,17 +263,22 @@ public class US_026 extends TestBaseRapor {
           merchantPage.filterBox.click();
           merchantPage.filterBox.sendKeys(ConfigReader.getProperty("orderId"));
 
-            String expectedOrderId=ConfigReader.getProperty("orderId");
-            System.out.println(expectedOrderId);
-            ReusableMethods.wait(3);
-            String actualOrderId=merchantPage.orderId1.get(0).getText().replaceAll("\\D","");
-            System.out.println(actualOrderId);
+                String expectedOrderId = ConfigReader.getProperty("orderId");
+                System.out.println(expectedOrderId);
 
-            System.out.println(actualOrderId);
-            Assert.assertEquals(actualOrderId,expectedOrderId);
-            Assert.assertTrue(merchantPage.clearIcon.isDisplayed());
+                ReusableMethods.wait(2);
+                if (merchantPage.orderId1.isEmpty()){
+                    Assert.assertTrue(merchantPage.noResultText.isDisplayed());
+                }else {
 
-            }
+                String actualOrderId = merchantPage.orderId1.get(0).getText().replaceAll("\\D", "");
+                System.out.println(actualOrderId);
+
+                System.out.println(actualOrderId);
+                Assert.assertEquals(actualOrderId, expectedOrderId);
+                Assert.assertTrue(merchantPage.clearIcon.isDisplayed());
+            }}
+
         Driver.quitDriver();
 
 
