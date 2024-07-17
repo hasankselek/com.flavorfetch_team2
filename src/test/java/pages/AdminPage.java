@@ -1,12 +1,10 @@
 package pages;
 
-import org.apache.commons.compress.archivers.zip.X000A_NTFS;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-import java.security.PublicKey;
 import java.util.List;
 
 public class AdminPage {
@@ -375,7 +373,7 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='zmdi zmdi-desktop-mac']")
     public WebElement iconvisible;  //Custormer list page
   
-    @FindBy(xpath = "//*[@class='sorting sorting_desc']")
+    @FindBy(xpath = "(//*[@class='sorting'])[2]")
     public WebElement nameSortingButton;  //sorting desc customername
 
     @FindBy(xpath = "(//*[text()='Customer list'])[1]")
@@ -581,10 +579,10 @@ public class AdminPage {
     public WebElement calenderIcon;
   
     @FindBy(xpath = "(//*[text()='Merchant'])[1]")
-    public WebElement MerchantSide;
+    public WebElement merchantSide;
 
     @FindBy(xpath = "(//*[@class='sidebar-nav-sub-menu'])[1]")
-    public WebElement ListSide;
+    public WebElement listSide;
 
     @FindBy(xpath = "//*[@placeholder='Search']")
     public WebElement SearchSide;
@@ -768,8 +766,16 @@ public class AdminPage {
 
     @FindBy(xpath = "//a[@aria-controls='DataTables_Table_0']")
     public List<WebElement> merchantEarringsSayfaNo;
+  
+    @FindBy(xpath = "//*[@for='AR_client_npassword']")
+    public WebElement buyersPassword; //update customer page password
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-search']")
+    public WebElement namesearchicon;
 
 
+    @FindBy(xpath = "//*[text()='All Review']")
+    public WebElement allReviewClick;
 
 
 

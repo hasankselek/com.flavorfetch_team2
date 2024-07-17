@@ -343,12 +343,14 @@ public class US_036 {
         ReusableMethods.accessAdmin("adminuser_hasan","adminpassword_hasan");
 
         adminPage.firstCustomerButton.click();
+        ReusableMethods.wait(2);
 
         Assert.assertTrue(adminPage.customerIDText.isDisplayed());
         Assert.assertTrue(adminPage.customerIDText.getText().contains("Customer ID #"));
 
 
         for (int i = 0; i < 4; i++) {
+            ReusableMethods.wait(1);
             Assert.assertTrue(adminPage.customerPageAltBasliklar.get(i).isDisplayed());
 
         }

@@ -2,6 +2,7 @@ package tests;
 
 import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -129,6 +130,7 @@ public class US_026 extends TestBaseRapor {
 
     @Test
     public  void  TC_2604(){
+        Actions actions = new Actions(Driver.getDriver());
         ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();
@@ -151,7 +153,10 @@ public class US_026 extends TestBaseRapor {
         String expectedMessage="Item added to order";
         String actualMessage=merchantPage.itemAddedToOrderMessage.getText();
 
-        Assert.assertEquals(actualMessage,expectedMessage);}
+        Assert.assertEquals(actualMessage,expectedMessage);
+        actions.sendKeys(Keys.ESCAPE).perform();
+        ReusableMethods.wait(3);}
+
         Driver.quitDriver();
 
     }

@@ -101,6 +101,32 @@ public class US_038  extends  TestBaseRapor {
     }
 
     @Test
+    public void TC_3805(){
+
+            //extentTest=extentReports.createTest("TC_3805","Visibility and functionality test for the Filters button(By Merchant)");
+            adminPage = new AdminPage();
+            ReusableMethods.accessAdmin("adminuser_kubra", "adminpassword_kubra");
+            adminPage.dasboardOrders.click();
+            adminPage.dashboardAllOrders.click();
+            extentTest.info("Admin all orders sayfasina gider");
+
+            adminPage.filterButton.click();
+            adminPage.filtersByMerchantBox.click();
+
+            adminPage.nameBoxBelowByMerchant.sendKeys(ConfigReader.getProperty("ByMerchant"));
+            extentTest.info("By merchant filtrelem kutusuna DolanUyghur Restaurant yazisini gonderirir");
+            adminPage.byMerchantOption.click();
+            adminPage.applyFiltersButton.click();
+            extentTest.info("Filtreleme butonundan restaurant ismine gore filtreleme yapar");
+            String expectedByOrderTypeValue = ConfigReader.getProperty("ByMerchant");
+            for (WebElement cell : adminPage.elementsOfTheFourthColumnByMerchant) {
+                Assert.assertEquals(cell.getText(), expectedByOrderTypeValue);
+                extentTest.info("filtreleme sonucunda secilen magaza ismi ve filtrelenen magaza isminin ayni oldugu dogrulanir");
+            }
+        } 
+
+        
+
     public void TC_3805() {
 
 
