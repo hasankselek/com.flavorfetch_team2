@@ -3,13 +3,10 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CustomerPage;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.JSUtilities;
-import utilities.ReusableMethods;
+import utilities.*;
 
 
-public class US_004 {
+public class US_004 extends TestBaseRapor {
 
     CustomerPage customerPage = new CustomerPage();
 
@@ -30,52 +27,87 @@ public class US_004 {
     @Test
     public void TC_0402(){
         customerPage = new CustomerPage();
+        extentTest=extentReports.createTest("TC_0402" , "Checking social media icons in customer footer test.");
+
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+        extentTest.info("Kullanici browseri acar , url ' i girer");
+
         JSUtilities.scrollToBottom(Driver.getDriver());
+        extentTest.info("Sayfada footer bölümüne gider");
+
 
         Assert.assertTrue(customerPage.footerFacebookLogo.isDisplayed());
+        extentTest.pass("Facebook logosunun gördündüğünü kontrol eder");
         Assert.assertTrue(customerPage.footerFacebookLogo.isEnabled());
+        extentTest.pass("Facebook logosunun aktif olduğunu kontrol eder");
 
         //Facebook icon
         customerPage.footerFacebookLogo.click();
+        extentTest.info("Facebook ikonuna tıklar");
         ReusableMethods.windowaGec("https://www.facebook.com/",Driver.getDriver());
+        extentTest.info("Diğer sekmeye geçer");
         String expectedFacebookIconUrl = "https://www.facebook.com/";
         String actualFacebookIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualFacebookIconUrl,expectedFacebookIconUrl,"Facebook url'si eslesmiyor");
+        extentTest.pass("Facebook ikonuna basınca doğru url ye yönlendirip yönlendirmediğini doğrular");
         ReusableMethods.switchToWindowWithTitle("Flavor Fetch");
+        extentTest.info("Önceki sayfaya geri döner");
+
 
         //Instagram icon
         customerPage.footerInstagramLogo.click();
+        extentTest.info("Instagram ikonuna tıklar");
         ReusableMethods.windowaGec("https://qa.flavorfetch.com/www.instagram.com",Driver.getDriver());
+        extentTest.info("Diğer sekmeye geçer");
         String expectedInstagramIconUrl = "https://www.instagram.com/";
         String actualInstagramIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualInstagramIconUrl,expectedInstagramIconUrl,"Instagram url'si eslesmiyor");
+        ReusableMethods.wait(2);
+        extentTest.pass("Instagram ikonuna basınca doğru url ye yönlendirip yönlendirmediğini doğrular");
         ReusableMethods.switchToWindowWithTitle("Flavor Fetch");
+        extentTest.info("Önceki sayfaya geri döner");
 
         //LınkedIn icon
         customerPage.footerLinkedInLogo.click();
+        extentTest.info("LinkedIn ikonuna tıklar");
         ReusableMethods.windowaGec("https://qa.flavorfetch.com/www.linkedin.com",Driver.getDriver());
+        extentTest.info("Diğer sekmeye geçer");
         String expectedLinkedInIconUrl = "https://www.linkedin.com/";
         String actualLinkedInIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualLinkedInIconUrl, expectedLinkedInIconUrl,"LinkedIn url'si eslesmiyor");
+        extentTest.pass("LinkedIn ikonuna basınca doğru url ye yönlendirip yönlendirmediğini doğrular");
         ReusableMethods.switchToWindowWithTitle("Flavor Fetch");
+        extentTest.info("Önceki sayfaya geri döner");
 
         //X icon
         customerPage.footerXLogo.click();
+        extentTest.info("X ikonuna tıklar");
         ReusableMethods.windowaGec("https://x.com/",Driver.getDriver());
+        extentTest.info("Diğer sekmeye geçer");
         String expectedXIconUrl = "https://x.com/";
         String actualXIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualXIconUrl, expectedXIconUrl,"X url'si eslesmiyor");
+        extentTest.pass("X ikonuna basınca doğru url ye yönlendirip yönlendirmediğini doğrular");
         ReusableMethods.switchToWindowWithTitle("Flavor Fetch");
+        extentTest.info("Önceki sayfaya geri döner");
 
         //Youtube icon
         customerPage.footerYoutubeLogo.click();
+        extentTest.info("Youtube ikonuna tıklar");
         ReusableMethods.windowaGec("https://www.facebook.com/",Driver.getDriver());
+        extentTest.info("Diğer sekmeye geçer");
         String expectedYoutubeIconUrl = "https://www.youtube.com/";
         String actualYoutubeIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualYoutubeIconUrl, expectedYoutubeIconUrl,"Youtube url'si eslesmiyor");
+        extentTest.pass("Youtube ikonuna basınca doğru url ye yönlendirip yönlendirmediğini doğrular");
+        ReusableMethods.switchToWindowWithTitle("Flavor Fetch");
+        extentTest.info("Önceki sayfaya geri döner");
+
 
         Driver.quitDriver();
+        extentTest.info("Sayfayi kapatir");
+
+        //Driver.getDriver().switchTo().window("https://www.facebook.com/").close();
     }
 
     @Test

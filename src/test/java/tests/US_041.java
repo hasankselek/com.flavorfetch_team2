@@ -7,13 +7,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
 import pages.AdminPage;
-import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +30,7 @@ public class US_041 {
         Assert.assertTrue(adminPage.customersButton.isDisplayed());
         //Assert.assertTrue(adminPage.reviewsButton.isDisplayed());
         adminPage.customersButton.click();
-        //ReusableMethods.wait(5);
-
+        ReusableMethods.wait(2);
         adminPage.buyersButton.click();
         ReusableMethods.wait(2);
         Assert.assertTrue(adminPage.iconvisible.isDisplayed());
@@ -76,10 +72,13 @@ public class US_041 {
                 // sortedCustomer.add(sortingCustomerName.get(each).getText().toLowerCase().trim());
             }
 
+
         }
+      Driver.quitDriver();
         }
         @Test
         public void TC_4102 () {
+
             adminPage = new AdminPage();
             ReusableMethods.accessAdmin("adminuser_meltem", "adminpassword_meltem");
             adminPage.buyersButton.click();
@@ -135,7 +134,6 @@ public class US_041 {
             Select select = new Select(adminPage.statusDropdownMenu);
             select.selectByVisibleText("active");
             adminPage.saveCustomerButton.click();
-
 
             ReusableMethods.addCustomer("C:\\Users\\Meltem\\IdeaProjects\\com.flavorfetch_team2\\src\\test\\java\\tests\\upload.png");
 
@@ -196,7 +194,7 @@ public class US_041 {
             adminPage.saveCustomerButton.click();
             ReusableMethods.wait(3);
 
-            Driver.getDriver().quit();
+            Driver.quitDriver();
 
         }
 
@@ -211,7 +209,7 @@ public class US_041 {
             adminPage.nameSearchButton.sendKeys(name);
             adminPage.namesearchicon.click();
             Assert.assertFalse(adminPage.assertSearchedPage.isDisplayed());
-            Driver.getDriver().quit();
+            Driver.quitDriver();
         }
 
         @Test
@@ -223,7 +221,7 @@ public class US_041 {
 
             adminPage.customersButton.click();
             Assert.assertTrue(adminPage.iconvisible.isDisplayed());
-            Driver.getDriver().quit();
+            Driver.quitDriver();
         }
 
     }

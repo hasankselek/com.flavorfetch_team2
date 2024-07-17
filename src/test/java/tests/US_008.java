@@ -35,6 +35,9 @@ public class US_008 {
 
     @Test
     public void TC_0802(){
+        try {
+            customerPage=new CustomerPage();
+
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.italianRestaurants.click();
 
@@ -51,8 +54,11 @@ public class US_008 {
         String expectedUrl = "https://qa.flavorfetch.com/terms-and-conditions";
 
         Assert.assertEquals(actualUrl,expectedUrl);
+    }
+        finally {
+            Driver.quitDriver();
+        }
 
-        Driver.quitDriver();
 
 
     }

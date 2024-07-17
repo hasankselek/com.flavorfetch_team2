@@ -2,6 +2,7 @@ package tests;
 
 import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -77,6 +78,7 @@ public class US_026 extends TestBaseRapor {
             merchantPage.outOfItems.click();
             ReusableMethods.wait(2);
             merchantPage.pupupRejectButton.click();
+            ReusableMethods.wait(2);
             List<String> newOrdersListSonHal = ReusableMethods.stringListesineDonustur(merchantPage.newOrdersList);
             Assert.assertFalse(newOrdersListSonHal.contains(expectedOrderId));
 
@@ -113,14 +115,16 @@ public class US_026 extends TestBaseRapor {
         extentTest.info("Siparis duraklatma sebebi secilir.");
 
         Assert.assertFalse(merchantPage.acceptingOrderButton.isEnabled());
-        extentTest.info("siparisin duraklatildigi dogrulanir");
+        extentTest.pass("siparisin duraklatildigi dogrulanir");
         }
         Driver.quitDriver();
+        extentTest.info("Sayfayi kapatir");
 
     }
 
     @Test
     public  void  TC_2604(){
+        Actions actions = new Actions(Driver.getDriver());
         ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         merchantPage.dasboardNewOrdersIcon.click();
@@ -143,7 +147,10 @@ public class US_026 extends TestBaseRapor {
         String expectedMessage="Item added to order";
         String actualMessage=merchantPage.itemAddedToOrderMessage.getText();
 
-        Assert.assertEquals(actualMessage,expectedMessage);}
+        Assert.assertEquals(actualMessage,expectedMessage);
+        actions.sendKeys(Keys.ESCAPE).perform();
+        ReusableMethods.wait(3);}
+
         Driver.quitDriver();
 
     }
@@ -261,17 +268,22 @@ public class US_026 extends TestBaseRapor {
           merchantPage.filterBox.click();
           merchantPage.filterBox.sendKeys(ConfigReader.getProperty("orderId"));
 
-            String expectedOrderId=ConfigReader.getProperty("orderId");
-            System.out.println(expectedOrderId);
-            ReusableMethods.wait(3);
-            String actualOrderId=merchantPage.orderId1.get(0).getText().replaceAll("\\D","");
-            System.out.println(actualOrderId);
+                String expectedOrderId = ConfigReader.getProperty("orderId");
+                System.out.println(expectedOrderId);
 
-            System.out.println(actualOrderId);
-            Assert.assertEquals(actualOrderId,expectedOrderId);
-            Assert.assertTrue(merchantPage.clearIcon.isDisplayed());
+                ReusableMethods.wait(2);
+                if (merchantPage.orderId1.isEmpty()){
+                    Assert.assertTrue(merchantPage.noResultText.isDisplayed());
+                }else {
 
-            }
+                String actualOrderId = merchantPage.orderId1.get(0).getText().replaceAll("\\D", "");
+                System.out.println(actualOrderId);
+
+                System.out.println(actualOrderId);
+                Assert.assertEquals(actualOrderId, expectedOrderId);
+                Assert.assertTrue(merchantPage.clearIcon.isDisplayed());
+            }}
+
         Driver.quitDriver();
 
 

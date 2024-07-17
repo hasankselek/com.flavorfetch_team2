@@ -9,25 +9,24 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
-import javax.print.attribute.standard.ReferenceUriSchemesSupported;
 
 public class US_007 extends TestBaseRapor {
 
     // As a visitor, I would like to have a contact page on the site so that I can communicate with the site administrators that I shop with.
 
-    static CustomerPage customerPage = new CustomerPage();
+    static CustomerPage customerPage;
     Actions actions = new Actions(Driver.getDriver());
 
     @Test
     public void TC_0701 (){
 
         customerPage = new CustomerPage();
+        actions = new Actions(Driver.getDriver());
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         //Anasayfa footer bolumune kadar page down yapar
         customerPage.cookieAccept.click();
-        Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(customerPage.contactUsLink).perform();
         //Contact us' link baglantisina tiklar
         customerPage.contactUsLink.click();
@@ -40,14 +39,15 @@ public class US_007 extends TestBaseRapor {
         //Emailin erisilebilir oldugunu dogrular
         Assert.assertTrue(customerPage.contactSiteMail.isEnabled());
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
     } // Test of display on site's own Email and phone number information and redirect to related links --> PASSED
 
     @Test
     public void TC_0702 (){
         customerPage = new CustomerPage();
-        extentTest=extentReports.createTest("TC_0702" , "Test of customer name, customer email, customer message fields and  image section.");
+        actions = new Actions(Driver.getDriver());
+        //extentTest=extentReports.createTest("TC_0702" , "Test of customer name, customer email, customer message fields and  image section.");
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -82,7 +82,7 @@ public class US_007 extends TestBaseRapor {
         Assert.assertTrue(customerPage.contactImage.isDisplayed());
         extentTest.pass("Contact ile alakali bir resim gorundugunu dogrular");
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
         extentTest.info("Sayfayi kapatir");
 
     } // Test of customer name, customer email, customer message fields and  image section. --> FAILED
@@ -90,6 +90,7 @@ public class US_007 extends TestBaseRapor {
     @Test
     public void TC_0703 (){
         customerPage = new CustomerPage();
+        actions = new Actions(Driver.getDriver());
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -110,13 +111,14 @@ public class US_007 extends TestBaseRapor {
         //Basarili bir sekilde submit edebildigini dogrular
         Assert.assertTrue(customerPage.requestSentText.isDisplayed());
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
     } // Test of successful submit with correct name and correct formatted email --> PASSED
 
     @Test
     public void TC_0704 (){
         customerPage = new CustomerPage();
+        actions = new Actions(Driver.getDriver());
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -137,14 +139,15 @@ public class US_007 extends TestBaseRapor {
         //Basarili bir sekilde submit edemedigini dogrular
         Assert.assertTrue(customerPage.invalidEmailText.isDisplayed());
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
     } // Test of unsuccessful submit with correct name and incorrect formatted email --> PASSED
 
     @Test
     public void TC_0705 (){
         customerPage = new CustomerPage();
-        extentTest=extentReports.createTest("TC_0705","Test of unsuccessful submit with empty message");
+        actions = new Actions(Driver.getDriver());
+        //extentTest=extentReports.createTest("TC_0705","Test of unsuccessful submit with empty message");
         //Kullanici browseri acar
         //Url'I girer
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -169,7 +172,7 @@ public class US_007 extends TestBaseRapor {
         Assert.assertFalse(customerPage.requestSentText.isDisplayed());
         extentTest.pass("Basarili bir sekilde submit edemedigini dogrular");
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
         extentTest.info("Sayfayi kapatir");
 
     } // Test of unsuccessful submit with empty message --> FAILED
@@ -187,3 +190,15 @@ public class US_007 extends TestBaseRapor {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
