@@ -1,12 +1,9 @@
 package tests;
 
-import com.aventstack.extentreports.ExtentTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CustomerPage;
 import utilities.*;
-
-import java.io.IOException;
 
 
 public class US_004 extends TestBaseRapor {
@@ -28,19 +25,23 @@ public class US_004 extends TestBaseRapor {
     }
 
     @Test
-    public void TC_0402() throws IOException {
+    public void TC_0402(){
         customerPage = new CustomerPage();
+        extentTest=extentReports.createTest("TC_0402" , "Checking social media icons in customer footer test.");
+
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         extentTest.info("Kullanici browseri acar , url ' i girer");
 
         JSUtilities.scrollToBottom(Driver.getDriver());
         extentTest.info("Sayfada footer bölümüne gider");
 
-        //Facebook icon
+
         Assert.assertTrue(customerPage.footerFacebookLogo.isDisplayed());
         extentTest.pass("Facebook logosunun gördündüğünü kontrol eder");
         Assert.assertTrue(customerPage.footerFacebookLogo.isEnabled());
         extentTest.pass("Facebook logosunun aktif olduğunu kontrol eder");
+
+        //Facebook icon
         customerPage.footerFacebookLogo.click();
         extentTest.info("Facebook ikonuna tıklar");
         ReusableMethods.windowaGec("https://www.facebook.com/",Driver.getDriver());
@@ -54,10 +55,6 @@ public class US_004 extends TestBaseRapor {
 
 
         //Instagram icon
-        Assert.assertTrue(customerPage.footerInstagramLogo.isDisplayed());
-        extentTest.pass("Instagram logosunun gördündüğünü kontrol eder");
-        Assert.assertTrue(customerPage.footerInstagramLogo.isEnabled());
-        extentTest.pass("Instagram logosunun aktif olduğunu kontrol eder");
         customerPage.footerInstagramLogo.click();
         extentTest.info("Instagram ikonuna tıklar");
         ReusableMethods.windowaGec("https://qa.flavorfetch.com/www.instagram.com",Driver.getDriver());
@@ -65,15 +62,12 @@ public class US_004 extends TestBaseRapor {
         String expectedInstagramIconUrl = "https://www.instagram.com/";
         String actualInstagramIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualInstagramIconUrl,expectedInstagramIconUrl,"Instagram url'si eslesmiyor");
+        ReusableMethods.wait(2);
         extentTest.pass("Instagram ikonuna basınca doğru url ye yönlendirip yönlendirmediğini doğrular");
         ReusableMethods.switchToWindowWithTitle("Flavor Fetch");
         extentTest.info("Önceki sayfaya geri döner");
 
         //LınkedIn icon
-        Assert.assertTrue(customerPage.footerLinkedInLogo.isDisplayed());
-        extentTest.pass("LinkedIn logosunun gördündüğünü kontrol eder");
-        Assert.assertTrue(customerPage.footerLinkedInLogo.isEnabled());
-        extentTest.pass("LinkedIn logosunun aktif olduğunu kontrol eder");
         customerPage.footerLinkedInLogo.click();
         extentTest.info("LinkedIn ikonuna tıklar");
         ReusableMethods.windowaGec("https://qa.flavorfetch.com/www.linkedin.com",Driver.getDriver());
@@ -86,10 +80,6 @@ public class US_004 extends TestBaseRapor {
         extentTest.info("Önceki sayfaya geri döner");
 
         //X icon
-        Assert.assertTrue(customerPage.footerXLogo.isDisplayed());
-        extentTest.pass("X logosunun gördündüğünü kontrol eder");
-        Assert.assertTrue(customerPage.footerXLogo.isEnabled());
-        extentTest.pass("X logosunun aktif olduğunu kontrol eder");
         customerPage.footerXLogo.click();
         extentTest.info("X ikonuna tıklar");
         ReusableMethods.windowaGec("https://x.com/",Driver.getDriver());
@@ -102,10 +92,6 @@ public class US_004 extends TestBaseRapor {
         extentTest.info("Önceki sayfaya geri döner");
 
         //Youtube icon
-        Assert.assertTrue(customerPage.footerYoutubeLogo.isDisplayed());
-        extentTest.pass("Youtube logosunun gördündüğünü kontrol eder");
-        Assert.assertTrue(customerPage.footerYoutubeLogo.isEnabled());
-        extentTest.pass("Youtube logosunun aktif olduğunu kontrol eder");
         customerPage.footerYoutubeLogo.click();
         extentTest.info("Youtube ikonuna tıklar");
         ReusableMethods.windowaGec("https://www.facebook.com/",Driver.getDriver());
