@@ -312,7 +312,10 @@ public class AdminPage {
     @FindBy(xpath = "//tbody/tr/td[3]")
     public List<WebElement> orderIdColumn;
 
+<<<<<<<<< Temporary merge branch 1
+=========
 
+>>>>>>>>> Temporary merge branch 2
     @FindBy(xpath = "(//*[text()='Block Customer'])")
     public WebElement blockCustomerButton; // admin dashboard customer special page block customer button
 
@@ -331,10 +334,7 @@ public class AdminPage {
     @FindBy(xpath = "(//div[@class='card-body'])[14]")
     public WebElement recentPayoutTable; // admin dashboard recent payout table
 
-
-    @FindBy(xpath = "(//*[@class=\"btn btn-light tool_tips\"])[1]")
-    public WebElement couponActions;
-
+<<<<<<<<< Temporary merge branch 1
     @FindBy(xpath = "//a[normalize-space()='Earnings']")
     public WebElement adminDashboardEarningsButton;
 
@@ -569,6 +569,143 @@ public class AdminPage {
     @FindBy(xpath = "(//*[text()='Activate Merchant'])")
     public WebElement activateMerchantButton;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=========
+    @FindBy(xpath = "(//*[@class=\"btn btn-light tool_tips\"])[1]")
+    public WebElement couponActions;
+>>>>>>>>> Temporary merge branch 2
+
     @FindBy(xpath = "//*[@id='AR_voucher_status']")
     public WebElement couponUpdateStatus;
 
@@ -578,11 +715,8 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='btn btn-green item_delete']")
     public WebElement couponAlertDelete;
 
-    @FindBy(xpath = "//*[@class='form-control rounded search w-25']")
-    public WebElement couponAdminSearchbox;
 
-    @FindBy(css = "#DataTables_Table_0 tbody tr td:nth-child(2) h6") // Kupon isimlerini temsil eden CSS seçici
-    public List<WebElement> couponResults;
+
 
 
 

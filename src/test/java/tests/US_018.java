@@ -20,12 +20,13 @@ public class US_018 {
     @Test
 
     public  void TC_1801(){
+        customerPage=new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.signInButton.click();
-        actions.click(customerPage.emailBox)
-                .sendKeys(ConfigReader.getProperty("customer_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
-        customerPage.loginSigninButton.click();
         customerPage.cookieAccept.click();
+        actions.click(customerPage.emailBox)
+                .sendKeys(ConfigReader.getProperty("customer_kubra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kubra")).perform();
+        customerPage.loginSigninButton.click();
         ReusableMethods.wait(3);
         customerPage.profileDropdownMenu.click();
         Assert.assertTrue(customerPage.savedStoreIcon.isDisplayed());
@@ -34,51 +35,67 @@ public class US_018 {
     }
     @Test
     public  void  TC_1802(){
+        customerPage=new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.signInButton.click();
-        actions.click(customerPage.emailBox)
-                .sendKeys(ConfigReader.getProperty("customer_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
-        customerPage.loginSigninButton.click();
         customerPage.cookieAccept.click();
+        actions.click(customerPage.emailBox)
+                .sendKeys(ConfigReader.getProperty("customer_kubra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kubra")).perform();
+        customerPage.loginSigninButton.click();
+
         ReusableMethods.wait(3);
         customerPage.profileDropdownMenu.click();
         customerPage.savedStoreIcon.click();
-        Assert.assertTrue(customerPage.savedStoreRestaurants.size()>0);
+       if ( customerPage.savedStoreRestaurants.isEmpty()){
+
+           Assert.assertTrue(customerPage.noSavedRestaurantText.isDisplayed());
+       }else {
+           Assert.assertTrue(customerPage.savedStoreRestaurants.size()>0);
+       }
+        Driver.quitDriver();
 
     }
     @Test
     public  void  TC_1803(){
+        customerPage=new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.signInButton.click();
-        actions.click(customerPage.emailBox)
-                .sendKeys(ConfigReader.getProperty("customer_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
-        customerPage.loginSigninButton.click();
         customerPage.cookieAccept.click();
+        actions.click(customerPage.emailBox)
+                .sendKeys(ConfigReader.getProperty("customer_kubra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kubra")).perform();
+        customerPage.loginSigninButton.click();
+
         ReusableMethods.wait(3);
         customerPage.profileDropdownMenu.click();
         customerPage.savedStoreIcon.click();
 
-        List<WebElement> savedStoreRestaurants=customerPage.savedStoreRestaurants;
-        String expectedRestaurantsName=savedStoreRestaurants.get(0).getText();
-        System.out.println(expectedRestaurantsName);
-        customerPage.heartIcon.click();
-        Driver.getDriver().navigate().refresh();
-        String actualRestaurantsName=savedStoreRestaurants.get(0).getText();
-        System.out.println(actualRestaurantsName);
+        if ( customerPage.savedStoreRestaurants.isEmpty()){
 
-        Assert.assertNotEquals(actualRestaurantsName,expectedRestaurantsName);
+            Assert.assertTrue(customerPage.noSavedRestaurantText.isDisplayed());
+        }else {
+            List<WebElement> savedStoreRestaurants = customerPage.savedStoreRestaurants;
+            String expectedRestaurantsName = savedStoreRestaurants.get(0).getText();
+            System.out.println(expectedRestaurantsName);
+            customerPage.heartIcon.click();
+            Driver.getDriver().navigate().refresh();
+            String actualRestaurantsName = savedStoreRestaurants.get(0).getText();
+            System.out.println(actualRestaurantsName);
+
+            Assert.assertNotEquals(actualRestaurantsName, expectedRestaurantsName);
+        }
         Driver.quitDriver();
     }
   
     @Test
     public  void  TC_1804(){
+        customerPage=new CustomerPage();
 
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.signInButton.click();
-        actions.click(customerPage.emailBox)
-                .sendKeys(ConfigReader.getProperty("customer_kübra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kübra")).perform();
-        customerPage.loginSigninButton.click();
         customerPage.cookieAccept.click();
+        actions.click(customerPage.emailBox)
+                .sendKeys(ConfigReader.getProperty("customer_kubra")).sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("customerpassword_kubra")).perform();
+        customerPage.loginSigninButton.click();
         ReusableMethods.wait(3);
         customerPage.profileDropdownMenu.click();
         customerPage.savedStoreIcon.click();

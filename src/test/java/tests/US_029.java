@@ -1,10 +1,7 @@
 package tests;
 
-import org.apache.hc.core5.http.impl.nio.ClientHttp1IOEventHandlerFactory;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AdminPage;
@@ -14,7 +11,7 @@ import utilities.ReusableMethods;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.Objects;
 
 public class US_029 {
 
@@ -27,11 +24,11 @@ public class US_029 {
     public void TC_2901() {
 
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_cimen","adminpassword_cimen");
+        ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
 
-        adminPage.MerchantSide.click();
+        adminPage.merchantSide.click();
 
-        adminPage.ListSide.click();
+        adminPage.listSide.click();
 
         adminPage.SearchSide.sendKeys("Havana"+ Keys.ENTER);
 
@@ -45,11 +42,11 @@ public class US_029 {
 
         LocalDate currentDate = LocalDate.now();
       //  DateTimeFormatter tarihFormati=DateTimeFormatter.ofPattern("dd MMM yyyy");
-        DateTimeFormatter tarihFormati=DateTimeFormatter.ofPattern("dd");
+        DateTimeFormatter tarihFormati=DateTimeFormatter.ofPattern("dd");  //Tr formatta ay ingilizce gelmiyor
         String tarihMuhru= currentDate.format(tarihFormati);
       //  System.out.println(tarihMuhru);
 
-     //   Assert.assertTrue(merchantPage.orderHeaderText.getText().contains(tarihMuhru));
+       Assert.assertTrue(merchantPage.orderHeaderText.getText().contains(tarihMuhru));
 
         int OrderView =merchantPage.orderProcessingList.size();
 
@@ -59,7 +56,6 @@ public class US_029 {
                 Assert.assertTrue(merchantPage.orderTypeDropdownMenu.isDisplayed());
                 Assert.assertTrue(merchantPage.paymentStatusDropdownMenu.isDisplayed());
                 Assert.assertTrue(merchantPage.sortDropdownMenu.isDisplayed());
-               Assert.assertFalse(merchantPage.leftOrderTable.isDisplayed());
 
 
            }else {
@@ -92,15 +88,13 @@ public class US_029 {
 
         Assert.assertTrue(merchantPage.leftOrderTable.isDisplayed());
 
-
         merchantPage.orderClearButton.click();
 
         ReusableMethods.waitFor(4);
 
         Assert.assertEquals(merchantPage.orderPagefilterBox.getAttribute("value"),"");
 
-        String b=merchantPage.orderPagefilterBox.getAttribute("value");
-       // System.out.println(b);
+        //String b=merchantPage.orderPagefilterBox.getAttribute("value");
 
         merchantPage.orderTypeDropdownMenu.click();
 
@@ -121,18 +115,19 @@ public class US_029 {
          Driver.quitDriver();
 
            }
-
+        Driver.quitDriver();
     }
 
     @Test
     public void TC_2902() {
 
+        MerchantPage merchantPage = new MerchantPage();
         adminPage = new AdminPage();
-        ReusableMethods.accessToAdmin("adminuser_cimen","adminpassword_cimen");
+        ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
 
-        adminPage.MerchantSide.click();
+        adminPage.merchantSide.click();
 
-        adminPage.ListSide.click();
+        adminPage.listSide.click();
 
         adminPage.SearchSide.sendKeys(" Havana"+ Keys.ENTER);
 
@@ -168,26 +163,89 @@ public class US_029 {
             Assert.assertTrue(merchantPage.printButton.isDisplayed());
             //Print butonunun erisilebilir oldugunu dogrular
             Assert.assertTrue(merchantPage.printButton.isEnabled());
-            //"More options" veya "..." ibaresine tiklar
+            //"More options" veya tiklar
             merchantPage.moreOptionsDropdownButton.click();
             //Dropdown menude "Download PDF(A4)" oldugunu dogrular
             Assert.assertTrue(merchantPage.moreOptionsDropdownMenu.getText().contains("Download PDF (A4)"));
             //"Contact customer" oldugunu dogrular
             Assert.assertTrue(merchantPage.moreOptionsDropdownMenu.getText().contains("Contact customer"));
-
+            Driver.quitDriver();
 
         }
         else {
             Driver.quitDriver();
         }
 
-Driver.quitDriver();
+
 
     }
 
+    @Test
+    public void TC_2903() {
+
+        MerchantPage merchantPage = new MerchantPage();
+        adminPage = new AdminPage();
+        ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
+
+        adminPage.merchantSide.click();
+
+        adminPage.listSide.click();
+
+        adminPage.SearchSide.sendKeys(" Havana"+ Keys.ENTER);
+
+        adminPage.AutoLoginSide.click();
+
+        ReusableMethods.windowaGec("https://qa.flavorfetch.com/backoffice/merchant/dashboard",Driver.getDriver());
+
+        ReusableMethods.waitFor(3);
+
+        merchantPage.ordersLink.click();
+
+        merchantPage.ordersCompletedLink.click();
+
+        int OrderView =merchantPage.orderProcessingList.size();
 
 
+        if (OrderView>0) {
 
+            for (int i = 0; i < merchantPage.orderProcessingList.size(); i++) {
+                merchantPage.orderProcessingList.get(i).click();
+                ReusableMethods.waitFor(5);
+
+                if (Objects.equals(merchantPage.deliveryType2.get(i).getText(), "Delivery"))
+                    Assert.assertTrue(merchantPage.checkOrderType.getText().contains("delivery"));
+
+
+            }
+
+
+            for (int i = 0; i < merchantPage.orderProcessingList.size(); i++) {
+                //   for (int j = 0; j < customer.ar.size(); j++) {
+                merchantPage.orderProcessingList.get(i).click();
+                ReusableMethods.waitFor(2);
+                if (Objects.equals(merchantPage.deliveryType2.get(i).getText(), "Dinein"))
+                    Assert.assertTrue(merchantPage.checkOrderType.getText().contains("complete"));
+
+
+            }
+
+
+            for (int i = 0; i < merchantPage.orderProcessingList.size(); i++) {
+                //   for (int j = 0; j < customer.ar.size(); j++) {
+                merchantPage.orderProcessingList.get(i).click();
+                ReusableMethods.waitFor(2);
+                if (merchantPage.deliveryType2.get(i).getText() == "Pickup")
+                    Assert.assertTrue(merchantPage.checkOrderType.getText().contains("complete"));
+
+
+            }
+
+
+        }
+
+
+        Driver.quitDriver();
+    }
 
 
     }

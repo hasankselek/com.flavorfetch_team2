@@ -12,7 +12,7 @@ public class US_030 extends TestBaseRapor {
 
     //As a restaurant manager, I want future orders from my restaurant to be listed on the Scheduled page.
 
-    static MerchantPage merchantPage = new MerchantPage();
+    static MerchantPage merchantPage= new MerchantPage();
 
     @Test
     public void TC_3001() {
@@ -52,11 +52,10 @@ public class US_030 extends TestBaseRapor {
         Driver.getDriver().quit();
     }  // Test of display scheduled orders and order details in a list format and filter them -->PASSED
 
-
     @Test
     public void TC_3002() {
         merchantPage = new MerchantPage();
-        extentTest = extentReports.createTest("TC_3002", "Test of scheduled orders page header section");
+        //extentTest = extentReports.createTest("TC_3002", "Test of scheduled orders page header section");
         //Kullanici browseri acar
         //Url'I girer
         //Acilan sayfada username alanini doldurur
@@ -93,7 +92,7 @@ public class US_030 extends TestBaseRapor {
         merchantPage.logoutMerchantDashboard.click();
         extentTest.info("Hesaptan cikis yapar");
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
         extentTest.info("Sayfayi kapatir");
 
 
@@ -102,7 +101,7 @@ public class US_030 extends TestBaseRapor {
     @Test
     public void TC_3003() {
         merchantPage = new MerchantPage();
-        extentTest = extentReports.createTest("TC_3003", "Test of the accept order function");
+        //extentTest = extentReports.createTest("TC_3003", "Test of the accept order function");
         //Kullanici browseri acar
         //Url'I girer
         //Acilan sayfada username alanini doldurur
@@ -116,6 +115,7 @@ public class US_030 extends TestBaseRapor {
         //Orders alt menulerinden Scheduled'a tiklar
         merchantPage.scheduledLink.click();
         extentTest.info("Orders alt menulerinden Scheduled'a tiklar");
+        ReusableMethods.wait(2);
         //Verilen siparise tiklar
         merchantPage.scheduledOrdersList.get(1).click();
         extentTest.info("Verilen siparise tiklar");
@@ -141,14 +141,14 @@ public class US_030 extends TestBaseRapor {
         merchantPage.logoutMerchantDashboard.click();
         extentTest.info("Hesaptan cikis yapar");
         //Sayfayi kapatr
-        Driver.getDriver().quit();
+        Driver.quitDriver();
         extentTest.info("Sayfayi kapatir");
 
     } // Test of the accept order function --> FAILED
 
     @Test
     public void TC_3004() {
-
+        merchantPage= new MerchantPage();
         //Kullanici browseri acar
         //Url'I girer
         //Acilan sayfada username alanini doldurur
@@ -159,8 +159,9 @@ public class US_030 extends TestBaseRapor {
         merchantPage.ordersLink.click();
         //Orders alt menulerinden Scheduled'a tiklar
         merchantPage.scheduledLink.click();
+        ReusableMethods.wait(2);
         //Verilen siparise tiklar
-        merchantPage.scheduledOrdersList.get(2).click();
+        merchantPage.scheduledOrdersList.get(1).click();
         //Reject butonunun oldugunu dogrular
         String expectedButtonText = "Reject";
         String actualButtonText = merchantPage.rejectButton.getText();
@@ -168,7 +169,7 @@ public class US_030 extends TestBaseRapor {
         //Reject butonun erisilebilir oldugunu dogrular
         Assert.assertTrue(merchantPage.rejectButton.isEnabled());
         //Reject butonuna basar
-        ReusableMethods.wait(2);
+        ReusableMethods.wait(1);
         merchantPage.rejectButton.click();
         //Gerekcenin yazilabilecegi box'in oldugunu dogrular
         Assert.assertTrue(merchantPage.rejectReasonTextBox.isEnabled());
@@ -184,13 +185,14 @@ public class US_030 extends TestBaseRapor {
         merchantPage.merchantNameDropdown.click();
         merchantPage.logoutMerchantDashboard.click();
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
 
     } // Test of the reject order function --> PASSED
 
     @Test
     public void TC_3005() {
+        merchantPage = new MerchantPage();
         //Kullanici browseri acar
         //Url'I girer
         //Acilan sayfada username alanini doldurur
@@ -201,8 +203,10 @@ public class US_030 extends TestBaseRapor {
         merchantPage.ordersLink.click();
         //Orders alt menulerinden Scheduled'a tiklar
         merchantPage.scheduledLink.click();
+        ReusableMethods.wait(2);
         //Verilen siparise tiklar
         merchantPage.scheduledOrdersList.get(1).click();
+        ReusableMethods.wait(2);
         //Siparis ozetinde urunlerin isimlerinin goruntulendigini dogrular
         Assert.assertTrue(merchantPage.productNameOrderSummary.isDisplayed());
         //Urunlerin fiyatinin goruntulendigini dogrular
@@ -217,14 +221,14 @@ public class US_030 extends TestBaseRapor {
         merchantPage.merchantNameDropdown.click();
         merchantPage.logoutMerchantDashboard.click();
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
 
     } // Test of order summary to include the names, prices, ,total quantity and total price of the ordered items --> PASSED
 
     @Test
     public void TC_3006() {
-
+        merchantPage = new MerchantPage();
         //Kullanici browseri acar
         //Url'I girer
         //Acilan sayfada username alanini doldurur
@@ -235,8 +239,9 @@ public class US_030 extends TestBaseRapor {
         merchantPage.ordersLink.click();
         //Orders alt menulerinden Scheduled'a tiklar
         merchantPage.scheduledLink.click();
+        ReusableMethods.wait(2);
         //Verilen siparise tiklar
-        merchantPage.scheduledOrdersList.get(2).click();
+        merchantPage.scheduledOrdersList.get(1).click();
         //Siparis fisini yazdirmak icin print butonu bulundugunu dogrular
         Assert.assertTrue(merchantPage.printButton.isDisplayed());
         //Print butonunun erisilebilir oldugunu dogrular
@@ -253,35 +258,10 @@ public class US_030 extends TestBaseRapor {
         merchantPage.merchantNameDropdown.click();
         merchantPage.logoutMerchantDashboard.click();
         //Sayfayi kapatir
-        Driver.getDriver().quit();
+        Driver.quitDriver();
 
 
     } // Test of being able to print the order slip or download as a pdf format and able to contact option with customer --> PASSED
 
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

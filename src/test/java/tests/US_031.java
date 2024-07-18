@@ -1,11 +1,13 @@
 package tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.MerchantPage;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 import java.util.ArrayList;
@@ -108,9 +110,29 @@ public class US_031 {
     }
 
     @Test
-    public void TC_3107()
+    public void TC_3107() // NEXT Previous Button Test
     {
         accessToAllOrders();
+
+        WebElement nextButton = Driver.getDriver().findElement(By.xpath("//*[@id='DataTables_Table_0_next']"));
+        Assert.assertTrue(nextButton.isDisplayed());
+        Assert.assertTrue(nextButton.isEnabled());
+        nextButton.click();
+        ReusableMethods.wait(1);
+
+        WebElement thirdPageButton = Driver.getDriver().findElement(By.xpath("//*/a[@data-dt-idx='3']"));
+        Assert.assertTrue(thirdPageButton.isEnabled());
+        Assert.assertTrue(thirdPageButton.isDisplayed());
+        thirdPageButton.click();
+        ReusableMethods.wait(1);
+
+        WebElement previousButton = Driver.getDriver().findElement(By.xpath("//*[@id='DataTables_Table_0_previous']"));
+        Assert.assertTrue(previousButton.isDisplayed());
+        Assert.assertTrue(previousButton.isEnabled());
+        previousButton.click();
+        ReusableMethods.wait(1);
+
+        Driver.quitDriver();
 
 
     }
@@ -135,6 +157,16 @@ public class US_031 {
 
     @Test
     public void TC_3109() {
+        accessToAllOrders();
+        JSUtilities.scrollToBottom(Driver.getDriver());
+
+        String entriesAllText = Driver.getDriver().findElement(By.xpath("//*[@class='dataTables_info']")).getText();
+        String actualEntriesText = entriesAllText.split(" ")[5].trim();
+        String expectedEntriesText = "170";
+        Assert.assertEquals(actualEntriesText, expectedEntriesText);
+
+        Driver.quitDriver();
+
 
     }
 
