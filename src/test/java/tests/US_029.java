@@ -26,9 +26,9 @@ public class US_029 {
         adminPage = new AdminPage();
         ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
 
-        adminPage.merchantSide.click();
+        adminPage.MerchantSide.click();
 
-        adminPage.listSide.click();
+        adminPage.ListSide.click();
 
         adminPage.SearchSide.sendKeys("Havana"+ Keys.ENTER);
 
@@ -125,9 +125,9 @@ public class US_029 {
         adminPage = new AdminPage();
         ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
 
-        adminPage.merchantSide.click();
+        adminPage.MerchantSide.click();
 
-        adminPage.listSide.click();
+        adminPage.ListSide.click();
 
         adminPage.SearchSide.sendKeys(" Havana"+ Keys.ENTER);
 
@@ -187,9 +187,9 @@ public class US_029 {
         adminPage = new AdminPage();
         ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
 
-        adminPage.merchantSide.click();
+        adminPage.MerchantSide.click();
 
-        adminPage.listSide.click();
+        adminPage.ListSide.click();
 
         adminPage.SearchSide.sendKeys(" Havana"+ Keys.ENTER);
 
