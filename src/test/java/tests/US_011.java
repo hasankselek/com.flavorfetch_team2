@@ -165,9 +165,8 @@ public class US_011 {
     @Test
     public void TC_1106(){
         customerPage = new CustomerPage();
-        ReusableMethods.customerHasanAccesToTeam2Restaurent();
-
         actions = new Actions(Driver.getDriver());
+        ReusableMethods.customerHasanAccesToTeam2Restaurent();
 
         //Check and click the "Add to cart" button
         for (int i = 0; i < customerPage.addToCartButton.size(); i++) {
@@ -219,9 +218,9 @@ public class US_011 {
 
     @Test
     public void TC_1107(){
+        actions = new Actions(Driver.getDriver());
         customerPage = new CustomerPage();
         ReusableMethods.customerHasanAccesToTeam2Restaurent();
-        actions = new Actions(Driver.getDriver());
         customerPage.addToCartButton.get(1).click();
 
         //Check if the product knows that its image, name and price are displayed

@@ -183,7 +183,7 @@ public class US_029 {
     @Test
     public void TC_2903() {
 
-        MerchantPage merchantPage = new MerchantPage();
+        merchantPage = new MerchantPage();
         adminPage = new AdminPage();
         ReusableMethods.accessAdmin("adminuser_cimen","adminpassword_cimen");
 
