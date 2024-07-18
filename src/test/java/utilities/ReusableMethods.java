@@ -574,6 +574,7 @@ public class ReusableMethods {
         ReusableMethods.wait(4);
         actions.click(customerPage.sandwichAndWraps).perform();
         customerPage.team2Restaurant.click();
+
 }
 
     public static void addCustomer(String DosyaYolu) {
@@ -622,6 +623,8 @@ public class ReusableMethods {
         Select select=new Select(adminPage.statusDropdownMenu);
         select.selectByVisibleText("active");
         adminPage.saveCustomerButton.click();
+
+
     }
     }
 
