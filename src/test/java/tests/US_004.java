@@ -27,7 +27,6 @@ public class US_004 extends TestBaseRapor {
     @Test
     public void TC_0402(){
         customerPage = new CustomerPage();
-        extentTest=extentReports.createTest("TC_0402" , "Checking social media icons in customer footer test.");
 
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         extentTest.info("Kullanici browseri acar , url ' i girer");
@@ -62,8 +61,8 @@ public class US_004 extends TestBaseRapor {
         String expectedInstagramIconUrl = "https://www.instagram.com/";
         String actualInstagramIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualInstagramIconUrl,expectedInstagramIconUrl,"Instagram url'si eslesmiyor");
-        ReusableMethods.wait(2);
         extentTest.pass("Instagram ikonuna basınca doğru url ye yönlendirip yönlendirmediğini doğrular");
+        ReusableMethods.wait(2);
         ReusableMethods.switchToWindowWithTitle("Flavor Fetch");
         extentTest.info("Önceki sayfaya geri döner");
 
@@ -76,6 +75,7 @@ public class US_004 extends TestBaseRapor {
         String actualLinkedInIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualLinkedInIconUrl, expectedLinkedInIconUrl,"LinkedIn url'si eslesmiyor");
         extentTest.pass("LinkedIn ikonuna basınca doğru url ye yönlendirip yönlendirmediğini doğrular");
+        ReusableMethods.wait(2);
         ReusableMethods.switchToWindowWithTitle("Flavor Fetch");
         extentTest.info("Önceki sayfaya geri döner");
 
@@ -88,6 +88,7 @@ public class US_004 extends TestBaseRapor {
         String actualXIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualXIconUrl, expectedXIconUrl,"X url'si eslesmiyor");
         extentTest.pass("X ikonuna basınca doğru url ye yönlendirip yönlendirmediğini doğrular");
+        ReusableMethods.wait(2);
         ReusableMethods.switchToWindowWithTitle("Flavor Fetch");
         extentTest.info("Önceki sayfaya geri döner");
 
@@ -100,6 +101,7 @@ public class US_004 extends TestBaseRapor {
         String actualYoutubeIconUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualYoutubeIconUrl, expectedYoutubeIconUrl,"Youtube url'si eslesmiyor");
         extentTest.pass("Youtube ikonuna basınca doğru url ye yönlendirip yönlendirmediğini doğrular");
+        ReusableMethods.wait(2);
         ReusableMethods.switchToWindowWithTitle("Flavor Fetch");
         extentTest.info("Önceki sayfaya geri döner");
 
@@ -107,7 +109,6 @@ public class US_004 extends TestBaseRapor {
         Driver.quitDriver();
         extentTest.info("Sayfayi kapatir");
 
-        //Driver.getDriver().switchTo().window("https://www.facebook.com/").close();
     }
 
     @Test
