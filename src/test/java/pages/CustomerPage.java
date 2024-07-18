@@ -616,10 +616,28 @@ public class CustomerPage {
     @FindBy(xpath = "//*[@id='vue-saved-store']//div[2]/h5")
     public  WebElement noSavedRestaurantText;//orders_newOrders
 
+    @FindBy(xpath = "(//*[@class='required'])[1]")
+    public WebElement firstnamesignup;
 
+    @FindBy(xpath = "//*[@for='lastname']")
+    public WebElement lastnamesignup;
 
+    @FindBy(xpath = "//*[@for='email_address']")
+    public WebElement emailsignup;
 
+    @FindBy(xpath = "(//*[@type='text'])[3]")
+    public WebElement phonesignup;
 
+    @FindBy(xpath = "//*[@for='password']")
+    public WebElement passwordsignup;
 
+   @FindBy(xpath = "//*[@for='cpassword']")
+    public WebElement cpasswordsignup;
 
+   @FindBy(xpath = "//*[@class='btn btn-green w-100']")
+    public WebElement ssignup;
+
+   @FindBy(xpath = "//*[@class='zmdi zmdi-eye-off']")
+
+   public WebElement eyeoff;
 }
