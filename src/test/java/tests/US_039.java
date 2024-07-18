@@ -67,7 +67,6 @@ public class US_039 {
                         adminPage.merchantEarringTotalHeadings.get(i).getText().contains("Total Balance"));
                 Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(i).getText().contains("$"));
             }
-
         }
         finally {
             Driver.quitDriver();

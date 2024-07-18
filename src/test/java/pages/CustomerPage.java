@@ -331,7 +331,7 @@ public class CustomerPage {
     @FindBy (xpath= "(//*[text()='New York'])[3]")
     public  WebElement newYorkChangeAddress ; // team2 page
 
-    @FindBy (xpath= "(//*[@class='btn btn-green w-100'])[8]")
+    @FindBy (xpath= "(//*[@class='btn btn-green w-100'])[7]")
     public  WebElement saveButtonChangeAddress ; // team2 page
 
     @FindBy (xpath= "(//*[text()='New York, NY, USA'])[2]")
