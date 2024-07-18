@@ -85,6 +85,14 @@ public class US_039 extends TestBaseRapor {
             extentTest.pass("Total Balance kutucuğunda '$' yazdığını doğrular");
             
 
+
+            for (int i = 0; i < adminPage.merchantEarringTotalHeadings.size(); i++) {
+                Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(i).isDisplayed());
+                Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(i).getText().contains("Total Commission") ||
+                        adminPage.merchantEarringTotalHeadings.get(i).getText().contains("Total Balance"));
+                Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(i).getText().contains("$"));
+            }
+       
             Driver.quitDriver();
             extentTest.info("Sayfayi kapatir");
 

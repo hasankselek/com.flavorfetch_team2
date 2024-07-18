@@ -43,7 +43,7 @@ public class US_025 {
     }
 
     @Test
-    public void TC_2502(){
+    public void TC_2502(){// bugli
 
         Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
 

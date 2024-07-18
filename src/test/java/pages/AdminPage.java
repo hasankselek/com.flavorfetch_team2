@@ -404,6 +404,7 @@ public class AdminPage {
     @FindBy(xpath = "//ul[@class='pagination']/li") //Merchant Registrtion
     public List<WebElement> pagesNevigate;
 
+
     @FindBy(xpath = "(//thead/tr/th)[19]")  // Merchant Registration /calendar DropDown
     public  WebElement calendarRightMonth;
 
@@ -415,8 +416,14 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='filter-option']")
     public WebElement statusBoxFilter;
 
-    @FindBy(xpath = "//*[@title='Krispy Kreme']")//MerchantRegistration/yellowBox filter
-    public WebElement titleOfYellowFilterBox;
+    @FindBy(xpath = "//*[@dir='ltr']")//MerchantRegistration/yellowBox filter
+    public WebElement filterInputBox;
+
+    @FindBy(xpath = "//*[@data-select2-id='select2-data-2-7us5']")
+    public WebElement inputBoxYellowFilter;
+
+    @FindBy(xpath = "//*[@class='select2-results__option select2-results__option--selectable']")
+    public List<WebElement> itemsInfilterBox;
    @FindBy(xpath = "//*[@class='btn btn-black w-100']")//MerchantRegistration/yellowBox filter
    public  WebElement clearFilters;
 
@@ -436,7 +443,7 @@ public class AdminPage {
     public   WebElement  filterInputBoxFlash;
     @FindBy(xpath = "//*[@role='option']")//Merchant Registration/statusBox/Dropdown
     public List<WebElement> statusDropDown;
-    @FindBy(xpath = "//*[@type='search']")
+    @FindBy(xpath = "//*[@data-separator='to']")
     public WebElement dateInputBox; //Start Date - End Date
     @FindBy(xpath = "//*[@class='ranges']/ul/li")// calendarInputBox / DropDown
     public List<WebElement>  dateRange;
@@ -448,7 +455,7 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='m-0 mr-2 text-muted text-truncate']")//MerchantRegistration
     public List<WebElement>  topRow;
     @FindBy(xpath = "//*[@class='week']")//MerchantRegistration /dropdown calendar(index = 0-13)
-    public List<WebElement> weekList;
+    public List<WebElement> weekCounter;
 
     @FindBy(xpath = "//*[@class='input-group-text bg-transparent']")
     public WebElement calendarIcone;
@@ -457,11 +464,29 @@ public class AdminPage {
     public WebElement nameHead;//MerchantRegistration/Table Head
     @FindBy(xpath = "//thead/tr/th[3]")
     public WebElement addressHead;//MerchantRegistration/Table Head
-    @FindBy(xpath = "//thead/tr/th[4]")
+    @FindBy(xpath = "//*[@class='text-heading']")
+    public List<WebElement> orderOfNotification;
+
+    @FindBy(xpath = "(//*[@id='dropdownMenuLink'])[1]")
+    public WebElement testAdmin;
+
+    @FindBy(xpath = "//*[@class='dropdown-item']")
+    public List<WebElement> testAdminDropDown;
+
+    @FindBy(xpath = "(//*[@class='img-40 rounded-circle'])[1]")//MerchantRegistration
+    public WebElement profileIcon;
+    @FindBy(xpath = "//*[@for='AR_AdminUser_first_name']")//MerchantRegistration
+    public WebElement profilFirstName;
+    @FindBy(xpath = "//*[@class='mb-4']")//Admin login page
+    public WebElement adminstrationLogin;
+
+    @FindBy(xpath = "//*[@aria-label='Membership Program']")
     public WebElement membershipHead;//MerchantRegistration/Table Head
-    @FindBy(xpath = "//tbody//td[1]")
+    @FindBy(xpath = "//tbody//td[1]")//MerchantRegistration/Table
     public List<WebElement> columnPicOfMerchantRegestration;
 
+    @FindBy(xpath = "//tbody/tr/td/a/img")//MerchantRegistration/Table
+    public List<WebElement> logoMerchant;
     @FindBy(xpath = "//tbody//td[2]")
     public List<WebElement> columnNameOfMerchantRegestration;
     @FindBy(xpath = "//tbody//td/p[1]")
@@ -708,6 +733,24 @@ public class AdminPage {
 
     @FindBy( xpath = "(//*[@class='zmdi zmdi-border-color'])[1]")
     public WebElement updateButton;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_restaurant_name']")
+    public WebElement updatePageRestaurantName;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_restaurant_slug']")
+    public WebElement updatePageRestaurantSlug;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_name']")
+    public WebElement updatePageContactName;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_phone']")
+    public WebElement updatePageContactPhone;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_email']")
+    public WebElement updatePageContactEmail;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-delete'])[1]")
+    public WebElement listPageDeleteButton;
 
     @FindBy(xpath = "//li[@class='admin_dashboard active']")
     public WebElement adminDashboardmenu;
