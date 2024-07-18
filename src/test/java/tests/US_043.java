@@ -25,7 +25,7 @@ public class US_043 extends TestBaseRapor {
     public void test_4301() {
         adminPage = new AdminPage();
 
-        extentTest = extentReports.createTest("test_4301", " Merchant Registration item visibility and clickablity test .");
+
         Driver.getDriver().get("about:blank");
         extentTest.info("User open the browser");
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
@@ -162,7 +162,6 @@ public class US_043 extends TestBaseRapor {
     public void test_4306() {
         adminPage = new AdminPage();
 
-        extentTest = extentReports.createTest("test_4303", "Visibility test for table header and correctness name list according to alphabet order.");
         Driver.getDriver().get("about:blank");
         extentTest.info("User open the browser");
 
@@ -253,7 +252,6 @@ public class US_043 extends TestBaseRapor {
     public void test_4309() {
         adminPage = new AdminPage();
 
-        extentTest = extentReports.createTest("test_4303", "Visibility test for table header and correctness name list according to alphabet order.");
         Driver.getDriver().get("about:blank");
         extentTest.info("User open the browser");
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
@@ -285,7 +283,6 @@ public class US_043 extends TestBaseRapor {
     public void test_4310() {
         adminPage = new AdminPage();
 
-        extentTest = extentReports.createTest("test_4303", "Visibility test for table header and correctness name list according to alphabet order.");
         Driver.getDriver().get("about:blank");
         extentTest.info("User open the browser");
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
@@ -323,7 +320,6 @@ public class US_043 extends TestBaseRapor {
     public void test_4311() {
         adminPage = new AdminPage();
 
-        extentTest = extentReports.createTest("test_4303", "Visibility test for table header and correctness name list according to alphabet order.");
         Driver.getDriver().get("about:blank");
         extentTest.info("User open the browser");
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
@@ -479,7 +475,6 @@ public class US_043 extends TestBaseRapor {
     public void test_4315()throws IOException{
         adminPage = new AdminPage();
 
-        extentTest = extentReports.createTest("test_4303", "Visibility test for table header and correctness name list according to alphabet order.");
         Driver.getDriver().get("about:blank");
         extentTest.info("User open the browser");
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
