@@ -16,7 +16,7 @@ public class US_013 extends TestBaseRapor {
     Actions actions = new Actions(Driver.getDriver());
     @Test
     public void TC_1301(){
-
+    extentTest= extentReports.createTest("Adres kayit testi", "belirlenen adresin kaydedildigini test eder");
         customerPage= new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         extentTest.info("kullanici customer anasayfaya gider");
@@ -67,7 +67,7 @@ public class US_013 extends TestBaseRapor {
         extentTest.pass("basarili olarak cikis yapar");
     }
     @Test
-    public void TC_1302(){
+    public void TC_1302(){// bugli
         customerPage= new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.signInButton.click();
@@ -118,7 +118,7 @@ public class US_013 extends TestBaseRapor {
         Driver.quitDriver();
     }
     @Test
-    public void TC_1304(){
+    public void TC_1304(){// bugli
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.signInButton.click();
         customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_selahattin"));
