@@ -14,36 +14,51 @@ public class US_003 {
         Actions actions = new Actions(Driver.getDriver());
     @Test
     public void TC_0301(){
-        Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
-        customerPage.enterDeliveryAddresstextBox.sendKeys("new york" );
-        customerPage.newYorkAddressTextBox.click();
-        customerPage.avoSaladsMarket.click();
-        Driver.quitDriver();
+        try {
+            customerPage = new CustomerPage();
+            Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+            customerPage.enterDeliveryAddresstextBox.sendKeys("new york");
+            customerPage.newYorkAddressTextBox.click();
+            customerPage.avoSaladsMarket.click();
+        } finally { Driver.quitDriver();
+        }
+
     }
     @Test
     public void TC_0302(){
-        Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
-        customerPage.enterDeliveryAddresstextBox.sendKeys("new york" );
-        customerPage.newYorkAddressTextBox.click();
-        actions.click(customerPage.sandwichRAdioButton).perform();
-        Driver.quitDriver();
+        try {
+            customerPage= new CustomerPage();
+            Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+            customerPage.enterDeliveryAddresstextBox.sendKeys("new york" );
+            customerPage.newYorkAddressTextBox.click();
+            actions.click(customerPage.sandwichRAdioButton).perform();
+               } finally {Driver.quitDriver();
+        }
+
     }
     @Test
     public void TC_0303(){
-        Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
-        customerPage.enterDeliveryAddresstextBox.sendKeys("new york" );
-        customerPage.newYorkAddressTextBox.click();
-        customerPage.avoSaladsMarket.click();
-        Driver.quitDriver();
+        try {
+            customerPage= new CustomerPage();
+            Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+            customerPage.enterDeliveryAddresstextBox.sendKeys("new york" );
+            customerPage.newYorkAddressTextBox.click();
+            customerPage.avoSaladsMarket.click();
+
+        } finally { Driver.quitDriver();
+        }
+
     }
     @Test
     public void TC_0304(){
+        customerPage= new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.informationBox.isDisplayed();
         Driver.quitDriver();
     }
     @Test
     public void TC_0305(){
+        customerPage= new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
         jse.executeScript("arguments[0].scrollIntoView({block: 'center'});",customerPage.joinButton);
