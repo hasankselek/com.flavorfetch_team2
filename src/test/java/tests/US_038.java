@@ -103,7 +103,7 @@ public class US_038  extends  TestBaseRapor {
     public void TC_3805() {
 
 
-       // extentTest = extentReports.createTest("TC_3805", "Visibility and functionality test for the Filters button(By Merchant)");
+
         adminPage = new AdminPage();
         ReusableMethods.accessAdmin("adminuser_kubra", "adminpassword_kubra");
         adminPage.dasboardOrders.click();
