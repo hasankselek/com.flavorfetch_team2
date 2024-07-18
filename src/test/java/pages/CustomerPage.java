@@ -637,5 +637,7 @@ public class CustomerPage {
    @FindBy(xpath = "//*[@class='btn btn-green w-100']")
     public WebElement ssignup;
 
+   @FindBy(xpath = "//*[@class='zmdi zmdi-eye-off']")
 
+   public WebElement eyeoff;
 }
