@@ -3,11 +3,14 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.Driver;
 
 import java.util.List;
 
 public class MerchantPage {
+
+
 
     public MerchantPage(){ PageFactory.initElements(Driver.getDriver(),this);}
 
@@ -643,6 +646,113 @@ public class MerchantPage {
 
     @FindBy(xpath = "//*[@class='col-md-5']")
     public WebElement orderView;
+
+    @FindBy (xpath = "//*[@class='make-sticky d-flex align-items-center justify-content-between bg-white']")
+    public  WebElement ordersReadyList;
+
+    @FindBy(xpath = "//*[@class='btn-green btn normal mr-2 font13 mb-3 mb-xl-0']")
+    public WebElement deliveryOnThisWaybuttonOrderReadyPage;
+
+    @FindBy(xpath = "//*[@class='btn-yellow btn normal mr-2 font13 mb-3 mb-xl-0']")
+    public WebElement deliveredButtonOrdersReadyPage;
+
+    @FindBy(xpath = "//*[@class='btn-black btn normal mr-2 font13 mb-3 mb-xl-0']")
+    public WebElement deliveryFailedButtonOrdersReadyPage;
+
+    @FindBy(xpath = "//*[@class='btn-green btn normal mr-2 font13 mb-3 mb-xl-0']")
+    public WebElement completeOrdersReadyPage;
+
+    @FindBy(xpath = "//*[@class='btn-black btn normal mr-2 font13 mb-3 mb-xl-0']")
+    public WebElement orderFailedOrdersReadyPage;
+
+    @FindBy(xpath = "//*[@class='btn btn-primary']")
+    public WebElement assingDriverOrdersReadyPage;
+
+    @FindBy(xpath="(//*[@class='dropdown-item'])[14]")
+    public WebElement roundedDelayOrder;   // Orders Ready Rounded Button (... button)
+
+    @FindBy(xpath = "(//*[text()='5 min(s)'])[1]")
+    public WebElement delayOrderMinute;
+
+    @FindBy(xpath = "(//*[@class=\"btn btn-green pl-4 pr-4\"])[1]")
+    public  WebElement delayOrderConfirm;
+
+    @FindBy (xpath = "//*[text()='Customer is notified about the delayed.']")
+    public WebElement delayOrdermessageMinute;
+
+    @FindBy (xpath = "(//*[text()='30 min(s)'])[2]")
+    public WebElement pauseNewOrders30Minutes;
+
+    @FindBy(xpath = "(//button[@class='btn btn-green pl-4 pr-4'])[3]")
+    public WebElement pauseNewOrdersNextMinuteButton;
+
+    @FindBy(xpath = "//*[text()='Store closed']")
+    public WebElement pauseReasonforPausing;
+
+    @FindBy(xpath = "(//*[text()='Confirm'])[2]")
+    public WebElement pauseAcceptingOrdersConfirm;
+
+
+    @FindBy(xpath = "//*[text()='Get direction']")
+    public WebElement getDirectionsButton;
+
+
+    @FindBy(xpath = "(//*[@class=\"tactile-searchbox-input\"])[1]")
+    public WebElement getDirectionsStart;
+
+
+    @FindBy (xpath = "//*[@class=\"link\"]")
+    public WebElement orderPreviusButton;
+
+    @FindBy (xpath = "(//*[text()='Inci Lale Basbostanci'])[3]")
+    public WebElement customerInfo;
+
+    @FindBy(xpath = "//*[@class='table table-sm w-100 order_table dataTable no-footer']")
+    public List<WebElement> previusOrderPage;
+
+    @FindBy(xpath = "(//*[text()='Next'])[3]")
+    public WebElement previusOrderPageNextButton;
+
+    @FindBy(xpath = "(//*[text()='Previous'])[2]")
+    public WebElement previusOrderPagePreviousButton;
+
+
+    @FindBy(xpath = "(//*[@class=\"d-flex align-items-center\"])[16]")
+    public  WebElement blockCustomer;
+
+    @FindBy(xpath = "//*[text()='Block Customer']")
+    public  WebElement unBlockCustomer;
+
+    @FindBy(xpath = "(//*[text()='Confirm'])[5]")
+    public WebElement blockCustomerConfirm;
+
+    @FindBy(xpath = "//*[@class=\"form-control form-control-sm\"]")
+    public WebElement previousOrderPageSearchBox;
+
+
+    @FindBy(xpath = "//*[@class='chevron selected']")
+    public WebElement siparisListesi;
+
+    @FindBy(xpath = "(//*[text()='Dinein'])[3]")
+    public WebElement orderTypeDineinButton;
+
+    @FindBy(xpath = "(//*[text()='Paid'])[2]")
+    public WebElement paymentStatusPaidButton;
+
+    @FindBy(xpath = "(//*[text()='Order ID - Ascending'])[2]")
+    public WebElement sortIDArtanAscending;
+
+    @FindBy(xpath = "//*[text()='View all']")
+    public WebElement notificationList;
+
+
+    @FindBy(xpath = "//*[text()='Date']")
+    public WebElement allNotificationsList;
+
+    @FindBy(xpath = "//*[@class=\"badge rounded-circle badge-danger count\"]")
+    public WebElement notificationListCount;
+
+
 
 
 

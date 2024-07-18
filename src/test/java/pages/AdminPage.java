@@ -578,8 +578,11 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='btn btn-green item_delete']")
     public WebElement couponAlertDelete;
 
+    @FindBy(xpath = "//*[@class='form-control rounded search w-25']")
+    public WebElement couponAdminSearchbox;
 
-
+    @FindBy(css = "#DataTables_Table_0 tbody tr td:nth-child(2) h6") // Kupon isimlerini temsil eden CSS seçici
+    public List<WebElement> couponResults;
 
 
 

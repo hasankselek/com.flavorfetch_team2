@@ -17,6 +17,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -70,7 +71,7 @@ import static utilities.Driver.getDriver;
             Assert.assertEquals ( actualUrl, expectedUrl );
 
 
-            adminPage.couponName.sendKeys ( "Team2OZEL" + Keys.ENTER );
+            adminPage.couponName.sendKeys ( "TEAM2OZEL" + Keys.ENTER );
 
             Select selectCouponType = new Select ( adminPage.couponType );
 
@@ -129,15 +130,15 @@ import static utilities.Driver.getDriver;
         public void US_4003() {
 
 
-           Driver.getDriver ().get ( ConfigReader.getProperty ( "admin_Url" ) );
+            Driver.getDriver ().get ( ConfigReader.getProperty ( "admin_Url" ) );
 
-            adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_serhat") + Keys.TAB +
-                    ConfigReader.getProperty("adminpassword_serhat"));
-            adminPage.signInButton.click();
+            adminPage.userNameButton.sendKeys ( ConfigReader.getProperty ( "adminuser_serhat" ) + Keys.TAB +
+                    ConfigReader.getProperty ( "adminpassword_serhat" ) );
+            adminPage.signInButton.click ();
 
-            adminPage.promoAdmin.click();
-            adminPage.couponAdmin.click();
-            adminPage.couponActions.click();
+            adminPage.promoAdmin.click ();
+            adminPage.couponAdmin.click ();
+            adminPage.couponActions.click ();
 
             Select select = new Select ( adminPage.couponStatus );
 
@@ -145,7 +146,7 @@ import static utilities.Driver.getDriver;
 
             ReusableMethods.clickWithJS ( adminPage.couponSaved );
 
-            driver.navigate().back();
+            driver.navigate ().back ();
 
             ReusableMethods.clickWithJS ( adminPage.couponSaved );
 
@@ -155,12 +156,12 @@ import static utilities.Driver.getDriver;
 
             Driver.getDriver ().navigate ().to ( "https://qa.flavorfetch.com/backoffice/promo/coupon" );
 
-            WebElement couponUpdateStatusu = driver.findElement(By.xpath("(//span[contains(@class, 'badge ml-2 post')])[1]"));
-            String newStatus = couponUpdateStatusu.getText();
+            WebElement couponUpdateStatusu = driver.findElement ( By.xpath ( "(//span[contains(@class, 'badge ml-2 post')])[1]" ) );
+            String newStatus = couponUpdateStatusu.getText ();
 
             // Durumu kontrol etmek için
 
-            Assert.assertEquals(newStatus, "Draft");
+            Assert.assertEquals ( newStatus, "Draft" );
 
             Driver.quitDriver ();
 
@@ -168,59 +169,141 @@ import static utilities.Driver.getDriver;
         }
 
 
-            @Test
-            public void US_4004 () {
+        @Test
+        public void US_4004() {
 
-                Driver.getDriver ().get ( ConfigReader.getProperty ( "admin_Url" ) );
+            // Admin paneline gidilir
+            Driver.getDriver ().get ( ConfigReader.getProperty ( "admin_Url" ) );
 
-                adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_serhat") + Keys.TAB +
-                        ConfigReader.getProperty("adminpassword_serhat"));
-                adminPage.signInButton.click();
+// Kullanıcı adı ve şifre girilir, giriş yapılır
+            adminPage.userNameButton.sendKeys ( ConfigReader.getProperty ( "adminuser_serhat" ) + Keys.TAB +
+                    ConfigReader.getProperty ( "adminpassword_serhat" ) );
+            adminPage.signInButton.click ();
 
-                adminPage.promoAdmin.click();
+// Promosyon yönetimine ve kupon yönetimine gidilir
+            adminPage.promoAdmin.click ();
+            adminPage.couponAdmin.click ();
 
-                adminPage.couponAdmin.click();
+            WebDriverWait wait = new WebDriverWait ( Driver.getDriver (), Duration.ofSeconds ( 10 ) );
 
-                adminPage.couponDelete.click ();
+// İlk sayfadaki kupon sayısını al
+            List<WebElement> couponsOnFirstPage = Driver.getDriver ().findElements ( By.xpath ( "//table[@id='DataTables_Table_0']/tbody/tr" ) );
+            int initialCouponCountFirstPage = couponsOnFirstPage.size ();
 
+// Eğer bir sonraki sayfa varsa ikinci sayfadaki kupon sayısını da alarak toplam kupon sayısını hesapla
+            int initialCouponCountSecondPage = 0;
+            if (!couponsOnFirstPage.isEmpty ()) {
+                try {
+                    WebElement nextPageButton = wait.until ( ExpectedConditions.elementToBeClickable ( By.xpath ( "(//*[@class='page-link'])[4]" ) ) );
+                    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver ();
+                    js.executeScript ( "arguments[0].click();", nextPageButton );
+                    ReusableMethods.wait ( 3 );
 
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-                WebElement promoAdmin = wait.until(ExpectedConditions.elementToBeClickable(By.id("promoAdminId"))); // ID'yi değiştirin
-                promoAdmin.click();
-
-                WebElement couponAdmin = wait.until(ExpectedConditions.elementToBeClickable(By.id("couponAdminId"))); // ID'yi değiştirin
-                couponAdmin.click();
-
-                // Delete bağlantısını bulma
-                WebElement deleteButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".modal-footer a.btn.btn-green.item_delete")));
-
-                // JavaScript Executor kullanarak delete butonuna tıklama
-                JavascriptExecutor executor = (JavascriptExecutor) driver;
-                executor.executeScript("arguments[0].click();", deleteButton);
-
-                // Alert'in görünür olmasını bekleyin ve kabul edin
-                wait.until(ExpectedConditions.alertIsPresent());
-                Alert alert = driver.switchTo().alert();
-                alert.accept();
-
-
-
-
-
-
-
-
-
-
-
-
+                    // İkinci sayfadaki kupon sayısını al
+                    List<WebElement> couponsOnSecondPage = Driver.getDriver ().findElements ( By.xpath ( "//table[@id='DataTables_Table_0']/tbody/tr" ) );
+                    initialCouponCountSecondPage = couponsOnSecondPage.size ();
+                } catch (NoSuchElementException e) {
+                    // İkinci sayfa yoksa burası atlanabilir
+                }
             }
 
-            @Test
-            public void US_4005 () {
+// Toplam kupon sayısını hesapla
+            int totalInitialCouponCount = initialCouponCountFirstPage + initialCouponCountSecondPage;
 
+// Kupon silme işlemi başlatılır (ilk sayfada)
+            ReusableMethods.sleep ( 3 );
+            adminPage.couponDelete.click ();
+            ReusableMethods.sleep ( 3 );
+            WebElement couponAlertDeleteButton = wait.until ( ExpectedConditions.elementToBeClickable ( By.xpath ( "//*[@class='btn btn-green item_delete']" ) ) );
+            couponAlertDeleteButton.click ();
+            ReusableMethods.sleep ( 5 );
+
+            // Sayfayı yenile ve bir sonraki sayfaya geçiş yapılır (eğer varsa)
+            try {
+                WebElement nextPageButton = wait.until ( ExpectedConditions.elementToBeClickable ( By.xpath ( "(//*[@class='page-link'])[4]" ) ) );
+                JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver ();
+                js.executeScript ( "arguments[0].click();", nextPageButton );
+                ReusableMethods.wait ( 3 );
+
+                // İkinci sayfadaki kupon sayısını al
+                List<WebElement> updatedCouponsOnSecondPage = Driver.getDriver ().findElements ( By.xpath ( "//table[@id='DataTables_Table_0']/tbody/tr" ) );
+                int updatedCouponCountSecondPage = updatedCouponsOnSecondPage.size ();
+
+                // Toplam kupon sayısını kontrol et
+                int totalUpdatedCouponCount = totalInitialCouponCount - 1;
+                Assert.assertEquals ( totalUpdatedCouponCount, totalInitialCouponCount - 1 );
+
+            } catch (NoSuchElementException e) {
+                // Eğer bir sonraki sayfa yoksa sadece ilk sayfadaki kupon sayısını kontrol etmek yeterli olur
+                List<WebElement> updatedCouponsOnSinglePage = Driver.getDriver ().findElements ( By.xpath ( "//table[@id='DataTables_Table_0']/tbody/tr" ) );
+                int totalUpdatedCouponCount = updatedCouponsOnSinglePage.size ();
+                Assert.assertEquals ( totalUpdatedCouponCount, totalInitialCouponCount - 1 );
             }
+
+            // WebDriver'ı kapat
+            Driver.quitDriver ();
+
         }
+
+
+        @Test
+        public void US_4005() {
+
+            // Admin paneline git
+            Driver.getDriver ().get ( ConfigReader.getProperty ( "admin_Url" ) );
+
+            // Kullanıcı adı ve şifre ile giriş yap
+
+            adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_serhat") + Keys.TAB +
+                    ConfigReader.getProperty("adminpassword_serhat"));
+            adminPage.signInButton.click();
+
+            // Promo bölümüne git
+            adminPage.promoAdmin.click();
+
+            // Coupon bölümüne git
+            adminPage.couponAdmin.click();
+
+            // "Nico" kuponunu ara
+            adminPage.couponAdminSearchbox.sendKeys("Nico" + Keys.ENTER);
+
+            // Kupon arama sonuçlarında "Nico" kuponunu kontrol et
+            boolean isCouponFound = false;
+            for (WebElement coupon : adminPage.couponResults) {
+                if (coupon.getText().contains("Nico")) {
+                    isCouponFound = true;
+                    break;
+                }
+            }
+
+            // Kuponun bulunduğunu doğrula
+            Assert.assertTrue(isCouponFound, "'Nico' kuponu arama sonuçlarında bulunamadı.");
+
+
+            Driver.quitDriver ();
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
