@@ -12,12 +12,15 @@ import pages.AdminPage;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class US_039 {
+public class US_039 extends TestBaseRapor {
+
 
     static AdminPage adminPage = new AdminPage();
     Actions actions = new Actions(Driver.getDriver());
@@ -52,13 +55,35 @@ public class US_039 {
     }
 
     @Test //Test of display and calculation of total commission and balance
-    public void TC_3902() {
+    public void TC_3902() throws IOException {
 
-        try {
             adminPage = new AdminPage();
             actions = new Actions(Driver.getDriver());
             ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
+            extentTest.info("Kullanici browser'ı açar geçerli üyelikle giriş yapar");
+
             actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
+            extentTest.info("Ekranın solundaki menüden Earrings'e tıklar ve Merchant Earrings' tıklar");
+
+            Assert.assertTrue(adminPage.merchantEarringsTitle.isDisplayed());
+            extentTest.pass("Merchant Earrings başlığının varlığını doğrular");
+            Assert.assertTrue(adminPage.merchantEarringsTitle.getText().contains("Merchant Earnings"));
+            extentTest.pass("Merchant Earrings başlığında 'Merchant Earrings' yazdığını doğrular");
+
+            Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(0).isDisplayed());
+            extentTest.pass("Total Commission kutucuğunu varlığını doğrular");
+            Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(0).getText().contains("Total Commission"));
+            extentTest.pass("Total Commission kutucuğunda 'Total Commission' yazdığını doğrular");
+            Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(0).getText().contains("$"));
+            extentTest.pass("Total Commission kutucuğunda '$' yazdığını doğrular");
+
+            Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(1).isDisplayed());
+            extentTest.pass("Total Balance kutucuğunu varlığını doğrular");
+            Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(1).getText().contains("Total Balance"));
+            extentTest.pass("Total Balance kutucuğunda 'Total Balance' yazdığını doğrular");
+            Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(1).getText().contains("$"));
+            extentTest.pass("Total Balance kutucuğunda '$' yazdığını doğrular");
+            
 
 
             for (int i = 0; i < adminPage.merchantEarringTotalHeadings.size(); i++) {
@@ -67,11 +92,9 @@ public class US_039 {
                         adminPage.merchantEarringTotalHeadings.get(i).getText().contains("Total Balance"));
                 Assert.assertTrue(adminPage.merchantEarringTotalHeadings.get(i).getText().contains("$"));
             }
-        }
-        finally {
+       
             Driver.quitDriver();
-        }
-
+            extentTest.info("Sayfayi kapatir");
 
     }
 
@@ -92,37 +115,40 @@ public class US_039 {
     }
 
     @Test
-    public void TC_3904() {
-
-        try {
-
+    public void TC_3904() throws IOException {
 
             adminPage = new AdminPage();
             actions = new Actions(Driver.getDriver());
             ReusableMethods.accessAdmin("adminuser_hasan", "adminpassword_hasan");
+            extentTest.info("Kullanici browser'ı açar geçerli üyelikle giriş yapar");
+
             actions.click(adminPage.adminDashboardEarningsButton).moveToElement(adminPage.adminDashboardMerchantEarningsButton).click().perform();
+            extentTest.info("Ekranın solundaki menüden Earrings'e tıklar ve Merchant Earrings' tıklar");
 
             JSUtilities.sayfaOlcegiDegistirme(Driver.getDriver(), 75);
+            extentTest.info("Sayfa ölçeğini %75'e düşürür");
 
             JSUtilities.clickWithJS(Driver.getDriver(), adminPage.merchantEarringMerchantTitle);
+            extentTest.info("Merchant başlığına basarak sıralar");
             ReusableMethods.wait(1);
 
             List<String> totalMerchantNames = new ArrayList<>();
 
-            for (int page = 1; page <= 3; page++) {
+            for (int page = 1; page <= adminPage.merchantEarringsSayfaNo.size()-1; page++) {
                 ReusableMethods.wait(1);
                 // Restoranların isimlerini alın
                 List<WebElement> nameElements = adminPage.merchantEarringMerchantList;
                 for (WebElement nameElement : nameElements) {
-                    totalMerchantNames.add(nameElement.getText().toLowerCase().trim());
+                    totalMerchantNames.add(nameElement.getText().toLowerCase().trim().replaceAll(" ",""));
                 }
 
-                if (page < 3) {
+                if (page < adminPage.merchantEarringsSayfaNo.size()-1) {
                     WebElement nextPageButton = Driver.getDriver().findElement(By.xpath("//*[@data-dt-idx='4']")); // AdminPage sınıfında nextPageButton öğesini tanımladığınızdan emin olun
                     JSUtilities.clickWithJS(Driver.getDriver(), nextPageButton);
                     ReusableMethods.wait(1);
                 }
             }
+            extentTest.info("Sayfaları tek tek gezerek sıralama işlemine devame eder");
 
             // Sıralamayı kontrol et (alfabetik sırayla)
             boolean isSortedMerchant = true;
@@ -134,15 +160,17 @@ public class US_039 {
             }
 
             Assert.assertTrue(isSortedMerchant);
+            extentTest.pass("Restaurant isimlerini alfabetik sıraya göre olup olmadığını kontrol eder");
 
 
             // "Balance" butonuna tıklayın
             JSUtilities.clickWithJS(Driver.getDriver(), adminPage.merchantEarringBalanceTitle);
+            extentTest.info("Balance başlığına basarak sıralar");
             ReusableMethods.wait(3);
 
             List<Double> totalBalances = new ArrayList<>();
 
-            for (int page = 1; page <= 3; page++) {
+            for (int page = 1; page <= adminPage.merchantEarringsSayfaNo.size()-1; page++) {
 
                 ReusableMethods.wait(1);
                 // Restoranların bakiyelerini alın
@@ -152,12 +180,13 @@ public class US_039 {
                     totalBalances.add(Double.parseDouble(balanceText));
                 }
 
-                if (page < 3) {
+                if (page < adminPage.merchantEarringsSayfaNo.size()-1) {
                     WebElement nextPageButton = Driver.getDriver().findElement(By.xpath("//*[@data-dt-idx='4']")); // next butonu
                     JSUtilities.clickWithJS(Driver.getDriver(), nextPageButton);
                     ReusableMethods.wait(1);
                 }
             }
+            extentTest.info("Sayfaları tek tek gezerek sıralama işlemine devame eder");
 
             // Tüm sayfalardaki restoran bakiyelerinin doğru sıralandığını kontrol edin
 
@@ -172,10 +201,11 @@ public class US_039 {
             }
 
             Assert.assertTrue(isSortedBalance);
-        }
-        finally {
+            extentTest.pass("Balance'ların doğru bir şekilde sıralanıp sıralanmadığını kontrol eder");
+
             Driver.quitDriver();
-        }
+            extentTest.info("Sayfayi kapatir");
+
 
 
     }

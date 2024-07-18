@@ -12,7 +12,6 @@ import pages.MerchantPage;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
 import java.util.function.Function;
@@ -26,18 +25,19 @@ public class ReusableMethods {
     static CustomerPage customerPage = new CustomerPage();
     static Actions actions = new Actions(Driver.getDriver());
 
-    public static String getScreenshot(String name) throws IOException {
-        // naming the screenshot with the current date to avoid duplication
-        String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
-        // TakesScreenshot is an interface of selenium that takes the screenshot
-        TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
-        File source = ts.getScreenshotAs(OutputType.FILE);
-        // full path to the screenshot location
-        String target = System.getProperty("user.dir") + "/test-output/Screenshots/" + name + date + ".png";
-        File finalDestination = new File(target);
-        // save the screenshot to the path given
-        FileUtils.copyFile(source, finalDestination);
-        return target;
+
+    public static String getScreenshot(String directoryPath, String testName,String browser) throws IOException {
+        try {
+            TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+            File source = ts.getScreenshotAs(OutputType.FILE);
+            String target = directoryPath + "/" + testName + "_" + browser + ".png";
+            File finalDestination = new File(target);
+            FileUtils.copyFile(source, finalDestination);
+            return target;
+        } catch (Exception e) {
+            System.out.println("Ekran görüntüsü alınamadı: " + e.getMessage());
+            return "";
+        }
     }
 
 
@@ -562,20 +562,16 @@ public class ReusableMethods {
         ReusableMethods.wait(2);
 
     }
-    public static void customerHasanAccesToTeam2Restaurent(String costumerUsername , String customerPassword){
-        CustomerPage customerPage=new CustomerPage();
-        Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
-        ReusableMethods.wait(1);
-        customerPage.signInButton.click();
-        customerPage.emailBox.sendKeys(ConfigReader.getProperty(costumerUsername)+Keys.TAB+ConfigReader.getProperty(customerPassword));
-        customerPage.loginSigninButton.click();
-        customerPage.cookieAccept.click();
+    public static void customerHasanAccesToTeam2Restaurent(){
+        actions = new Actions(Driver.getDriver());
+        customerPage=new CustomerPage();
+        ReusableMethods.accessToCustomer("customeruser_hasan","customerpassword_hasan");
         customerPage.enterDeliveryAddresstextBox.sendKeys("Seattle");
         ReusableMethods.wait(1);
         customerPage.seattleCity.click();
         ReusableMethods.wait(1);
         Driver.getDriver().navigate().back();
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(4);
         actions.click(customerPage.sandwichAndWraps).perform();
         customerPage.team2Restaurant.click();
 }

@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+
+<suite name="HasanTestler">
+    <test name="Günlük Test">
+        <classes>
+            <class name="tests.US_001"></class>
+            <class name="tests.US_004"></class>
+            <class name="tests.US_011"></class>
+            <class name="tests.US_035"></class>
+            <class name="tests.US_036"></class>
+            <class name="tests.US_039"></class>
+        </classes>
+    </test>
+</suite>

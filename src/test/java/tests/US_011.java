@@ -19,14 +19,13 @@ import java.util.Random;
 
 public class US_011 {
 
-    static CustomerPage customerPage = new CustomerPage();
-    static Actions actions = new Actions(Driver.getDriver());
+    Actions actions = new Actions(Driver.getDriver());
+    CustomerPage customerPage = new CustomerPage();
 
     @Test
     public void TC_1101(){
         customerPage = new CustomerPage();
-        ReusableMethods.customerHasanAccesToTeam2Restaurent("customeruser_hasan","customerpassword_hasan");
-
+        ReusableMethods.customerHasanAccesToTeam2Restaurent();
 
         //Check restaurant name and picture
         String expectedRestaurantName = "Team2";
@@ -70,8 +69,11 @@ public class US_011 {
 
     @Test
     public void TC_1102(){
+
         customerPage = new CustomerPage();
-        ReusableMethods.customerHasanAccesToTeam2Restaurent("customeruser_hasan","customerpassword_hasan");
+        ReusableMethods.customerHasanAccesToTeam2Restaurent();
+
+
         List<String> orderTypeText = new ArrayList<>();
         for (int i = 0; i < customerPage.customerOrderType.size(); i++) {
             customerPage.customerOrderType.get(i).click();
@@ -88,7 +90,7 @@ public class US_011 {
     @Test
     public void TC_1103(){
         customerPage = new CustomerPage();
-        ReusableMethods.customerHasanAccesToTeam2Restaurent("customeruser_hasan","customerpassword_hasan");
+        ReusableMethods.customerHasanAccesToTeam2Restaurent();
 
         //Check that cart is empty
         Assert.assertTrue(customerPage.cartTitle.isDisplayed());
@@ -108,7 +110,7 @@ public class US_011 {
     @Test
     public void TC_1104(){
         customerPage = new CustomerPage();
-        ReusableMethods.customerHasanAccesToTeam2Restaurent("customeruser_hasan","customerpassword_hasan");
+        ReusableMethods.customerHasanAccesToTeam2Restaurent();
 
         //Check product picture
         for (int i = 1; i < customerPage.merchantProductPictures.size(); i++) {
@@ -131,7 +133,7 @@ public class US_011 {
     @Test
     public void TC_1105(){
         customerPage = new CustomerPage();
-        ReusableMethods.customerHasanAccesToTeam2Restaurent("customeruser_hasan","customerpassword_hasan");
+        ReusableMethods.customerHasanAccesToTeam2Restaurent();
 
 
         //Check if menu text and submenus are visible
@@ -162,9 +164,10 @@ public class US_011 {
 
     @Test
     public void TC_1106(){
-        actions = new Actions(Driver.getDriver());
         customerPage = new CustomerPage();
-        ReusableMethods.customerHasanAccesToTeam2Restaurent("customeruser_hasan","customerpassword_hasan");
+        ReusableMethods.customerHasanAccesToTeam2Restaurent();
+
+        actions = new Actions(Driver.getDriver());
 
         //Check and click the "Add to cart" button
         for (int i = 0; i < customerPage.addToCartButton.size(); i++) {
@@ -216,8 +219,9 @@ public class US_011 {
 
     @Test
     public void TC_1107(){
+        customerPage = new CustomerPage();
+        ReusableMethods.customerHasanAccesToTeam2Restaurent();
         actions = new Actions(Driver.getDriver());
-        ReusableMethods.customerHasanAccesToTeam2Restaurent("customeruser_hasan","customerpassword_hasan");
         customerPage.addToCartButton.get(1).click();
 
         //Check if the product knows that its image, name and price are displayed
@@ -280,9 +284,8 @@ public class US_011 {
 
     @Test
     public void TC_1108(){
-
         customerPage = new CustomerPage();
-        ReusableMethods.customerHasanAccesToTeam2Restaurent("customeruser_hasan","customerpassword_hasan");
+        ReusableMethods.customerHasanAccesToTeam2Restaurent();
         customerPage.addToCartButton.get(0).click();
 
         //Check the presence of the "Check out" button
@@ -326,7 +329,7 @@ public class US_011 {
     @Test
     public void TC_1109(){
         customerPage = new CustomerPage();
-        ReusableMethods.customerHasanAccesToTeam2Restaurent("customeruser_hasan","customerpassword_hasan");
+        ReusableMethods.customerHasanAccesToTeam2Restaurent();
 
         //Check if the gallery and about section are displayed
         Assert.assertTrue(customerPage.aboutRestaurant.isDisplayed());

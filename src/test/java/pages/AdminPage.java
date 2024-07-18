@@ -1,12 +1,10 @@
 package pages;
 
-import org.apache.commons.compress.archivers.zip.X000A_NTFS;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-import java.security.PublicKey;
 import java.util.List;
 
 public class AdminPage {
@@ -117,10 +115,10 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='flex-col w-70 text-truncate cuisine-truncate']")
     public List<WebElement> popularMerchantsInformation;
 
-    @FindBy(xpath = "//*[@class='text-right align-middle']")
+    @FindBy(xpath = "//*[@id='vue-dashboard']/div[2]/div[1]/div[6]/div/div/div[2]/table/tbody/tr/td[2]/p")
     public List<WebElement> popularMerchantsQuantity;
 
-    @FindBy(xpath = "(//tbody)[4]//tr")
+    @FindBy(xpath = "//*[@id='vue-dashboard']/div[2]/div[1]/div[6]/div/div/div[2]/table/tbody/tr/td[1]/div/div[2]/a")
     public List<WebElement> merchantName;
 
     @FindBy(xpath = "(//tbody)[4]")
@@ -375,7 +373,7 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='zmdi zmdi-desktop-mac']")
     public WebElement iconvisible;  //Custormer list page
   
-    @FindBy(xpath = "//*[@class='sorting sorting_desc']")
+    @FindBy(xpath = "(//*[@class='sorting'])[2]")
     public WebElement nameSortingButton;  //sorting desc customername
 
     @FindBy(xpath = "(//*[text()='Customer list'])[1]")
@@ -559,7 +557,7 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='notyf__message']")
     public WebElement notfyMessage;
 
-    @FindBy(xpath = "(columnJustNameOfMerchantRegistration")
+    @FindBy(xpath = "//*[@id='DataTables_Table_0']/tbody/tr[1]/td[4]/div/a")
     public WebElement firstActionButton;
 
     @FindBy(xpath = "(//tbody//tr[1]//td[2])[1]")
@@ -581,10 +579,10 @@ public class AdminPage {
     public WebElement calenderIcon;
   
     @FindBy(xpath = "(//*[text()='Merchant'])[1]")
-    public WebElement MerchantSide;
+    public WebElement merchantSide;
 
     @FindBy(xpath = "(//*[@class='sidebar-nav-sub-menu'])[1]")
-    public WebElement ListSide;
+    public WebElement listSide;
 
     @FindBy(xpath = "//*[@placeholder='Search']")
     public WebElement SearchSide;
@@ -712,6 +710,24 @@ public class AdminPage {
     @FindBy( xpath = "(//*[@class='zmdi zmdi-border-color'])[1]")
     public WebElement updateButton;
 
+    @FindBy(xpath = "//*[@id='AR_merchant_restaurant_name']")
+    public WebElement updatePageRestaurantName;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_restaurant_slug']")
+    public WebElement updatePageRestaurantSlug;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_name']")
+    public WebElement updatePageContactName;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_phone']")
+    public WebElement updatePageContactPhone;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_email']")
+    public WebElement updatePageContactEmail;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-delete'])[1]")
+    public WebElement listPageDeleteButton;
+
     @FindBy(xpath = "//li[@class='admin_dashboard active']")
     public WebElement adminDashboardmenu;
 
@@ -730,16 +746,57 @@ public class AdminPage {
     @FindBy(xpath = "//thead//th[4]")
     public WebElement headActions;
 
-
     @FindBy(xpath = "//*[@class='zmdi zmdi-delete']")
     public WebElement deleteButtonDashboard; //
 
     @FindBy(xpath = "(//*[@class='zmdi zmdi-border-color'])[2]")
     public WebElement updateButtonDashboard; //
 
-
     @FindBy(xpath = "//*[@class='page-link']")
     public WebElement dashboardPageNumbers;
+
+    @FindBy(xpath = "(//tbody)[1]//tr")
+    public List<WebElement> all5Orders;
+
+    @FindBy(xpath = "(//tbody)[1]//tr//td[6]/*[@class='btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3 mr-2']")
+    public List<WebElement> viewIconAdminDashboard;
+
+    @FindBy(xpath = "(//tbody)[1]//tr//td[6]/*[@class='btn btn-sm text-muted btn-light hover-bg-primary hover-text-secondary py-1 px-3']")
+    public List<WebElement> downloadIconAdminDashboard;
+
+    @FindBy(xpath = "//*[@id='vue-dashboard']/div[2]/div[1]/div[1]/div/div")
+    public List<WebElement> commissionAndSubscriptionsAdminDashboard;
+
+    @FindBy(xpath = "//*[@id='vue-dashboard']/div[2]/div[1]/div[2]/div[1]/div[1]/div/div/div/div[2]")
+    public WebElement orderReceivedBox;
+
+    @FindBy(xpath = "//*[@id='vue-dashboard']/div[2]/div[1]/div[2]/div[1]/div[2]/div/div/div/div[2]")
+    public WebElement totalDeliveredBox;
+
+    @FindBy(xpath = "//*[@id='vue-dashboard']/div[2]/div[1]/div[2]/div[2]/div/div[1]/div/div/div/div[2]")
+    public WebElement newCustomerBox;
+
+    @FindBy(xpath = "//*[@id='vue-dashboard']/div[2]/div[1]/div[2]/div[2]/div/div[2]/div/div/div/div[2]")
+    public WebElement totalRefundBox;
+
+    @FindBy(xpath = "//h5[normalize-space()='Merchant Earnings']")
+    public WebElement merchantEarringsTitle;
+
+    @FindBy(xpath = "//a[@aria-controls='DataTables_Table_0']")
+    public List<WebElement> merchantEarringsSayfaNo;
+  
+    @FindBy(xpath = "//*[@for='AR_client_npassword']")
+    public WebElement buyersPassword; //update customer page password
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-search']")
+    public WebElement namesearchicon;
+
+
+    @FindBy(xpath = "//*[text()='All Review']")
+    public WebElement allReviewClick;
+
+
+
 
 
 
