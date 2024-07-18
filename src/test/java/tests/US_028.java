@@ -64,7 +64,7 @@ public class US_028 {
     public void TC_2802() {
 
         AdminPage adminPage = new AdminPage ();
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
         adminPage.MerchantSide.click ();
         adminPage.ListSide.click ();
@@ -139,7 +139,7 @@ public class US_028 {
     public void TC_2803() {
 
         AdminPage adminPage = new AdminPage ();
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
         adminPage.MerchantSide.click ();
         adminPage.ListSide.click ();
@@ -213,7 +213,7 @@ public class US_028 {
     public void TC_2804() {
 
         // Admin paneline giriş yap
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
         // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
@@ -289,7 +289,7 @@ public class US_028 {
 
 
         // Admin paneline giriş yap
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
         // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
@@ -349,7 +349,7 @@ public class US_028 {
 
 
         // Admin paneline giriş yap
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
         // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
@@ -414,7 +414,7 @@ public class US_028 {
 
 
         // Admin paneline giriş yap
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
         // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
@@ -481,7 +481,7 @@ public class US_028 {
     public void TC_2808() {
 
         // Admin paneline giriş yap
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
         // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
@@ -583,7 +583,7 @@ public class US_028 {
 
 
         // Admin paneline giriş yap
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
         // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
@@ -636,7 +636,7 @@ public class US_028 {
 
 
         // Admin paneline giriş yap
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
         // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
@@ -711,7 +711,7 @@ public class US_028 {
     public void TC_2811() {
 
 // Admin paneline giriş yap
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
 // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
@@ -807,7 +807,7 @@ public class US_028 {
     public void TC_2812() {
 
 // Admin paneline giriş yap
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
 // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
@@ -875,7 +875,7 @@ public class US_028 {
 
 
         // Admin paneline giriş yap
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
         // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
@@ -967,7 +967,7 @@ public class US_028 {
 
 
 // Admin paneline giriş yap
-        ReusableMethods.accessToAdmin ( "adminuser_serhat", "adminpassword_serhat" );
+        ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
 
 // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
