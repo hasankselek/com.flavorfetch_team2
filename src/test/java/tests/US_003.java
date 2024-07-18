@@ -14,40 +14,31 @@ public class US_003 {
         Actions actions = new Actions(Driver.getDriver());
     @Test
     public void TC_0301(){
-        try {
             customerPage = new CustomerPage();
             Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
             customerPage.enterDeliveryAddresstextBox.sendKeys("new york");
             customerPage.newYorkAddressTextBox.click();
             customerPage.avoSaladsMarket.click();
-        } finally { Driver.quitDriver();
-        }
-
+         Driver.quitDriver();
     }
     @Test
     public void TC_0302(){
-        try {
+            actions = new Actions(Driver.getDriver());
             customerPage= new CustomerPage();
             Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
             customerPage.enterDeliveryAddresstextBox.sendKeys("new york" );
             customerPage.newYorkAddressTextBox.click();
             actions.click(customerPage.sandwichRAdioButton).perform();
-               } finally {Driver.quitDriver();
-        }
-
+            Driver.quitDriver();
     }
     @Test
     public void TC_0303(){
-        try {
             customerPage= new CustomerPage();
             Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
             customerPage.enterDeliveryAddresstextBox.sendKeys("new york" );
             customerPage.newYorkAddressTextBox.click();
             customerPage.avoSaladsMarket.click();
-
-        } finally { Driver.quitDriver();
-        }
-
+      Driver.quitDriver();
     }
     @Test
     public void TC_0304(){
@@ -58,6 +49,7 @@ public class US_003 {
     }
     @Test
     public void TC_0305(){
+        actions = new Actions(Driver.getDriver());
         customerPage= new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
