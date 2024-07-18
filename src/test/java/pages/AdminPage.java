@@ -373,7 +373,7 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='zmdi zmdi-desktop-mac']")
     public WebElement iconvisible;  //Custormer list page
   
-    @FindBy(xpath = "//*[@class='sorting sorting_desc']")
+    @FindBy(xpath = "(//*[@class='sorting'])[2]")
     public WebElement nameSortingButton;  //sorting desc customername
 
     @FindBy(xpath = "(//*[text()='Customer list'])[1]")
@@ -735,6 +735,24 @@ public class AdminPage {
     @FindBy( xpath = "(//*[@class='zmdi zmdi-border-color'])[1]")
     public WebElement updateButton;
 
+    @FindBy(xpath = "//*[@id='AR_merchant_restaurant_name']")
+    public WebElement updatePageRestaurantName;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_restaurant_slug']")
+    public WebElement updatePageRestaurantSlug;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_name']")
+    public WebElement updatePageContactName;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_phone']")
+    public WebElement updatePageContactPhone;
+
+    @FindBy(xpath = "//*[@id='AR_merchant_contact_email']")
+    public WebElement updatePageContactEmail;
+
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-delete'])[1]")
+    public WebElement listPageDeleteButton;
+
     @FindBy(xpath = "//li[@class='admin_dashboard active']")
     public WebElement adminDashboardmenu;
 
@@ -791,8 +809,16 @@ public class AdminPage {
 
     @FindBy(xpath = "//a[@aria-controls='DataTables_Table_0']")
     public List<WebElement> merchantEarringsSayfaNo;
+  
+    @FindBy(xpath = "//*[@for='AR_client_npassword']")
+    public WebElement buyersPassword; //update customer page password
+
+    @FindBy(xpath = "//*[@class='zmdi zmdi-search']")
+    public WebElement namesearchicon;
 
 
+    @FindBy(xpath = "//*[text()='All Review']")
+    public WebElement allReviewClick;
 
 
 

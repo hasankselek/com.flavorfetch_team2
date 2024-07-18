@@ -263,4 +263,5 @@ public class US_030 extends TestBaseRapor {
 
     } // Test of being able to print the order slip or download as a pdf format and able to contact option with customer --> PASSED
 
+
 }
