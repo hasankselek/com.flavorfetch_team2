@@ -9,22 +9,22 @@ import java.util.List;
 
 public class AdminPage {
 
-    public AdminPage(){
+    public AdminPage() {
 
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(), this);
 
     }
 
-    @FindBy (xpath = "//*[@id='LoginForm_username']")
+    @FindBy(xpath = "//*[@id='LoginForm_username']")
     public WebElement userNameButton;
 
-    @FindBy (xpath = "//*[@for='LoginForm_password']")
+    @FindBy(xpath = "//*[@for='LoginForm_password']")
     public WebElement passwordButton;
 
-    @FindBy (xpath= "//*[text()='Remember me']")
+    @FindBy(xpath = "//*[text()='Remember me']")
     public WebElement remembermeBox;
 
-    @FindBy( xpath = "//*[@class=\"btn btn-green btn-full\"]")
+    @FindBy(xpath = "//*[@class=\"btn btn-green btn-full\"]")
     public WebElement signInButton;
 
     @FindBy(xpath = "//*[@class='dim underline']")
@@ -96,7 +96,7 @@ public class AdminPage {
     @FindBy(xpath = "(//tbody)[3]//tr")
     public List<WebElement> popularItemsInformation;
 
-    @FindBy(xpath ="(//*[@class='card-body'])[9]")
+    @FindBy(xpath = "(//*[@class='card-body'])[9]")
     public WebElement last30DaysSalesChartandProducts;
 
     @FindBy(xpath = "//*[@class='highcharts-background']")
@@ -172,7 +172,7 @@ public class AdminPage {
     public WebElement customerPageSearchBox;
 
     @FindBy(xpath = "//*[@class='promo']")
-    public  WebElement promoAdmin; // admin dashboard promo
+    public WebElement promoAdmin; // admin dashboard promo
 
     @FindBy(xpath = "//*[text()='Coupon']")
     public WebElement couponAdmin; // admin dashboard  coupon
@@ -180,13 +180,13 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class=\"btn btn-black btn-circle\"]")
     public WebElement newCouponButton;
 
-    @FindBy (xpath = "//*[@id=\"AR_voucher_voucher_name\"]")
+    @FindBy(xpath = "//*[@id=\"AR_voucher_voucher_name\"]")
     public WebElement couponName;  // coupon name
 
     @FindBy(xpath = "(//select[@class=\"form-control custom-select form-control-select\"])[1]")
     public WebElement couponType; // coupon type
 
-    @FindBy (xpath = "//*[@id=\"AR_voucher_amount\"]")
+    @FindBy(xpath = "//*[@id=\"AR_voucher_amount\"]")
     public WebElement couponAmount;  // admin coupon discount amount
 
     @FindBy(xpath = "//*[@name='AR_voucher[min_order]']")
@@ -195,7 +195,7 @@ public class AdminPage {
     @FindBy(xpath = "//select[@name=\"AR_voucher[days_available][]\"]")
     public WebElement couponDay; // Coupon Days
 
-    @FindBy (xpath = "(//*[@class='selection'])[2]")
+    @FindBy(xpath = "(//*[@class='selection'])[2]")
     public WebElement couponMerchant;    // merchant where the coupon applies
 
     @FindBy(xpath = "//*[@id='AR_voucher_used_once']")
@@ -208,19 +208,19 @@ public class AdminPage {
     public WebElement couponSaved;      // coupon saved
 
     @FindBy(xpath = "//*[@class='promo']")
-    public  WebElement adminPromo;
+    public WebElement adminPromo;
 
     @FindBy(xpath = "//a[text()='Orders']")
-    public  WebElement dasboardOrders;
+    public WebElement dasboardOrders;
 
     @FindBy(xpath = "//a[text()='All order']")
-    public  WebElement dashboardAllOrders;
+    public WebElement dashboardAllOrders;
 
     @FindBy(xpath = "//i[@class='zmdi zmdi-desktop-mac']")
     public WebElement desktopImages;//admin_allOrders
 
     @FindBy(xpath = "//button[@class='ml-2 btn btn-yellow normal']")
-    public  WebElement filterButton;//admin_allOrders
+    public WebElement filterButton;//admin_allOrders
 
     @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[2]")
     public WebElement filtersByCustomerBox;//admin_allOrders
@@ -244,7 +244,7 @@ public class AdminPage {
     public List<WebElement> elementsOfTheSecondColumnByStatus;//By status//admin_allOrders
 
     @FindBy(xpath = "(//span[@role='combobox'])[4]")
-    public  WebElement filtersByOrderTypeBox;//admin_allOrders
+    public WebElement filtersByOrderTypeBox;//admin_allOrders
 
     @FindBy(xpath = "//li[text()='Delivery']")
     public WebElement byOrderTypeOption;//admin_allOrders
@@ -253,28 +253,28 @@ public class AdminPage {
     public List<WebElement> elementsOfTheSecondColumnByOrderType;
 
     @FindBy(xpath = "(//span[@role='combobox'])[1]")
-    public  WebElement filtersByMerchantBox;//admin_allOrders
+    public WebElement filtersByMerchantBox;//admin_allOrders
 
     @FindBy(xpath = "//input[@role='searchbox']")
     public WebElement nameBoxBelowByMerchant;//admin_allOrders
 
     @FindBy(xpath = "//li[text()='Olio E Più']")
-    public  WebElement byMerchantOption;//admin_allOrders
+    public WebElement byMerchantOption;//admin_allOrders
 
     @FindBy(xpath = "//tbody/tr/td[4]")
-    public List<WebElement>elementsOfTheFourthColumnByMerchant;//admin_allOrders
+    public List<WebElement> elementsOfTheFourthColumnByMerchant;//admin_allOrders
 
     @FindBy(xpath = "//p[text()='Orders']")
     public WebElement ordersIcon;//admin_allOrders
 
     @FindBy(xpath = "(//h5[@class='m-0'])[1]")
-    public  WebElement ordersNumber;//admin_allOrders
+    public WebElement ordersNumber;//admin_allOrders
 
     @FindBy(xpath = "//p[text()='Cancel']")
     public WebElement cancelIcon;//admin_allOrders
 
     @FindBy(xpath = "(//h5[@class='m-0'])[2]")
-    public  WebElement cancelNumber;//admin_allOrders
+    public WebElement cancelNumber;//admin_allOrders
 
     @FindBy(xpath = "//p[text()='Total refund']")
     public WebElement totalRefundIcon;//admin_allOrders
@@ -283,10 +283,10 @@ public class AdminPage {
     public WebElement totalRefunQuantity;//admin_allOrders
 
     @FindBy(xpath = "//p[text()='Total Orders']")
-    public  WebElement totalOrdersIcon;//admin_allOrders
+    public WebElement totalOrdersIcon;//admin_allOrders
 
     @FindBy(xpath = "(//h5[@class='m-0'])[4]")
-    public  WebElement totalOrdersQuantity;//admin_allOrders
+    public WebElement totalOrdersQuantity;//admin_allOrders
 
     @FindBy(xpath = "//input[@placeholder='Start date -- End date']")
     public WebElement dateRangeBox;//admin_allOrders
@@ -379,7 +379,7 @@ public class AdminPage {
     public WebElement customerListPage;  //Custormer list page
 
     @FindBy(xpath = "//tbody//tr//td//h6")
-    public  List<WebElement> sortingCustomerName; //sorting desc customername
+    public List<WebElement> sortingCustomerName; //sorting desc customername
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-plus']")
     public WebElement addNewCustomerButton;  // Add customer button on customer list
@@ -406,13 +406,13 @@ public class AdminPage {
 
 
     @FindBy(xpath = "(//thead/tr/th)[19]")  // Merchant Registration /calendar DropDown
-    public  WebElement calendarRightMonth;
+    public WebElement calendarRightMonth;
 
     @FindBy(xpath = "(//thead/tr/th)[7]")  // Merchant Registration /calendar DropDown
-    public  WebElement calendarLefttMonth;
+    public WebElement calendarLefttMonth;
 
     @FindBy(xpath = "//table/thead/tr/th[@class='prev available']")//Merchant Registration/calendarDropDown
-    public  WebElement prevFlashCalendar;
+    public WebElement prevFlashCalendar;
     @FindBy(xpath = "//*[@class='filter-option']")
     public WebElement statusBoxFilter;
 
@@ -425,35 +425,36 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='select2-results__option select2-results__option--selectable']")
     public List<WebElement> itemsInfilterBox;
     @FindBy(xpath = "//*[@class='btn btn-black w-100']")//MerchantRegistration/yellowBox filter
-    public  WebElement clearFilters;
+    public WebElement clearFilters;
 
     @FindBy(xpath = "//*[@class='btn btn-green w-100']")//MerchantRegistration/yellowBox filter
-    public  WebElement applyFilters;
+    public WebElement applyFilters;
     @FindBy(xpath = "//*[@role='status']")  //Merchant Registration/bottom of page
     public WebElement noDataAvailableInTable;
 
     @FindBy(xpath = "//*[@class=' bs-ok-default check-mark']")//Merchant Registration/statusBox/Dropdown
-    public List<WebElement>  checkMark;
+    public List<WebElement> checkMark;
     @FindBy(xpath = "//tbody/tr/td/div")
     public List<WebElement> filteredByStatusBoxDropDown;
-    @FindBy(xpath ="//*[@class='mb-2']")//Merchant Registration/anonymus Box filter
+    @FindBy(xpath = "//*[@class='mb-2']")//Merchant Registration/anonymus Box filter
     public WebElement byMerchant;
 
-    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[1]")//Merchant Registration/anonymus Box filter
-    public   WebElement  filterInputBoxFlash;
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[1]")
+//Merchant Registration/anonymus Box filter
+    public WebElement filterInputBoxFlash;
     @FindBy(xpath = "//*[@role='option']")//Merchant Registration/statusBox/Dropdown
     public List<WebElement> statusDropDown;
     @FindBy(xpath = "//*[@data-separator='to']")
     public WebElement dateInputBox; //Start Date - End Date
     @FindBy(xpath = "//*[@class='ranges']/ul/li")// calendarInputBox / DropDown
-    public List<WebElement>  dateRange;
+    public List<WebElement> dateRange;
 
     @FindBy(xpath = "//*[@class='selection']")//MerchantRegistration/anonymusBox
     public WebElement yellowFilterInputBox;
     @FindBy(xpath = "//*[@class='m-0']")//MerchantRegistration
-    public  List<WebElement> valueOfTopRow;
+    public List<WebElement> valueOfTopRow;
     @FindBy(xpath = "//*[@class='m-0 mr-2 text-muted text-truncate']")//MerchantRegistration
-    public List<WebElement>  topRow;
+    public List<WebElement> topRow;
     @FindBy(xpath = "//*[@class='week']")//MerchantRegistration /dropdown calendar(index = 0-13)
     public List<WebElement> weekCounter;
 
@@ -490,7 +491,7 @@ public class AdminPage {
     @FindBy(xpath = "//tbody//td[2]")
     public List<WebElement> columnNameOfMerchantRegestration;
     @FindBy(xpath = "//tbody//td/p[1]")
-    public List<WebElement>  columnJustNameOfMerchantRegistration;
+    public List<WebElement> columnJustNameOfMerchantRegistration;
 
     @FindBy(xpath = "//tbody//td/div")
     public List<WebElement> columnStatusOfMerchantRegistration;
@@ -527,25 +528,25 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='btn btn-green fileinput-button dz-clickable']")
     public WebElement selectFilesButton;  // in browse button on add customer page
 
-    @FindBy (xpath = "//*[@class='btn btn-green']")
+    @FindBy(xpath = "//*[@class='btn btn-green']")
     public WebElement addFilesButton; // in browse button on add customer page
 
-    @FindBy (xpath = "//*[@class='btn']")
+    @FindBy(xpath = "//*[@class='btn']")
     public WebElement addMoreFileButton; // in browse button on add customer page
 
-    @FindBy (xpath = "//*[@aria-hidden='true']")
+    @FindBy(xpath = "//*[@aria-hidden='true']")
     public WebElement closeProfileWindow; // in browse button on add customer page
 
-    @FindBy (xpath = "//*[@name='AR_client[status]']")
+    @FindBy(xpath = "//*[@name='AR_client[status]']")
     public WebElement statusCustomer; // on add customer page
 
-    @FindBy( xpath = "//*[@type='search']")
+    @FindBy(xpath = "//*[@type='search']")
     public WebElement nameSearchButton; // on customer list
 
-    @FindBy (xpath = "(//*[text()='John Doe '])[1]")
+    @FindBy(xpath = "(//*[text()='John Doe '])[1]")
     public WebElement searchedName;
 
-    @FindBy ( xpath = "//*[@class='dataTables_empty']")
+    @FindBy(xpath = "//*[@class='dataTables_empty']")
     public WebElement assertSearchedPage;
 
     @FindBy(xpath = "//button[@id='dropdownMenuButton']")
@@ -593,7 +594,7 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='rounded-pill img-50 mb-2 lozad loaded']")
     public WebElement merchantPicture;
 
-    @FindBy(id="exampleModalLabel")
+    @FindBy(id = "exampleModalLabel")
     public WebElement merchantPageName;
 
     @FindBy(xpath = "//*[@class='form-control py-2 border-right-0 border']")
@@ -603,10 +604,10 @@ public class AdminPage {
     public WebElement calenderIcon;
 
     @FindBy(xpath = "(//*[text()='Merchant'])[1]")
-    public WebElement merchantSide;
+    public WebElement MerchantSide;
 
     @FindBy(xpath = "(//*[@class='sidebar-nav-sub-menu'])[1]")
-    public WebElement listSide;
+    public WebElement ListSide;
 
     @FindBy(xpath = "//*[@placeholder='Search']")
     public WebElement SearchSide;
@@ -651,22 +652,22 @@ public class AdminPage {
     public WebElement paymentType;//admin_allOrders
 
     @FindBy(xpath = "(//p[@class='dim m-0'])[2]")
-    public  WebElement orderType;//admin_allOrders
+    public WebElement orderType;//admin_allOrders
 
     @FindBy(xpath = "(//p[@class='dim m-0'])[3]")
-    public  WebElement totalPrice;//admin_allOrders
+    public WebElement totalPrice;//admin_allOrders
 
     @FindBy(xpath = "//a[@class='ref_view_order normal btn btn-light tool_tips']")
-    public  WebElement eyeSignUnderActions;
+    public WebElement eyeSignUnderActions;
 
     @FindBy(xpath = "(//h5[@class='m-0'])[1]")
-    public  WebElement orderIdOrderDetailPage;
+    public WebElement orderIdOrderDetailPage;
 
     @FindBy(xpath = "(//p[@class='m-0'])[3]")
-    public  WebElement restaurantNameOrderDetailPage;
+    public WebElement restaurantNameOrderDetailPage;
 
     @FindBy(xpath = "(//table)[1]/tr[5]/td[1]")
-    public  WebElement paymentStatusOrderDetailPage;
+    public WebElement paymentStatusOrderDetailPage;
 
     @FindBy(xpath = "//button[text()='Print']")
     public WebElement printButtonOrderDetailPage;
@@ -675,7 +676,7 @@ public class AdminPage {
     public WebElement orderDateOrderDetailPage;
 
     @FindBy(xpath = "(//a[@class='ref_pdf_order normal btn btn-light tool_tips'])[1]")
-    public  WebElement downloadIcon;
+    public WebElement downloadIcon;
 
     @FindBy(xpath = "//*[@data-range-key='Custom Range'")
     public WebElement customRange;
@@ -731,7 +732,7 @@ public class AdminPage {
     @FindBy(xpath = " //*[@class='btn btn-green item_delete']")
     public WebElement cDeleteButton;
 
-    @FindBy( xpath = "(//*[@class='zmdi zmdi-border-color'])[1]")
+    @FindBy(xpath = "(//*[@class='zmdi zmdi-border-color'])[1]")
     public WebElement updateButton;
 
     @FindBy(xpath = "//*[@id='AR_merchant_restaurant_name']")
@@ -815,154 +816,14 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='zmdi zmdi-search']")
     public WebElement namesearchicon;
 
-
     @FindBy(xpath = "//*[text()='All Review']")
     public WebElement allReviewClick;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//*[@id='frm_search']/div/input")
+    public WebElement couponAdminSearchbox;
+
+    @FindBy(xpath = "//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[2]/h6")
+    public List<WebElement> couponResults;
 
 
 

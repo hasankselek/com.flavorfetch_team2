@@ -133,7 +133,7 @@ public class US_021 { //Merchant Page Dashboard Access
         //Setting Menu Test
         Assert.assertTrue(merchantPage.settingLink.isDisplayed());
         merchantPage.settingLink.click();
-        expectedTitle = "Setting";
+        expectedTitle = "Settings";
         actualTitle = Driver.getDriver().getTitle();
         Assert.assertTrue(actualTitle.contains(expectedTitle));
         ReusableMethods.wait(1);

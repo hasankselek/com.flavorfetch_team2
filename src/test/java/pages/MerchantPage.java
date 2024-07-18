@@ -29,7 +29,7 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Information']")
     public WebElement informationLink;// merchant sidebar page
   
-    @FindBy(xpath = "//a[text()='Setting']")
+    @FindBy(xpath = "(//a[text()='Settings'])[1]")
     public WebElement settingLink;// merchant sidebar page
   
     @FindBy(xpath = "//a[text()='Order Limit']")
@@ -787,6 +787,9 @@ public class MerchantPage {
     public List<WebElement> deliveryType2;
     @FindBy(xpath = "//p[text()='No results']")
     public WebElement noResultText;
+
+    @FindBy(xpath = "//*[@id=\"yw2\"]/li[2]/ul/li/a")
+    public List<WebElement> merchantMenuList;
 
 
 

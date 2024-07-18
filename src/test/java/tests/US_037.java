@@ -134,14 +134,14 @@ public class US_037 {
 
     public void accessToListPage() {
         ReusableMethods.accessAdmin("adminuser_mehmet", "adminpassword_mehmet");
-        Assert.assertTrue(adminPage.merchantSide.isDisplayed());
-        Assert.assertTrue(adminPage.merchantSide.isEnabled());
-        adminPage.merchantSide.click();
+        Assert.assertTrue(adminPage.MerchantSide.isDisplayed());
+        Assert.assertTrue(adminPage.MerchantSide.isEnabled());
+        adminPage.MerchantSide.click();
         ReusableMethods.wait(1);
 
-        Assert.assertTrue(adminPage.listSide.isDisplayed());
-        Assert.assertTrue(adminPage.listSide.isEnabled());
-        adminPage.listSide.click();
+        Assert.assertTrue(adminPage.ListSide.isDisplayed());
+        Assert.assertTrue(adminPage.ListSide.isEnabled());
+        adminPage.ListSide.click();
         ReusableMethods.wait(1);
     }
 }
