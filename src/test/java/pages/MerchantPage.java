@@ -727,6 +727,8 @@ public class MerchantPage {
     public WebElement previousOrderPageSearchBox;
 
 
+
+
     @FindBy(xpath = "//*[@class='chevron selected']")
     public WebElement siparisListesi;
 
@@ -790,6 +792,9 @@ public class MerchantPage {
 
     @FindBy(xpath = "//*[@id=\"yw2\"]/li[2]/ul/li/a")
     public List<WebElement> merchantMenuList;
+
+    @FindBy(xpath = "//*[@id=\"vue-merchant-signup\"]/div[1]/h3")
+    public WebElement merchantBecameYazi ;
 
 
 
