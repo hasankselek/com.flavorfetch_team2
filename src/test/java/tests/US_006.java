@@ -147,8 +147,6 @@ public class US_006 extends TestBaseRapor {
         actions.click(customerPage.cpasswordsignup).sendKeys(fakePassword).perform();
         ReusableMethods.wait(3);
         Assert.assertTrue(customerPage.eyeoff.isDisplayed());
-        //actions.click(customerPage.passwordsignup).sendKeys(fakePassword).perform();
-       // actions.click(customerPage.cpasswordsignup).sendKeys(fakePassword).perform();
         customerPage.ssignup.click();
 
         Driver.quitDriver();

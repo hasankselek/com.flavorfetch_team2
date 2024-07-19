@@ -192,7 +192,7 @@ public class zCustomerSuit extends TestBaseRaporEskiSürüm {
         extentTest.info("Place Order yazisinin görüntüler");
         actions.click(customerPage.placeOrderButton).perform();
         extentTest.info("Place Order butonuna tıklar");
-        ReusableMethods.wait2(1);
+        ReusableMethods.wait(3);
         String expectedText= "Confirming your order";
         String actualText = customerPage.confirmingText.getText();
         Assert.assertEquals(actualText,expectedText);
