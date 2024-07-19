@@ -800,10 +800,50 @@ public  List<WebElement>  firstOrderNumber;
     @FindBy(xpath = "//*[@id=\"vue-merchant-signup\"]/div[1]/h3")
     public WebElement merchantBecameYazi ;
 
+    @FindBy(id = "AR_category_category_description")
+    public WebElement descriptionTextbox; //category name textbox
 
+    @FindBy(xpath ="//*[@class='btn btn-info']")
+    public WebElement imageButton; //image select button
 
+    @FindBy(xpath ="//*[@src='https://qa.flavorfetch.com/backoffice/../upload/289/f17cb65b-381f-11ef-82f4-6daf2ac24f44.jpg']")
+    public WebElement imageSelect; //image select button
 
+    @FindBy(xpath ="//span[text()='Add Files']")
+    public WebElement addImageButton; //image add button
 
+    @FindBy(xpath = "//*[@class='food']")
+    public WebElement foodDropdownMenu; //food dropdown menu
 
-  
+    @FindBy(xpath = "//*[@class='position-relative food_category']")
+    public WebElement category; //category page
+
+    @FindBy(xpath = "//*[@class='btn btn-black btn-circle']")
+    public WebElement categoryAddButton; //category add button
+
+    @FindBy(id = "AR_category_category_name")
+    public WebElement categoryNameTextbox; //category name textbox
+
+    @FindBy(xpath ="//*[@class='zmdi zmdi-border-color']")
+    public WebElement editButton; //category edit button
+
+    @FindBy(xpath ="//*[@class='zmdi zmdi-delete']")
+    public WebElement deleteButton; //category delete button
+
+    @FindBy(xpath ="//a[text()='\n" +
+            "         Delete         ']")
+    public WebElement selectDelete; //select category delete
+
+    @FindBy(xpath = "//*[@class='attributes']")
+    public WebElement attributesDropdownMenu; //attributes dropdown menu
+
+    @FindBy(xpath = "//*[@class='position-relative attrmerchant_size_list']")
+    public WebElement sizePage; //size page
+
+    @FindBy(xpath = "//*[@class='btn btn-black btn-circle']")
+    public WebElement sizeAddButton; //size add button
+
+    @FindBy(id = "AR_size_size_name")
+    public WebElement sizeNameTextbox; //size name textbox
+
 }
