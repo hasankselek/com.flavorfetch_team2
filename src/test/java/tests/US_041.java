@@ -11,14 +11,17 @@ import pages.AdminPage;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class US_041 {
+public class US_041 extends TestBaseRapor {
     AdminPage adminPage = new AdminPage();
 
     @Test
-    public void TC_4101() {
+    public void TC_4101() throws IOException {
         adminPage = new AdminPage();
         ReusableMethods.accessAdmin("adminuser_meltem", "adminpassword_meltem");
         //Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
@@ -75,6 +78,7 @@ public class US_041 {
 
         }
       Driver.quitDriver();
+
         }
         @Test
         public void TC_4102 () {

@@ -15,7 +15,9 @@ import pages.CustomerPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +26,7 @@ import java.util.Random;
 import static utilities.Driver.driver;
 import static utilities.Driver.getDriver;
 
-    public class US_040 {
+    public class US_040 extends TestBaseRapor {
 
         AdminPage adminPage = new AdminPage ();
 
@@ -170,7 +172,7 @@ import static utilities.Driver.getDriver;
 
 
         @Test
-        public void US_4004() {
+        public void US_4004()  {
 
             // Admin paneline gidilir
             Driver.getDriver ().get ( ConfigReader.getProperty ( "admin_Url" ) );
@@ -247,26 +249,25 @@ import static utilities.Driver.getDriver;
 
 
         @Test
-        public void US_4005() {
+        public void US_4005() throws IOException {
 
             // Admin paneline git
             Driver.getDriver ().get ( ConfigReader.getProperty ( "admin_Url" ) );
-
+            extentTest.info ( "Kullanici admin sayfasina gider" );
             // Kullanıcı adı ve şifre ile giriş yap
-
             adminPage.userNameButton.sendKeys(ConfigReader.getProperty("adminuser_serhat") + Keys.TAB +
                     ConfigReader.getProperty("adminpassword_serhat"));
             adminPage.signInButton.click();
-
+            extentTest.info ( "Kullanici bilgileri ile giris yapar" );
             // Promo bölümüne git
             adminPage.promoAdmin.click();
-
+            extentTest.info ( "Promo sekmesine tiklar" );
             // Coupon bölümüne git
             adminPage.couponAdmin.click();
-
+            extentTest.info ( "Coupon sekmesine tiklar" );
             // "Nico" kuponunu ara
             adminPage.couponAdminSearchbox.sendKeys("Nico" + Keys.ENTER);
-
+            extentTest.info ( "Nico isimli kupon search box ta arar" );
             // Kupon arama sonuçlarında "Nico" kuponunu kontrol et
             boolean isCouponFound = false;
             for (WebElement coupon : adminPage.couponResults) {
@@ -275,10 +276,10 @@ import static utilities.Driver.getDriver;
                     break;
                 }
             }
-
+            extentTest.pass ( "Kupon arama sonuçlarında Nico isimli kupon oldugunu kontrol eder" );
             // Kuponun bulunduğunu doğrula
             Assert.assertTrue(isCouponFound, "'Nico' kuponu arama sonuçlarında bulunamadı.");
-
+            extentTest.pass ( "Arama sonuclarinda aranan Nico isimli kuponun bulunduğunu doğrular" );
 
             Driver.quitDriver ();
 

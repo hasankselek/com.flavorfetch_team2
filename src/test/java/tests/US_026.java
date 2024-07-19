@@ -88,7 +88,7 @@ public class US_026 extends TestBaseRapor {
     }
     @Test
     public  void TC_2603(){
-       // extentTest=extentReports.createTest("TC_2603","Testing the visibility and functionality of the 'Accepting Orders' button");
+
         ReusableMethods.accessToMerchant();
         merchantPage.dashboardOrdersIcon.click();
         extentTest.info("Dashboard orders tıklanır");
