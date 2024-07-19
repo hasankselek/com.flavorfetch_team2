@@ -1,7 +1,9 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -87,8 +89,13 @@ public class US_013 extends TestBaseRapor {
         ReusableMethods.wait2(1);
         customerPage.stripeButton.click();
         extentTest.info("kullanici stripe buttona tiklar");
+        WebElement hataMesaji = Driver.getDriver().findElement(By.xpath("//*[@id=\"vue-payment-list\"]/div[5]/div/div/form/div[1]/div/p"));
+        Assert.assertFalse(hataMesaji.isDisplayed(),"hata mesaji algilandi");
+        extentTest.pass("");
+        customerPage.addStripeButton.isEnabled();
+        extentTest.info("kullanici add stripe butonuna tiklar");
         customerPage.addStripeButton.click();
-        extentTest.pass("kullanici add stripe butonuna tiklar");
+        extentTest.info("kullanici add stripe butonuna tiklar");
         Driver.quitDriver();
     }
     @Test
@@ -112,6 +119,10 @@ public class US_013 extends TestBaseRapor {
         ReusableMethods.wait2(1);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
+       if (customerPage.paymentDefaultText.isDisplayed()){
+           customerPage.paymentDefaultThreeDat.click();
+           customerPage.deleteLinkThreeDat.click();
+       }else
         customerPage.cashOnDeliveryButton.click();
         customerPage.addCashButton.click();
         String expectedYazi="Saved Payment Methods";
@@ -173,10 +184,14 @@ public class US_013 extends TestBaseRapor {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
         extentTest.info("kullanici sayfayi asagiya kaydirir");
+        if (customerPage.paymentDefaultText.isDisplayed()){
+            customerPage.paymentDefaultThreeDat.click();
+            customerPage.deleteLinkThreeDat.click();
+        }else {
         customerPage.cashOnDeliveryButton.click();
         extentTest.info("kullanici cash odeme butonuna tiklar");
         customerPage.addCashButton.click();
-        extentTest.info("kullanici Add cash butonuna tiklar");
+        extentTest.info("kullanici Add cash butonuna tiklar");}
         customerPage.placeOrderButtonText.isDisplayed();
         extentTest.info("kullanici place order butonunun gorunurlugunu kontrol eder");
         customerPage.placeOrderButton.click();
@@ -218,6 +233,10 @@ public class US_013 extends TestBaseRapor {
         ReusableMethods.wait2(1);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
+        if (customerPage.paymentDefaultText.isDisplayed()){
+            customerPage.paymentDefaultThreeDat.click();
+            customerPage.deleteLinkThreeDat.click();
+        }else
         customerPage.cashOnDeliveryButton.click();
         customerPage.addCashButton.click();
         customerPage.placeOrderButtonText.isDisplayed();
