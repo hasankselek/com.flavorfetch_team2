@@ -17,7 +17,9 @@ import pages.MerchantPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
+import java.io.IOException;
 import java.security.Key;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -25,35 +27,44 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
 
-public class US_028 {
+public class US_028 extends TestBaseRapor {
     MerchantPage merchantPage = new MerchantPage ();
 
     @Test
-    public void TC_2801() {
+    public void TC_2801() throws IOException {
 
 
         Driver.getDriver ().get ( ConfigReader.getProperty ( "merchant_Url" ) );
+        extentTest.info ( "Kullanici merchant sayfasina gider" );
 
         merchantPage.usernametextbox.sendKeys ( ConfigReader.getProperty ( "merchant_username" ) + Keys.TAB + ConfigReader.getProperty ( "merchant_password" ) );
 
         merchantPage.singinButton.click ();
-
+        extentTest.info ( "Kullanici bilgileri ile giris yapar" );
         merchantPage.ordersLink.click ();
-
+        extentTest.info ( "Merchant dashboarda order sekmesine tiklar" );
         merchantPage.ordersReadyLink.click ();
+        extentTest.info ( "Merchant dasboarda orders ready adimina tiklar" );
 
         String expectedUrl = "https://qa.flavorfetch.com/backoffice/orders/ready";
         String actualUrl = Driver.getDriver ().getCurrentUrl ();
         Assert.assertEquals ( actualUrl, expectedUrl );
+        extentTest.pass ( "Orders Ready sayfasini goruntulendigini dogrular" );
 
         Assert.assertTrue ( merchantPage.ordersReadyList.isDisplayed () );
+        extentTest.info ( "Siparisler listesi bolumunu goruntuler" );
         Assert.assertTrue ( merchantPage.orderHeaderText.isDisplayed () );
+        extentTest.info ( "Siparis ekraninda guncel tarih ve bu tarih itibariyla siparisler ekraninda oldugunu dogrular " );
         Assert.assertTrue ( merchantPage.notificationsButton.isDisplayed () );
+        extentTest.info ( "Magazaya gelen yeni siparisler  bildirim butonunu goruntuler" );
         Assert.assertTrue ( merchantPage.notificationsButton.isEnabled () );
+        extentTest.info ( "Bildirim butonu aktif oldugunu dogrular" );
         ReusableMethods.sleep ( 5 );
         Assert.assertTrue ( merchantPage.howToManageOrdersLink.isDisplayed () );
+        extentTest.info ( "Siarisler nasil yonetilir bilgilendirme sayfa linkini goruntuler" );
         ReusableMethods.sleep ( 5 );
         ReusableMethods.waitForClickablility ( merchantPage.howToManageOrdersLink, 5 ).click ();
+        extentTest.pass ( "Siparisler nasil yonetilir? bilgilendirme linkinin calisitigini dogrular " );
 
         Driver.quitDriver ();
 
@@ -210,35 +221,38 @@ public class US_028 {
     }
 
     @Test
-    public void TC_2804() {
+    public void TC_2804() throws IOException {
 
         // Admin paneline giriş yap
         ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
-
+        extentTest.info ( "Detayli merchant test adimlari icin Admin paneline giriş yapar" );
         // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
 
         // Merchant sekmesine git
         adminPage.MerchantSide.click ();
-
+        extentTest.info ( "Merchant sekmesine gider" );
         // Listeleme sekmesine git
         adminPage.ListSide.click ();
-
+        extentTest.info ( "Merchant listeleme sekmesine tiklar" );
         // Arama yaparak restoranı bul
         adminPage.SearchSide.sendKeys ( "Dolan Uyghur Restaurant" );
         adminPage.SearchSide.sendKeys ( Keys.ENTER );
+        extentTest.info ( "Testlerimizi yapacagimiz restoranti secer" );
 
         // Otomatik girişi etkinleştir
         adminPage.AutoLoginSide.click ();
+        extentTest.info ( "Test yurutecegimiz merchant paneline giris yapar" );
 
         // Yeni bir pencereye geçiş yap ve Orders Ready sayfasına git
         ReusableMethods.windowaGec ( "https://qa.flavorfetch.com/backoffice/merchant/dashboard", Driver.getDriver () );
-
+        extentTest.info ( "Yeni bir pencerede merchant dashboard sayfasini goruntuler" );
         // Siparişler sayfasına git
         merchantPage.ordersLink.click ();
-
+        extentTest.info ( "Orders sekmesine tiklar" );
         // Orders Ready linkine tıkla
         merchantPage.ordersReadyLink.click ();
+        extentTest.info ( "Orders Ready sekmesine tiklar" );
 
         // Teslim edilecek siparişi bul ve seç
 
@@ -255,18 +269,23 @@ public class US_028 {
         }
 
         // Teslim edilecek siparişin olup olmadığını kontrol et
-
         Assert.assertNotNull ( deliveryOrder, "Teslim edilecek sipariş bulunamadı" );
+        extentTest.info ( "Order Type Delivery olan siparis goruntuler" );
 
         // "Assign Driver" butonunun görünürlüğünü ve etkinliğini kontrol et
         Assert.assertTrue ( merchantPage.assingDriverOrdersReadyPage.isDisplayed (), "Assign Driver butonu görünmüyor" );
+        extentTest.info ( "Order Type Delivery olan sipariste Assing Driver butonunu goruntuler" );
         Assert.assertTrue ( merchantPage.assingDriverOrdersReadyPage.isEnabled (), "Assign Driver butonu aktif değil" );
+        extentTest.info ( "Assing Driver butonunun aktif olddugunu dogrular" );
 
         String initialURL = Driver.getDriver ().getCurrentUrl ();
+
 
         // "Assign Driver" butonunu tıkla
 
         merchantPage.assingDriverOrdersReadyPage.click ();
+
+        extentTest.pass ( "Assing Driver butonu ile surucu atamak icin tiklar" );
 
 
         // Bir süre bekleyelim ve sonra URL'nin değişip değişmediğini kontrol edelim
@@ -274,6 +293,7 @@ public class US_028 {
         WebDriverWait wait = new WebDriverWait ( Driver.getDriver (), Duration.ofSeconds ( 10 ) );
 
         wait.until ( ExpectedConditions.not ( ExpectedConditions.urlToBe ( initialURL ) ) );
+        extentTest.pass ( "Surucu atama sayfasinin acildigini dogrular" );
 
         // URL değiştiyse, bir sonraki adıma geçilmiştir
         System.out.println ( "URL değişti, bir sonraki adıma geçildi." );
@@ -410,59 +430,67 @@ public class US_028 {
     }
 
     @Test
-    public void TC_2807() {
+    public void TC_2807() throws IOException {
 
 
         // Admin paneline giriş yap
         ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
-
+        extentTest.info ( "Detayli merchant test adimlari icin Admin paneline giriş yapar" );
         // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
 
         // Merchant sekmesine git
         adminPage.MerchantSide.click ();
-
+        extentTest.info ( "Merchant sekmesine tiklar" );
         // Listeleme sekmesine git
         adminPage.ListSide.click ();
-
+        extentTest.info ( "Merchant listeleme sekmesine tiklar" );
         // Arama yaparak restoranı bul
         adminPage.SearchSide.sendKeys ( "Dolan Uyghur Restaurant" );
         adminPage.SearchSide.sendKeys ( Keys.ENTER );
-
+        extentTest.info ( "Merchant listesinde testlerimizi yapacagimiz restoranti aratir" );
         // Otomatik girişi etkinleştir
         adminPage.AutoLoginSide.click ();
+        extentTest.info ( "Test yurutecegimiz merchant paneline giris yapar" );
 
         // Yeni bir pencereye geçiş yap ve Orders Ready sayfasına git
         ReusableMethods.windowaGec ( "https://qa.flavorfetch.com/backoffice/merchant/dashboard", Driver.getDriver () );
-
+        extentTest.info ( "Yeni bir pencerede merchant dashboard sayfasini goruntuler" );
         // Siparişler sayfasına git
         merchantPage.ordersLink.click ();
-
+        extentTest.info ( "Orders sekmesine tiklar" );
         // Orders Ready linkine tıkla
         merchantPage.ordersReadyLink.click ();
-
+        extentTest.info ( "Orders Ready sekmesine tiklar" );
         // İlk sipariş listesini al
         List<WebElement> initialOrdersList = Driver.getDriver ().findElements ( By.cssSelector ( ".grey-list-chevron .chevron" ) );
         int initialOrderCount = initialOrdersList.size ();
+        extentTest.info ( "Siparis listesini goruntuler ve sayisini kontrol eder" );
 
         // Sipariş alımını duraklatma işlemlerini gerçekleştir
         ReusableMethods.clickWithJS ( merchantPage.acceptingOrderButton );
+        extentTest.info ( "Siparis duraklatma butonuna tiklar" );
         ReusableMethods.clickWithJS ( merchantPage.pauseNewOrders30Minutes );
+        extentTest.info ( "Siparis duraklatma zamani secimine tiklar" );
         ReusableMethods.clickWithJS ( merchantPage.pauseNewOrdersNextMinuteButton );
+        extentTest.info ( "Duraklama nedeni sayfasina gider" );
         ReusableMethods.clickWithJS ( merchantPage.pauseReasonforPausing );
+        extentTest.info ( "Siparis duraklatma nedeni secimi yapar" );
         ReusableMethods.clickWithJS ( merchantPage.pauseAcceptingOrdersConfirm );
+        extentTest.info ( "Siparis duraklatma islemini onaylar" );
 
         // 1 dakika bekle
-        ReusableMethods.wait ( 60 ); // 1 dakika (60 saniye) ornek bekleme
+        ReusableMethods.wait ( 60 ); // 1 dakika (60 saniye) Ornek bekleme suresinde bir siparis verilmeli
 
 
         // Siparişler sayfasını yenile
         Driver.getDriver ().navigate ().refresh ();
+        extentTest.info ( "Yeni siparis verilemdigini dogrulama icin sayfayi yeniler" );
 
         // Yenilenen sipariş listesini al
         List<WebElement> updatedOrdersList = Driver.getDriver ().findElements ( By.cssSelector ( ".grey-list-chevron .chevron" ) );
         int updatedOrderCount = updatedOrdersList.size ();
-
+        extentTest.pass ( "Siparis listesinde  yeni siparişlerin listede olmadigini kontrol eder" );
         // Yeni siparişlerin listede görünmediğini doğrula
 
         if (updatedOrderCount > initialOrderCount) {
@@ -470,6 +498,7 @@ public class US_028 {
         } else {
             System.out.println ( "Yeni siparişler listede görünmüyor. Test başarılı." );
 
+            extentTest.pass ( "Siparis listesinde  yeni siparişlerin listede görünmediğini doğrular" );
             Driver.quitDriver ();
 
         }
@@ -632,43 +661,44 @@ public class US_028 {
 
 
     @Test
-    public void TC_2810() {
+    public void TC_2810() throws IOException {
 
 
         // Admin paneline giriş yap
         ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
-
+        extentTest.info ( "Detayli merchant test adimlari icin Admin paneline giriş yapar" );
         // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
 
         // Merchant sekmesine git
         adminPage.MerchantSide.click ();
-
+        extentTest.info ( "Merchant sekmesine tiklar" );
         // Listeleme sekmesine git
         adminPage.ListSide.click ();
-
+        extentTest.info ( "Merchant listeleme sekmesine tiklar" );
         // Arama yaparak restoranı bul
         adminPage.SearchSide.sendKeys ( "Dolan Uyghur Restaurant" );
         adminPage.SearchSide.sendKeys ( Keys.ENTER );
-
+        extentTest.info ( "Merchant listesinde testlerimizi yapacagimiz restoranti aratir" );
         // Otomatik girişi etkinleştir
         adminPage.AutoLoginSide.click ();
-
+        extentTest.info ( "Test yurutecegimiz merchant paneline giris yapar" );
         // Yeni bir pencereye geçiş yap ve Orders Ready sayfasına git
         ReusableMethods.windowaGec ( "https://qa.flavorfetch.com/backoffice/merchant/dashboard", Driver.getDriver () );
-
+        extentTest.info ( "Yeni bir pencerede merchant dashboard sayfasini goruntuler" );
         // Siparişler sayfasına git
         merchantPage.ordersLink.click ();
-
+        extentTest.info ( "Orders sekmesine tiklar" );
         // Orders Ready linkine tıkla
         merchantPage.ordersReadyLink.click ();
-
-        // Siparişler listesine erişim sağla
+        extentTest.info ( "Orders Ready sekmesine tiklar" );
+        // Siparişler listesine erişim sağlar
         List<WebElement> ordersList = Driver.getDriver ().findElements ( By.cssSelector ( ".grey-list-chevron .chevron" ) );
 
         // İlk sipariş listesini sayisini al
         List<WebElement> initialOrdersList = Driver.getDriver ().findElements ( By.cssSelector ( ".grey-list-chevron .chevron" ) );
         int initialOrderCount = initialOrdersList.size ();
+        extentTest.info ( "Siparis listesini goruntuler ve sayisini kontrol eder" );
 
         // Herhangi bir siparişi seç
         if (!ordersList.isEmpty ()) {
@@ -676,19 +706,24 @@ public class US_028 {
             anyOrder.click ();
 
             merchantPage.orderPreviusButton.click ();
+            extentTest.info ( "Siparis bilgilerinde onceki siparisler linkine tiklar" );
 
             Assert.assertTrue ( merchantPage.customerInfo.isDisplayed () );
+            extentTest.info ( "Onceki siparisler ekraninda musteri bilgilerini goruntuler" );
             Assert.assertTrue ( merchantPage.blockCustomer.isDisplayed () );
+            extentTest.info ( "Onceki siparis ekraninda musteri engelle butonunu goruntuler" );
 
             merchantPage.blockCustomer.click ();
+            extentTest.info ( "Musteri engelle butonunu secer" );
             merchantPage.blockCustomerConfirm.click ();
+            extentTest.info ( "Musteri engellemeyi onaylar" );
 
             ReusableMethods.wait ( 60 ); // Siparis verilemedigini orneklemek icin beklenen sure.
 
             // Yenilenen sipariş listesini al
             List<WebElement> updatedOrdersList = Driver.getDriver ().findElements ( By.cssSelector ( ".grey-list-chevron .chevron" ) );
             int updatedOrderCount = updatedOrdersList.size ();
-
+            extentTest.pass ( "Ornek bekleme suresince siparis verilemedigini dogrular" );
             Driver.getDriver ().close ();
 
             // Yeni siparişlerin listede görünmediğini doğrula
@@ -698,9 +733,8 @@ public class US_028 {
             } else {
                 System.out.println ( "Yeni siparişler listede görünmüyor. Test başarılı." );
 
-
             }
-
+            extentTest.pass ( "Musterinin yeni siparis veremedigini dogrular" );
             Driver.quitDriver ();
 
         }
@@ -708,60 +742,62 @@ public class US_028 {
 
 
     @Test
-    public void TC_2811() {
+    public void TC_2811() throws IOException {
 
-// Admin paneline giriş yap
+        // Admin paneline giriş yap
         ReusableMethods.accessAdmin ( "adminuser_serhat", "adminpassword_serhat" );
-
-// AdminPage objesini oluştur
+        extentTest.info ( "Detayli merchant test adimlari icin Admin paneline giriş yapar" );
+        // AdminPage objesini oluştur
         AdminPage adminPage = new AdminPage ();
 
-// Merchant sekmesine git
+        // Merchant sekmesine git
         adminPage.MerchantSide.click ();
-
-// Listeleme sekmesine git
+        extentTest.info ( "Merchant sekmesine tiklar" );
+        // Listeleme sekmesine git
         adminPage.ListSide.click ();
-
-// Arama yaparak restoranı bul
+        extentTest.info ( "Merchant listeleme sekmesine tiklar" );
+        // Arama yaparak restoranı bul
         adminPage.SearchSide.sendKeys ( "Dolan Uyghur Restaurant" );
         adminPage.SearchSide.sendKeys ( Keys.ENTER );
-
-// Otomatik girişi etkinleştir
+        extentTest.info ( "Merchant listesinde testlerimizi yapacagimiz restoranti aratir" );
+        // Otomatik girişi etkinleştir
         adminPage.AutoLoginSide.click ();
-
-// Yeni bir pencereye geçiş yap ve Orders Ready sayfasına git
+        extentTest.info ( "Test yurutecegimiz merchant paneline giris yapar" );
+        // Yeni bir pencereye geçiş yap ve Orders Ready sayfasına git
         ReusableMethods.windowaGec ( "https://qa.flavorfetch.com/backoffice/merchant/dashboard", Driver.getDriver () );
-
-// Siparişler sayfasına git
+        extentTest.info ( "Yeni bir pencerede merchant dashboard sayfasini goruntuler" );
+        // Siparişler sayfasına git
         merchantPage.ordersLink.click ();
-
-// Orders Ready linkine tıkla
+        extentTest.info ( "Orders sekmesine tiklar" );
+        // Orders Ready linkine tıkla
         merchantPage.ordersReadyLink.click ();
-
-// Siparişler listesine erişim sağla
+        extentTest.info ( "Orders Ready sekmesine tiklar" );
+        // Siparişler listesine erişim sağla
         List<WebElement> ordersList = Driver.getDriver ().findElements ( By.cssSelector ( ".grey-list-chevron .chevron" ) );
 
-// İlk sipariş listesini sayısını al
+        // İlk sipariş listesini sayısını al
         List<WebElement> initialOrdersList = Driver.getDriver ().findElements ( By.cssSelector ( ".grey-list-chevron .chevron" ) );
         int initialOrderCount = initialOrdersList.size ();
 
-// Herhangi bir siparişi seç
+        // Herhangi bir siparişi seç
         if (!ordersList.isEmpty ()) {
             WebElement anyOrder = ordersList.get ( 0 );
             anyOrder.click ();
-
+            extentTest.info ( "Siparis listesinde herhangi bir siparis secer" );
             merchantPage.orderPreviusButton.click ();
+            extentTest.info ( "Siparis ozetinde yer alan onceki siparisler linkine tiklar" );
 
             if (merchantPage.previousOrderPageSearchBox.isEnabled ()) {
                 merchantPage.previousOrderPageSearchBox.sendKeys ( "12592" + Keys.ENTER );
 
+            extentTest.pass  ( "Ornek onceki siparis bilgileri ile search box aktif ise arama yapar" );
                 // Arama sonuçlarının yüklenmesi için bekle
                 WebDriverWait wait = new WebDriverWait ( Driver.getDriver (), Duration.ofSeconds ( 10 ) );
                 wait.until ( ExpectedConditions.visibilityOfElementLocated ( By.cssSelector ( "table.table-sm.w-100.order_table.dataTable.no-footer" ) ) );
-
+                extentTest.info ( "Arama sonucunun yuklenmsei icin listenin yenilenmesini bekler" );
                 // Arama sonucunu içeren tabloyu bul
                 WebElement table = Driver.getDriver ().findElement ( By.cssSelector ( "table.table-sm.w-100.order_table.dataTable.no-footer" ) );
-
+                extentTest.info ( "Arama sonucu iceren tabloyu goruntuler" );
                 // Tablo içindeki tbody'yi bul ve satırlarını al
                 WebElement tbody = table.findElement ( By.tagName ( "tbody" ) );
                 List<WebElement> rows = tbody.findElements ( By.tagName ( "tr" ) );
@@ -781,7 +817,7 @@ public class US_028 {
                         break;
                     }
                 }
-
+            extentTest.pass ( "Arama sonucunda istenen bilgiler ile arama yapilabildigini dogrular" );
                 // Arama sonucunu doğrula
                 if (orderFound) {
                     System.out.println ( "Sipariş bulundu. Test başarılı." );
@@ -794,8 +830,9 @@ public class US_028 {
         } else {
             System.out.println ( "Sipariş listesi boş. Test gerçekleştirilemiyor." );
         }
-
+        extentTest.pass ( "Arama sonucunda istenen bilgiler ile arama yapilabildigini dogrular" );
         Driver.quitDriver ();
+
 
         //Search Box  otomasyanda calisiyor manuel testte calismiyor
 
