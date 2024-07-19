@@ -212,14 +212,19 @@ public class US_013 extends TestBaseRapor {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
         extentTest.info("kullanici sayfayi asagiya kaydirir");
-        if (customerPage.paymentDefaultText.isDisplayed()){
-            customerPage.paymentDefaultThreeDat.click();
-            customerPage.deleteLinkThreeDat.click();
-        }else {
-        customerPage.cashOnDeliveryButton.click();
-        extentTest.info("kullanici cash odeme butonuna tiklar");
-        customerPage.addCashButton.click();
-        extentTest.info("kullanici Add cash butonuna tiklar");}
+        try {
+            if (customerPage.savedPaymentMethodsText.isDisplayed()) {
+                customerPage.paymentDefaultThreeDat.click();
+                ReusableMethods.wait(1);
+                customerPage.deleteLinkThreeDat.click();
+
+            }
+        } catch (NoSuchElementException e) {
+            // Öğe bulunamazsa burası çalışır
+            customerPage.cashOnDeliveryButton.click();
+            customerPage.addCashButton.click();
+        }
+        ReusableMethods.wait2(1);
         customerPage.placeOrderButtonText.isDisplayed();
         extentTest.info("kullanici place order butonunun gorunurlugunu kontrol eder");
         customerPage.placeOrderButton.click();
@@ -322,8 +327,23 @@ public class US_013 extends TestBaseRapor {
         ReusableMethods.wait2(1);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
-        customerPage.cashOnDeliveryButton.click();
-        customerPage.addCashButton.click();
+
+
+        try {
+            if (customerPage.savedPaymentMethodsText.isDisplayed()) {
+                customerPage.paymentDefaultThreeDat.click();
+                ReusableMethods.wait(1);
+                customerPage.deleteLinkThreeDat.click();
+
+            }
+        } catch (NoSuchElementException e) {
+            // Öğe bulunamazsa burası çalışır
+            customerPage.cashOnDeliveryButton.click();
+            customerPage.addCashButton.click();
+        }
+
+
+
         customerPage.placeOrderButtonText.isDisplayed();
         actions.click(customerPage.placeOrderButton).perform();
         ReusableMethods.wait2(2);
