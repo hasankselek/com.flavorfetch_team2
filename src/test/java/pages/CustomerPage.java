@@ -615,11 +615,83 @@ public class CustomerPage {
 
     @FindBy(xpath = "//*[@id='vue-saved-store']//div[2]/h5")
     public  WebElement noSavedRestaurantText;//orders_newOrders
+  
+    @FindBy(xpath = "//*[@for='lastname']")
+    public WebElement lastnamesignup;
 
+    @FindBy(xpath = "//*[@for='email_address']")
+    public WebElement emailsignup;
 
+    @FindBy(xpath = "(//*[@type='text'])[3]")
+    public WebElement phonesignup;
 
+    @FindBy(xpath = "//*[@for='password']")
+    public WebElement passwordsignup;
 
+    @FindBy(xpath = "//*[@for='cpassword']")
+    public WebElement cpasswordsignup;
 
+    @FindBy(xpath = "//*[@class='btn btn-green w-100']")
+    public WebElement ssignup;
 
+    @FindBy(xpath = "//*[@class='zmdi zmdi-eye-off']")
+    public WebElement eyeoff;
+    
+    @FindBy(xpath = "//*[@id=\"vue-merchant-signup\"]/div[1]/h3")
+    public WebElement merchantBecameYazi;
+
+   @FindBy(xpath = "//*[@id=\"vue-merchant-signup\"]/div[1]/p")
+   public WebElement GetSalesYazi;
+
+   @FindBy(xpath = "(//*[@class='form-control form-control-text'])[1]")
+   public WebElement storeText;
+
+   @FindBy(xpath = "(//*[@class='form-control form-control-text'])[2]")
+   public WebElement storeAdress;
+
+   @FindBy(xpath = "(//*[@class='form-control form-control-text'])[3]")
+   public WebElement storeMail;
+
+   @FindBy(xpath = "//*[@id=\"vue-merchant-signup\"]/div[1]/form/div[5]/label")
+   public WebElement CommissionButon;
+
+   @FindBy(xpath = "//*[@class='m-0 mt-3']")
+   public WebElement PrivacyButton;
+
+   @FindBy(xpath = "(//*[@class='text-green'])[1]")
+   public WebElement termsAndConditions;
+
+   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[1]/div[1]/div/label")
+   public WebElement registerFirstName;
+
+   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[1]/div[2]/div/label")
+   public WebElement registerLastName;
+
+   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[2]/label")
+   public WebElement registerEmail;
+
+   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[4]/label")
+   public WebElement registerUsername;
+
+   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[4]/label")
+   public WebElement registerPassword;
+
+   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[4]/label")
+   public WebElement registerConfirmPassword;
+
+   @FindBy(xpath = "(//*[@class='text-green'])[2]")
+   public WebElement privacyPolicyLink;
+
+   @FindBy(xpath = "(//*[@class='text-green'])[3]")
+   public WebElement loginHereLink;
+
+   @FindBy(xpath = "(//*[@type='text'])[3]")
+   public WebElement StorePhoneNumber;
+ 
+   @FindBy(xpath = "(//*[@class='required'])[1]")
+   public WebElement firstnamesignup;
+
+   @FindBy(xpath = "//*[@id=\"vue-payment-list\"]/div[5]/div/div/form/div[1]/div/p")
+    public WebElement stripeErrorMessage;
 
 }

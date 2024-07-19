@@ -32,20 +32,17 @@ public class MerchantPage {
     @FindBy(xpath = "(//a[text()='Settings'])[1]")
     public WebElement settingLink;// merchant sidebar page
   
-    @FindBy(xpath = "(//a[text()='Order Limit'])[1]")
+    @FindBy(xpath = "//a[text()='Order Limit']")
     public WebElement orderLimitLink;// merchant sidebar page
   
-    @FindBy(xpath = "(//a[text()='Banner'])[1]")
+    @FindBy(xpath = "//a[text()='Banner']")
     public WebElement bannerLink;// merchant sidebar page
   
-    @FindBy(xpath = "(//a[text()='Pages'])[1]")
+    @FindBy(xpath = "//a[text()='Pages']")
     public WebElement pagesLink;// merchant sidebar page
   
-    @FindBy(xpath = "(//a[text()='Menu'])[1]")
+    @FindBy(xpath = "//a[text()='Menu']")
     public WebElement menuLink;// merchant sidebar page
-
-    @FindBy(xpath = "//div[4]/ul[1]/li/a[1]")
-    public List<WebElement> merchantMenuList;
 
     @FindBy(xpath = "//a[text()='Orders']")
     public WebElement ordersLink;// merchant sidebar page
@@ -98,7 +95,7 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Ingredients']")
     public WebElement ingredientsLink;// merchant sidebar page
 
-    @FindBy(xpath = "//a[text()='Cooking Reference ']")
+    @FindBy(xpath = "//a[text()='Cooking Reference']")
     public WebElement cookingReferenceLink;// merchant sidebar page
 
     @FindBy(xpath = "//a[text()='Food']")
@@ -257,7 +254,7 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Buyers']")
     public WebElement buyersLink;// merchant sidebar page
 
-    @FindBy(xpath = "(//ul/li/a[text()='List'])[3]")
+    @FindBy(xpath = "//a[text()='List']")
     public WebElement listLink;// merchant sidebar page
 
     @FindBy(xpath = "//a[text()='Reviews']")
@@ -309,8 +306,10 @@ public class MerchantPage {
     public  WebElement dasboardNewOrdersIcon;//merhant Page
 
     @FindBy(xpath = "(//p[@class='m-0'])[7]")
-    public List <WebElement> orderId1;//merchant_New order page
+    public List<WebElement> orderId1;//merchant_New order page
   
+    @FindBy (xpath ="(//p[@class='m-0'])[11]" )
+    public List<WebElement> orderId2;
 
     @FindBy(xpath = " (//p[@class='m-0'])[5]")
     public  WebElement customerName;//merchant_New order page
@@ -429,7 +428,7 @@ public class MerchantPage {
     @FindBy(xpath = "//span[text()='Reject order']")
     public  WebElement cancelRejectOrderButton;;//merchant_New order page
 
-    @FindBy(xpath = "//div[text()='Order is cancelled']")
+    @FindBy(xpath = "//div[@class='notyf-announcer']")
     public  WebElement cancelOrderMessage;;//merchant_New order page
 
     @FindBy(xpath = "//a[text()='Download PDF (A4)']")
@@ -458,8 +457,11 @@ public class MerchantPage {
     @FindBy(xpath = "//*[@class='col p-0 col-lg-3 col-md-3 col-sm-6 col-6 mb-3 mb-xl-0']") //index = 0-3  pictures up the merchantPage
     public List<WebElement> listOfTopPictures;
 
+    @FindBy(xpath = "//*[@class='text-muted font-weight-500']")
+    public  List<WebElement>    lastOrdersRowNumber;
     @FindBy(xpath = "//h5")
     public List<WebElement> topPicTextList;
+
 
     @FindBy(xpath = "//*[@class='text-muted']")
     public List<WebElement> sixRightColumnList;
@@ -492,7 +494,7 @@ public class MerchantPage {
     public List<WebElement> thirdColumnOfProgress;
     @FindBy(xpath = "//*[@class='badge order_status accepted']")
     public List<WebElement> forthColumnOfProgress;
-    @FindBy(xpath = "//*[@class='nav-item']")
+    @FindBy(xpath = "//*[@class='nav-item']")//0-5
     public List<WebElement> topItemsList;
     @FindBy(xpath = "//*[@class='font-weight-bold d-block']")
     public List<WebElement> secoundIntReady;
@@ -522,7 +524,8 @@ public class MerchantPage {
 
     @FindBy(xpath = "//h2")
     public WebElement overViewNumber;
-
+@FindBy(xpath = "//*[@class='font-weight-bold hover-text-primary mb-1']")
+public  List<WebElement>  firstOrderNumber;
     @FindBy(xpath = "//h3")
     public List<WebElement> fourHouseIntList;
     @FindBy(xpath = "//h5[@class='m-0']")
@@ -590,7 +593,7 @@ public class MerchantPage {
     @FindBy(xpath = "//*[text()='Reject order']")
     public WebElement rejectOrderButton; //  scheduled order reject page
 
-    @FindBy(xpath = "(//*[@class='mb-1'])[1]")
+    @FindBy(xpath = "//*[@class='mb-1']")
     public WebElement productNameOrderSummary; //  scheduled order page
 
     @FindBy(xpath = "//*[@class='m-0 font11']")
@@ -645,6 +648,113 @@ public class MerchantPage {
     @FindBy(xpath = "//*[@class='col-md-5']")
     public WebElement orderView;
 
+    @FindBy (xpath = "//*[@class='make-sticky d-flex align-items-center justify-content-between bg-white']")
+    public  WebElement ordersReadyList;
+
+    @FindBy(xpath = "//*[@class='btn-green btn normal mr-2 font13 mb-3 mb-xl-0']")
+    public WebElement deliveryOnThisWaybuttonOrderReadyPage;
+
+    @FindBy(xpath = "//*[@class='btn-yellow btn normal mr-2 font13 mb-3 mb-xl-0']")
+    public WebElement deliveredButtonOrdersReadyPage;
+
+    @FindBy(xpath = "//*[@class='btn-black btn normal mr-2 font13 mb-3 mb-xl-0']")
+    public WebElement deliveryFailedButtonOrdersReadyPage;
+
+    @FindBy(xpath = "//*[@class='btn-green btn normal mr-2 font13 mb-3 mb-xl-0']")
+    public WebElement completeOrdersReadyPage;
+
+    @FindBy(xpath = "//*[@class='btn-black btn normal mr-2 font13 mb-3 mb-xl-0']")
+    public WebElement orderFailedOrdersReadyPage;
+
+    @FindBy(xpath = "//*[@class='btn btn-primary']")
+    public WebElement assingDriverOrdersReadyPage;
+
+    @FindBy(xpath="(//*[@class='dropdown-item'])[14]")
+    public WebElement roundedDelayOrder;   // Orders Ready Rounded Button (... button)
+
+    @FindBy(xpath = "(//*[text()='5 min(s)'])[1]")
+    public WebElement delayOrderMinute;
+
+    @FindBy(xpath = "(//*[@class=\"btn btn-green pl-4 pr-4\"])[1]")
+    public  WebElement delayOrderConfirm;
+
+    @FindBy (xpath = "//*[text()='Customer is notified about the delayed.']")
+    public WebElement delayOrdermessageMinute;
+
+    @FindBy (xpath = "(//*[text()='30 min(s)'])[2]")
+    public WebElement pauseNewOrders30Minutes;
+
+    @FindBy(xpath = "(//button[@class='btn btn-green pl-4 pr-4'])[3]")
+    public WebElement pauseNewOrdersNextMinuteButton;
+
+    @FindBy(xpath = "//*[text()='Store closed']")
+    public WebElement pauseReasonforPausing;
+
+    @FindBy(xpath = "(//*[text()='Confirm'])[2]")
+    public WebElement pauseAcceptingOrdersConfirm;
+
+
+    @FindBy(xpath = "//*[text()='Get direction']")
+    public WebElement getDirectionsButton;
+
+
+    @FindBy(xpath = "(//*[@class=\"tactile-searchbox-input\"])[1]")
+    public WebElement getDirectionsStart;
+
+
+    @FindBy (xpath = "//*[@class=\"link\"]")
+    public WebElement orderPreviusButton;
+
+    @FindBy (xpath = "(//*[text()='Inci Lale Basbostanci'])[3]")
+    public WebElement customerInfo;
+
+    @FindBy(xpath = "//*[@class='table table-sm w-100 order_table dataTable no-footer']")
+    public List<WebElement> previusOrderPage;
+
+    @FindBy(xpath = "(//*[text()='Next'])[3]")
+    public WebElement previusOrderPageNextButton;
+
+    @FindBy(xpath = "(//*[text()='Previous'])[2]")
+    public WebElement previusOrderPagePreviousButton;
+
+
+    @FindBy(xpath = "(//*[@class=\"d-flex align-items-center\"])[16]")
+    public  WebElement blockCustomer;
+
+    @FindBy(xpath = "//*[text()='Block Customer']")
+    public  WebElement unBlockCustomer;
+
+    @FindBy(xpath = "(//*[text()='Confirm'])[5]")
+    public WebElement blockCustomerConfirm;
+
+    @FindBy(xpath = "//*[@class=\"form-control form-control-sm\"]")
+    public WebElement previousOrderPageSearchBox;
+
+
+
+
+    @FindBy(xpath = "//*[@class='chevron selected']")
+    public WebElement siparisListesi;
+
+    @FindBy(xpath = "(//*[text()='Dinein'])[3]")
+    public WebElement orderTypeDineinButton;
+
+    @FindBy(xpath = "(//*[text()='Paid'])[2]")
+    public WebElement paymentStatusPaidButton;
+
+    @FindBy(xpath = "(//*[text()='Order ID - Ascending'])[2]")
+    public WebElement sortIDArtanAscending;
+
+    @FindBy(xpath = "//*[text()='View all']")
+    public WebElement notificationList;
+
+
+    @FindBy(xpath = "//*[text()='Date']")
+    public WebElement allNotificationsList;
+
+    @FindBy(xpath = "//*[@class=\"badge rounded-circle badge-danger count\"]")
+    public WebElement notificationListCount;
+
     @FindBy(xpath = "//*[@class='row align-items-start']")
     public List<WebElement>  newOrdersList;
 
@@ -684,11 +794,16 @@ public class MerchantPage {
     @FindBy(xpath = "//p[text()='No results']")
     public WebElement noResultText;
 
+    @FindBy(xpath = "//*[@id=\"yw2\"]/li[2]/ul/li/a")
+    public List<WebElement> merchantMenuList;
+
+    @FindBy(xpath = "//*[@id=\"vue-merchant-signup\"]/div[1]/h3")
+    public WebElement merchantBecameYazi ;
 
 
 
 
 
 
-
+  
 }
