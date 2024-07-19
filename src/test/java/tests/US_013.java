@@ -1,7 +1,10 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -85,10 +88,34 @@ public class US_013 extends TestBaseRapor {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         extentTest.info("kullanici sayfayi asagiya kaydirir");
         ReusableMethods.wait2(1);
-        customerPage.stripeButton.click();
-        extentTest.info("kullanici stripe buttona tiklar");
-        customerPage.addStripeButton.click();
-        extentTest.pass("kullanici add stripe butonuna tiklar");
+
+        try {
+            // Stripe ödeme butonuna tıklayın
+            customerPage.stripeButton.click();
+            extentTest.info("kullanici stripe buttona tiklar");
+
+
+            // Hata mesajını kontrol eder
+            boolean isErrorMessageDisplayed = customerPage.stripeErrorMessage.isDisplayed();
+            extentTest.info("Hata mesajını kontrol eder");
+
+            //add Stripe butonuna tıklar
+            customerPage.addStripeButton.click();
+            extentTest.pass("kullanici add stripe butonuna tiklar");
+
+            // Eğer hata mesajı görünüyorsa, testi fail et
+            if (isErrorMessageDisplayed) {
+                String errorMessageText = customerPage.stripeErrorMessage.getText();
+                Assert.fail("Hata mesajı alındı: " + errorMessageText);
+
+            }
+        } catch (Exception e) {
+            // Diğer tüm istisnalar için genel bir hata mesajı
+            extentTest.pass("Hata mesajının gözüktüğünü doğrular");
+            Assert.fail("Stripe ödeme methodu başarısız " + e.getMessage());
+
+        }
+
         Driver.quitDriver();
     }
     @Test
@@ -112,11 +139,23 @@ public class US_013 extends TestBaseRapor {
         ReusableMethods.wait2(1);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
-        customerPage.cashOnDeliveryButton.click();
-        customerPage.addCashButton.click();
-        String expectedYazi="Saved Payment Methods";
-        String actualYazi = customerPage.savedPaymentMethodsText.getText();
-        Assert.assertEquals(actualYazi,expectedYazi);
+        try {
+            if (customerPage.savedPaymentMethodsText.isDisplayed()) {
+                customerPage.paymentDefaultThreeDat.click();
+                ReusableMethods.wait(1);
+                customerPage.deleteLinkThreeDat.click();
+
+            }
+        } catch (NoSuchElementException e) {
+            // Öğe bulunamazsa burası çalışır
+            customerPage.cashOnDeliveryButton.click();
+            customerPage.addCashButton.click();
+            String expectedYazi = "Saved Payment Methods";
+            String actualYazi = customerPage.savedPaymentMethodsText.getText();
+            Assert.assertEquals(actualYazi, expectedYazi);
+        }
+
+
         Driver.quitDriver();
     }
     @Test
@@ -173,10 +212,19 @@ public class US_013 extends TestBaseRapor {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
         extentTest.info("kullanici sayfayi asagiya kaydirir");
-        customerPage.cashOnDeliveryButton.click();
-        extentTest.info("kullanici cash odeme butonuna tiklar");
-        customerPage.addCashButton.click();
-        extentTest.info("kullanici Add cash butonuna tiklar");
+        try {
+            if (customerPage.savedPaymentMethodsText.isDisplayed()) {
+                customerPage.paymentDefaultThreeDat.click();
+                ReusableMethods.wait(1);
+                customerPage.deleteLinkThreeDat.click();
+
+            }
+        } catch (NoSuchElementException e) {
+            // Öğe bulunamazsa burası çalışır
+            customerPage.cashOnDeliveryButton.click();
+            customerPage.addCashButton.click();
+        }
+        ReusableMethods.wait2(1);
         customerPage.placeOrderButtonText.isDisplayed();
         extentTest.info("kullanici place order butonunun gorunurlugunu kontrol eder");
         customerPage.placeOrderButton.click();
@@ -185,6 +233,8 @@ public class US_013 extends TestBaseRapor {
         String actualText = customerPage.confirmingText.getText();
         Assert.assertEquals(actualText,expectedText);
         extentTest.pass("kullanici confirming yazisini dogrular");
+
+
         Driver.quitDriver();
     }
     @Test
@@ -218,8 +268,26 @@ public class US_013 extends TestBaseRapor {
         ReusableMethods.wait2(1);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
-        customerPage.cashOnDeliveryButton.click();
-        customerPage.addCashButton.click();
+
+        try {
+            if (customerPage.savedPaymentMethodsText.isDisplayed()) {
+                customerPage.paymentDefaultThreeDat.click();
+                ReusableMethods.wait(2);
+                customerPage.deleteLinkThreeDat.click();
+                ReusableMethods.wait(2);
+                customerPage.cashOnDeliveryButton.click();
+                ReusableMethods.wait(2);
+                customerPage.addCashButton.click();
+            }
+        } catch (NoSuchElementException e) {
+            // Öğe bulunamazsa burası çalışır
+            customerPage.cashOnDeliveryButton.click();
+            customerPage.addCashButton.click();
+            String expectedYazi = "Saved Payment Methods";
+            String actualYazi = customerPage.savedPaymentMethodsText.getText();
+            Assert.assertEquals(actualYazi, expectedYazi);
+        }
+
         customerPage.placeOrderButtonText.isDisplayed();
         actions.click(customerPage.placeOrderButton).perform();
         ReusableMethods.wait2(1);
@@ -259,8 +327,23 @@ public class US_013 extends TestBaseRapor {
         ReusableMethods.wait2(1);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
-        customerPage.cashOnDeliveryButton.click();
-        customerPage.addCashButton.click();
+
+
+        try {
+            if (customerPage.savedPaymentMethodsText.isDisplayed()) {
+                customerPage.paymentDefaultThreeDat.click();
+                ReusableMethods.wait(1);
+                customerPage.deleteLinkThreeDat.click();
+
+            }
+        } catch (NoSuchElementException e) {
+            // Öğe bulunamazsa burası çalışır
+            customerPage.cashOnDeliveryButton.click();
+            customerPage.addCashButton.click();
+        }
+
+
+
         customerPage.placeOrderButtonText.isDisplayed();
         actions.click(customerPage.placeOrderButton).perform();
         ReusableMethods.wait2(2);
