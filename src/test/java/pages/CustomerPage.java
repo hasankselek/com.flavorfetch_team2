@@ -325,7 +325,7 @@ public class CustomerPage {
     @FindBy (xpath= "//*[text()='Show more']")
     public  WebElement showMoreButton ; // restaurants page
 
-    @FindBy (xpath= "//*[@id='cuisine5']")
+    @FindBy (xpath = "//*[@for='cuisine5']")
     public  WebElement sandwichRAdioButton ; // restaurants page
 
     @FindBy (xpath= "//h5[normalize-space()='Team2']")
@@ -661,22 +661,22 @@ public class CustomerPage {
    @FindBy(xpath = "(//*[@class='text-green'])[1]")
    public WebElement termsAndConditions;
 
-   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[1]/div[1]/div/label")
+   @FindBy(id = "first_name")
    public WebElement registerFirstName;
 
-   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[1]/div[2]/div/label")
+   @FindBy(id = "last_name")
    public WebElement registerLastName;
 
-   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[2]/label")
+   @FindBy(id = "contact_email")
    public WebElement registerEmail;
 
-   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[4]/label")
+   @FindBy(id = "username")
    public WebElement registerUsername;
 
-   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[4]/label")
+   @FindBy(id = "password")
    public WebElement registerPassword;
 
-   @FindBy(xpath = "//*[@id=\"vue-merchant-user\"]/form/div[4]/label")
+   @FindBy(id = "cpassword")
    public WebElement registerConfirmPassword;
 
    @FindBy(xpath = "(//*[@class='text-green'])[2]")

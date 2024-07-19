@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+
+<suite name="E2E Test">
+    <test name="E2E">
+        <classes>
+            <class name="tests.zCustomerSuit"></class>
+            <class name="tests.zMerchantSuit"></class>
+        </classes>
+    </test>
+</suite>

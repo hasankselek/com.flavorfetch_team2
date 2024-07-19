@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+
+<suite name="FailedTest">
+    <test name="Failed">
+        <groups>
+            <run>
+                <include name="regression"></include>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="tests.*"></package>
+        </packages>
+    </test>
+</suite>

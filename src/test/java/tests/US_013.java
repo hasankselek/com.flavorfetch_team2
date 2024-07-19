@@ -1,5 +1,6 @@
 package tests;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -51,7 +52,7 @@ public class US_013 extends TestBaseRapor {
         Assert.assertEquals(actualYazi,expectedYazi);
         Driver.quitDriver();
     }
-    @Test
+    @Test(groups = "Failed")
     public void TC_1302() throws IOException {
         actions = new Actions(Driver.getDriver());
         customerPage= new CustomerPage();
@@ -69,9 +70,9 @@ public class US_013 extends TestBaseRapor {
         extentTest.info("kullanici adress text box'ina adresini girer");
         customerPage.newYorkAddressTextBox.click();
         extentTest.info("kullanici cikan adrese tiklar");
-        ReusableMethods.wait2(1);
-        customerPage.sandwichRAdioButton.isDisplayed();
-        extentTest.info("kullanici sandwich sekmesinin gorunurlugunu kontrol eder");
+        ReusableMethods.wait2(5);
+        Assert.assertTrue(customerPage.sandwichRAdioButton.isDisplayed());
+        extentTest.pass("kullanici sandwich sekmesinin gorunurlugunu kontrol eder");
         actions.click(customerPage.sandwichRAdioButton).perform();
         extentTest.info("kullanici sandwich butonuna yiklar");
         customerPage.cookieAccept.click();

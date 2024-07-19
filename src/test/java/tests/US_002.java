@@ -15,7 +15,7 @@ public class US_002 {
     Actions actions = new Actions(Driver.getDriver());
 
     @Test
-    public void TC0201(){
+    public void TC_0201(){
         customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         Assert.assertTrue(customerPage.anaSayfaHeaderLogo.isDisplayed());
@@ -26,7 +26,7 @@ public class US_002 {
         Driver.quitDriver();
     }
     @Test
-    public void TC0202(){
+    public void TC_0202(){
 
         customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
@@ -38,7 +38,7 @@ public class US_002 {
     }
 
     @Test
-    public void     TC0203(){
+    public void TC_0203(){
         customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         Assert.assertTrue(customerPage.cartikonHeader.isDisplayed());
@@ -52,7 +52,7 @@ public class US_002 {
 
     }
     @Test
-    public void TC0204(){
+    public void TC_0204(){
         customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         ReusableMethods.wait(3);

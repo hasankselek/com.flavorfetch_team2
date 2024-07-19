@@ -13,6 +13,8 @@ import pages.MerchantPage;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Function;
 
@@ -626,6 +628,37 @@ public class ReusableMethods {
 
 
     }
+    public static String tumSayfaScreenshot(WebDriver driver){
+        // ekran resmi ismini dinamik hale getirebilmek icin
+        // tarih muhru ekleyelim ekranResmi240529202344
+        LocalDateTime ldt = LocalDateTime.now();
+        DateTimeFormatter tarihFormati = DateTimeFormatter.ofPattern("yyMMddHHmmss");
+        String tarihMuhru = ldt.format(tarihFormati);
+
+        // 1.adim TakeScreenshot objesi olusturalim
+        TakesScreenshot tss = (TakesScreenshot) driver;
+
+        // 2.adim cektigimiz screenshot'i kaydedecegimiz dosyayi olusturalim
+        //   dosya uzantisi jpg, jpeg, png olabilir
+        //   dosya yeri  target/screenshots olsun
+
+        File tumSayfaScreenshot = new File("target/screenshots/ekranResmi"+tarihMuhru+".png");
+
+        // 3.adim sayfa fotografini cekip gecici bir dosyaya yukleyelim
+
+        File geciciDosya = tss.getScreenshotAs(OutputType.FILE);
+
+        // 4.adim gecici dosyayi asil olusturdugumuz dosyaya kopyalayalim
+
+        try {
+            FileUtils.copyFile(geciciDosya,tumSayfaScreenshot);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return tarihMuhru;
+    }
+
     }
 
     
