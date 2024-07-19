@@ -1,7 +1,9 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -113,6 +115,7 @@ public class US_013 extends TestBaseRapor {
             Assert.fail("Stripe ödeme methodu başarısız " + e.getMessage());
 
         }
+
         Driver.quitDriver();
     }
     @Test
@@ -151,6 +154,7 @@ public class US_013 extends TestBaseRapor {
             String actualYazi = customerPage.savedPaymentMethodsText.getText();
             Assert.assertEquals(actualYazi, expectedYazi);
         }
+
 
         Driver.quitDriver();
     }
@@ -208,10 +212,14 @@ public class US_013 extends TestBaseRapor {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
         extentTest.info("kullanici sayfayi asagiya kaydirir");
+        if (customerPage.paymentDefaultText.isDisplayed()){
+            customerPage.paymentDefaultThreeDat.click();
+            customerPage.deleteLinkThreeDat.click();
+        }else {
         customerPage.cashOnDeliveryButton.click();
         extentTest.info("kullanici cash odeme butonuna tiklar");
         customerPage.addCashButton.click();
-        extentTest.info("kullanici Add cash butonuna tiklar");
+        extentTest.info("kullanici Add cash butonuna tiklar");}
         customerPage.placeOrderButtonText.isDisplayed();
         extentTest.info("kullanici place order butonunun gorunurlugunu kontrol eder");
         customerPage.placeOrderButton.click();
@@ -255,6 +263,7 @@ public class US_013 extends TestBaseRapor {
         ReusableMethods.wait2(1);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
+
         try {
             if (customerPage.savedPaymentMethodsText.isDisplayed()) {
                 customerPage.paymentDefaultThreeDat.click();
@@ -273,6 +282,7 @@ public class US_013 extends TestBaseRapor {
             String actualYazi = customerPage.savedPaymentMethodsText.getText();
             Assert.assertEquals(actualYazi, expectedYazi);
         }
+
         customerPage.placeOrderButtonText.isDisplayed();
         actions.click(customerPage.placeOrderButton).perform();
         ReusableMethods.wait2(1);
