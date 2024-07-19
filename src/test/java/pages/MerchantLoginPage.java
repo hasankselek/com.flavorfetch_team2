@@ -10,10 +10,10 @@ public MerchantLoginPage(){
     PageFactory.initElements(Driver.getDriver(),this);
 }
 
-    @FindBy(xpath = "//*[@class='zmdi-eye zmdi']")
+    @FindBy(xpath = "//*[@class='change_field_href']")
     public WebElement eyeAsignFallDownPosition;
 
-    @FindBy(xpath = "//*[@class='zmdi zmdi-eye']")
+    @FindBy(xpath = "//*[@class='zmdi zmdi-eye']")//////////////
     public WebElement eyeAsignInPasswordBox;
 
     @FindBy(xpath = "//*[@class='zmdi zmdi-eye-off']")
@@ -58,14 +58,14 @@ public MerchantLoginPage(){
     @FindBy(xpath = "//div[@class='form-label-group']")
     public WebElement textEnteredUserBox;
 
-    @FindBy(xpath = "//*[@type='text']")
+    @FindBy(xpath = "(//*[@type='text'])[2]")
     public WebElement passwordReveal;
 
     @FindBy(xpath = "//*[@type='password']")
     public WebElement passwordHidden;
 
-    @FindBy(xpath = "//*[@class='form-label-group change_field_password']")
-    public  WebElement passwordFieldPassBox;
+    @FindBy(xpath = "//*[@placeholder='Password']")
+    public  WebElement passwordPlaceHolder;
 
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement signInButtonMerchantLogin;
@@ -73,7 +73,7 @@ public MerchantLoginPage(){
     @FindBy(id = "AR_merchant_login_username")
     public WebElement userBoxMerchantLogin;
 
-    @FindBy(id = "AR_merchant_login_password")
+    @FindBy(xpath = "//*[@placeholder='Password']")
 
     public WebElement passwordBoxMerchantLogin;
 

@@ -457,8 +457,11 @@ public class MerchantPage {
     @FindBy(xpath = "//*[@class='col p-0 col-lg-3 col-md-3 col-sm-6 col-6 mb-3 mb-xl-0']") //index = 0-3  pictures up the merchantPage
     public List<WebElement> listOfTopPictures;
 
+    @FindBy(xpath = "//*[@class='text-muted font-weight-500']")
+    public  List<WebElement>    lastOrdersRowNumber;
     @FindBy(xpath = "//h5")
     public List<WebElement> topPicTextList;
+
 
     @FindBy(xpath = "//*[@class='text-muted']")
     public List<WebElement> sixRightColumnList;
@@ -491,7 +494,7 @@ public class MerchantPage {
     public List<WebElement> thirdColumnOfProgress;
     @FindBy(xpath = "//*[@class='badge order_status accepted']")
     public List<WebElement> forthColumnOfProgress;
-    @FindBy(xpath = "//*[@class='nav-item']")
+    @FindBy(xpath = "//*[@class='nav-item']")//0-5
     public List<WebElement> topItemsList;
     @FindBy(xpath = "//*[@class='font-weight-bold d-block']")
     public List<WebElement> secoundIntReady;
@@ -521,7 +524,8 @@ public class MerchantPage {
 
     @FindBy(xpath = "//h2")
     public WebElement overViewNumber;
-
+@FindBy(xpath = "//*[@class='font-weight-bold hover-text-primary mb-1']")
+public  List<WebElement>  firstOrderNumber;
     @FindBy(xpath = "//h3")
     public List<WebElement> fourHouseIntList;
     @FindBy(xpath = "//h5[@class='m-0']")
@@ -727,6 +731,8 @@ public class MerchantPage {
     public WebElement previousOrderPageSearchBox;
 
 
+
+
     @FindBy(xpath = "//*[@class='chevron selected']")
     public WebElement siparisListesi;
 
@@ -790,6 +796,9 @@ public class MerchantPage {
 
     @FindBy(xpath = "//*[@id=\"yw2\"]/li[2]/ul/li/a")
     public List<WebElement> merchantMenuList;
+
+    @FindBy(xpath = "//*[@id=\"vue-merchant-signup\"]/div[1]/h3")
+    public WebElement merchantBecameYazi ;
 
 
 

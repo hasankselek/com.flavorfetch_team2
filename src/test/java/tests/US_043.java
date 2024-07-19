@@ -22,7 +22,7 @@ public class US_043 extends TestBaseRapor {
     Actions actions = new Actions(Driver.getDriver());
 
     @Test
-    public void test_4301() {
+    public void test_4301() throws IOException{
         adminPage = new AdminPage();
 
 
@@ -77,10 +77,9 @@ public class US_043 extends TestBaseRapor {
     }
 
     @Test
-    public void test_4303() {
+    public void test_4303() throws IOException{
         adminPage = new AdminPage();
 
-        extentTest = extentReports.createTest("test_4303", "Visibility test for table header and correctness name list according to alphabet order.");
         Driver.getDriver().get("about:blank");
         extentTest.info("User open the browser");
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
@@ -159,7 +158,7 @@ public class US_043 extends TestBaseRapor {
     }
 
     @Test
-    public void test_4306() {
+    public void test_4306() throws IOException{
         adminPage = new AdminPage();
 
         Driver.getDriver().get("about:blank");
@@ -249,7 +248,7 @@ public class US_043 extends TestBaseRapor {
     }
 
     @Test
-    public void test_4309() {
+    public void test_4309() throws IOException{
         adminPage = new AdminPage();
 
         Driver.getDriver().get("about:blank");
@@ -263,7 +262,7 @@ public class US_043 extends TestBaseRapor {
         adminPage.merchantRegestration.sendKeys(Keys.ENTER);
         extentTest.info("The user click on the Merchant Registration .");
         ReusableMethods.wait(3);
-
+        adminPage.dateInputBox.click();
         JSUtilities.clickWithJS(Driver.getDriver(), adminPage.prevFlashCalendar);
         extentTest.info("The user click on the check mark .");
         //Click the "< "sign of calendar .
@@ -280,7 +279,7 @@ public class US_043 extends TestBaseRapor {
     }
 
     @Test
-    public void test_4310() {
+    public void test_4310() throws IOException {
         adminPage = new AdminPage();
 
         Driver.getDriver().get("about:blank");
@@ -317,7 +316,7 @@ public class US_043 extends TestBaseRapor {
     }
 
     @Test
-    public void test_4311() {
+    public void test_4311() throws IOException{
         adminPage = new AdminPage();
 
         Driver.getDriver().get("about:blank");
@@ -640,7 +639,7 @@ public class US_043 extends TestBaseRapor {
 
     @Test
     public void test_4322()throws IOException {
-
+        adminPage=new AdminPage();
         Driver.getDriver().get("about:blank");
         extentTest.info("User open the browser");
         Driver.getDriver().get(ConfigReader.getProperty("admin_Url"));
@@ -662,17 +661,23 @@ public class US_043 extends TestBaseRapor {
         extentTest.info("The user click the notification icon .");
         Assert.assertTrue(adminPage.notificationsText.isEnabled());
         extentTest.pass("The user correctness existence of text of notification icon .");
-        List<Integer> orderNum = new ArrayList<>();
-        List<Integer> orderNumSorted = orderNum;
+        List<String> sortedOrderList = new ArrayList<>();
 
-        List<String> orderList = ReusableMethods.stringListesineDonustur(adminPage.orderOfNotification);
-        for (String each : orderList) {
-            orderNum.add(Integer.parseInt(each.replaceAll("\\D", "")));
+
+        List<String> strOrderList = ReusableMethods.stringListesineDonustur(adminPage.orderOfNotification);
+        for (String each : strOrderList) {
+            sortedOrderList.add(each.replaceAll("\\D", ""));
         }
+
         //System.out.println("orderNUM :"+orderNum);
-        Collections.sort(orderNumSorted);
+        Collections.sort(sortedOrderList);
         //System.out.println("orderNumSorted :"+orderNumSorted);
-        Assert.assertEquals(orderNum, orderNumSorted);
+     
+        for (String each1 : strOrderList){
+            for (String each2 : sortedOrderList){
+               Assert.assertTrue(each1.contains(each2));
+            }
+        }
         extentTest.pass("The user correctness that number of orders orderly.");
         //viewAll bottun
         Assert.assertTrue(adminPage.viewAllButton.isDisplayed());
