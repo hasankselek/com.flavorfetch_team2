@@ -691,4 +691,7 @@ public class CustomerPage {
    @FindBy(xpath = "(//*[@class='required'])[1]")
    public WebElement firstnamesignup;
 
+   @FindBy(xpath = "//*[@id=\"vue-payment-list\"]/div[5]/div/div/form/div[1]/div/p")
+    public WebElement stripeErrorMessage;
+
 }
