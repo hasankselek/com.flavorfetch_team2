@@ -416,6 +416,8 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[@aria-selected='false']")
     public List<WebElement> statusDropDown;
+    @FindBy(xpath = "//*[@class='text']")
+    public List<WebElement> statusDDE;
 
     @FindBy(xpath = "//*[@class='select2-results__option select2-results__option--selectable']")
     public List<WebElement> itemsInfilterBox;
@@ -426,7 +428,7 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class=' bs-ok-default check-mark']")//Merchant Registration/statusBox/Dropdown
     public List<WebElement> checkMark;
   
-    @FindBy(xpath = "//tbody/tr/td/div")
+    @FindBy(xpath = "//*[@class='sorting_1']")
     public List<WebElement> filteredByStatusBoxDropDown;
 
     @FindBy(xpath = "//*[@data-separator='to']")
