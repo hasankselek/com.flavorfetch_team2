@@ -392,19 +392,15 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[@href='javascript:;']")  // index ( 0 - 6) dashboard Items
     public List<WebElement> itemsAndNames;
+
     @FindBy(xpath = "//*[@class='reports']")
     public WebElement reportsItem;//  //Merchant Registration/
 
     @FindBy(xpath = "//*[@href='/backoffice/reports/merchant_registration']")
     public WebElement merchantRegestration;
 
-
     @FindBy(xpath = "//h5")   //Merchant Registration/pageItem + page top data
     public List<WebElement> topDatas;
-
-    @FindBy(xpath = "//*[@class='form-control py-2 border-right-0 border']")   //Merchant Registration/pageItem + page top data
-    public WebElement dateInputBox;
-
 
     @FindBy(xpath = "(//thead/tr/th)[19]")  // Merchant Registration /calendar DropDown
     public WebElement calendarRightMonth;
@@ -414,6 +410,7 @@ public class AdminPage {
 
     @FindBy(xpath = "//table/thead/tr/th[@class='prev available']")//Merchant Registration/calendarDropDown
     public WebElement prevFlashCalendar;
+
     @FindBy(xpath = "//*[@class='filter-option']")
     public WebElement statusBoxFilter;
 
@@ -422,13 +419,7 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[@class='select2-results__option select2-results__option--selectable']")
     public List<WebElement> itemsInfilterBox;
-    
-    @FindBy(xpath = "//*[@class='btn btn-black w-100']")
-    public WebElement clearFilters;
 
-    @FindBy(xpath = "//*[@class='btn btn-green w-100']")
-    public WebElement applyFilters;
-     
     @FindBy(xpath = "//*[@role='status']")  //Merchant Registration/bottom of page
     public WebElement noDataAvailableInTable;
 
@@ -438,15 +429,6 @@ public class AdminPage {
     @FindBy(xpath = "//tbody/tr/td/div")
     public List<WebElement> filteredByStatusBoxDropDown;
 
-    @FindBy(xpath = "//*[@class='mb-2']")//Merchant Registration/anonymus Box filter
-    public WebElement byMerchant;
-
-    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[1]") //Merchant Registration/anonymus Box filter
-    public WebElement filterInputBoxFlash;
-  
-    @FindBy(xpath = "//*[@role='option']")//Merchant Registration/statusBox/Dropdown
-    public List<WebElement> statusDropDown;
-  
     @FindBy(xpath = "//*[@data-separator='to']")
     public WebElement dateInputBox; //Start Date - End Date
 
@@ -839,19 +821,16 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[2]/h6")
     public List<WebElement> couponResults;
-  
-    @FindBy(xpath = "//*[@class='m-0']")//MerchantRegistration
-    public  List<WebElement> valueOfTopRow;
-  
+
     @FindBy(xpath = "//*[text()='By Merchant']")
     public WebElement byMerchant;
- 
+
     @FindBy(xpath = "//*[text()='Apply Filters']")
     public WebElement applyFilters;
-  
+
     @FindBy(xpath = "//*[text()='Clear Filters']")
     public WebElement clearFilters;
-  
+
     @FindBy(xpath = "//*[@class='select2-selection__arrow']")
     public WebElement filterInputBoxFlash;
 
