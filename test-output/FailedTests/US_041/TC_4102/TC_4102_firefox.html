@@ -39,13 +39,13 @@
 			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></a></li>
 		</ul>
 		<!-- report name -->
-		<span class='report-name'>TestNG Reports</span>
+		<span class='report-name'>TC_4102 Report</span>
 		<!-- report headline -->
 		<span class='report-headline'></span>
 		<!-- nav-right -->
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<a href='#!'>
-			<span class='label blue darken-3 suite-start-time'>Jul 17, 2024 04:29:48 PM</span>
+			<span class='label blue darken-3 suite-start-time'>Jul 18, 2024 08:38:23 PM</span>
 			</a>
 		</ul>
 	</div>
@@ -124,19 +124,18 @@
 </div>	<div class='subview-left left'>
 		<div class='view-summary'>
 			<ul id='test-collection' class='test-collection'>
-				<li class='test displayed active  fail' status='fail' bdd='false' test-id='1'>
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='2'>
 					<div class='test-heading'>
-						<span class='test-name'>test_4303</span>
-						<span class='test-time'>Jul 17, 2024 04:29:50 PM</span>
+						<span class='test-name'>TC_4102</span>
+						<span class='test-time'>Jul 18, 2024 08:38:23 PM</span>
 						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Jul 17, 2024 04:29:50 PM</span>
-	<span class='label end-time'>Jul 17, 2024 04:30:00 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 9s+765ms</span>
+	<span class='label start-time'>Jul 18, 2024 08:38:23 PM</span>
+	<span class='label end-time'>Jul 18, 2024 08:39:01 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 38s+125ms</span>
 </div>
-<div class='test-desc'>Visibility test for table header and correctness name list according to alphabet order. </div>
 <div class='test-steps'>
 	<table class='bordered table-results'>
 		<thead>
@@ -147,80 +146,46 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>4:29:50 PM</td>
+			<tr class='log' status='fail'>
+				<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+				<td class='timestamp'>8:39:01 PM</td>
 				<td class='step-details'>
-						User open the browser
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>4:29:52 PM</td>
-				<td class='step-details'>
-						The user opens the URL
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>4:29:56 PM</td>
-				<td class='step-details'>
-						The user enters user name and password to login
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>4:29:56 PM</td>
-				<td class='step-details'>
-						The user click on the Reports from menu
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>4:29:56 PM</td>
-				<td class='step-details'>
-						The user click on the Merchant Registration .
-					
-				</td>
-			</tr>
-			<tr class='log' status='info'>
-				<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-				<td class='timestamp'>4:29:59 PM</td>
-				<td class='step-details'>
-						The user wait .
-					
-				</td>
-			</tr>
-			<tr class='log' status='pass'>
-				<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-				<td class='timestamp'>4:29:59 PM</td>
-				<td class='step-details'>
-						The user correctness the visibility of yellow filter button .
+						TC_4102
 					
 				</td>
 			</tr>
 			<tr class='log' status='fail'>
 				<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-				<td class='timestamp'>4:30:00 PM</td>
+				<td class='timestamp'>8:39:01 PM</td>
 				<td class='step-details'>
-						test_4315
-					
-				</td>
-			</tr>
-			<tr class='log' status='fail'>
-				<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-				<td class='timestamp'>4:30:00 PM</td>
-				<td class='step-details'>
-						<textarea disabled class="code-block">java.lang.AssertionError: expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertTrue(Assert.java:57)
-	at org.testng.Assert.assertTrue(Assert.java:67)
-	at tests.US_043.test_4315(US_043.java:496)
+						<textarea disabled class="code-block">org.openqa.selenium.ElementNotInteractableException: Element <a class="btn btn-green fileinput-button dz-clickable" href="javascript:;"> could not be scrolled into view
+Build info: version: '4.22.0', revision: 'c5f3146703*'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.23'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [2603bf9c-db9e-4812-b81f-425471a3a823, clickElement {id=c731fec3-2cc3-4c41-a353-eba5e9ea118b}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 127.0.2, moz:accessibilityChecks: false, moz:buildID: 20240624183754, moz:debuggerAddress: 127.0.0.1:4745, moz:geckodriverVersion: 0.34.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 6300, moz:profile: C:\Users\Meltem\AppData\Loc..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:4745/devtool..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Element: [[FirefoxDriver: firefox on windows (2603bf9c-db9e-4812-b81f-425471a3a823)] -> xpath: //*[@class='btn btn-green fileinput-button dz-clickable']]
+Session ID: 2603bf9c-db9e-4812-b81f-425471a3a823
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at com.sun.proxy.$Proxy11.click(Unknown Source)
+	at tests.US_041.TC_4102(US_041.java:118)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -256,7 +221,7 @@
 	</table>
 </div>
 						<ul class='screenshots'>
-							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='C:\Users\Windows 11\IdeaProjects\com.flavorfetch_team2/test-output/Screenshots/test_431520240717042959.png' src='C:\Users\Windows 11\IdeaProjects\com.flavorfetch_team2/test-output/Screenshots/test_431520240717042959.png' data-src='C:\Users\Windows 11\IdeaProjects\com.flavorfetch_team2/test-output/Screenshots/test_431520240717042959.png'></li>
+							<li><img class='r-img' onerror='this.style.display="none"' data-featherlight='C:\Users\Meltem\IdeaProjects\com.flavorfetch_team2/test-output/FailedTests/US_041/TC_4102/TC_4102_firefox.png' src='C:\Users\Meltem\IdeaProjects\com.flavorfetch_team2/test-output/FailedTests/US_041/TC_4102/TC_4102_firefox.png' data-src='C:\Users\Meltem\IdeaProjects\com.flavorfetch_team2/test-output/FailedTests/US_041/TC_4102/TC_4102_firefox.png'></li>
 						</ul>
 					</div>
 				</li>
@@ -300,7 +265,7 @@
 			<ul id='exception-collection' class='exception-collection'>
 				<li class='exception displayed active'>
 					<div class='exception-heading'>
-						<span class='exception-name'>java.lang.AssertionError</span>
+						<span class='exception-name'>org.openqa.selenium.ElementNotInteractableException</span>
 						<span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
 					</div>
 					<div class='exception-content hide'>
@@ -315,15 +280,37 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Jul 17, 2024 04:29:50 PM</td>
-										<td class='linked' test-id='1'>test_4303</td>
+										<td>Jul 18, 2024 08:38:23 PM</td>
+										<td class='linked' test-id='2'>TC_4102</td>
 										<td>
-											<textarea disabled class="code-block">java.lang.AssertionError: expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertTrue(Assert.java:57)
-	at org.testng.Assert.assertTrue(Assert.java:67)
-	at tests.US_043.test_4315(US_043.java:496)
+											<textarea disabled class="code-block">org.openqa.selenium.ElementNotInteractableException: Element <a class="btn btn-green fileinput-button dz-clickable" href="javascript:;"> could not be scrolled into view
+Build info: version: '4.22.0', revision: 'c5f3146703*'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.23'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [2603bf9c-db9e-4812-b81f-425471a3a823, clickElement {id=c731fec3-2cc3-4c41-a353-eba5e9ea118b}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 127.0.2, moz:accessibilityChecks: false, moz:buildID: 20240624183754, moz:debuggerAddress: 127.0.0.1:4745, moz:geckodriverVersion: 0.34.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 6300, moz:profile: C:\Users\Meltem\AppData\Loc..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:4745/devtool..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Element: [[FirefoxDriver: firefox on windows (2603bf9c-db9e-4812-b81f-425471a3a823)] -> xpath: //*[@class='btn btn-green fileinput-button dz-clickable']]
+Session ID: 2603bf9c-db9e-4812-b81f-425471a3a823
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at com.sun.proxy.$Proxy11.click(Unknown Source)
+	at tests.US_041.TC_4102(US_041.java:118)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -388,43 +375,19 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Jul 17, 2024 04:29:48 PM</div>
+					<div class='panel-lead'>Jul 18, 2024 08:38:23 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Jul 17, 2024 04:30:00 PM</div>
+			 		<div class='panel-lead'>Jul 18, 2024 08:39:01 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 0m 11s+462ms</div>
-				</div>
-			</div>
-			<div class='col s4'>
-				<div class='card-panel dashboard-environment'>
-					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
-					
-					<table>
-						<tr>
-							<th>Name</th>
-							<th>Value</th>
-						</tr>
-							<tr>
-								<td>Enviroment</td>
-								<td>QA</td>
-							</tr>
-							<tr>
-								<td>Browser</td>
-								<td>chrome</td>
-							</tr>
-							<tr>
-								<td>Automation Engineer</td>
-								<td>Hasan</td>
-							</tr>
-					</table>
+					<div class='panel-lead'>0h 0m 38s+126ms</div>
 				</div>
 			</div>
 		</div>
@@ -467,7 +430,7 @@
 		</script>
 		<script>
 			var timeline = {
-			        "test_4303":9.765
+			        "TC_4102":38.125
 			};
 		</script>
 		<script src='https://cdn.rawgit.com/extent-framework/extent-github-cdn/b65cd69/v3html/js/extent.js' type='text/javascript'></script>

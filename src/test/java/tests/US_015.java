@@ -59,6 +59,7 @@ public class US_015 {
     public void TC_1503() //selected Order's View Test
     {
         accesOrdersPage();
+
         customerPage.firstOrdersDropdownButton.click();
         ReusableMethods.wait(1);
         Assert.assertTrue(customerPage.ordersPageViewButton.isDisplayed());

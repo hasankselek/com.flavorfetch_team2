@@ -11,89 +11,90 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
+import java.io.IOException;
+
 public class US_013 extends TestBaseRapor {
+
     CustomerPage customerPage=new CustomerPage();
     Actions actions = new Actions(Driver.getDriver());
 
     @Test
     public void TC_1301(){
-
+        actions = new Actions(Driver.getDriver());
         customerPage= new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.signInButton.click();
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_selahattin"));
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_selahattin"));
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.loginSigninButton.click();
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.enterDeliveryAddresstextBox.sendKeys("new york" );
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.newYorkAddressTextBox.click();
-        extentTest.info("kullanici customer anasayfaya gider");
         ReusableMethods.wait2(1);
         //JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
         //jse.executeScript("arguments[0].scrollIntoView({block: 'center'});",customerPage.showMoreButton);
         //actions.click(customerPage.showMoreButton).perform();
         customerPage.sandwichRAdioButton.isDisplayed();
-        extentTest.info("kullanici customer anasayfaya gider");
         actions.click(customerPage.sandwichRAdioButton).perform();
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.cookieAccept.click();
-        extentTest.info("kullanici customer anasayfaya gider");
         actions.click(customerPage.team2Page).perform();
-        extentTest.info("kullanici customer anasayfaya gider");
         actions.click(customerPage.iskenderButton).perform();
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.checkoutButton.click();
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.addNewAddressLink.click();
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.addressPopupTextBox.sendKeys("new");
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.newYorkAddressTextBox.click();
-        extentTest.info("kullanici customer anasayfaya gider");
         ReusableMethods.wait2(1);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
-        extentTest.info("kullanici customer anasayfaya gider");
         customerPage.saveButtonChangeAddress.click();
-        extentTest.info("kullanici customer anasayfaya gider");
         String expectedYazi = "New York, NY, USA";
         String actualYazi = customerPage.chooseDeliveryText.getText();
         Assert.assertEquals(actualYazi,expectedYazi);
-        extentTest.info("kullanici customer anasayfaya gider");
         Driver.quitDriver();
-        extentTest.pass("basarili olarak cikis yapar");
     }
     @Test
-    public void TC_1302(){
+    public void TC_1302() throws IOException {
+        actions = new Actions(Driver.getDriver());
         customerPage= new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+        extentTest.info("kullanici customer anasayfasina gider");
         customerPage.signInButton.click();
+        extentTest.info("signIn linkine tiklar");
         customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_selahattin"));
+        extentTest.info("kullanici emailini girer");
         customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_selahattin"));
+        extentTest.info("kullanici password'unu girer");
         customerPage.loginSigninButton.click();
+        extentTest.info("signIn butonuna tiklar");
         customerPage.enterDeliveryAddresstextBox.sendKeys("new york" );
+        extentTest.info("kullanici adress text box'ina adresini girer");
         customerPage.newYorkAddressTextBox.click();
+        extentTest.info("kullanici cikan adrese tiklar");
         ReusableMethods.wait2(1);
         customerPage.sandwichRAdioButton.isDisplayed();
+        extentTest.info("kullanici sandwich sekmesinin gorunurlugunu kontrol eder");
         actions.click(customerPage.sandwichRAdioButton).perform();
+        extentTest.info("kullanici sandwich butonuna yiklar");
         customerPage.cookieAccept.click();
+        extentTest.info("kullanici cookiyi kabul eder");
         actions.click(customerPage.team2Page).perform();
+        extentTest.info("kullanici team2 marketine tiklar");
         actions.click(customerPage.iskenderButton).perform();
+        extentTest.info("kullanici iskender yemegine tiklar");
         customerPage.checkoutButton.click();
+        extentTest.info("kullanici checkout butonuna tiklar");
         ReusableMethods.wait2(1);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
+        extentTest.info("kullanici sayfayi asagiya kaydirir");
         ReusableMethods.wait2(1);
         customerPage.stripeButton.click();
+        extentTest.info("kullanici stripe buttona tiklar");
         customerPage.addStripeButton.click();
+        extentTest.pass("kullanici add stripe butonuna tiklar");
+        Driver.quitDriver();
     }
     @Test
     public void TC_1303(){
-
-
+        actions = new Actions(Driver.getDriver());
+        customerPage= new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.signInButton.click();
         customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_selahattin"));
@@ -119,46 +120,77 @@ public class US_013 extends TestBaseRapor {
         Driver.quitDriver();
     }
     @Test
-    public void TC_1304(){
+    public void TC_1304() throws IOException{
+        actions = new Actions(Driver.getDriver());
+        customerPage= new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
+        extentTest.info("kullanici customer anasayfasina gider");
         customerPage.signInButton.click();
+        extentTest.info("kullanici signIn linkine tiklar");
         customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_selahattin"));
+        extentTest.info("kullanici emailini girer");
         customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_selahattin"));
+        extentTest.info("kullanici password'unu girer");
         customerPage.loginSigninButton.click();
+        extentTest.info("kullanici signIn butonuna tiklar");
         customerPage.enterDeliveryAddresstextBox.sendKeys("new york" );
+        extentTest.info("kullanici adresini girer");
         customerPage.newYorkAddressTextBox.click();
+        extentTest.info("kullanici adrese tiklar");
         ReusableMethods.wait2(1);
         customerPage.sandwichRAdioButton.isDisplayed();
+        extentTest.info("kullanici sandwich sekmesinin gorunurlugunu kontrol eder");
         actions.click(customerPage.sandwichRAdioButton).perform();
+        extentTest.info("kullanici sandwich butonuna yiklar");
         customerPage.cookieAccept.click();
+        extentTest.info("kullanici cookiyi kabul eder");
         actions.click(customerPage.team2Page).perform();
+        extentTest.info("kullanici team2 marketine tiklar");
         actions.click(customerPage.iskenderButton).perform();
+        extentTest.info("kullanici iskender yemegine tiklar");
         customerPage.checkoutButton.click();
+        extentTest.info("kullanici checkout butonuna tiklar");
         customerPage.orderTypeMenuText.isDisplayed();
+        extentTest.info("kullanici order menunun gorunurlugunu kontrol eder");
         customerPage.orderTypeLink.click();
+        extentTest.info("kullanucu order menuye tiklar");
         customerPage.deliveryRadioButton.click();
+        extentTest.info("kullanici delivery sekmesine tiklar");
         customerPage.orderTypeSaveButton.click();
+        extentTest.info("kullanici save butonuna tiklar");
         customerPage.addNewAddressLink.click();
+        extentTest.info("kullanici adres linkine tiklar");
         customerPage.addressPopupTextBox.sendKeys("new");
+        extentTest.info("kullanici adresini girer");
         customerPage.newYorkAddressTextBox.click();
         ReusableMethods.wait2(1);
+        extentTest.info("kullanici adresine tiklar");
         actions.sendKeys(Keys.PAGE_DOWN).perform();
+        extentTest.info("kullanici sayfayi asagiya kaydirir");
         customerPage.saveButtonChangeAddress.click();
         ReusableMethods.wait2(1);
+        extentTest.info("kullanici save butonuna tiklar");
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait2(1);
+        extentTest.info("kullanici sayfayi asagiya kaydirir");
         customerPage.cashOnDeliveryButton.click();
+        extentTest.info("kullanici cash odeme butonuna tiklar");
         customerPage.addCashButton.click();
+        extentTest.info("kullanici Add cash butonuna tiklar");
         customerPage.placeOrderButtonText.isDisplayed();
+        extentTest.info("kullanici place order butonunun gorunurlugunu kontrol eder");
         customerPage.placeOrderButton.click();
+        extentTest.info("kullanici place order butonuna tiklar");
         String expectedText= "Confirming your order";
         String actualText = customerPage.confirmingText.getText();
         Assert.assertEquals(actualText,expectedText);
+        extentTest.pass("kullanici confirming yazisini dogrular");
         Driver.quitDriver();
-
     }
     @Test
     public void TC_1305(){
+        actions = new Actions(Driver.getDriver());
+        customerPage= new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.signInButton.click();
         customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_selahattin"));
@@ -196,9 +228,10 @@ public class US_013 extends TestBaseRapor {
         Assert.assertEquals(actualText,expectedText);
         Driver.quitDriver();
     }
-
     @Test
     public void TC_1306(){
+        actions = new Actions(Driver.getDriver());
+        customerPage= new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.signInButton.click();
         customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_selahattin"));
@@ -235,6 +268,5 @@ public class US_013 extends TestBaseRapor {
         String actualText = customerPage.confirmingText.getText();
         Assert.assertEquals(actualText,expectedText);
         Driver.quitDriver();
-
     }
 }
