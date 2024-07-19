@@ -391,18 +391,19 @@ public class AdminPage {
     public WebElement passBox;
 
     @FindBy(xpath = "//*[@href='javascript:;']")  // index ( 0 - 6) dashboard Items
-    public List<WebElement> itemsAndNames;        //  index ( 7 - 16) names in admin page
+    public List<WebElement> itemsAndNames;
+    @FindBy(xpath = "//*[@class='reports']")
+    public WebElement reportsItem;//  //Merchant Registration/
 
     @FindBy(xpath = "//*[@href='/backoffice/reports/merchant_registration']")
     public WebElement merchantRegestration;
-    @FindBy(xpath = "//*[@class='m-0 mr-2 text-muted text-truncate']")
-    public List<WebElement> topNameMerchantRegistration;
+
 
     @FindBy(xpath = "//h5")   //Merchant Registration/pageItem + page top data
     public List<WebElement> topDatas;
 
-    @FindBy(xpath = "//ul[@class='pagination']/li") //Merchant Registrtion
-    public List<WebElement> pagesNevigate;
+    @FindBy(xpath = "//*[@class='form-control py-2 border-right-0 border']")   //Merchant Registration/pageItem + page top data
+    public WebElement dateInputBox;
 
 
     @FindBy(xpath = "(//thead/tr/th)[19]")  // Merchant Registration /calendar DropDown
@@ -416,45 +417,51 @@ public class AdminPage {
     @FindBy(xpath = "//*[@class='filter-option']")
     public WebElement statusBoxFilter;
 
-    @FindBy(xpath = "//*[@dir='ltr']")//MerchantRegistration/yellowBox filter
-    public WebElement filterInputBox;
-
-    @FindBy(xpath = "//*[@data-select2-id='select2-data-2-7us5']")
-    public WebElement inputBoxYellowFilter;
+    @FindBy(xpath = "//*[@aria-selected='false']")
+    public List<WebElement> statusDropDown;
 
     @FindBy(xpath = "//*[@class='select2-results__option select2-results__option--selectable']")
     public List<WebElement> itemsInfilterBox;
-    @FindBy(xpath = "//*[@class='btn btn-black w-100']")//MerchantRegistration/yellowBox filter
+    
+    @FindBy(xpath = "//*[@class='btn btn-black w-100']")
     public WebElement clearFilters;
 
-    @FindBy(xpath = "//*[@class='btn btn-green w-100']")//MerchantRegistration/yellowBox filter
+    @FindBy(xpath = "//*[@class='btn btn-green w-100']")
     public WebElement applyFilters;
+     
     @FindBy(xpath = "//*[@role='status']")  //Merchant Registration/bottom of page
     public WebElement noDataAvailableInTable;
 
     @FindBy(xpath = "//*[@class=' bs-ok-default check-mark']")//Merchant Registration/statusBox/Dropdown
     public List<WebElement> checkMark;
+  
     @FindBy(xpath = "//tbody/tr/td/div")
     public List<WebElement> filteredByStatusBoxDropDown;
+
     @FindBy(xpath = "//*[@class='mb-2']")//Merchant Registration/anonymus Box filter
     public WebElement byMerchant;
 
-    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[1]")
-//Merchant Registration/anonymus Box filter
+    @FindBy(xpath = "(//span[@class='select2-selection select2-selection--single'])[1]") //Merchant Registration/anonymus Box filter
     public WebElement filterInputBoxFlash;
+  
     @FindBy(xpath = "//*[@role='option']")//Merchant Registration/statusBox/Dropdown
     public List<WebElement> statusDropDown;
+  
     @FindBy(xpath = "//*[@data-separator='to']")
     public WebElement dateInputBox; //Start Date - End Date
+
     @FindBy(xpath = "//*[@class='ranges']/ul/li")// calendarInputBox / DropDown
     public List<WebElement> dateRange;
 
     @FindBy(xpath = "//*[@class='selection']")//MerchantRegistration/anonymusBox
     public WebElement yellowFilterInputBox;
+  
     @FindBy(xpath = "//*[@class='m-0']")//MerchantRegistration
     public List<WebElement> valueOfTopRow;
+
     @FindBy(xpath = "//*[@class='m-0 mr-2 text-muted text-truncate']")//MerchantRegistration
     public List<WebElement> topRow;
+  
     @FindBy(xpath = "//*[@class='week']")//MerchantRegistration /dropdown calendar(index = 0-13)
     public List<WebElement> weekCounter;
 
@@ -463,8 +470,10 @@ public class AdminPage {
 
     @FindBy(xpath = "//thead/tr/th[2]")
     public WebElement nameHead;//MerchantRegistration/Table Head
+  
     @FindBy(xpath = "//thead/tr/th[3]")
     public WebElement addressHead;//MerchantRegistration/Table Head
+  
     @FindBy(xpath = "//*[@class='text-heading']")
     public List<WebElement> orderOfNotification;
 
@@ -476,25 +485,31 @@ public class AdminPage {
 
     @FindBy(xpath = "(//*[@class='img-40 rounded-circle'])[1]")//MerchantRegistration
     public WebElement profileIcon;
+  
     @FindBy(xpath = "//*[@for='AR_AdminUser_first_name']")//MerchantRegistration
     public WebElement profilFirstName;
+  
     @FindBy(xpath = "//*[@class='mb-4']")//Admin login page
     public WebElement adminstrationLogin;
 
     @FindBy(xpath = "//*[@aria-label='Membership Program']")
     public WebElement membershipHead;//MerchantRegistration/Table Head
+  
     @FindBy(xpath = "//tbody//td[1]")//MerchantRegistration/Table
     public List<WebElement> columnPicOfMerchantRegestration;
 
     @FindBy(xpath = "//tbody/tr/td/a/img")//MerchantRegistration/Table
     public List<WebElement> logoMerchant;
+  
     @FindBy(xpath = "//tbody//td[2]")
     public List<WebElement> columnNameOfMerchantRegestration;
+  
     @FindBy(xpath = "//tbody//td/p[1]")
     public List<WebElement> columnJustNameOfMerchantRegistration;
 
     @FindBy(xpath = "//tbody//td/div")
     public List<WebElement> columnStatusOfMerchantRegistration;
+  
     @FindBy(xpath = "//tbody//td[3]")
     public List<WebElement> columnAddressOfMerchantRegestration;
 
@@ -824,6 +839,21 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[@id=\"DataTables_Table_0\"]/tbody/tr[1]/td[2]/h6")
     public List<WebElement> couponResults;
+  
+    @FindBy(xpath = "//*[@class='m-0']")//MerchantRegistration
+    public  List<WebElement> valueOfTopRow;
+  
+    @FindBy(xpath = "//*[text()='By Merchant']")
+    public WebElement byMerchant;
+ 
+    @FindBy(xpath = "//*[text()='Apply Filters']")
+    public WebElement applyFilters;
+  
+    @FindBy(xpath = "//*[text()='Clear Filters']")
+    public WebElement clearFilters;
+  
+    @FindBy(xpath = "//*[@class='select2-selection__arrow']")
+    public WebElement filterInputBoxFlash;
 
 
 
