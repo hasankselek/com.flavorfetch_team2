@@ -352,7 +352,7 @@ public class CustomerPage {
     @FindBy (xpath= "(//*[text()='New York, NY, USA'])[2]")
     public  WebElement chooseDeliveryText ; // team2 page
 
-    @FindBy (xpath= "//span[normalize-space()='Cash On delivery']")
+    @FindBy (xpath= "//*[@id=\"vue-payment-list\"]/a[1]")
     public  WebElement cashOnDeliveryButton ; // checkout page
 
     @FindBy (xpath= "//*[text()='Add Cash']")
@@ -364,7 +364,7 @@ public class CustomerPage {
     @FindBy (xpath= "//span[normalize-space()='Stripe']")
     public  WebElement stripeButton ; // checkout page
 
-    @FindBy (xpath= "(//*[@class='btn btn-green w-100'])[10]")
+    @FindBy (xpath= "//*[@id=\"vue-payment-list\"]/div[5]/div/div/form/div[2]")
     public  WebElement addStripeButton ; // checkout page
 
     @FindBy (xpath= "//h5[normalize-space()='Order type and time']")
