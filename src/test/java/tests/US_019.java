@@ -430,14 +430,7 @@ The user closes the page.*/
     @Test
     public void test_1913() {
         merchantLoginPage = new MerchantLoginPage();
-            /*
-    The user opens the browser.
-            enters the Url.
-    enter the correct username in usename box
-    enter the correct pssword in password box
-    click the sign in button.
-            Verify the url of entrance page contains "merchant/dashboard".
-            The user closes the page.*/
+
         Driver.getDriver().get("about:blank");
         Driver.getDriver().get(ConfigReader.getProperty("merchant_Url"));
         merchantLoginPage.userBoxMerchantLogin.sendKeys(ConfigReader.getProperty("merchant_username"));

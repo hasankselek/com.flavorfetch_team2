@@ -1,10 +1,7 @@
 package tests;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import com.google.common.base.Verify;
 import org.bouncycastle.crypto.digests.Kangaroo;
@@ -151,8 +148,9 @@ public class US_043 extends TestBaseRapor {
         //Verify that item's data changed order.
         List<String> expectedMembershipList = ReusableMethods.stringListesineDonustur(adminPage.columnMembershipOfMerchantRegestration);
         Collections.sort(expectedMembershipList);
+        Collections.reverse(expectedMembershipList);
         List<String> actualMembershipList = ReusableMethods.stringListesineDonustur(adminPage.columnMembershipOfMerchantRegestration);
-        Assert.assertNotEquals(actualMembershipList, expectedMembershipList);
+        Assert.assertEquals(actualMembershipList, expectedMembershipList);
 
         Driver.quitDriver();
     }
@@ -405,11 +403,15 @@ public class US_043 extends TestBaseRapor {
 
         JSUtilities.clickWithJS(Driver.getDriver(), adminPage.statusBoxFilter);
         Random random = new Random();
-        int digit = random.nextInt(5);
-        JSUtilities.clickWithJS(Driver.getDriver(), adminPage.statusDropDown.get(digit));
+        int digit = random.nextInt(4)+1;
+        System.out.println("digit:"+digit);
+
+        JSUtilities.clickWithJS(Driver.getDriver(), adminPage.statusDDE.get(digit));
+        ReusableMethods.wait(2);
         //Click randomly on one element of dropdown.
-        JSUtilities.getTextWithJS(Driver.getDriver(), adminPage.statusDropDown.get(digit));
-        String expectedFiltered = adminPage.statusDropDown.get(digit).getText();
+      //  JSUtilities.getTextWithJS(Driver.getDriver(), adminPage.statusDropDown.get(digit+1));
+        ReusableMethods.wait(3);
+        String expectedFiltered = adminPage.statusDDE.get(digit).getText();
         System.out.println("exp:" + expectedFiltered);
 
         ReusableMethods.wait(2);
@@ -417,9 +419,10 @@ public class US_043 extends TestBaseRapor {
             Assert.assertTrue(adminPage.noDataAvailableInTable.isDisplayed());
         } else {
             JSUtilities.getTextWithJS(Driver.getDriver(), adminPage.filteredByStatusBoxDropDown.get(0));
+
             String actualFiltered = adminPage.filteredByStatusBoxDropDown.get(0).getText();
             System.out.println("act:" + actualFiltered);
-            ReusableMethods.wait(2);
+            ReusableMethods.wait(3);
             Assert.assertTrue(actualFiltered.contains(expectedFiltered));
         }
         Driver.quitDriver();
@@ -443,19 +446,19 @@ public class US_043 extends TestBaseRapor {
         if (digit1 == digit2) {
             digit2 = digit2 + 1;
         }
+        ReusableMethods.wait(3);
         JSUtilities.clickWithJS(Driver.getDriver(), adminPage.statusDropDown.get(digit1));
         JSUtilities.clickWithJS(Driver.getDriver(), adminPage.statusDropDown.get(digit2));
         //Click randomly on one element of dropdown.
 
         JSUtilities.getTextWithJS(Driver.getDriver(), adminPage.statusDropDown.get(digit1));
         String expectedFiltered1 = adminPage.statusDropDown.get(digit1).getText();
-
-
+        ReusableMethods.wait(3);
         JSUtilities.getTextWithJS(Driver.getDriver(), adminPage.statusDropDown.get(digit2));
         String expectedFiltered2 = adminPage.statusDropDown.get(digit2).getText();
 
 
-        ReusableMethods.wait(2);
+        ReusableMethods.wait(3);
         if (adminPage.noDataAvailableInTable.getText().contains(ConfigReader.getProperty("bottomOfMerchantPage"))) {
             Assert.assertTrue(adminPage.noDataAvailableInTable.isDisplayed());
         } else {
@@ -486,6 +489,25 @@ public class US_043 extends TestBaseRapor {
         extentTest.info("The user click on the Merchant Registration .");
         ReusableMethods.wait(3);
         extentTest.info("The user wait .");
+        adminPage.yellowFilterButton.sendKeys(Keys.ENTER);
+        extentTest.info("The user click on the yeliow bottun.");
+        //Verify the visibility of "Filters"
+        ReusableMethods.wait(2);
+        Assert.assertTrue(adminPage.topDatas.get(7).isDisplayed());
+        extentTest.pass("The user verify the Filters word is visible .");
+        //Verify the visibility of "By Merchant"
+        Assert.assertTrue(adminPage.byMerchant.isDisplayed());
+        extentTest.pass("The user correctness the By Merchant word is visible.");
+        //Verify the visibility of input box.
+        ReusableMethods.wait(2);
+        Assert.assertTrue(adminPage.filterInputBoxFlash.isDisplayed());
+        extentTest.pass("The user correctness the input box is visible. ");
+        Assert.assertTrue(adminPage.applyFilters.isDisplayed());
+        extentTest.pass("The user correctness the applyFilters button is visible. ");
+        Assert.assertTrue(adminPage.clearFilters.isDisplayed());
+        extentTest.pass("The user correctness clearFilters button is visible. ");
+        adminPage.yellowFilterButton.sendKeys(Keys.ENTER);
+        extentTest.info("The user click on the yeliow bottun.");
 
         Assert.assertTrue(adminPage.yellowFilterButton.isDisplayed());
         extentTest.pass("The user correctness the visibility of yellow filter button .");
@@ -508,18 +530,12 @@ public class US_043 extends TestBaseRapor {
         adminPage.itemsAndNames.get(5).sendKeys(Keys.ENTER);
         adminPage.merchantRegestration.sendKeys(Keys.ENTER);
         ReusableMethods.wait(2);
-        //Click on anonymus icon.
-        adminPage.yellowFilterButton.sendKeys(Keys.ENTER);
-        //Verify the visibility of "Filters"
-        ReusableMethods.wait(2);
-        Assert.assertTrue(adminPage.topDatas.get(7).isDisplayed());
-        //Verify the visibility of "By Merchant"
-        Assert.assertTrue(adminPage.byMerchant.isDisplayed());
-        //Verify the visibility of input box.
-        ReusableMethods.wait(2);
-        Assert.assertTrue(adminPage.filterInputBoxFlash.isDisplayed());
-        Assert.assertTrue(adminPage.applyFilters.isDisplayed());
-        Assert.assertTrue(adminPage.clearFilters.isDisplayed());
+        int v0=Integer.parseInt(adminPage.valueOfTopRow.get(4).getText());
+        int v1=Integer.parseInt(adminPage.valueOfTopRow.get(2).getText());
+        int v2=Integer.parseInt(adminPage.valueOfTopRow.get(3).getText());
+        int expectedValue=v1+v2;
+        int actualValue=v0;
+        Assert.assertEquals(actualValue,expectedValue);
 
         Driver.quitDriver();
     }
@@ -589,16 +605,19 @@ public class US_043 extends TestBaseRapor {
         adminPage.itemsAndNames.get(5).sendKeys(Keys.ENTER);
         adminPage.merchantRegestration.sendKeys(Keys.ENTER);
         ReusableMethods.wait(2);
-        //Check that the sum of "Total Active" and "Total Inactive" is equalls to "Total Registered"
-        int totalActive = Integer.parseInt(adminPage.valueOfTopRow.get(4).getText());
-        int totalInactive = Integer.parseInt(adminPage.valueOfTopRow.get(5).getText());
-        ReusableMethods.wait(3);
+        adminPage.notificationsIcon.click();
+        List<String> str=new ArrayList<>();
+        for(int i=0;i<adminPage.orderOfNotification.size();i++) {
+            str.add( adminPage.orderOfNotification.get(i).getText().replaceAll("\\D", ""));
 
-        int expectedValue = totalInactive + totalActive;
-        //System.out.println("exo:"+expectedValue);
-        int actualValue = Integer.parseInt(adminPage.valueOfTopRow.get(1).getText());
-        //System.out.println("act:"+actualValue);
-        Assert.assertEquals(actualValue, expectedValue);// sum of "Total Active" and "Total Inactive
+        }
+        List<String> sorted=new ArrayList<>();
+        for(String each:str){
+            sorted.add(each);
+        }
+        Collections.sort(sorted);
+        Collections.reverse(sorted);
+        Assert.assertEquals(str,sorted);
         Driver.quitDriver();
     }
 
@@ -612,6 +631,14 @@ public class US_043 extends TestBaseRapor {
         adminPage.merchantRegestration.sendKeys(Keys.ENTER);
         ReusableMethods.wait(2);
         //Check that the sum of "Commission Total" and "Membership Total" is equalls to "Total Active"
+        int v1=Integer.parseInt(adminPage.valueOfTopRow.get(4).getText());
+        int v2=Integer.parseInt(adminPage.valueOfTopRow.get(5).getText());
+        int v0=Integer.parseInt(adminPage.valueOfTopRow.get(1).getText());
+        int expectedValue=v1+v2;
+        int actualValue=v0;
+        Assert.assertEquals(actualValue,expectedValue);
+
+
         Driver.quitDriver();
     }
 
@@ -626,10 +653,9 @@ public class US_043 extends TestBaseRapor {
         ReusableMethods.wait(2);
         ///(adminPage.pagesNevigate.size()-2)
         JSUtilities.scrollToBottom(Driver.getDriver());
-        List<String> logoList = ReusableMethods.stringListesineDonustur(adminPage.logoMerchant);
 
         String expectedNum = adminPage.valueOfTopRow.get(1).getText();
-        String actualNum = adminPage.showingEntryInfo.getText();
+        String actualNum = adminPage.showingEntryInfo.getText().replaceAll("\\D","-");
         //System.out.println("exp:"+expectedNum);
         Assert.assertTrue(actualNum.contains(expectedNum));
 
@@ -655,42 +681,26 @@ public class US_043 extends TestBaseRapor {
         //The notification asign is visible and active.
         Assert.assertTrue(adminPage.notificationsIcon.isDisplayed());
         extentTest.pass("The user correctness visibility of notification icon .");
+        ReusableMethods.wait(3);
         Assert.assertTrue(adminPage.notificationsIcon.isEnabled());
         extentTest.pass("The user correctness activity of notification icon .");
         JSUtilities.clickWithJS(Driver.getDriver(), adminPage.notificationsIcon);
         extentTest.info("The user click the notification icon .");
         Assert.assertTrue(adminPage.notificationsText.isEnabled());
         extentTest.pass("The user correctness existence of text of notification icon .");
-        List<String> sortedOrderList = new ArrayList<>();
-
-
-        List<String> strOrderList = ReusableMethods.stringListesineDonustur(adminPage.orderOfNotification);
-        for (String each : strOrderList) {
-            sortedOrderList.add(each.replaceAll("\\D", ""));
-        }
-
-        //System.out.println("orderNUM :"+orderNum);
-        Collections.sort(sortedOrderList);
-        //System.out.println("orderNumSorted :"+orderNumSorted);
-     
-        for (String each1 : strOrderList){
-            for (String each2 : sortedOrderList){
-               Assert.assertTrue(each1.contains(each2));
-            }
-        }
-        extentTest.pass("The user correctness that number of orders orderly.");
+        ReusableMethods.wait(3);
         //viewAll bottun
         Assert.assertTrue(adminPage.viewAllButton.isDisplayed());
         extentTest.pass("The user correctness visibility of the view all button .");
         Assert.assertTrue(adminPage.viewAllButton.isEnabled());
         extentTest.pass("The user correctness activity of the view all button .");
+        ReusableMethods.wait(3);
         JSUtilities.clickWithJS(Driver.getDriver(), adminPage.viewAllButton);
         extentTest.info("The user click the viewAll button .");
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().equalsIgnoreCase(ConfigReader.getProperty("viewAllNewPage")));
         extentTest.pass("The user correctness viewAll button linked to page about orders");
 
-        //Click the notification asign.
-        //The notification asign dropdown is active and shows the orders
+
 
         Driver.quitDriver();
         extentTest.info("The user closes the browser .");
