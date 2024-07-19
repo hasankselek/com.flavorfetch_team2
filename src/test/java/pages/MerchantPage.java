@@ -833,4 +833,17 @@ public  List<WebElement>  firstOrderNumber;
     @FindBy(xpath ="//a[text()='\n" +
             "         Delete         ']")
     public WebElement selectDelete; //select category delete
+
+    @FindBy(xpath = "//*[@class='attributes']")
+    public WebElement attributesDropdownMenu; //attributes dropdown menu
+
+    @FindBy(xpath = "//*[@class='position-relative attrmerchant_size_list']")
+    public WebElement sizePage; //size page
+
+    @FindBy(xpath = "//*[@class='btn btn-black btn-circle']")
+    public WebElement sizeAddButton; //size add button
+
+    @FindBy(id = "AR_size_size_name")
+    public WebElement sizeNameTextbox; //size name textbox
+
 }
