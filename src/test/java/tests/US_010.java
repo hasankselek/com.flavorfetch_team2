@@ -27,7 +27,8 @@ public class US_010 {
 
 
     @Test
-    public void TC1001(){
+    public void TC_1001(){
+        actions = new Actions(Driver.getDriver());
         customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -57,7 +58,8 @@ public class US_010 {
 
     }
     @Test
-    public void TC1002(){
+    public void TC_1002(){
+        actions = new Actions(Driver.getDriver());
         customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -84,9 +86,9 @@ public class US_010 {
         Assert.assertTrue(customerPage.submitFormButton.isEnabled());
         ReusableMethods.wait(10);
         customerPage.privacyPolicyLink.click();
-        String expectedUrl = "https://qa.flavorfetch.com/merchant/signup";
+        String expectedUrl = "https://qa.flavorfetch.com/privacy-policy";
         String actualUrl = Driver.getDriver().getCurrentUrl();
-        Assert.assertNotEquals(expectedUrl,actualUrl);
+        Assert.assertEquals(expectedUrl,actualUrl);
         Driver.quitDriver();
 
 
@@ -94,7 +96,8 @@ public class US_010 {
 
     }
     @Test
-    public void TC1003(){
+    public void TC_1003(){
+        actions = new Actions(Driver.getDriver());
         customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -113,25 +116,32 @@ public class US_010 {
         ReusableMethods.wait(3);
         customerPage.chooseAddressField.click();
         ReusableMethods.wait(3);
-        customerPage.StorePhoneNumber.sendKeys("2222222222");
+        String phoneNumber = faker.phoneNumber().phoneNumber();
+        customerPage.StorePhoneNumber.sendKeys(phoneNumber);
         Assert.assertTrue(customerPage.CommissionButon.isEnabled());
         ReusableMethods.wait(3);
         customerPage.CommissionButon.click();
         ReusableMethods.wait(8);
         Assert.assertTrue(customerPage.submitFormButton.isEnabled());
         customerPage.submitFormButton.click();
-        ReusableMethods.windowaGec("https://qa.flavorfetch.com/merchant/user-signup/?uuid=365157e9-4544-11ef-8af1-3a396e7b202d",Driver.getDriver());
+        ReusableMethods.wait(3);
+        fakerFirstName = faker.name().firstName();
+        fakerLastName = faker.name().lastName();
+        fakeremailAdress = faker.internet().emailAddress();
+        fakerPassword = faker.internet().password();
         customerPage.registerFirstName.sendKeys(fakerFirstName);
         customerPage.registerLastName.sendKeys(fakerLastName);
         customerPage.registerEmail.sendKeys(fakeremailAdress);
-        customerPage.StorePhoneNumber.sendKeys("222222222");
+        fakeUserName = faker.name().username();
+        phoneNumber = faker.phoneNumber().phoneNumber();
+        customerPage.StorePhoneNumber.sendKeys(phoneNumber);
         customerPage.registerUsername.sendKeys(fakeUserName);
         customerPage.registerPassword.sendKeys(fakerPassword);
         customerPage.registerConfirmPassword.sendKeys(fakerPassword);
         customerPage.termsAndConditions.click();
-        String expectedUrl = "https://qa.flavorfetch.com/merchant/user-signup/?uuid=365157e9-4544-11ef-8af1-3a396e7b202d";
-        String actualUl = Driver.getDriver().getCurrentUrl();
-        Assert.assertNotEquals(expectedUrl,actualUl);
+        String expectedUrl = "https://qa.flavorfetch.com/terms-and-conditions";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(actualUrl,expectedUrl);
         Driver.quitDriver();
 
 
