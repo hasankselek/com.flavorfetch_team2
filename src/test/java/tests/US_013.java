@@ -52,7 +52,7 @@ public class US_013 extends TestBaseRapor {
         Assert.assertEquals(actualYazi,expectedYazi);
         Driver.quitDriver();
     }
-    @Test(groups = "Failed")
+    @Test(groups = "regression")
     public void TC_1302() throws IOException {
         actions = new Actions(Driver.getDriver());
         customerPage= new CustomerPage();

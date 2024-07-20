@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 
-<suite name="E2E Test">
+<suite name="E2E_Test">
     <test name="E2E">
         <classes>
             <class name="tests.zCustomerSuit"></class>

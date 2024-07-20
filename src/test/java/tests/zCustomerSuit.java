@@ -14,7 +14,7 @@ import utilities.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class zCustomerSuit extends TestBaseRaporEskiSürüm {
+public class zCustomerSuit extends TestBaseRaporEskiSürüm{
 
     static CustomerPage customerPage;
     static Actions actions;
@@ -44,7 +44,7 @@ public class zCustomerSuit extends TestBaseRaporEskiSürüm {
         //TC0501
         customerPage.signInButton.click();
         extentTest.info("Anasayfa header bolumundeki 'Sign in' butonuna tiklar");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(3);
 
         Assert.assertTrue(customerPage.emailBox.isDisplayed());
         extentTest.pass("Email/telefon numarasi girebilmek icin bir box oldugunu dogrular");
@@ -69,35 +69,35 @@ public class zCustomerSuit extends TestBaseRaporEskiSürüm {
 
 
         //TC0502
-        customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_gulpembe"));
+        customerPage.emailBox.sendKeys(ConfigReader.getProperty("customeruser_hasan"));
         extentTest.info("Email alanina doğru email girer");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
-        customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_gulpembe"));
+        customerPage.passwordBox.sendKeys(ConfigReader.getProperty("customerpassword_hasan"));
         extentTest.info("Password alanina dogru passwordu girer");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         customerPage.loginSigninButton.click();
         extentTest.info("Sign in butonuna tiklar");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         Assert.assertTrue(customerPage.notificicationsButton.isDisplayed());
         extentTest.pass("Basarili giris yapabildigini dogrular");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         //TC0302
         customerPage.enterDeliveryAddresstextBox.sendKeys("New York");
         extentTest.info("Arama kutucuğuna 'New York' yazar ");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         customerPage.newYorkAddressTextBox.click();
         extentTest.info("Çıkan sonuçlardan New York'u seçer");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         ReusableMethods.wait(3);
         Driver.getDriver().navigate().back();
         extentTest.info("Anasayfaya geri döner");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         //TC1201
         Assert.assertTrue(customerPage.localCuisine.isDisplayed());
@@ -106,7 +106,7 @@ public class zCustomerSuit extends TestBaseRaporEskiSürüm {
 
         customerPage.sandwichAndWraps.click();
         extentTest.info("Sandwich and Wraps'a tıklar");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         customerPage.team2Restaurant.click();
         extentTest.info("Team2 Restaurant'ını seçer");

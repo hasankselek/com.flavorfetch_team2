@@ -82,7 +82,7 @@ public class zMerchantSuit extends TestBaseRaporEskiSürüm {
 
         merchantPage.addButton.click();
         extentTest.pass("Add butonuna tıklar");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         merchantPage.productTobBeAdded.click();
         extentTest.info("İstenilen ürünü ekler");
@@ -90,7 +90,7 @@ public class zMerchantSuit extends TestBaseRaporEskiSürüm {
 
         merchantPage.addToOrderButton.click();
         extentTest.info("Add to Order butonuna tıklar");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Item added to order']")));
@@ -112,31 +112,31 @@ public class zMerchantSuit extends TestBaseRaporEskiSürüm {
 
         merchantPage.acceptedButton.click();
         extentTest.info("Siparişi onaylar");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         //TC2703
         merchantPage.ordersProcessingLink.click();
         extentTest.info("Orders Processing'e tıklar");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         Assert.assertTrue(merchantPage.readyForPickupButton.isDisplayed());
         extentTest.pass("Ready For Pickup butonunun görüntülendiğini doğrular");
 
         merchantPage.readyForPickupButton.click();
         extentTest.info("Ready For Pickup butonuna tıklar");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         merchantPage.ordersReadyLink.click();
         extentTest.info("Orders Ready linkine tıklar");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         merchantPage.completeOrdersReadyPage.click();
         extentTest.info("Complete Orders'a tıklar");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         merchantPage.ordersCompletedLink.click();
         extentTest.info("Completed'atıklar");
-        ReusableMethods.wait(1);
+        ReusableMethods.wait(2);
 
         int OrderView =merchantPage.orderProcessingList.size();
 
