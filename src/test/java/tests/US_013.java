@@ -1,6 +1,6 @@
 package tests;
 
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -115,6 +115,7 @@ public class US_013 extends TestBaseRapor {
             Assert.fail("Stripe ödeme methodu başarısız " + e.getMessage());
 
         }
+
         Driver.quitDriver();
     }
     @Test
@@ -153,6 +154,7 @@ public class US_013 extends TestBaseRapor {
             String actualYazi = customerPage.savedPaymentMethodsText.getText();
             Assert.assertEquals(actualYazi, expectedYazi);
         }
+
 
         Driver.quitDriver();
     }
@@ -223,8 +225,7 @@ public class US_013 extends TestBaseRapor {
             customerPage.addCashButton.click();
         }
         ReusableMethods.wait2(1);
-        /*
-         customerPage.placeOrderButtonText.isDisplayed();
+        customerPage.placeOrderButtonText.isDisplayed();
         extentTest.info("kullanici place order butonunun gorunurlugunu kontrol eder");
         customerPage.placeOrderButton.click();
         extentTest.info("kullanici place order butonuna tiklar");
@@ -232,7 +233,6 @@ public class US_013 extends TestBaseRapor {
         String actualText = customerPage.confirmingText.getText();
         Assert.assertEquals(actualText,expectedText);
         extentTest.pass("kullanici confirming yazisini dogrular");
-         */
 
 
         Driver.quitDriver();
