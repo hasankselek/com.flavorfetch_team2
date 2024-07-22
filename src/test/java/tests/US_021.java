@@ -8,14 +8,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.MerchantPage;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.JSUtilities;
-import utilities.ReusableMethods;
+import utilities.*;
 
+import java.io.IOException;
 import java.util.List;
 
-public class US_021 { //Merchant Page Dashboard Access
+public class US_021 extends TestBaseRapor { //Merchant Page Dashboard Access
     MerchantPage merchantPage = new MerchantPage();
 
 
@@ -387,7 +385,7 @@ public class US_021 { //Merchant Page Dashboard Access
     }
 
     @Test
-    public void TC_2109() //Merchant Page sidebar Payment gateway Menu Test
+    public void TC_2109() throws IOException//Merchant Page sidebar Payment gateway Menu Test
     {
         merchantPage = new MerchantPage();
         ReusableMethods.accessToMerchant();
