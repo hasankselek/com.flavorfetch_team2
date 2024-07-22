@@ -12,18 +12,20 @@ import pages.MerchantPage;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class US_033 {
+public class US_033 extends TestBaseRapor {
 
 
     MerchantPage merchantPage = new MerchantPage();
 
     @Test
-    public void TC_3301() {
+    public void TC_3301() throws IOException {
         merchantPage = new MerchantPage();
 
         ReusableMethods.accessToMerchant();
@@ -61,7 +63,7 @@ public class US_033 {
 
         String afterDeleteCoupon = couponStringList.get(0);
 
-        Assert.assertEquals(beforeDeleteCoupon, afterDeleteCoupon);
+        Assert.assertNotEquals(beforeDeleteCoupon, afterDeleteCoupon);
 
 
         Driver.quitDriver();

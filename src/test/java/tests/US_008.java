@@ -14,7 +14,8 @@ public class US_008 {
 
 
     @Test
-    public void TC_0801 (){
+    public void TC_0801() {
+        customerPage = new CustomerPage();
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         JSUtilities.scrollToBottom(Driver.getDriver());
         ReusableMethods.wait(1);
@@ -27,16 +28,15 @@ public class US_008 {
         String actualUrl = Driver.getDriver().getCurrentUrl();
         String expectedUrl = "https://qa.flavorfetch.com/terms-and-conditions";
 
-        Assert.assertEquals(actualUrl,expectedUrl);
+        Assert.assertEquals(actualUrl, expectedUrl);
 
         Driver.quitDriver();
 
     }
 
     @Test
-    public void TC_0802(){
-        try {
-            customerPage=new CustomerPage();
+    public void TC_0802() {
+        customerPage = new CustomerPage();
 
         Driver.getDriver().get(ConfigReader.getProperty("customer_Url"));
         customerPage.italianRestaurants.click();
@@ -53,12 +53,9 @@ public class US_008 {
         String actualUrl = Driver.getDriver().getCurrentUrl();
         String expectedUrl = "https://qa.flavorfetch.com/terms-and-conditions";
 
-        Assert.assertEquals(actualUrl,expectedUrl);
-    }
-        finally {
-            Driver.quitDriver();
-        }
+        Assert.assertEquals(actualUrl, expectedUrl);
 
+        Driver.quitDriver();
 
 
     }

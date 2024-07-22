@@ -95,7 +95,7 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Ingredients']")
     public WebElement ingredientsLink;// merchant sidebar page
 
-    @FindBy(xpath = "//a[text()='Cooking Reference']")
+    @FindBy(xpath = "//a[text()='Cooking Reference ']")
     public WebElement cookingReferenceLink;// merchant sidebar page
 
     @FindBy(xpath = "//a[text()='Food']")
@@ -254,7 +254,7 @@ public class MerchantPage {
     @FindBy(xpath = "//a[text()='Buyers']")
     public WebElement buyersLink;// merchant sidebar page
 
-    @FindBy(xpath = "//a[text()='List']")
+    @FindBy(xpath = "(//a[text()='List'])[3]")
     public WebElement listLink;// merchant sidebar page
 
     @FindBy(xpath = "//a[text()='Reviews']")

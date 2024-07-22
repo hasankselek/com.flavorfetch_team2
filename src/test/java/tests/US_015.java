@@ -19,6 +19,7 @@ public class US_015 {
     @Test
     public void TC_1501() //Access  My Orders Page Test
     {
+        customerPage = new CustomerPage();
         ReusableMethods.accessToCustomer("customeruser_mehmet", "customerpassword_mehmet");
         ReusableMethods.wait(1);
         customerPage.profileDropdownMenu.click();
@@ -41,6 +42,7 @@ public class US_015 {
     @Test
     public void TC_1502() //Access  Orders Page Test
     {
+        customerPage = new CustomerPage();
         accesOrdersPage();
 
         List<String> ordersStringList = ReusableMethods.stringListesineDonustur(customerPage.ordersList);
@@ -58,6 +60,7 @@ public class US_015 {
     @Test
     public void TC_1503() //selected Order's View Test
     {
+        customerPage = new CustomerPage();
         accesOrdersPage();
 
         customerPage.firstOrdersDropdownButton.click();
@@ -73,8 +76,9 @@ public class US_015 {
     }
 
     @Test
-    public void TC_1504() //selected Order's Buy again Test
+    public void TC_1506() //selected Order's Buy again Test
     {
+        customerPage = new CustomerPage();
         accesOrdersPage();
         customerPage.firstOrdersDropdownButton.click();
         ReusableMethods.wait(1);
@@ -103,6 +107,7 @@ public class US_015 {
     @Test
     public void TC_1505() //Download Pdf Test
     {
+        customerPage = new CustomerPage();
         accesOrdersPage();
         customerPage.firstOrdersDropdownButton.click();
         ReusableMethods.wait(1);
@@ -118,8 +123,9 @@ public class US_015 {
     }
 
     @Test
-    public void TC_1506() //Write A Review Test
+    public void TC_1504() //Write A Review Test
     {
+        customerPage = new CustomerPage();
         accesOrdersPage();
         customerPage.firstOrdersDropdownButton.click();
         ReusableMethods.wait(1);
@@ -154,6 +160,7 @@ public class US_015 {
     @Test
     public void TC_1507() //Cancel Order Test
     {
+        customerPage = new CustomerPage();
         accesOrdersPage();
         customerPage.firstOrdersDropdownButton.click();
         ReusableMethods.wait(1);
@@ -177,6 +184,7 @@ public class US_015 {
     @Test
     public void TC_1508() //Track Button Test
     {
+        customerPage = new CustomerPage();
         accesOrdersPage();
         customerPage.firstOrdersDropdownButton.click();
         ReusableMethods.wait(1);

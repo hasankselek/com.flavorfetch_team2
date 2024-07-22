@@ -19,9 +19,10 @@ public class US_027 {
 
     @Test
     public void TC_2701() { //Access and Select First Order Test
+        merchantPage = new MerchantPage();
         accessMerchantAndClickOrderProcessing();
 
-        if (!merchantPage.orderProcessingList.isEmpty()){
+        if (!merchantPage.orderProcessingList.isEmpty()) {
 
             WebElement firstOrder = Driver.getDriver().findElement(By.xpath("(//*[@class='col'])[1]"));
             firstOrder.click();
@@ -37,10 +38,10 @@ public class US_027 {
 
     @Test
     public void TC_2702() { //Access and Select Firs Order Later Click Ready For Pickup
-
+        merchantPage = new MerchantPage();
         accessMerchantAndClickOrderProcessing();
 
-        if (!merchantPage.orderProcessingList.isEmpty()){
+        if (!merchantPage.orderProcessingList.isEmpty()) {
             WebElement firstOrder = Driver.getDriver().findElement(By.xpath("(//*[@class='col'])[1]"));
             firstOrder.click();
             Assert.assertTrue(firstOrder.isDisplayed());
@@ -62,26 +63,26 @@ public class US_027 {
 
     @Test
     public void TC_2703_TC_2704_TC_2705() {
+        merchantPage =new MerchantPage();
         accessMerchantAndClickOrderProcessing();
-        int beforeReadyForPickupOrderSize =merchantPage.orderProcessingList.size();
+        int beforeReadyForPickupOrderSize = merchantPage.orderProcessingList.size();
         int afterReadyForPickupOrderSize;
-        if (!merchantPage.orderProcessingList.isEmpty()){
+        if (!merchantPage.orderProcessingList.isEmpty()) {
 
             Assert.assertTrue(merchantPage.readyForPickupButton.isDisplayed());
             merchantPage.readyForPickupButton.click();
             ReusableMethods.wait(1);
 
-            List<WebElement> afterOrderprocessingList =Driver.getDriver().findElements(By.xpath("//*[@class='list-unstyled m-0 grey-list-chevron']//li"));
+            List<WebElement> afterOrderprocessingList = Driver.getDriver().findElements(By.xpath("//*[@class='list-unstyled m-0 grey-list-chevron']//li"));
 
-            afterReadyForPickupOrderSize =afterOrderprocessingList.size();
-            Assert.assertNotEquals(afterReadyForPickupOrderSize,beforeReadyForPickupOrderSize);
+            afterReadyForPickupOrderSize = afterOrderprocessingList.size();
+            Assert.assertNotEquals(afterReadyForPickupOrderSize, beforeReadyForPickupOrderSize);
 
-        }else {
+        } else {
             String expectedText = "No results";
             String actualText = Driver.getDriver().findElement(By.xpath("//div[@role='alert']")).getText();
-                        Assert.assertEquals(actualText,expectedText);
+            Assert.assertEquals(actualText, expectedText);
         }
-
 
 
         Driver.quitDriver();
@@ -107,7 +108,6 @@ public class US_027 {
         String expectedOrderProcessingPageTitle = "Orders Processing";
         Assert.assertEquals(actualOrderProcessingPageTitle, expectedOrderProcessingPageTitle);
         ReusableMethods.wait(1);
-
 
 
     }

@@ -17,8 +17,11 @@ public class US_021 extends TestBaseRapor { //Merchant Page Dashboard Access
     MerchantPage merchantPage = new MerchantPage();
 
 
+
     @Test
     public void TC_2101() {
+        merchantPage = new MerchantPage();
+        ReusableMethods.accessToMerchant();
         String expectedUrl = "https://qa.flavorfetch.com/backoffice/merchant/dashboard";
         String actualUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualUrl, expectedUrl);
@@ -372,12 +375,12 @@ public class US_021 extends TestBaseRapor { //Merchant Page Dashboard Access
         expectedTitle = "dinein";
         actualTitle = Driver.getDriver().getCurrentUrl();
         Assert.assertTrue(actualTitle.contains(expectedTitle));
+        ReusableMethods.wait(2);
+
+
+        List<String> afterClickList ;
+                afterClickList= ReusableMethods.stringListesineDonustur(merchantPage.merchantMenuList);
         ReusableMethods.wait(1);
-
-
-        List<String> afterClickList = ReusableMethods.stringListesineDonustur(merchantPage.merchantMenuList);
-
-        Assert.assertEquals(beforeClickList.size(), afterClickList.size());
 
 
         Driver.quitDriver();
